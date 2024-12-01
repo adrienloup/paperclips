@@ -4,8 +4,8 @@
 
 ## Requirements
 
-- `node` : `^18.18.2`
-- `npm` : `^10.9.1`
+- `node` : `^20.18.1`
+- `npm` : `^10.8.2`
 
 ## Installation
 

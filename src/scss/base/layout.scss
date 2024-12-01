@@ -1,0 +1,29 @@
+:root {
+  font-family: var(--text-font);
+  line-height: 1.5;
+  color: #000;
+  background-color: #fff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#_paperclips_1mm2_3 {
+  background-color: red;
+
+  a {
+    background-color: green;
+  }
+}

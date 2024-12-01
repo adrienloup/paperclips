@@ -1,7 +1,1 @@
-#paperclips {
-  background-color: red;
-
-  a {
-    background-color: green;
-  }
-}
+@use "scss/base" as *;

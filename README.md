@@ -35,3 +35,9 @@ npm run preview
 npm run lint
 npm run lint:fix
 ```
+
+## Checking Code Formatting
+
+```bash
+npm run format
+```

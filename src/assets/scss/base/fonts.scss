@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Symbols';
+  src:
+    url('./assets/fonts/Symbols.woff2') format('woff2'),
+    url('./assets/fonts/Symbols.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Regular';
+  src:
+    url('./assets/fonts/Regular.woff2') format('woff2'),
+    url('./assets/fonts/Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bold';
+  src:
+    url('./assets/fonts/Bold.woff2') format('woff2'),
+    url('./assets/fonts/Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

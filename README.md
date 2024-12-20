@@ -12,6 +12,7 @@ A React app inspired by Universal Paperclips, a game based on the idea of ​​
 ## Installation
 
 ```bash
+nvm use
 npm install
 ```
 

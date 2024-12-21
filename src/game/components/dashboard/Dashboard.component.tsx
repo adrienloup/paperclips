@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { formatNumber } from '../../../generic/utils/formatNumber';
+import { useNoteDispatch } from '../../../generic/components/note/useNote';
 import { BusinessComponent } from '../business/Business.component';
 import { ManufacturingComponent } from '../manufacturing/Manufacturing.component';
 import styles from './Dashboard.module.scss';
 
 function DashboardComponent() {
   const { t } = useTranslation();
-  const clipsPerSecond = useRef(0);
+  const setNote = useNoteDispatch();
   const [clips, setClips] = useState(0);
   const [clipsCost, setClipsCost] = useState(0.25);
   const [inventory, setInventory] = useState(0);
@@ -23,6 +24,7 @@ function DashboardComponent() {
     autoProducers: false,
     marketing: false,
   });
+  const clipsPerSecond = useRef(0);
 
   // Produire un trombone
   const produceClip = () => {
@@ -120,15 +122,21 @@ function DashboardComponent() {
   useEffect(() => {
     if (clips >= 100 && !feature.autoProducers) {
       setfeature((prev) => ({ ...prev, autoProducers: true }));
+      setNote({ type: 'added', id: 'autoProducers' });
     }
 
     if (clips >= 500 && !feature.marketing) {
       setfeature((prev) => ({ ...prev, marketing: true }));
+      setNote({ type: 'added', id: 'marketing' });
+    }
+
+    if (clips >= 501) {
+      setNote({ type: 'added', id: 'marketing' });
     }
   }, [clips, feature]);
 
   return (
-    <div className={styles.dashboard}>
+    <article className={styles.dashboard}>
       <h1 className={styles.clips}>
         <span>{t('game.title')}</span> {formatNumber(clips)}
       </h1>
@@ -157,7 +165,7 @@ function DashboardComponent() {
           buyMarketing={buyMarketing}
         />
       </div>
-    </div>
+    </article>
   );
 }
 

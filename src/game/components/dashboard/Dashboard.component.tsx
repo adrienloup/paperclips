@@ -114,25 +114,27 @@ function DashboardComponent() {
       <h1 className={styles.clips}>
         <span>Paperclips</span> {formatNumber(clips)}
       </h1>
-      <BusinessComponent
-        funds={funds}
-        inventory={inventory}
-        publicDemand={publicDemand}
-        clipsCost={clipsCost}
-        decreaseClipsCost={decreaseClipsCost}
-        increaseClipsCost={increaseClipsCost}
-      />
-      <ManufacturingComponent
-        autoProducers={autoProducers}
-        autoProducerCost={autoProducerCost}
-        unlockedFeatures={unlockedFeatures}
-        wire={wire}
-        wireCost={wireCost}
-        clipsYield={clipsYield.current}
-        buyAutoProducer={buyAutoProducer}
-        buyWire={buyWire}
-        produceClip={produceClip}
-      />
+      <div className={styles.group}>
+        <ManufacturingComponent
+          autoProducers={autoProducers}
+          autoProducerCost={autoProducerCost}
+          unlockedFeatures={unlockedFeatures}
+          wire={wire}
+          wireCost={wireCost}
+          clipsYield={clipsYield.current}
+          buyAutoProducer={buyAutoProducer}
+          buyWire={buyWire}
+          produceClip={produceClip}
+        />
+        <BusinessComponent
+          funds={funds}
+          inventory={inventory}
+          publicDemand={publicDemand}
+          clipsCost={clipsCost}
+          decreaseClipsCost={decreaseClipsCost}
+          increaseClipsCost={increaseClipsCost}
+        />
+      </div>
     </div>
   );
 }

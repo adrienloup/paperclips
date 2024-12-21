@@ -1,0 +1,20 @@
+.dashboard {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: green;
+}
+
+.clips {
+  flex: 1 1 100%;
+  padding: var(--spacing-m);
+  letter-spacing: 0.065rem;
+  font-family: var(--font-bold);
+  font-weight: normal;
+  font-size: var(--font-size-l);
+
+  span {
+    text-transform: uppercase;
+    -webkit-text-stroke: 0.06rem var(--color-neutral-5);
+    color: transparent;
+  }
+}

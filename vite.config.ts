@@ -14,8 +14,8 @@ export default defineConfig({
           'A React app inspired by Universal Paperclips, a game based on the idea of artificial intelligence (AI) optimized for a single task.',
         start_url: '/paperclips/',
         display: 'standalone',
-        theme_color: '#fff',
-        background_color: '#000',
+        theme_color: '#e6e6e6',
+        background_color: '#171717',
         icons: [
           {
             src: '/paperclips/paperclips-192x192.svg',

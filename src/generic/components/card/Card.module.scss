@@ -7,6 +7,7 @@
   background-color: var(--color-neutral-3);
 
   h2 {
+    margin-bottom: var(--spacing-s);
     letter-spacing: 0.075rem;
     text-transform: uppercase;
     font-family: var(--font-bold);
@@ -24,17 +25,4 @@
     line-height: 1.2;
     font-size: var(--font-size-m);
   }
-
-  // button {
-  //   padding: 10px;
-  //   background-color: #fff500;
-  //   border: none;
-  //   line-height: 1;
-  //   text-transform: uppercase;
-  //   font-weight: normal;
-  //   font-family: var(--font-regular);
-  //   font-size: 16px;
-  //   color: #171717;
-  //   cursor: pointer;
-  // }
 }

@@ -5,6 +5,7 @@ import { ManufacturingComponent } from '../manufacturing/Manufacturing.component
 import styles from './Dashboard.module.scss';
 
 function DashboardComponent() {
+  const clipsYield = useRef(0);
   const [clips, setClips] = useState(0);
   const [clipsCost, setClipsCost] = useState(0.25);
   const [inventory, setInventory] = useState(0);
@@ -13,11 +14,13 @@ function DashboardComponent() {
   const [wireCost, setWireCost] = useState(1);
   const [autoProducers, setAutoProducers] = useState(0);
   const [autoProducerCost, setAutoProducerCost] = useState(5);
-  const [publicDemand, setPublicDemand] = useState(100);
-  const [unlockedFeatures, setUnlockedFeatures] = useState({
+  const [publicDemand, setPublicDemand] = useState(0);
+  const [marketing, setMarketing] = useState(1);
+  const [marketingCost, setMarketingCost] = useState(100);
+  const [feature, setfeature] = useState({
     autoProducers: false,
+    marketing: false,
   });
-  const clipsYield = useRef(0);
 
   // Produire un trombone
   const produceClip = () => {
@@ -48,15 +51,25 @@ function DashboardComponent() {
     }
   };
 
+  // Acheter des niveaux de marketing
+  const buyMarketing = () => {
+    if (funds >= marketingCost) {
+      setMarketing(marketing + 1);
+      setMarketingCost(marketingCost * 2);
+      setFunds(funds - marketingCost);
+    }
+  };
+
   const increaseClipsCost = () =>
     setClipsCost((prev) => Math.min(prev + 0.01, 1));
 
   const decreaseClipsCost = () =>
     setClipsCost((prev) => Math.max(prev - 0.01, 0.01));
 
-  // Met à jour la demande de 0 à 100% en fonction du prix d'un trombone
+  // Met à jour la demande en fonction du prix d'un trombone
   useEffect(() => {
-    setPublicDemand(Math.max(0, 101 - clipsCost * 101));
+    const bonus = marketing * 100 + marketing;
+    setPublicDemand(Math.max(0, bonus - clipsCost * bonus));
   }, [clipsCost]);
 
   // Production automatique des trombones
@@ -84,14 +97,13 @@ function DashboardComponent() {
   // Ventes de trombones en fonction de la demande dans la limite de l'inventaire
   useEffect(() => {
     const interval = setInterval(() => {
-      const demand = inventory * (publicDemand / 100);
-      const sales = Math.min(inventory, demand);
+      const sales = Math.min(inventory, inventory * (publicDemand / 100) * 2);
       setFunds((prev) => prev + sales * clipsCost);
       setInventory((prev) => prev - sales);
     }, 1e3);
 
     return () => clearInterval(interval);
-  }, [publicDemand, clipsCost, funds, inventory]);
+  }, [inventory, publicDemand, clipsCost]);
 
   // Rendement
   useEffect(() => {
@@ -104,10 +116,14 @@ function DashboardComponent() {
 
   // Effet pour débloquer des fonctionnalités
   useEffect(() => {
-    if (clips >= 10 && !unlockedFeatures.autoProducers) {
-      setUnlockedFeatures((prev) => ({ ...prev, autoProducers: true }));
+    if (clips >= 100 && !feature.autoProducers) {
+      setfeature((prev) => ({ ...prev, autoProducers: true }));
     }
-  }, [clips, unlockedFeatures]);
+
+    if (clips >= 500 && !feature.marketing) {
+      setfeature((prev) => ({ ...prev, marketing: true }));
+    }
+  }, [clips, feature]);
 
   return (
     <div className={styles.dashboard}>
@@ -118,21 +134,25 @@ function DashboardComponent() {
         <ManufacturingComponent
           autoProducers={autoProducers}
           autoProducerCost={autoProducerCost}
-          unlockedFeatures={unlockedFeatures}
+          clipsYield={clipsYield.current}
+          feature={feature}
           wire={wire}
           wireCost={wireCost}
-          clipsYield={clipsYield.current}
           buyAutoProducer={buyAutoProducer}
           buyWire={buyWire}
           produceClip={produceClip}
         />
         <BusinessComponent
+          clipsCost={clipsCost}
           funds={funds}
           inventory={inventory}
+          marketing={marketing}
+          marketingCost={marketingCost}
           publicDemand={publicDemand}
-          clipsCost={clipsCost}
+          feature={feature}
           decreaseClipsCost={decreaseClipsCost}
           increaseClipsCost={increaseClipsCost}
+          buyMarketing={buyMarketing}
         />
       </div>
     </div>

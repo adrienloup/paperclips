@@ -1,10 +1,10 @@
+import { Feature } from '../../../generic/types/Feature.type';
+
 export interface Manufacturing {
   autoProducers: number;
   autoProducerCost: number;
   clipsYield: number;
-  unlockedFeatures: {
-    autoProducers: boolean; // @TODO: Add more features
-  };
+  feature: Feature;
   wire: number;
   wireCost: number;
   buyAutoProducer: () => void;

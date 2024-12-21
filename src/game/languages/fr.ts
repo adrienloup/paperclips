@@ -20,5 +20,10 @@ export const fr: Translation = {
       decreaseClipsCost: 'Diminuer',
       increaseClipsCost: 'Augmenter',
     },
+    note: {
+      autoProducers: 'Machines à trombones',
+      marketing: 'Marketing',
+      trust: 'Confiance',
+    },
   },
 };

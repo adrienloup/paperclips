@@ -7,7 +7,7 @@ export const en: Translation = {
     clipsPerSecond: 'Paperclips per second: {{value}}',
     business: 'Business',
     fundsAvailable: 'Funds available: $\f{{value}}',
-    inventory: 'Inventaire invendu: {{value}}',
+    inventory: 'Unsold inventory: {{value}}',
     publicDemand: 'Public demand: {{value}}\f%',
     clipsCost: 'Price per paperclip: $\f{{value}}',
     level: 'Level: {{value}}',
@@ -19,6 +19,11 @@ export const en: Translation = {
       buyMarketing: 'Marketing',
       decreaseClipsCost: 'Lower',
       increaseClipsCost: 'Raise',
+    },
+    note: {
+      autoProducers: 'AutoClippers',
+      marketing: 'Marketing',
+      trust: 'Trust',
     },
   },
 };

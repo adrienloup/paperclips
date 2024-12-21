@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { formatNumber } from '../../../generic/utils/formatNumber';
 import { Manufacturing } from './Manufacturing.type';
 import { CardComponent } from '../../../generic/components/card/Card.component';
@@ -7,7 +8,7 @@ import styles from './Manufacturing.module.scss';
 export const ManufacturingComponent = ({
   autoProducers,
   autoProducerCost,
-  clipsYield,
+  clipsPerSecond,
   feature,
   wire,
   wireCost,
@@ -15,20 +16,30 @@ export const ManufacturingComponent = ({
   buyWire,
   produceClip,
 }: Manufacturing) => {
+  const { t } = useTranslation();
+
   return (
     <CardComponent className={styles.card}>
-      <h2>Manufacturing</h2>
+      <h2>{t('game.manufacturing')}</h2>
       <ButtonComponent className={styles.button} onClick={produceClip}>
-        Produire un trombone
+        {t('game.button.makePaperclip')}
       </ButtonComponent>
-      <p>Clips per seconde : {clipsYield}</p>
+      <p>
+        {t('game.clipsPerSecond', {
+          value: clipsPerSecond,
+        })}
+      </p>
       <div className={styles.group}>
         <ButtonComponent className={styles.button} onClick={buyWire}>
-          Fil de fer
+          {t('game.button.buyWire')}
         </ButtonComponent>
         <p>{formatNumber(wire)}</p>
       </div>
-      <p>Coût : $&nbsp;{wireCost.toFixed(2)}</p>
+      <p>
+        {t('game.cost', {
+          value: wireCost.toFixed(2),
+        })}
+      </p>
       {feature.autoProducers ? (
         <div className={styles.autoproducers}>
           <div className={styles.group}>
@@ -36,11 +47,15 @@ export const ManufacturingComponent = ({
               className={styles.button}
               onClick={buyAutoProducer}
             >
-              Machines à trombones
+              {t('game.button.buyAutoProducer')}
             </ButtonComponent>
             <p>{autoProducers}</p>
           </div>
-          <p>Coût : $&nbsp;{autoProducerCost.toFixed(2)}</p>
+          <p>
+            {t('game.cost', {
+              value: autoProducerCost.toFixed(2),
+            })}
+          </p>
         </div>
       ) : null}
     </CardComponent>

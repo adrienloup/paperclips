@@ -3,7 +3,7 @@ import { Feature } from '../../../generic/types/Feature.type';
 export interface Manufacturing {
   autoProducers: number;
   autoProducerCost: number;
-  clipsYield: number;
+  clipsPerSecond: number;
   feature: Feature;
   wire: number;
   wireCost: number;

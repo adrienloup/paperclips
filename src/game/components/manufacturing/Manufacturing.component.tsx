@@ -18,34 +18,30 @@ export const ManufacturingComponent = ({
   return (
     <CardComponent className={styles.card}>
       <h2>Manufacturing</h2>
-      <p>
-        Clips per seconde : <strong>{clipsYield}</strong>
-      </p>
       <ButtonComponent className={styles.button} onClick={produceClip}>
         Produire un trombone
       </ButtonComponent>
-      <p>
-        Fil de fer disponible : <strong>{formatNumber(wire)}</strong>
-      </p>
-      <ButtonComponent className={styles.button} onClick={buyWire}>
-        Acheter du fil de fer (50)
-      </ButtonComponent>
-      <p>
-        Coût du fil de fer : <strong>$&nbsp;{wireCost.toFixed(2)}</strong>
-      </p>
+      <p>Clips per seconde : {clipsYield}</p>
+      <div className={styles.group}>
+        <ButtonComponent className={styles.button} onClick={buyWire}>
+          Fil de fer
+        </ButtonComponent>
+        <p>{formatNumber(wire)}</p>
+      </div>
+      <p>Coût : $&nbsp;{wireCost.toFixed(2)}</p>
       {feature.autoProducers ? (
-        <>
-          <p>
-            Machines à trombones : <strong>{autoProducers}</strong>
-          </p>
-          <ButtonComponent className={styles.button} onClick={buyAutoProducer}>
-            Acheter une machine
-          </ButtonComponent>
-          <p>
-            Coût d'une machine :{' '}
-            <strong>$&nbsp;{autoProducerCost.toFixed(2)}</strong>
-          </p>
-        </>
+        <div className={styles.autoproducers}>
+          <div className={styles.group}>
+            <ButtonComponent
+              className={styles.button}
+              onClick={buyAutoProducer}
+            >
+              Machines à trombones
+            </ButtonComponent>
+            <p>{autoProducers}</p>
+          </div>
+          <p>Coût : $&nbsp;{autoProducerCost.toFixed(2)}</p>
+        </div>
       ) : null}
     </CardComponent>
   );

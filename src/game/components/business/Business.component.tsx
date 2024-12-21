@@ -20,39 +20,29 @@ export const BusinessComponent = ({
     <CardComponent className={styles.card}>
       <h2>Business</h2>
       <p>
-        Fonds disponibles :{' '}
-        <strong>{formatNumber(parseFloat(funds.toFixed(2)))}&nbsp;€</strong>
+        Fonds disponibles : {formatNumber(parseFloat(funds.toFixed(2)))}&nbsp;€
       </p>
-      <p>
-        Inventaire invendu : <strong>{inventory.toFixed()}</strong>
-      </p>
-      <p>
-        Demande du public : <strong>{publicDemand.toFixed()}&nbsp;%</strong>
-      </p>
-      <div>
+      <p>Inventaire invendu : {inventory.toFixed()}</p>
+      <p>Demande : {publicDemand.toFixed()}&nbsp;%</p>
+      <div className={styles.group}>
         <ButtonComponent className={styles.button} onClick={decreaseClipsCost}>
-          Diminuer le prix
+          Diminuer
         </ButtonComponent>
         <ButtonComponent className={styles.button} onClick={increaseClipsCost}>
-          Augmenter le prix
+          Augmenter
         </ButtonComponent>
       </div>
-      <p>
-        Price per Clip : <strong>$&nbsp;{clipsCost.toFixed(2)}</strong>
-      </p>
+      <p>Price per clip: $&nbsp;{clipsCost.toFixed(2)}</p>
       {feature.marketing ? (
-        <>
-          <p>
-            Marketing : <strong>niveau {marketing}</strong>
-          </p>
-          <ButtonComponent className={styles.button} onClick={buyMarketing}>
-            Acheter une campagne
-          </ButtonComponent>
-          <p>
-            Coût d'une campagne :{' '}
-            <strong>$&nbsp;{marketingCost.toFixed(2)}</strong>
-          </p>
-        </>
+        <div className={styles.marketing}>
+          <div className={styles.group}>
+            <ButtonComponent className={styles.button} onClick={buyMarketing}>
+              Marketing
+            </ButtonComponent>
+            <p>Niveau {marketing}</p>
+          </div>
+          <p>Coût : $&nbsp;{marketingCost.toFixed(2)}</p>
+        </div>
       ) : null}
     </CardComponent>
   );

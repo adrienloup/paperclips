@@ -1,0 +1,26 @@
+.loader {
+  background: linear-gradient(var(--color-solid-1) 0 0) 0/0% no-repeat
+    var(--color-neutral-4);
+  animation: Progress var(--loader-duration) infinite linear;
+}
+
+.small {
+  width: 60px;
+  height: 6px;
+}
+
+.medium {
+  width: 80px;
+  height: 8px;
+}
+
+.larg {
+  width: 100px;
+  height: 10px;
+}
+
+@keyframes Progress {
+  100% {
+    background-size: 100%;
+  }
+}

@@ -7,7 +7,7 @@ function AutoClippersPage() {
       <div className="main">
         <div className="navigation">
           <Link to="/paperclips/">Game</Link>
-          <Link to="/paperclips/glossary/autoclippers/">AutoClipers</Link>
+          <Link to="/paperclips/explore/autoclippers/">AutoClipers</Link>
         </div>
         <h1>
           <span>Paperclips</span> 1 088 354 036 036 288 900 000 354 036 036 288

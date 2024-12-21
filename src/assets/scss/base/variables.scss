@@ -1,6 +1,6 @@
 @mixin font {
-  --font-regular: Regular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-bold: Bold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-regular: 'Regular', sans-serif;
+  --font-bold: 'Bold', sans-serif;
   --font-symbol: 'Symbols', sans-serif;
 }
 

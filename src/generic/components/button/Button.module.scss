@@ -2,16 +2,10 @@
   overflow: hidden;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   border: none;
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
-
-  &:focus-visible {
-    outline: 0.25rem solid var(--color-solid-3);
-    outline-offset: 0.25rem;
-  }
 
   &:disabled {
     opacity: 0.6;

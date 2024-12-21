@@ -5,11 +5,10 @@
 }
 
 @mixin size {
-  --font-size-2xl: 2.25rem; // 36px
-  --font-size-l: 1.75rem; // 28px
-  --font-size-m: 1.125rem; // 18px
-  --font-size-s: 1rem; // 16px
-  --font-size-2xs: 0.75rem; // 12px
+  --font-size-2xl: 2rem; // 32px
+  --font-size-l: 1.5rem; // 24px
+  --font-size-m: 1rem; // 16px
+  --font-size-s: 0.875rem; // 14px
 }
 
 @mixin color {

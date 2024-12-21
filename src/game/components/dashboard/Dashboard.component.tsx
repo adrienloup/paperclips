@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { formatNumber } from '../../../generic/utils/formatNumber';
 import { BusinessComponent } from '../business/Business.component';
 import { ManufacturingComponent } from '../manufacturing/Manufacturing.component';
 import styles from './Dashboard.module.scss';
 
 function DashboardComponent() {
+  const { t } = useTranslation();
   const clipsYield = useRef(0);
   const [clips, setClips] = useState(0);
   const [clipsCost, setClipsCost] = useState(0.25);
@@ -128,7 +130,7 @@ function DashboardComponent() {
   return (
     <div className={styles.dashboard}>
       <h1 className={styles.clips}>
-        <span>Paperclips</span> {formatNumber(clips)}
+        <span>{t('game.title')}</span> {formatNumber(clips)}
       </h1>
       <div className={styles.group}>
         <ManufacturingComponent

@@ -72,7 +72,7 @@ function DashboardComponent() {
   useEffect(() => {
     const bonus = marketing * 100 + marketing;
     setPublicDemand(Math.max(0, bonus - clipsCost * bonus));
-  }, [clipsCost]);
+  }, [marketing, clipsCost]);
 
   // Production automatique des trombones
   useEffect(() => {

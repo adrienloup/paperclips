@@ -7,7 +7,7 @@ import styles from './Dashboard.module.scss';
 
 function DashboardComponent() {
   const { t } = useTranslation();
-  const clipsYield = useRef(0);
+  const clipsPerSecond = useRef(0);
   const [clips, setClips] = useState(0);
   const [clipsCost, setClipsCost] = useState(0.25);
   const [inventory, setInventory] = useState(0);
@@ -30,7 +30,7 @@ function DashboardComponent() {
       setClips(clips + 1);
       setInventory(inventory + 1);
       setWire(wire - 1);
-      clipsYield.current += 1;
+      clipsPerSecond.current += 1;
     }
   };
 
@@ -110,7 +110,7 @@ function DashboardComponent() {
   // Rendement
   useEffect(() => {
     const interval = setInterval(() => {
-      clipsYield.current = autoProducers;
+      clipsPerSecond.current = autoProducers;
     }, 1e3);
 
     return () => clearInterval(interval);
@@ -136,7 +136,7 @@ function DashboardComponent() {
         <ManufacturingComponent
           autoProducers={autoProducers}
           autoProducerCost={autoProducerCost}
-          clipsYield={clipsYield.current}
+          clipsPerSecond={clipsPerSecond.current}
           feature={feature}
           wire={wire}
           wireCost={wireCost}

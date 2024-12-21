@@ -43,7 +43,7 @@ function GamePage() {
               aria-label="Chargement..."
               className={styles.loader}
               duration={1e3}
-              size="l"
+              size="large"
             />
           }
         >

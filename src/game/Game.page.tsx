@@ -50,7 +50,6 @@ function GamePage() {
           </div>
           <button>Make Paperclips</button>
         </div>
-        {/* <div style={{ height: '2000px' }}></div> */}
       </div>
       <div className="footer">v1.2.3</div>
     </>

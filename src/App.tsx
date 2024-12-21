@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GamePage from './game/Game.page';
-import AutoClippersPage from './glossary/AutoClippers.page';
+import AutoClippersPage from './explore/AutoClippers.page';
 import './App.scss';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
         <Route path="/paperclips/" element={<GamePage />} />
         <Route path="/paperclips/*" element={<GamePage />} />
         <Route
-          path="/paperclips/glossary/autoclippers/"
+          path="/paperclips/explore/autoclippers/"
           element={<AutoClippersPage />}
         />
       </Routes>

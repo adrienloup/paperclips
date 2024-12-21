@@ -1,5 +1,5 @@
 .card {
-  width: 20rem;
+  width: 18rem;
   animation: Appear 0.25s var(--ease-in-out-quad);
 }
 
@@ -10,12 +10,19 @@
 }
 
 .button {
+  justify-content: center;
   padding: var(--spacing-s);
   background-color: var(--color-solid-1);
+  letter-spacing: 0.025rem;
   text-transform: uppercase;
   font-family: var(--font-bold);
   font-size: var(--font-size-s);
   color: var(--color-neutral-2);
+
+  &:focus-visible {
+    outline: 0.25rem solid var(--color-solid-3);
+    outline-offset: -0.25rem;
+  }
 }
 
 .marketing {

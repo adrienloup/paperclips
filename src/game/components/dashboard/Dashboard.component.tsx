@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { formatNumber } from '../../../generic/utils/formatNumber';
+import { BusinessComponent } from '../business/Business.component';
+import { ManufacturingComponent } from '../manufacturing/Manufacturing.component';
 import styles from './Dashboard.module.scss';
 
 function DashboardComponent() {
@@ -15,6 +17,7 @@ function DashboardComponent() {
   const [unlockedFeatures, setUnlockedFeatures] = useState({
     autoProducers: false,
   });
+  const clipsYield = useRef(0);
 
   // Produire un trombone
   const produceClip = () => {
@@ -22,6 +25,7 @@ function DashboardComponent() {
       setClips(clips + 1);
       setInventory(inventory + 1);
       setWire(wire - 1);
+      clipsYield.current += 1;
     }
   };
 
@@ -44,9 +48,10 @@ function DashboardComponent() {
     }
   };
 
-  const increasePrice = () => setClipsCost((prev) => Math.min(prev + 0.01, 1));
+  const increaseClipsCost = () =>
+    setClipsCost((prev) => Math.min(prev + 0.01, 1));
 
-  const decreasePrice = () =>
+  const decreaseClipsCost = () =>
     setClipsCost((prev) => Math.max(prev - 0.01, 0.01));
 
   // Met à jour la demande de 0 à 100% en fonction du prix d'un trombone
@@ -88,6 +93,15 @@ function DashboardComponent() {
     return () => clearInterval(interval);
   }, [publicDemand, clipsCost, funds, inventory]);
 
+  // Rendement
+  useEffect(() => {
+    const interval = setInterval(() => {
+      clipsYield.current = autoProducers;
+    }, 1e3);
+
+    return () => clearInterval(interval);
+  }, [autoProducers]);
+
   // Effet pour débloquer des fonctionnalités
   useEffect(() => {
     if (clips >= 10 && !unlockedFeatures.autoProducers) {
@@ -100,42 +114,25 @@ function DashboardComponent() {
       <h1 className={styles.clips}>
         <span>Paperclips</span> {formatNumber(clips)}
       </h1>
-
-      <div>
-        <h2>Business</h2>
-        <p>Fonds disponibles : {funds.toFixed(2)} €</p>
-        <p>Inventaire invendu : {inventory.toFixed()}</p>
-        <p>Public Demande : {publicDemand.toFixed()}%</p>
-        <button onClick={decreasePrice}>Baisser le prix</button>
-        <button onClick={increasePrice}>AUgmenter le prix</button>
-        <p>Price per Clip: $ {clipsCost.toFixed(2)}</p>
-        <br />
-        <h2>Manufacturing</h2>
-        <p>Rendement par seconde</p>
-        <button onClick={produceClip}>Produire un trombone</button>
-        <p>
-          <strong>Fil de fer disponible :</strong> {wire}
-        </p>
-        <p>
-          <strong>Coût du fil de fer :</strong> $ {wireCost.toFixed(2)}
-        </p>
-        <button onClick={buyWire}>Acheter du fil de fer (+50)</button>
-      </div>
-
-      {unlockedFeatures.autoProducers && (
-        <div>
-          <p>
-            <strong>Machines à trombones :</strong> {autoProducers}
-          </p>
-          <button onClick={buyAutoProducer}>
-            Acheter une machine à trombones
-          </button>
-          <p>
-            <strong>Coût d'une machine :</strong> ${' '}
-            {autoProducerCost.toFixed(2)}
-          </p>
-        </div>
-      )}
+      <BusinessComponent
+        funds={funds}
+        inventory={inventory}
+        publicDemand={publicDemand}
+        clipsCost={clipsCost}
+        decreaseClipsCost={decreaseClipsCost}
+        increaseClipsCost={increaseClipsCost}
+      />
+      <ManufacturingComponent
+        autoProducers={autoProducers}
+        autoProducerCost={autoProducerCost}
+        unlockedFeatures={unlockedFeatures}
+        wire={wire}
+        wireCost={wireCost}
+        clipsYield={clipsYield.current}
+        buyAutoProducer={buyAutoProducer}
+        buyWire={buyWire}
+        produceClip={produceClip}
+      />
     </div>
   );
 }

@@ -5,8 +5,9 @@
 }
 
 @mixin size {
-  --font-size-l: 2rem; // 32px
-  --font-size-m: 1.5rem; // 24px
+  --font-size-2xl: 2.5rem; // 40px
+  --font-size-l: 1.75rem; // 28px
+  --font-size-m: 1.25rem; // 20px
   --font-size-s: 1rem; // 16px
 }
 
@@ -15,14 +16,14 @@
   --color-neutral-2: #1b1b1b;
   --color-neutral-3: #212121;
   --color-neutral-4: #919191;
-  --color-neutral-5: #ececec;
+  --color-neutral-5: #e6e6e6;
   --color-solid-1: #fff500;
 }
 
 @mixin spacing {
   --spacing-l: 2rem; // 32px
   --spacing-m: 1rem; // 16px
-  --spacing-s: 0.625rem; // 10px
+  --spacing-s: 0.5rem; // 8px
 }
 
 :root {

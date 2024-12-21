@@ -1,16 +1,17 @@
 .dashboard {
   display: flex;
   flex-flow: row wrap;
-  background-color: green;
+  gap: var(--spacing-m);
+  padding: var(--spacing-m);
 }
 
 .clips {
   flex: 1 1 100%;
-  padding: var(--spacing-m);
-  letter-spacing: 0.065rem;
+  line-height: 1.2;
+  letter-spacing: 0.075rem;
   font-family: var(--font-bold);
   font-weight: normal;
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-2xl);
 
   span {
     text-transform: uppercase;

@@ -5,16 +5,16 @@
   animation: Progress var(--loader-duration) infinite linear;
 }
 
-.s {
+.small {
   width: 60px;
 }
 
-.m {
+.medium {
   width: 80px;
 }
 
-.l {
-  width: 120px;
+.large {
+  width: 140px;
 }
 
 @keyframes Progress {

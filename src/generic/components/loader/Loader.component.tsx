@@ -5,7 +5,7 @@ import styles from './Loader.module.scss';
 export const LoaderComponent = ({
   className,
   duration = 1e3,
-  size = 'm',
+  size = 'medium',
 }: Loader) => {
   return (
     <div

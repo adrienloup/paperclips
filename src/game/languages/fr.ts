@@ -1,4 +1,4 @@
-import { Translation } from '../../generic/i18n/Translation.type';
+import { Translation } from '../../generic/types/Translation.type';
 
 export const fr: Translation = {
   game: {

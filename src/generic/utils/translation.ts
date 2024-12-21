@@ -1,5 +1,5 @@
 import { Resource, ResourceKey, ResourceLanguage } from 'i18next';
-import { Translations } from './Translation.type';
+import { Translations } from '../types/Translation.type';
 
 const languages = ([key, value]: [string, ResourceKey]): [
   string,
@@ -22,7 +22,7 @@ const merge = (translations: Translations[]): Translations =>
       {} as Translations
     );
 
-export const useTranslation = (...translations: Translations[]): Resource =>
+export const translation = (...translations: Translations[]): Resource =>
   Object.entries(merge(translations))
     .map(languages)
     .reduce(

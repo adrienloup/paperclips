@@ -1,4 +1,4 @@
-import { Translations } from '../generic/i18n/Translation.type';
+import { Translations } from '../generic/types/Translation.type';
 import { fr } from './languages/fr';
 import { en } from './languages/en';
 

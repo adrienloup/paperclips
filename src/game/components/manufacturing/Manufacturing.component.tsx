@@ -33,7 +33,11 @@ export const ManufacturingComponent = ({
         <ButtonComponent className={styles.button} onClick={buyWire}>
           {t('game.button.buyWire')}
         </ButtonComponent>
-        <p>{formatNumber(wire)}</p>
+        <p>
+          {t('game.wire', {
+            value: formatNumber(wire),
+          })}
+        </p>
       </div>
       <p>
         {t('game.cost', {

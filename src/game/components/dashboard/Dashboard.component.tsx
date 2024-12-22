@@ -70,9 +70,9 @@ function DashboardComponent() {
   const decreaseClipsCost = () =>
     setClipsCost((prev) => Math.max(prev - 0.01, 0.01));
 
-  // Met à jour la demande en fonction du prix d'un trombone
+  // La Demande Publique
   useEffect(() => {
-    const bonus = marketing * 100 + marketing;
+    const bonus = marketing * 101;
     setPublicDemand(Math.max(0, bonus - clipsCost * bonus));
   }, [marketing, clipsCost]);
 

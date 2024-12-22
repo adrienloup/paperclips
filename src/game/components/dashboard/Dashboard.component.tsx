@@ -72,8 +72,8 @@ function DashboardComponent() {
 
   // La Demande Publique
   useEffect(() => {
-    const bonus = marketing * 101;
-    setPublicDemand(Math.max(0, bonus - clipsCost * bonus));
+    const marketingBonus = marketing * 101;
+    setPublicDemand(Math.max(0, marketingBonus - clipsCost * marketingBonus));
   }, [marketing, clipsCost]);
 
   // Production automatique des trombones
@@ -109,7 +109,7 @@ function DashboardComponent() {
     return () => clearInterval(interval);
   }, [inventory, publicDemand, clipsCost]);
 
-  // Rendement
+  // Rendement par seconde
   useEffect(() => {
     const interval = setInterval(() => {
       clipsPerSecond.current = autoProducers;

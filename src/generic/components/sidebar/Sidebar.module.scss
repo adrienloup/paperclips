@@ -9,7 +9,7 @@
   transform: translate3d(20rem, 0, 0);
   opacity: 0;
   visibility: hidden;
-  transition-timing-function: var(--ease-in-out-quad);
+  transition-timing-function: var(--ease-in-out-expo);
   transition-duration: 0.25s, 0.25s, 0s;
   transition-property: transform, opacity, visibility;
   transition-delay: 0s, 0s, 0.25s;
@@ -28,7 +28,6 @@
   top: 0;
   left: 0;
   z-index: 2;
-  background-color: blue;
 }
 
 .shadow {
@@ -39,6 +38,6 @@
   width: 100vw;
   height: 100%;
   background-color: var(--color-neutral-1);
-  opacity: 0.5;
+  opacity: 0.75;
   cursor: pointer;
 }

@@ -89,10 +89,10 @@ function DashboardComponent() {
     return () => clearInterval(interval);
   }, [wire, autoProducers]);
 
-  // Prix du fil entre 8 et 26 €
+  // Prix du fil entre 8 et 24 €
   useEffect(() => {
     const interval = setInterval(() => {
-      setWireCost(parseFloat((Math.random() * (26 - 8) + 8).toFixed(2)));
+      setWireCost(parseFloat((Math.random() * (24 - 8) + 8).toFixed(2)));
     }, 4e3);
 
     return () => clearInterval(interval);

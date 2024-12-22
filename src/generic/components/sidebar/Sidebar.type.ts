@@ -1,6 +1,5 @@
-import { Children } from '../../types/Children.type';
-
-export interface Card {
-  children: Children;
+export interface Sidebar {
   className?: string;
+  isOpen: boolean;
+  onclick: () => void;
 }

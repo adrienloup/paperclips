@@ -29,8 +29,8 @@
 }
 
 @mixin easing {
-  // --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  --easy-in-out-quad: cubic-bezier(0.22, 0.44, 0, 1);
+  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --easy-in-out-expo: cubic-bezier(0.22, 0.44, 0, 1);
 }
 
 :root {

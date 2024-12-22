@@ -7,6 +7,11 @@
   font-size: var(--font-size-s);
   color: var(--color-neutral-5);
 
+  &:hover {
+    background-color: var(--color-solid-1);
+    color: var(--color-neutral-1);
+  }
+
   &:focus-visible {
     outline: 0.25rem solid var(--color-solid-3);
     outline-offset: -0.25rem;

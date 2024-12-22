@@ -21,14 +21,14 @@ export const ManufacturingComponent = ({
   return (
     <CardComponent className={styles.card}>
       <h2>{t('game.manufacturing')}</h2>
-      <ButtonComponent className={styles.button} onClick={produceClip}>
-        {t('game.button.makePaperclip')}
-      </ButtonComponent>
       <p>
         {t('game.clipsPerSecond', {
           value: clipsPerSecond,
         })}
       </p>
+      <ButtonComponent className={styles.button} onClick={produceClip}>
+        {t('game.button.makePaperclip')}
+      </ButtonComponent>
       <div className={styles.group}>
         <ButtonComponent className={styles.button} onClick={buyWire}>
           {t('game.button.buyWire')}

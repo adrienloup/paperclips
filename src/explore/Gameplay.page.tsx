@@ -25,9 +25,7 @@ function GameplayPage() {
           transforme l’univers entier en clous.
         </p>
         <button onClick={toggleSidebar}>settings</button>
-        <SidebarComponent isOpen={isOpen} onclick={toggleSidebar}>
-          sidebar
-        </SidebarComponent>
+        <SidebarComponent isOpen={isOpen} onclick={toggleSidebar} />
       </MainComponent>
       <FooterComponent />
     </>

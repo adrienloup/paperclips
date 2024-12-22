@@ -4,7 +4,7 @@ import { MainComponent } from '../generic/components/main/Main.component';
 import { FooterComponent } from '../generic/components/footer/Footer.component';
 import { SidebarComponent } from '../generic/components/sidebar/Sidebar.component';
 
-function AutoClippersPage() {
+function GameplayPage() {
   const [isOpen, setOpen] = useState(false);
 
   const toggleSidebar = () => setOpen(!isOpen);
@@ -34,4 +34,4 @@ function AutoClippersPage() {
   );
 }
 
-export default AutoClippersPage;
+export default GameplayPage;

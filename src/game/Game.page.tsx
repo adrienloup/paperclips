@@ -1,10 +1,9 @@
-import { lazy, Suspense } from 'react';
-import { Link } from 'react-router-dom';
+import { lazy, Suspense, useState } from 'react';
 import { fallback } from '../generic/utils/fallback';
-import { useLanguage } from '../generic/i18n/useLanguage';
 import { HeaderComponent } from '../generic/components/header/Header.component';
 import { MainComponent } from '../generic/components/main/Main.component';
 import { FooterComponent } from '../generic/components/footer/Footer.component';
+import { SidebarComponent } from '../generic/components/sidebar/Sidebar.component';
 import { LoaderComponent } from '../generic/components/loader/Loader.component';
 import styles from './Game.module.scss';
 
@@ -17,9 +16,9 @@ const DashboardComponent = lazy(() =>
 );
 
 function GamePage() {
-  const { language, setLanguage } = useLanguage();
+  const [isOpen, setOpen] = useState(false);
 
-  const changeLanguage = () => setLanguage(language === 'fr' ? 'en' : 'fr');
+  const toggleSidebar = () => setOpen(!isOpen);
 
   return (
     <>
@@ -47,14 +46,9 @@ function GamePage() {
             />
           }
         >
-          <div className="navigation">
-            <Link to="/paperclips/">Game</Link>
-            <Link to="/paperclips/explore/autoclippers/">AutoClipers</Link>
-            <button onClick={changeLanguage}>
-              {language === 'fr' ? 'en' : 'fr'}
-            </button>
-          </div>
+          <button onClick={toggleSidebar}>settings</button>
           <DashboardComponent />
+          <SidebarComponent isOpen={isOpen} onclick={toggleSidebar} />
         </Suspense>
       </MainComponent>
       <FooterComponent />

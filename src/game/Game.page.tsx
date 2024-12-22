@@ -1,9 +1,9 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense } from 'react';
 import { fallback } from '../generic/utils/fallback';
 import { HeaderComponent } from '../generic/components/header/Header.component';
 import { MainComponent } from '../generic/components/main/Main.component';
 import { FooterComponent } from '../generic/components/footer/Footer.component';
-import { SidebarComponent } from '../generic/components/sidebar/Sidebar.component';
+import { SettingsComponent } from '../generic/components/settings/Settings.component';
 import { LoaderComponent } from '../generic/components/loader/Loader.component';
 import styles from './Game.module.scss';
 
@@ -16,10 +16,6 @@ const DashboardComponent = lazy(() =>
 );
 
 function GamePage() {
-  const [isOpen, setOpen] = useState(false);
-
-  const toggleSidebar = () => setOpen(!isOpen);
-
   return (
     <>
       <HeaderComponent>
@@ -46,9 +42,8 @@ function GamePage() {
             />
           }
         >
-          <button onClick={toggleSidebar}>settings</button>
           <DashboardComponent />
-          <SidebarComponent isOpen={isOpen} onclick={toggleSidebar} />
+          <SettingsComponent />
         </Suspense>
       </MainComponent>
       <FooterComponent />

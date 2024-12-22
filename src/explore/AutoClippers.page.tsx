@@ -1,14 +1,9 @@
-import { useState } from 'react';
 import { HeaderComponent } from '../generic/components/header/Header.component';
 import { MainComponent } from '../generic/components/main/Main.component';
 import { FooterComponent } from '../generic/components/footer/Footer.component';
-import { SidebarComponent } from '../generic/components/sidebar/Sidebar.component';
+import { SettingsComponent } from '../generic/components/settings/Settings.component';
 
 function AutoClippersPage() {
-  const [isOpen, setOpen] = useState(false);
-
-  const toggleSidebar = () => setOpen(!isOpen);
-
   return (
     <>
       <HeaderComponent>header</HeaderComponent>
@@ -24,8 +19,7 @@ function AutoClippersPage() {
           cosmique. Il explore de manière ludique comment une IA mal alignée
           transforme l’univers entier en clous.
         </p>
-        <button onClick={toggleSidebar}>settings</button>
-        <SidebarComponent isOpen={isOpen} onclick={toggleSidebar} />
+        <SettingsComponent />
       </MainComponent>
       <FooterComponent />
     </>

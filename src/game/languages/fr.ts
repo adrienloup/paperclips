@@ -2,20 +2,20 @@ import { Translation } from '../../generic/types/Translation.type';
 
 export const fr: Translation = {
   game: {
-    title: 'Trombones',
+    dashboard: 'Trombones {{value}}',
     manufacturing: 'Production',
-    clipsPerSecond: 'Produits par seconde : {{value}}',
     business: 'Entreprise',
+    clipsPerSecond: 'Rendement : {{value}}/s',
     fundsAvailable: 'Fonds disponibles : {{value}}\f€',
-    inventory: 'Inventaire invendu : {{value}}',
+    unsoldInventory: 'Inventaire invendu : {{value}}',
     publicDemand: 'Demande public : {{value}}\f%',
     clipsCost: 'Prix par produit : {{value}}\f€',
-    wire: '{{value}} pouces',
+    steelWire: '{{value}} pouces',
     level: 'Niveau : {{value}}',
     cost: 'Coût : {{value}}\f€',
     button: {
       makePaperclip: 'Produire un trombone',
-      buyWire: "Fil d'acier",
+      buySteelWire: "Fil d'acier",
       buyAutoProducer: 'Machines à trombones',
       buyMarketing: 'Marketing',
       decreaseClipsCost: 'Diminuer',

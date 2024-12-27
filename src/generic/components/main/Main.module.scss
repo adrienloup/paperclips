@@ -1,5 +1,6 @@
 .main {
   grid-column: 2;
   grid-row: 1;
-  background-color: var(--color-neutral-1);
+  position: relative;
+  z-index: 1;
 }

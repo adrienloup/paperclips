@@ -1,6 +1,5 @@
 import { Children } from '../../types/Children.type';
 
-export interface Card {
+export interface Main {
   children: Children;
-  className?: string;
 }

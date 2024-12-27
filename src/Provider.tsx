@@ -7,7 +7,7 @@ import {
 
 import { Children } from './generic/types/Children.type';
 import { LanguageProvider } from './generic/i18n/Language.provider';
-import { NoteProvider } from './generic/components/note/Note.provider';
+import { GameProvider } from './game/Game.provider';
 
 type ProvidersType = [
   ComponentType<{ children: Children }>,
@@ -26,5 +26,5 @@ const allProviders = (providers: ProvidersType) =>
   );
 
 export const Provider: FunctionComponent<{ children: Children }> = allProviders(
-  [[LanguageProvider], [NoteProvider]]
+  [[LanguageProvider], [GameProvider]]
 );

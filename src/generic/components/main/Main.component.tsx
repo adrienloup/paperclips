@@ -1,7 +1,7 @@
-import { Children } from '../../types/Children.type';
+import { Main } from './Main.type';
 import styles from './Main.module.scss';
 
-export const MainComponent = ({ children }: { children: Children }) => {
+export const MainComponent = ({ children }: Main) => {
   return (
     <main className={styles.main} role="main">
       {children}

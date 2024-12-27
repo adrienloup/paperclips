@@ -2,20 +2,20 @@ import { Translation } from '../../generic/types/Translation.type';
 
 export const en: Translation = {
   game: {
-    title: 'Paperclips',
+    dashboard: 'Paperclips {{value}}',
     manufacturing: 'Manufacturing',
-    clipsPerSecond: 'Clips per second: {{value}}',
     business: 'Business',
+    clipsPerSecond: 'Output rate: {{value}}/s',
     fundsAvailable: 'Funds available: $\f{{value}}',
-    inventory: 'Unsold inventory: {{value}}',
+    unsoldInventory: 'Unsold inventory: {{value}}',
     publicDemand: 'Public demand: {{value}}\f%',
     clipsCost: 'Price per clip: $\f{{value}}',
-    wire: '{{value}} inches',
+    steelWire: '{{value}} inches',
     level: 'Level: {{value}}',
     cost: 'Cost: $\f{{value}}',
     button: {
       makePaperclip: 'Make paperclip',
-      buyWire: 'Steel wire',
+      buySteelWire: 'Steel wire',
       buyAutoProducer: 'AutoClippers',
       buyMarketing: 'Marketing',
       decreaseClipsCost: 'Lower',

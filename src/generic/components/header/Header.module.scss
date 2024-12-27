@@ -1,5 +1,25 @@
 .header {
   grid-column: 1;
   grid-row: span 2;
-  background-color: var(--color-neutral-2);
+  display: flex;
+  margin-left: -20rem;
+  will-change: margin-left;
+  transition-duration: 200ms;
+  transition-property: margin-left;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &.opened {
+    margin-left: 0;
+    transition-duration: 400ms;
+  }
+}
+
+.inside {
+  width: 20rem;
+}
+
+.inner {
+  position: sticky;
+  top: 0;
+  left: 0;
 }

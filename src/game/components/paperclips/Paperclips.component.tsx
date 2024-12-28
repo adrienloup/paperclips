@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useGame } from '../../useGame';
 import styles from './Paperclips.module.scss';
 
-export const PaperclipsComponent = () => {
+function PaperclipsComponent() {
   const { t } = useTranslation();
   const game = useGame();
 
@@ -13,4 +13,6 @@ export const PaperclipsComponent = () => {
       })}
     </h1>
   );
-};
+}
+
+export default PaperclipsComponent;

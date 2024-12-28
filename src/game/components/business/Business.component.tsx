@@ -7,22 +7,10 @@ import { ButtonComponent } from '../../../generic/components/button/Button.compo
 import { MetricComponent } from '../../../generic/components/metric/Metric.component';
 import styles from './Business.module.scss';
 
-export const BusinessComponent = () => {
+function BusinessComponent() {
   const { t } = useTranslation();
   const game = useGame();
   const setGame = useGameDispatch();
-
-  // Acheter des niveaux de marketing
-  const buyMarketing = () => {
-    if (game.fundsAvailable >= game.marketingCost) {
-      setGame({
-        ...game,
-        marketing: game.marketing + 1,
-        marketingCost: game.marketingCost * 2,
-        fundsAvailable: game.fundsAvailable - game.marketingCost,
-      });
-    }
-  };
 
   const increasePaperclipCost = () =>
     setGame({
@@ -35,6 +23,18 @@ export const BusinessComponent = () => {
       ...game,
       paperclipCost: Math.max(game.paperclipCost - 0.01, 0.01),
     });
+
+  // Acheter des niveaux de marketing
+  const buyMarketing = () => {
+    if (game.fundsAvailable >= game.marketingCost && game.marketing <= 10) {
+      setGame({
+        ...game,
+        marketing: game.marketing + 1,
+        marketingCost: game.marketingCost * 2,
+        fundsAvailable: game.fundsAvailable - game.marketingCost,
+      });
+    }
+  };
 
   // Ventes de trombones en fonction de la demande dans la limite de l'inventaire
   const sell = () => {
@@ -82,7 +82,7 @@ export const BusinessComponent = () => {
   }, [game]);
 
   return (
-    <CardComponent>
+    <CardComponent className={styles.card}>
       <h2 className={styles.title}>{t('game.business')}</h2>
       <div className={styles.group}>
         <MetricComponent
@@ -122,23 +122,25 @@ export const BusinessComponent = () => {
           label={t('game.paperclipCost')}
         />
       </div>
-      {/* {feature.marketing ? ( */}
-      <div className={styles.group}>
-        <ButtonComponent className={styles.button} onClick={buyMarketing}>
-          {t('game.button.buyMarketing')}
-        </ButtonComponent>
-        <MetricComponent
-          value={game.marketing.toFixed(0)}
-          label={t('game.level')}
-        />
-        <MetricComponent
-          value={t('game.price', {
-            value: formatNumber(game.marketingCost),
-          })}
-          label={t('game.cost')}
-        />
-      </div>
-      {/* ) : null} */}
+      {game.feature.marketing ? (
+        <div className={styles.group}>
+          <ButtonComponent className={styles.button} onClick={buyMarketing}>
+            {t('game.button.buyMarketing')}
+          </ButtonComponent>
+          <MetricComponent
+            value={game.marketing.toFixed(0)}
+            label={t('game.level')}
+          />
+          <MetricComponent
+            value={t('game.price', {
+              value: formatNumber(game.marketingCost),
+            })}
+            label={t('game.cost')}
+          />
+        </div>
+      ) : null}
     </CardComponent>
   );
-};
+}
+
+export default BusinessComponent;

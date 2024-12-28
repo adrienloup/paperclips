@@ -8,7 +8,7 @@ export const fr: Translation = {
     clipsPerSecond: '{{value}}/s',
     fundsAvailable: 'Fonds disponibles : {{value}}\f€',
     unsoldInventory: 'Inventaire invendu : {{value}}',
-    publicDemand: 'Demande public : {{value}}\f%',
+    publicDemand: 'Demande du public : {{value}}\f%',
     clipsCost: 'Prix par produit : {{value}}\f€',
     steelWire: '{{value}} pouces',
     level: 'Niveau : {{value}}',

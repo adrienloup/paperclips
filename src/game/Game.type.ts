@@ -9,6 +9,7 @@ export interface Game {
   publicDemand: number;
   steelWire: number;
   steelWireCost: number;
+  steelWireRefill: number;
   autoClippers: number;
   autoClippersCost: number;
   marketing: number;

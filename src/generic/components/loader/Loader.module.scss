@@ -1,20 +1,22 @@
 .loader {
-  height: 8px;
-  background: linear-gradient(var(--color-solid-1) 0 0) 0/0% no-repeat
-    var(--color-neutral-4);
+  background: linear-gradient(var(--color-neutral-4) 0 0) 0/0% no-repeat
+    var(--color-neutral-2);
   animation: Progress var(--loader-duration) infinite linear;
 }
 
 .small {
   width: 60px;
+  height: 6px;
 }
 
 .medium {
   width: 80px;
+  height: 8px;
 }
 
 .large {
-  width: 140px;
+  width: 100px;
+  height: 10px;
 }
 
 @keyframes Progress {

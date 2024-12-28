@@ -7,11 +7,12 @@ import { ButtonComponent } from '../../../generic/components/button/Button.compo
 import { MetricComponent } from '../../../generic/components/metric/Metric.component';
 import styles from './Manufacturing.module.scss';
 
-export const ManufacturingComponent = () => {
+function ManufacturingComponent() {
   const { t } = useTranslation();
   const game = useGame();
   const setGame = useGameDispatch();
   const [steelWireCost, setSteelWireCost] = useState(game.steelWireCost);
+  const [paperclipsPerSecond, setPaperclipsPerSecond] = useState(0);
 
   // Produire des trombones
   const producePaperclip = () => {
@@ -21,6 +22,7 @@ export const ManufacturingComponent = () => {
       unsoldInventory: game.unsoldInventory + 1,
       steelWire: game.steelWire - 1,
     });
+    setPaperclipsPerSecond((prev) => prev + 1);
   };
 
   // Acheter du fil d'acier
@@ -57,13 +59,15 @@ export const ManufacturingComponent = () => {
       unsoldInventory: game.unsoldInventory + game.autoClippers,
       steelWire: game.steelWire - game.autoClippers,
     });
-    //setPaperclipsPerSecond(autoClippers);
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (game.steelWire >= game.autoClippers) {
         produce();
+        setPaperclipsPerSecond(game.autoClippers);
+      } else {
+        setPaperclipsPerSecond(0);
       }
     }, 1e3);
 
@@ -80,14 +84,14 @@ export const ManufacturingComponent = () => {
   }, []);
 
   return (
-    <CardComponent>
+    <CardComponent className={styles.card}>
       <h2 className={styles.title}>{t('game.manufacturing')}</h2>
       <div className={styles.group}>
         <ButtonComponent className={styles.button} onClick={producePaperclip}>
           {t('game.button.makePaperclip')}
         </ButtonComponent>
         <MetricComponent
-          value={0 /*paperclipPerSecond.toFixed(0)*/}
+          value={paperclipsPerSecond}
           label={t('game.paperclipsPerSecond')}
         />
       </div>
@@ -125,4 +129,6 @@ export const ManufacturingComponent = () => {
       ) : null}
     </CardComponent>
   );
-};
+}
+
+export default ManufacturingComponent;

@@ -1,14 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import { Paperclips } from './Paperclips.type';
+import { useGame } from '../../useGame';
 import styles from './Paperclips.module.scss';
 
-export const PaperclipsComponent = ({ paperclips }: Paperclips) => {
+export const PaperclipsComponent = () => {
   const { t } = useTranslation();
+  const game = useGame();
 
   return (
     <h1 className={styles.paperclips}>
       {t('game.paperclips', {
-        value: paperclips.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
+        value: game.paperclips.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
       })}
     </h1>
   );

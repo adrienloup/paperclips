@@ -8,6 +8,15 @@
 }
 
 @font-face {
+  font-family: 'Bold';
+  src:
+    url('./assets/fonts/Bold.woff2') format('woff2'),
+    url('./assets/fonts/Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Medium';
   src:
     url('./assets/fonts/Medium.woff2') format('woff2'),
@@ -17,10 +26,10 @@
 }
 
 @font-face {
-  font-family: 'Bold';
+  font-family: 'Italic';
   src:
-    url('./assets/fonts/Bold.woff2') format('woff2'),
-    url('./assets/fonts/Bold.woff') format('woff');
+    url('./assets/fonts/Italic.woff2') format('woff2'),
+    url('./assets/fonts/Italic.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }

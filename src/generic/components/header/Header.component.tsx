@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { classNames } from '../../utils/classNames';
+import { ButtonComponent } from '../button/Button.component';
+import { IconComponent } from '../icon/Icon.component';
 import styles from './Header.module.scss';
 
 export const HeaderComponent = () => {
@@ -11,9 +13,14 @@ export const HeaderComponent = () => {
       role="banner"
     >
       <div className={styles.inside}>
-        <div className={styles.inner}>insideinsideinside</div>
+        <div className={styles.inner}>header</div>
       </div>
-      <button onClick={() => setOpen(!opened)}>open</button>
+      <ButtonComponent
+        className={styles.button}
+        onClick={() => setOpen(!opened)}
+      >
+        <IconComponent icon="tune" />
+      </ButtonComponent>
     </header>
   );
 };

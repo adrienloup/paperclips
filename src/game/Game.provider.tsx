@@ -5,13 +5,20 @@ import { GameContext, GameDispatchContext } from './Game.context';
 
 export function GameProvider({ children }: { children: Children }) {
   const [game, setGame] = useLocalStorage<Game>('_game_3mma_0', {
-    clips: 0,
-    clipsCost: 0.25,
+    paperclips: 0,
+    paperclipCost: 0.25,
     unsoldInventory: 0,
     fundsAvailable: 0,
+    feature: {
+      autoClippers: false,
+      marketing: false,
+      trust: false,
+    },
+    publicDemand: 0,
     steelWire: 1000,
-    autoProducers: 0,
-    autoProducerCost: 5,
+    steelWireCost: 6.25,
+    autoClippers: 0,
+    autoClippersCost: 5,
     marketing: 1,
     marketingCost: 100,
   });

@@ -1,2 +1,6 @@
 export const formatNumber = (number: number) =>
-  number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  number.toLocaleString('en-US', {
+    maximumFractionDigits: 2,
+    notation: 'compact',
+    compactDisplay: 'short',
+  });

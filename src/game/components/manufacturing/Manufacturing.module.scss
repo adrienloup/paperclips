@@ -1,0 +1,22 @@
+.card {
+  // width: 20rem;
+}
+
+.group {
+  display: flex;
+  gap: var(--spacing-s);
+}
+
+.title {
+  font-family: var(--font-italic);
+  font-size: var(--font-size-l);
+}
+
+.button {
+  padding: 0.75rem;
+  background-color: var(--color-solid-1);
+  border-radius: 0.5rem;
+  font-family: var(--font-medium);
+  font-size: var(--font-size-m);
+  color: var(--color-neutral-4);
+}

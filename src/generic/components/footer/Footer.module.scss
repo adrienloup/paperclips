@@ -1,4 +1,6 @@
 .footer {
   grid-column: 2;
   grid-row: 2;
+  padding: var(--spacing-s);
+  text-align: right;
 }

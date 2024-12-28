@@ -2,10 +2,10 @@ import { Translation } from '../../generic/types/Translation.type';
 
 export const fr: Translation = {
   game: {
-    dashboard: 'Trombones {{value}}',
+    paperclips: 'Trombones {{value}}',
     manufacturing: 'Production',
     business: 'Entreprise',
-    clipsPerSecond: 'Rendement : {{value}}/s',
+    clipsPerSecond: '{{value}}/s',
     fundsAvailable: 'Fonds disponibles : {{value}}\f€',
     unsoldInventory: 'Inventaire invendu : {{value}}',
     publicDemand: 'Demande public : {{value}}\f%',
@@ -16,13 +16,13 @@ export const fr: Translation = {
     button: {
       makePaperclip: 'Produire un trombone',
       buySteelWire: "Fil d'acier",
-      buyAutoProducer: 'Machines à trombones',
+      buyautoClippers: 'Machines à trombones',
       buyMarketing: 'Marketing',
       decreaseClipsCost: 'Diminuer',
       increaseClipsCost: 'Augmenter',
     },
     note: {
-      autoProducers: 'Machines à trombones',
+      autoClippers: 'Machines à trombones',
       marketing: 'Marketing',
       trust: 'Confiance',
     },

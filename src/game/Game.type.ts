@@ -1,11 +1,16 @@
+import { Feature } from '../generic/types/Feature.type';
+
 export interface Game {
-  clips: number;
-  clipsCost: number;
+  paperclips: number;
+  paperclipCost: number;
   unsoldInventory: number;
   fundsAvailable: number;
+  feature: Feature;
+  publicDemand: number;
   steelWire: number;
-  autoProducers: number;
-  autoProducerCost: number;
+  steelWireCost: number;
+  autoClippers: number;
+  autoClippersCost: number;
   marketing: number;
   marketingCost: number;
 }

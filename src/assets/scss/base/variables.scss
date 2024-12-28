@@ -1,41 +1,41 @@
 @mixin font {
-  --font-medium: 'Medium', sans-serif;
   --font-bold: 'Bold', sans-serif;
+  --font-medium: 'Medium', sans-serif;
+  --font-italic: 'Italic', sans-serif;
   --font-symbol: 'Symbols', sans-serif;
 }
 
-@mixin size {
-  --font-size-l: 2.5rem; // 40px
-  --font-size-m: 1.125rem; // 18px
-  --font-size-s: 0.75rem; // 12px
-}
-
 @mixin color {
-  --color-neutral-1: #202124;
-  --color-neutral-2: #2e2f31;
-  --color-neutral-3: #28292a;
-  --color-neutral-4: #919191;
-  --color-neutral-5: #e6e6e6;
-  --color-solid-1: #fff500;
+  --color-neutral-1: #fdfdfd;
+  --color-neutral-2: #f3f3f3;
+  --color-neutral-3: #9b9b9b;
+  --color-neutral-4: #171717;
+  --color-solid-1: #ff0;
   --color-solid-2: #1dcc45;
   --color-solid-3: #ff1100;
 }
 
+@mixin size {
+  --font-size-l: 1.75rem; // 28px
+  --font-size-m: 1.375rem; // 22px
+  --font-size-s: 1rem; // 16px
+}
+
 @mixin spacing {
-  --spacing-l: 2.5rem; // 40px
-  --spacing-m: 1rem; // 16px
+  --spacing-l: 3rem; // 48px
+  --spacing-m: 2rem; // 32px
   --spacing-s: 0.5rem; // 8px
 }
 
 @mixin easing {
-  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  --easy-in-out-expo: cubic-bezier(0.22, 0.44, 0, 1);
+  --ease-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --easy-expo: cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 :root {
   @include font();
-  @include size();
   @include color();
+  @include size();
   @include spacing();
   @include easing();
 }

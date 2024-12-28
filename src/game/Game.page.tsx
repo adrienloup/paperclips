@@ -1,9 +1,12 @@
-//import styles from './Game.module.scss';
-
 import { PageComponent } from '../generic/components/page/Page.component';
+import { DashboardComponent } from './components/dashboard/Dashboard.component';
 
 function GamePage() {
-  return <PageComponent>game</PageComponent>;
+  return (
+    <PageComponent>
+      <DashboardComponent />
+    </PageComponent>
+  );
 }
 
 export default GamePage;

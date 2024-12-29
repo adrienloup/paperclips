@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame, useGameDispatch } from '../../useGame';
+import { useInterval } from '../../../generic/hooks/useInterval';
 import { formatNumber } from '../../../generic/utils/formatNumber';
 import { CardComponent } from '../../../generic/components/card/Card.component';
 import { ButtonComponent } from '../../../generic/components/button/Button.component';
-import { MetricComponent } from '../../../generic/components/metric/Metric.component';
+import { DialComponent } from '../../../generic/components/dial/Dial.component';
 import styles from './Manufacturing.module.scss';
 
 function ManufacturingComponent() {
@@ -52,7 +53,21 @@ function ManufacturingComponent() {
   };
 
   // Production automatique des trombones
-  const produce = () => {
+  // useInterval(() => {
+  //   if (game.steelWire >= game.autoClippers) {
+  //     setGame({
+  //       ...game,
+  //       paperclips: game.paperclips + game.autoClippers,
+  //       unsoldInventory: game.unsoldInventory + game.autoClippers,
+  //       steelWire: game.steelWire - game.autoClippers,
+  //     });
+  //     setPaperclipsPerSecond(game.autoClippers);
+  //   } else {
+  //     setPaperclipsPerSecond(0);
+  //   }
+  // }, 1e3);
+
+  const autoProduction = () => {
     setGame({
       ...game,
       paperclips: game.paperclips + game.autoClippers,
@@ -64,7 +79,7 @@ function ManufacturingComponent() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (game.steelWire >= game.autoClippers) {
-        produce();
+        autoProduction();
         setPaperclipsPerSecond(game.autoClippers);
       } else {
         setPaperclipsPerSecond(0);
@@ -72,13 +87,20 @@ function ManufacturingComponent() {
     }, 1e3);
 
     return () => clearInterval(interval);
-  }, [game]);
+  }, [
+    game.steelWire,
+    game.autoClippers,
+    game.paperclips,
+    game.unsoldInventory,
+    game.publicDemand,
+    game.fundsAvailable,
+  ]);
 
   // Prix du fil
   useEffect(() => {
     const interval = setInterval(() => {
       setSteelWireCost(Math.random() * (24 - 6) + 6);
-    }, 3e3);
+    }, 4e3);
 
     return () => clearInterval(interval);
   }, []);
@@ -90,7 +112,7 @@ function ManufacturingComponent() {
         <ButtonComponent className={styles.button} onClick={producePaperclip}>
           {t('game.button.makePaperclip')}
         </ButtonComponent>
-        <MetricComponent
+        <DialComponent
           value={paperclipsPerSecond}
           label={t('game.paperclipsPerSecond')}
         />
@@ -99,13 +121,13 @@ function ManufacturingComponent() {
         <ButtonComponent className={styles.button} onClick={buySteelWire}>
           {t('game.button.buySteelWire')}
         </ButtonComponent>
-        <MetricComponent
+        <DialComponent
           value={formatNumber(game.steelWire)}
           label={t('game.steelWire')}
         />
-        <MetricComponent
+        <DialComponent
           value={t('game.price', {
-            value: steelWireCost.toFixed(2),
+            value: steelWireCost.toFixed(1),
           })}
           label={t('game.cost')}
         />
@@ -115,11 +137,11 @@ function ManufacturingComponent() {
           <ButtonComponent className={styles.button} onClick={buyAutoClippers}>
             {t('game.button.buyAutoClippers')}
           </ButtonComponent>
-          <MetricComponent
+          <DialComponent
             value={formatNumber(game.autoClippers)}
             label={t('game.autoClippers')}
           />
-          <MetricComponent
+          <DialComponent
             value={t('game.price', {
               value: formatNumber(game.autoClippersCost),
             })}

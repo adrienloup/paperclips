@@ -6,6 +6,11 @@ export interface Game {
   unsoldInventory: number;
   fundsAvailable: number;
   feature: Feature;
+  trust: number;
+  operations: number;
+  creativity: number;
+  processors: number;
+  memory: number;
   publicDemand: number;
   steelWire: number;
   steelWireCost: number;

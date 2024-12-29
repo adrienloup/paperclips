@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { useGame, useGameDispatch } from '../../useGame';
+import { useAlertDispatch } from '../../../generic/components/alert/useAlert';
 
 export const FeaturesComponent = () => {
   const game = useGame();
   const setGame = useGameDispatch();
+  const setAlerts = useAlertDispatch();
 
   // Débloquer des fonctionnalités
   useEffect(() => {
@@ -16,6 +18,17 @@ export const FeaturesComponent = () => {
       },
     });
   }, [game.paperclips]);
+
+  useEffect(() => {
+    if (game.steelWire < game.autoClippers) {
+      setAlerts({
+        type: 'added',
+        label: '@TODO1',
+        id: 'tutu',
+        duration: 1e4,
+      });
+    }
+  }, [game.steelWire, game.autoClippers]);
 
   return null;
 };

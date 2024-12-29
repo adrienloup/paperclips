@@ -1,4 +1,4 @@
-export interface Metric {
+export interface Dial {
   value: string | number;
   label?: string;
 }

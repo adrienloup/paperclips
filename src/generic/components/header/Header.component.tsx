@@ -13,10 +13,10 @@ export const HeaderComponent = () => {
 
   const restart = () => {
     setGame({
-      paperclips: 2000, // 0
+      paperclips: 4000, // 0
       paperclipCost: 0.25,
       unsoldInventory: 0,
-      fundsAvailable: 2000, // 0
+      fundsAvailable: 4000, // 0
       feature: {
         autoClippers: false,
         marketing: false,
@@ -28,11 +28,11 @@ export const HeaderComponent = () => {
       processors: 1,
       memory: 1,
       publicDemand: 75,
-      steelWire: 1000,
+      steelWire: 2000,
       steelWireCost: 6.25,
       steelWireRefill: 50,
       autoClippers: 0,
-      autoClippersCost: 5.05,
+      autoClippersCost: 5.25,
       marketing: 1,
       marketingCost: 100,
     });

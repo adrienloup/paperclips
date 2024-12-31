@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame, useGameDispatch } from '../../useGame';
-import { useInterval } from '../../../generic/hooks/useInterval';
+// import { useInterval } from '../../../generic/hooks/useInterval';
 import { formatNumber } from '../../../generic/utils/formatNumber';
 import { CardComponent } from '../../../generic/components/card/Card.component';
 import { ButtonComponent } from '../../../generic/components/button/Button.component';
@@ -11,38 +12,38 @@ function BusinessComponent() {
   const { t } = useTranslation();
   const game = useGame();
   const setGame = useGameDispatch();
+  // const [fundsAvailable, setFundsAvailable] = useState(game.fundsAvailable);
+  // const [unsoldInventory, setUnsoldInventory] = useState(game.unsoldInventory);
 
+  // Incrémenter prix trombone
   const increasePaperclipCost = () => {
-    const paperclipCost = Math.min(game.paperclipCost + 0.01, 1);
-
     setGame({
       ...game,
-      paperclipCost,
+      paperclipCost: Math.min(game.paperclipCost + 0.01, 1),
       publicDemand: Math.max(
         0,
         game.marketing * 100 +
           game.marketing -
-          paperclipCost * (game.marketing * 100 + game.marketing)
+          game.paperclipCost * (game.marketing * 100 + game.marketing)
       ),
     });
   };
 
+  // décrémenter prix trombone
   const decreasePaperclipCost = () => {
-    const paperclipCost = Math.max(game.paperclipCost - 0.01, 0.01);
-
     setGame({
       ...game,
-      paperclipCost,
+      paperclipCost: Math.max(game.paperclipCost - 0.01, 0.01),
       publicDemand: Math.max(
         0,
         game.marketing * 100 +
           game.marketing -
-          paperclipCost * (game.marketing * 100 + game.marketing)
+          game.paperclipCost * (game.marketing * 100 + game.marketing)
       ),
     });
   };
 
-  // Acheter des niveaux de marketing
+  // Acheter niveaux marketing
   const buyMarketing = () => {
     if (game.fundsAvailable >= game.marketingCost && game.marketing < 10) {
       const marketing = game.marketing + 1;
@@ -50,7 +51,7 @@ function BusinessComponent() {
       setGame({
         ...game,
         marketing,
-        marketingCost: game.marketingCost * 2.5,
+        marketingCost: game.marketingCost * 2,
         fundsAvailable: game.fundsAvailable - game.marketingCost,
         publicDemand: Math.max(
           0,
@@ -72,20 +73,38 @@ function BusinessComponent() {
     }
   };
 
+  // useInterval(() => {
+  //   if (game.unsoldInventory > 0) {
+  //     const sales = Math.min(
+  //       game.unsoldInventory,
+  //       game.unsoldInventory * (game.publicDemand / 100) * 0.1
+  //     );
+  //     setGame({
+  //       ...game,
+  //       fundsAvailable: game.fundsAvailable + sales * game.paperclipCost,
+  //       unsoldInventory: Math.floor(game.unsoldInventory - sales),
+  //     });
+  //   }
+  // }, 1e3);
+
   // Ventes de trombones en fonction de la demande dans la limite de l'inventaire
-  useInterval(() => {
-    if (game.unsoldInventory > 0) {
-      const sales = Math.min(
-        game.unsoldInventory,
-        game.unsoldInventory * (game.publicDemand / 100) * 2
-      );
-      setGame({
-        ...game,
-        fundsAvailable: game.fundsAvailable + sales * game.paperclipCost,
-        unsoldInventory: Math.floor(game.unsoldInventory - sales),
-      });
-    }
-  }, 1e3);
+  // useEffect(() => {
+  //   console.log('ok');
+  //   const time = setTimeout(() => {
+  //     const sales = Math.min(
+  //       game.unsoldInventory,
+  //       game.unsoldInventory * (game.publicDemand / 100) * 2
+  //     );
+  //     setGame({
+  //       ...game,
+  //       fundsAvailable: game.fundsAvailable + sales * game.paperclipCost,
+  //       unsoldInventory: Math.floor(game.unsoldInventory - sales),
+  //     });
+  //     console.log('okok');
+  //   }, 1e3);
+
+  //   return () => clearTimeout(time);
+  // }, [game.unsoldInventory]);
 
   return (
     <CardComponent className={styles.card}>

@@ -24,7 +24,7 @@ export function GameProvider({ children }: { children: Children }) {
     steelWireCost: 6.25,
     steelWireRefill: 50,
     autoClippers: 0,
-    autoClippersCost: 5.05,
+    autoClippersCost: 5.25,
     marketing: 1,
     marketingCost: 100,
   });

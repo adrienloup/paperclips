@@ -1,33 +1,33 @@
 import { lazy, Suspense } from 'react';
 import { fallback } from '../../../generic/utils/fallback';
 import { LoaderComponent } from '../../../generic/components/loader/Loader.component';
-import { FeaturesComponent } from '../features/Features.component';
+// import { FeaturesComponent } from '../features/Features.component';
 import styles from './Dashboard.module.scss';
 
-const PaperclipsComponent = lazy(() =>
-  fallback(import('../paperclips/Paperclips.component'), 3e2)
-);
+// const PaperclipsComponent = lazy(() =>
+//   fallback(import('../paperclips/Paperclips.component'), 3e2)
+// );
 
 const ManufacturingComponent = lazy(() =>
   fallback(import('../manufacturing/Manufacturing.component'), 5e2)
 );
 
-const BusinessComponent = lazy(() =>
-  fallback(import('../business/Business.component'), 7e2)
-);
+// const BusinessComponent = lazy(() =>
+//   fallback(import('../business/Business.component'), 7e2)
+// );
 
-const ComputationalComponent = lazy(() =>
-  fallback(import('../computational/Computational.component'), 9e2)
-);
+// const ComputationalComponent = lazy(() =>
+//   fallback(import('../computational/Computational.component'), 9e2)
+// );
 
-const ProjectsComponent = lazy(() =>
-  fallback(import('../projects/Projects.component'), 7e2)
-);
+// const ProjectsComponent = lazy(() =>
+//   fallback(import('../projects/Projects.component'), 7e2)
+// );
 
 export const DashboardComponent = () => {
   return (
     <article className={styles.dashboard}>
-      <FeaturesComponent />
+      {/* <FeaturesComponent />
       <Suspense
         fallback={
           <div className={styles.paperclips}>
@@ -36,7 +36,7 @@ export const DashboardComponent = () => {
         }
       >
         <PaperclipsComponent />
-      </Suspense>
+      </Suspense> */}
       <div className={styles.group}>
         <Suspense
           fallback={
@@ -50,7 +50,7 @@ export const DashboardComponent = () => {
         >
           <ManufacturingComponent />
         </Suspense>
-        <Suspense
+        {/* <Suspense
           fallback={
             <div className={styles.business}>
               <LoaderComponent
@@ -62,8 +62,9 @@ export const DashboardComponent = () => {
         >
           <BusinessComponent />
         </Suspense>
+     */}{' '}
       </div>
-      <div className={styles.group}>
+      {/* <div className={styles.group}>
         <Suspense
           fallback={
             <div className={styles.computational}>
@@ -88,7 +89,7 @@ export const DashboardComponent = () => {
         >
           <ProjectsComponent />
         </Suspense>
-      </div>
+      </div> */}
     </article>
   );
 };

@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { version } from '../package.json';
 import { Provider } from './Provider';
 import App from './App.tsx';
-import './generic/i18n';
 
 createRoot(document.getElementById('_paperclips_3mma_0')!).render(
   <StrictMode>

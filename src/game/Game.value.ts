@@ -1,0 +1,22 @@
+export const initialValue = {
+  clipStock: 0,
+  pricePerClip: 0.65,
+  unsoldInventoryStock: 0,
+  steelWireStock: 1000,
+  pricePerSteelWire: 20,
+  fundsAvailable: 0,
+  autoClipper: 0,
+  pricePerAutoClipper: 5,
+  marketingLevel: 1,
+  pricePerMarketingLevel: 100,
+  trust: 0,
+  processor: 0,
+  memory: 0,
+  operation: 0,
+  creativity: 0,
+  feature: {
+    autoClipper: false,
+    mechanic: false,
+    autoTracker: false,
+  },
+};

@@ -6,8 +6,6 @@ import {
 } from 'react';
 
 import { Children } from './generic/types/Children.type';
-import { LanguageProvider } from './generic/i18n/Language.provider';
-import { AlertProvider } from './generic/components/alert/Alert.provider';
 import { GameProvider } from './game/Game.provider';
 
 type ProvidersType = [
@@ -27,5 +25,5 @@ const allProviders = (providers: ProvidersType) =>
   );
 
 export const Provider: FunctionComponent<{ children: Children }> = allProviders(
-  [[LanguageProvider], [AlertProvider], [GameProvider]]
+  [[GameProvider]]
 );

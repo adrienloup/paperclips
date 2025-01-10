@@ -1,22 +1,23 @@
-import { Feature } from '../generic/types/Feature.type';
-
+export interface Feature {
+  autoClipper: boolean;
+  mechanic: boolean;
+  autoTracker: boolean;
+}
 export interface Game {
-  paperclips: number;
-  paperclipCost: number;
-  unsoldInventory: number;
+  clipStock: number;
+  pricePerClip: number;
+  unsoldInventoryStock: number;
+  steelWireStock: number;
+  pricePerSteelWire: number;
   fundsAvailable: number;
-  feature: Feature;
+  autoClipper: number;
+  pricePerAutoClipper: number;
+  marketingLevel: number;
+  pricePerMarketingLevel: number;
   trust: number;
-  operations: number;
-  creativity: number;
-  processors: number;
+  processor: number;
   memory: number;
-  publicDemand: number;
-  steelWire: number;
-  steelWireCost: number;
-  steelWireRefill: number;
-  autoClippers: number;
-  autoClippersCost: number;
-  marketing: number;
-  marketingCost: number;
+  operation: number;
+  creativity: number;
+  feature: Feature;
 }

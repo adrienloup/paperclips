@@ -323,6 +323,16 @@ function ExplorePage() {
       <button onClick={() => setFeature({ ...feature, autoTracker: true })}>
         autoTracker
       </button>
+      <br />
+      tests
+      <button onClick={() => setProcessorMultiplier(1)}>
+        processorMultiplier 1
+      </button>
+      <button onClick={() => setProcessorMultiplier(5)}>
+        processorMultiplier 5
+      </button>
+      <button onClick={() => setMemoryMultiplier(1)}>memoryMultiplier 1</button>
+      <button onClick={() => setMemoryMultiplier(5)}>memoryMultiplier 5</button>
     </div>
   );
 }

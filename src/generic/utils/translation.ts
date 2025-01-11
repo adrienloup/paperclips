@@ -1,10 +1,7 @@
 import { Resource, ResourceKey, ResourceLanguage } from 'i18next';
 import { Translations } from '../types/Translation.type';
 
-const languages = ([key, value]: [string, ResourceKey]): [
-  string,
-  ResourceLanguage,
-] => [
+const languages = ([key, value]: [string, ResourceKey]): [string, ResourceLanguage] => [
   key,
   {
     translation: value,

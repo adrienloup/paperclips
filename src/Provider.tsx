@@ -1,9 +1,4 @@
-import {
-  ComponentPropsWithoutRef,
-  ComponentType,
-  ElementType,
-  FunctionComponent,
-} from 'react';
+import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent } from 'react';
 
 import { Children } from './generic/types/Children.type';
 import { GameProvider } from './game/Game.provider';
@@ -24,6 +19,4 @@ const allProviders = (providers: ProvidersType) =>
     ({ children }: { children: Children }) => <>{children}</>
   );
 
-export const Provider: FunctionComponent<{ children: Children }> = allProviders(
-  [[GameProvider]]
-);
+export const Provider: FunctionComponent<{ children: Children }> = allProviders([[GameProvider]]);

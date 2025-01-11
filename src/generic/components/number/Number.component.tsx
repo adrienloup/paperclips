@@ -1,0 +1,15 @@
+import { Number } from './Number.type';
+
+export const NumberComponent = ({ locale, style, notation, number }: Number) => {
+  return (
+    <>
+      {new Intl.NumberFormat(locale, {
+        style,
+        currency: locale === 'en-US' ? 'USD' : 'EUR',
+        notation,
+        compactDisplay: notation ? 'short' : undefined,
+        maximumFractionDigits: style ? 2 : undefined,
+      }).format(number)}
+    </>
+  );
+};

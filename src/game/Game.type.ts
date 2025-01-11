@@ -1,7 +1,14 @@
+export interface UIVisibility {
+  enable: boolean;
+  disable: boolean;
+}
 export interface Feature {
-  autoClipper: boolean;
-  mechanic: boolean;
-  autoTracker: boolean;
+  autoClipper: UIVisibility;
+  computationalResources: UIVisibility;
+  projects: UIVisibility;
+  revTracker: UIVisibility;
+  autoTracker: UIVisibility;
+  improvedAutoClipper: UIVisibility;
 }
 export interface Game {
   clipStock: number;
@@ -19,5 +26,7 @@ export interface Game {
   memory: number;
   operation: number;
   creativity: number;
+  autoClipperBonus: number;
+  processorBonus: number;
   feature: Feature;
 }

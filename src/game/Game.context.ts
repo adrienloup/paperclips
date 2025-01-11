@@ -1,6 +1,6 @@
 import { Dispatch, createContext } from 'react';
 import { Game } from './Game.type';
-import { initialValue } from './Game.value';
+import { initialValue } from './Game.data';
 
 export const GameContext = createContext<Game>(initialValue);
 

@@ -1,35 +1,23 @@
 import { useCallback, useEffect, useState } from 'react';
-import { rangeMapper } from '../generic/utils/rangeMapper';
 import { useGame, useGameDispatch } from './useGame';
-import {
-  CLIPS,
-  CREATIVITIES,
-  MEMORIES,
-  OPERATIONS,
-  TRUSTS,
-} from './Game.range';
+import { rangeMapper } from '../generic/utils/rangeMapper';
+import { PageComponent } from '../generic/components/page/Page.component';
+import { NumberComponent } from '../generic/components/number/Number.component';
+import { CLIPS, CREATIVITIES, MEMORIES, OPERATIONS, TRUSTS } from './Game.data';
 
 function ExplorePage() {
   const setGame = useGameDispatch();
   const game = useGame();
   const [clipStock, setClipStock] = useState(game.clipStock);
   const [pricePerClip, setPricePerClip] = useState(game.pricePerClip);
-  const [unsoldInventoryStock, setUnsoldInventoryStock] = useState(
-    game.unsoldInventoryStock
-  );
+  const [unsoldInventoryStock, setUnsoldInventoryStock] = useState(game.unsoldInventoryStock);
   const [steelWireStock, setSteelWireStock] = useState(game.steelWireStock);
-  const [pricePerSteelWire, setPricePerSteelWire] = useState(
-    game.pricePerSteelWire
-  );
+  const [pricePerSteelWire, setPricePerSteelWire] = useState(game.pricePerSteelWire);
   const [fundsAvailable, setFundsAvailable] = useState(game.fundsAvailable);
-  const [autoClipper, setAutoclipper] = useState(game.autoClipper);
-  const [pricePerAutoClipper, setPricePerAutoClipper] = useState(
-    game.pricePerAutoClipper
-  );
+  const [autoClipper, setAutoClipper] = useState(game.autoClipper);
+  const [pricePerAutoClipper, setPricePerAutoClipper] = useState(game.pricePerAutoClipper);
   const [marketingLevel, setMarketingLevel] = useState(game.marketingLevel);
-  const [pricePerMarketingLevel, setPricePerMarketingLevel] = useState(
-    game.pricePerMarketingLevel
-  );
+  const [pricePerMarketingLevel, setPricePerMarketingLevel] = useState(game.pricePerMarketingLevel);
   const [trust, setTrust] = useState(game.trust);
   const [processor, setProcessor] = useState(game.processor);
   const [memory, setMemory] = useState(game.memory);
@@ -39,43 +27,65 @@ function ExplorePage() {
   const [clipPerSecond, setClipPerSecond] = useState(0);
   const [publicDemand, setPublicDemand] = useState(0);
   const [sellLimit, setSellLimit] = useState(0);
-  const [processorMultiplier, setProcessorMultiplier] = useState(0);
-  const [memoryMultiplier, setMemoryMultiplier] = useState(0);
+  const [memoryBonus, setMemoryBonus] = useState(0);
   const [tracker, setTracker] = useState(0);
+  const [autoClipperBonus, setAutoClipperBonus] = useState(game.autoClipperBonus);
+  const [processorBonus, setProcessorBonus] = useState(game.processorBonus);
   const [isAutoSelling, setAutoSelling] = useState(false);
   const [isAutoProduce, setAutoProduce] = useState(false);
 
   const restartGame = () => {
     setGame({
-      clipStock: 0,
+      clipStock: 1999,
       pricePerClip: 0.65,
       unsoldInventoryStock: 0,
       steelWireStock: 1000,
       pricePerSteelWire: 20,
-      fundsAvailable: 105,
+      fundsAvailable: 2000,
       autoClipper: 0,
       pricePerAutoClipper: 5,
       marketingLevel: 1,
       pricePerMarketingLevel: 100,
+      trust: 0,
       processor: 0,
       memory: 0,
-      trust: 0,
       operation: 0,
       creativity: 0,
+      autoClipperBonus: 0,
+      processorBonus: 0,
       feature: {
-        autoClipper: false,
-        mechanic: false,
-        autoTracker: false,
+        autoClipper: {
+          enable: false,
+          disable: false,
+        },
+        computationalResources: {
+          enable: false,
+          disable: false,
+        },
+        projects: {
+          enable: false,
+          disable: false,
+        },
+        revTracker: {
+          enable: false,
+          disable: false,
+        },
+        autoTracker: {
+          enable: false,
+          disable: false,
+        },
+        improvedAutoClipper: {
+          enable: false,
+          disable: false,
+        },
       },
     });
     location.reload();
   };
 
-  const increasePricePerClip = () =>
-    setPricePerClip((prev) => Math.min(prev + 0.01, 1));
+  const increasePricePerClip = () => setPricePerClip((prev) => Math.min(prev + 0.01, 1));
 
-  const decreasePricePerClip = () =>
-    setPricePerClip((prev) => Math.max(prev - 0.01, 0.01));
+  const decreasePricePerClip = () => setPricePerClip((prev) => Math.max(prev - 0.01, 0.01));
 
   const produceClip = () => {
     if (steelWireStock > 0) {
@@ -96,10 +106,8 @@ function ExplorePage() {
 
   const buyAutoClipper = () => {
     if (fundsAvailable >= pricePerAutoClipper) {
-      setAutoclipper((prev) => prev + 1);
-      setPricePerAutoClipper(
-        (prev) => prev + (Math.random() * (0.5 - 0.1) + 0.1)
-      );
+      setAutoClipper((prev) => Math.ceil(prev + (autoClipperBonus * prev) / 100 + 1));
+      setPricePerAutoClipper((prev) => prev + (Math.random() * (5 - 0.5) + 0.5) * prev);
       setFundsAvailable((prev) => prev - pricePerAutoClipper);
     }
   };
@@ -112,16 +120,25 @@ function ExplorePage() {
     }
   };
 
+  const buyRevTracker = () => {
+    setFeature({
+      ...feature,
+      revTracker: { enable: false, disable: true },
+      autoTracker: { enable: true, disable: false },
+    });
+  };
+
+  const buyImprovedAutoClipper = () => {
+    setFeature({ ...feature, improvedAutoClipper: { enable: false, disable: true } });
+    setAutoClipperBonus(25);
+  };
+
   const computationalResources = useCallback(() => {
     setTrust(rangeMapper(clipStock, CLIPS, TRUSTS));
-    setProcessor(Math.ceil(trust / 2 + processorMultiplier));
-    setMemory(Math.ceil(trust / 2 + memoryMultiplier));
-    setCreativity((prev) =>
-      operation === rangeMapper(memory, MEMORIES, OPERATIONS)
-        ? rangeMapper(operation + 1, OPERATIONS, CREATIVITIES)
-        : prev
-    );
-  }, [clipStock, trust, memory, operation]);
+    setProcessor(Math.ceil(trust / 2 + processorBonus));
+    setMemory(Math.ceil(trust / 2 + memoryBonus));
+    setCreativity(rangeMapper(operation + 1, OPERATIONS, CREATIVITIES));
+  }, [clipStock, trust, operation]);
 
   const autoProduction = useCallback(() => {
     if (autoClipper > 0 && steelWireStock >= autoClipper) {
@@ -134,7 +151,7 @@ function ExplorePage() {
       setAutoProduce(false);
       setClipPerSecond(0);
     }
-  }, [feature, steelWireStock, autoClipper]);
+  }, [autoClipper, steelWireStock]);
 
   const autoSale = useCallback(() => {
     if (unsoldInventoryStock <= 0) {
@@ -154,22 +171,66 @@ function ExplorePage() {
   }, [unsoldInventoryStock, fundsAvailable, sellLimit, pricePerClip]);
 
   const autoOperation = useCallback(() => {
-    if (!feature.mechanic) return;
+    if (feature.computationalResources.disable) return;
     setOperation((prev) =>
       Math.min(rangeMapper(memory, MEMORIES, OPERATIONS), prev + 5 * processor)
     );
   }, [feature, memory, processor]);
 
   const autoPricePerSteelWire = useCallback(() => {
-    setPricePerSteelWire((prev) =>
-      prev >= 8 ? prev - 0.02 : Math.random() * (25 - 5) + 5
-    );
+    setPricePerSteelWire((prev) => (prev >= 8 ? prev - 0.02 : Math.random() * (25 - 5) + 5));
   }, []);
 
   const autoTracker = useCallback(() => {
-    if (!feature.autoTracker) return;
+    if (feature.autoTracker.disable) return;
     setTracker(pricePerClip * clipPerSecond);
   }, [feature, pricePerClip, clipPerSecond]);
+
+  const enableFeature = useCallback(() => {
+    if (clipStock >= 100 && !feature.autoClipper.enable && !feature.autoClipper.disable) {
+      setFeature({
+        ...feature,
+        autoClipper: { enable: true, disable: false },
+      });
+    }
+
+    if (
+      clipStock >= 2000 &&
+      !feature.computationalResources.enable &&
+      !feature.computationalResources.disable
+    ) {
+      setFeature({
+        ...feature,
+        computationalResources: { enable: true, disable: false },
+      });
+    }
+
+    if (clipStock >= 2000 && !feature.projects.enable && !feature.projects.disable) {
+      setFeature({
+        ...feature,
+        projects: { enable: true, disable: false },
+      });
+    }
+
+    if (clipStock >= 2000 && !feature.revTracker.enable && !feature.revTracker.disable) {
+      setFeature({
+        ...feature,
+        revTracker: { enable: true, disable: false },
+      });
+    }
+
+    if (
+      autoClipper > 0 &&
+      creativity >= 10 &&
+      !feature.improvedAutoClipper.enable &&
+      !feature.improvedAutoClipper.disable
+    ) {
+      setFeature({
+        ...feature,
+        improvedAutoClipper: { enable: true, disable: false },
+      });
+    }
+  }, [feature, clipStock, autoClipper, creativity]);
 
   const updateGame = useCallback(() => {
     setGame({
@@ -183,11 +244,13 @@ function ExplorePage() {
       pricePerAutoClipper,
       marketingLevel,
       pricePerMarketingLevel,
+      trust,
       processor,
       memory,
-      trust,
       operation,
       creativity,
+      autoClipperBonus,
+      processorBonus,
       feature,
     });
   }, [
@@ -201,34 +264,28 @@ function ExplorePage() {
     pricePerAutoClipper,
     marketingLevel,
     pricePerMarketingLevel,
+    trust,
     processor,
     memory,
-    trust,
     operation,
     creativity,
+    autoClipperBonus,
+    processorBonus,
     feature,
   ]);
 
   useEffect(() => {
     setPublicDemand(Math.max(0, 100 - pricePerClip * 100 + 1));
-    setSellLimit(
-      Math.max(
-        1,
-        Math.floor((pricePerClip * 28 - marketingLevel) / marketingLevel)
-      )
-    );
+    setSellLimit(Math.max(1, Math.floor((pricePerClip * 28 - marketingLevel) / marketingLevel)));
   }, [pricePerClip, marketingLevel]);
-
-  useEffect(() => {
-    if (clipStock >= 100 && !feature.autoClipper)
-      setFeature({ ...feature, autoClipper: true });
-    if (clipStock >= 2000 && !feature.mechanic)
-      setFeature({ ...feature, mechanic: true });
-  }, [clipStock]);
 
   useEffect(() => {
     computationalResources();
   }, [computationalResources]);
+
+  useEffect(() => {
+    enableFeature();
+  }, [enableFeature]);
 
   useEffect(() => {
     const interval = setInterval(() => autoProduction(), 1e3);
@@ -260,43 +317,88 @@ function ExplorePage() {
   }, [updateGame]);
 
   return (
-    <div>
+    <PageComponent>
       <div>
+        Admin
+        <br />
         <button onClick={restartGame}>restartGame</button>
+        <button onClick={() => setProcessorBonus(1)}>processorBonus +1</button>
+        <button
+          onClick={() => {
+            setProcessorBonus(10);
+          }}
+        >
+          processorBonus +10
+        </button>
+        <button onClick={() => setMemoryBonus(1)}>memoryBonus 1</button>
+        <button onClick={() => setMemoryBonus(5)}>memoryBonus 5</button>
+        <br />
+        <br />
       </div>
       <div>
         <div>clipPerSecond {clipPerSecond}</div>
-        <div>clipStock {clipStock}</div>
+        <div>
+          clipStock (fr) <NumberComponent locale="fr-FR" number={clipStock} />
+        </div>
+        <div>
+          clipStock (us) <NumberComponent locale="en-US" number={clipStock} />
+        </div>
         <br />
         <div>Manufacturing</div>
         <button onClick={produceClip}>Paperclip</button>
-        <div>steelWireStock {steelWireStock}</div>
+        <div>
+          steelWireStock <NumberComponent locale="fr-FR" number={steelWireStock} />
+        </div>
         <div>
           <button onClick={buySteelWire}>SteelWire</button>
-          {pricePerSteelWire.toFixed(2)}
+          <NumberComponent locale="fr-FR" style="currency" number={pricePerSteelWire} />
         </div>
-        {feature.autoClipper ? (
+        {feature.autoClipper.enable ? (
           <div>
             <div>
-              <button onClick={buyAutoClipper}>autoClipper</button>{' '}
-              {autoClipper}
+              <button onClick={buyAutoClipper}>autoClipper</button> {autoClipper}
+              {autoClipperBonus ? <span>(+{autoClipperBonus}%)</span> : null}
             </div>
-            <div>pricePerAutoClipper {pricePerAutoClipper.toFixed(2)}</div>
+            {/* <div>pricePerAutoClipper {pricePerAutoClipper.toFixed(2)}</div> */}
+            <div>
+              pricePerAutoClipper{' '}
+              <NumberComponent locale="fr-FR" style="currency" number={pricePerAutoClipper} />
+            </div>
           </div>
         ) : null}
         <br />
         <div>Business</div>
-        <div>fundsAvailable {fundsAvailable.toFixed(2)}</div>
-        {feature.autoTracker ? <div>tracker {tracker.toFixed(2)}</div> : null}
-        <div>unsoldInventoryStock {unsoldInventoryStock}</div>
-        <div>pricePerClip {pricePerClip.toFixed(2)}</div>
+        <div>
+          fundsAvailable (fr){' '}
+          <NumberComponent locale="fr-FR" style="currency" number={fundsAvailable} />
+        </div>
+        <div>
+          fundsAvailable (us){' '}
+          <NumberComponent locale="en-US" style="currency" number={fundsAvailable} />
+        </div>
+        {feature.autoTracker.enable ? (
+          <div>
+            tracker <NumberComponent locale="fr-FR" style="currency" number={tracker} />
+          </div>
+        ) : null}
+        <div>
+          unsoldInventoryStock <NumberComponent locale="fr-FR" number={unsoldInventoryStock} />
+        </div>
+        <div>
+          unsoldInventoryStock <NumberComponent locale="en-US" number={unsoldInventoryStock} />
+        </div>
+        <div>
+          pricePerClip <NumberComponent locale="fr-FR" style="currency" number={pricePerClip} />
+        </div>
+        <div>
+          pricePerClip <NumberComponent locale="en-US" style="currency" number={pricePerClip} />
+        </div>
         <button onClick={increasePricePerClip}>💰 Augmenter</button>
         <button onClick={decreasePricePerClip}>💸 Réduire</button>
         <div>(sellLimit {sellLimit})</div>
         <div>publicDemand {publicDemand.toFixed(0)} %</div>
         <div>
-          <button onClick={buyMarketingLevel}>MarketingLevel</button>Level{' '}
-          {marketingLevel}
+          <button onClick={buyMarketingLevel}>MarketingLevel</button>Level {marketingLevel}
         </div>
         <div>Cost: $ {pricePerMarketingLevel}</div>
       </div>
@@ -304,7 +406,7 @@ function ExplorePage() {
         <div>{isAutoSelling ? 'isAutoSelling' : ''}</div>
         <div>{isAutoProduce ? 'isAutoProduce' : ''}</div>
       </div>
-      {feature.mechanic ? (
+      {feature.computationalResources.enable ? (
         <div>
           <br />
           <div>Computational Resources</div>
@@ -312,28 +414,36 @@ function ExplorePage() {
           <br />
           <div>Processors {processor}</div>
           <div>Memory {memory}</div>
-          <div>
+          {/* <div>
             operation {operation} / {rangeMapper(memory, MEMORIES, OPERATIONS)}
+          </div> */}
+          <div>
+            operation <NumberComponent locale="fr-FR" number={operation} /> /{' '}
+            <NumberComponent locale="fr-FR" number={rangeMapper(memory, MEMORIES, OPERATIONS)} />
           </div>
-          <div>creativity {creativity}</div>
+          <div>
+            operation <NumberComponent locale="en-US" number={operation} /> /{' '}
+            {rangeMapper(memory, MEMORIES, OPERATIONS)}
+          </div>
+          {/* <div>creativity {creativity}</div> */}
+          <div>
+            creativity <NumberComponent locale="fr-FR" number={creativity} />
+          </div>
+          <div>
+            creativity <NumberComponent locale="en-US" number={creativity} />
+          </div>
         </div>
       ) : null}
-      <br />
-      <div>projects</div>
-      <button onClick={() => setFeature({ ...feature, autoTracker: true })}>
-        autoTracker
-      </button>
-      <br />
-      tests
-      <button onClick={() => setProcessorMultiplier(1)}>
-        processorMultiplier 1
-      </button>
-      <button onClick={() => setProcessorMultiplier(5)}>
-        processorMultiplier 5
-      </button>
-      <button onClick={() => setMemoryMultiplier(1)}>memoryMultiplier 1</button>
-      <button onClick={() => setMemoryMultiplier(5)}>memoryMultiplier 5</button>
-    </div>
+      {feature.projects.enable ? (
+        <div>
+          <div>projects</div>
+          {feature.revTracker.enable ? <button onClick={buyRevTracker}>revTracker</button> : null}
+          {feature.improvedAutoClipper.enable ? (
+            <button onClick={buyImprovedAutoClipper}>improvedAutoClipper</button>
+          ) : null}
+        </div>
+      ) : null}
+    </PageComponent>
   );
 }
 

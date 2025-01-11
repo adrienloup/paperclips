@@ -11,7 +11,7 @@ $width: 20rem;
   transition-property: margin-left;
   transition-timing-function: var(--easy-expo);
 
-  &.opened {
+  &.open {
     margin-left: 0;
     transition-duration: 500ms;
   }
@@ -32,6 +32,11 @@ $width: 20rem;
 .button {
   padding: var(--spacing-s);
   background-color: var(--color-neutral-2);
-  font-size: var(--font-size-s);
+  font-size: 2rem;
   color: var(--color-neutral-4);
+
+  &:focus-visible {
+    outline: 0.25rem solid var(--color-solid-2);
+    outline-offset: -0.25rem;
+  }
 }

@@ -8,15 +8,12 @@ export const ButtonComponent = ({
   href,
   to,
   className,
+  innerRef,
   onClick,
   ...props
 }: Button<HTMLButtonElement & HTMLAnchorElement>) => {
   const link = (
-    <Link
-      to={to!}
-      className={classNames([styles.button, className])}
-      {...props}
-    >
+    <Link to={to!} className={classNames([styles.button, className])} {...props}>
       {children}
     </Link>
   );
@@ -36,6 +33,7 @@ export const ButtonComponent = ({
   const button = (
     <button
       type="button"
+      ref={innerRef}
       onClick={onClick}
       className={classNames([styles.button, className])}
       {...props}

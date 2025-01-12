@@ -1,12 +1,9 @@
 import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent } from 'react';
 
 import { Children } from './generic/types/Children.type';
-import { GameProvider } from './game/Game.provider';
+import { DashboardProvider } from './game/components/dashboard/Dashboard.provider';
 
-type ProvidersType = [
-  ComponentType<{ children: Children }>,
-  ComponentPropsWithoutRef<ElementType>?,
-][];
+type ProvidersType = [ComponentType<{ children: Children }>, ComponentPropsWithoutRef<ElementType>?][];
 
 const allProviders = (providers: ProvidersType) =>
   providers.reduce(
@@ -19,4 +16,4 @@ const allProviders = (providers: ProvidersType) =>
     ({ children }: { children: Children }) => <>{children}</>
   );
 
-export const Provider: FunctionComponent<{ children: Children }> = allProviders([[GameProvider]]);
+export const Provider: FunctionComponent<{ children: Children }> = allProviders([[DashboardProvider]]);

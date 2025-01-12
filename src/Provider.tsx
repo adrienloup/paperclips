@@ -2,7 +2,6 @@ import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent
 
 import { Children } from './generic/types/Children.type';
 import { DashboardProvider } from './game/components/dashboard/Dashboard.provider';
-import { ProjectsProvider } from './game/components/projects/Projects.provider';
 
 type ProvidersType = [ComponentType<{ children: Children }>, ComponentPropsWithoutRef<ElementType>?][];
 
@@ -17,4 +16,4 @@ const allProviders = (providers: ProvidersType) =>
     ({ children }: { children: Children }) => <>{children}</>
   );
 
-export const Provider: FunctionComponent<{ children: Children }> = allProviders([[DashboardProvider], [ProjectsProvider]]);
+export const Provider: FunctionComponent<{ children: Children }> = allProviders([[DashboardProvider]]);

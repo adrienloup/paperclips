@@ -1,0 +1,63 @@
+.loader {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: var(--spacing-s);
+  border: 0.25rem solid var(--color-neutral-4);
+  border-radius: 0.25rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-solid-2);
+    will-change: width, background-color;
+  }
+
+  &::after {
+    width: 0;
+    animation: Progress calc(var(--loader-duration) - 0.2s) linear forwards;
+  }
+}
+
+.label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-bold);
+}
+
+.small {
+  width: 80px;
+  height: 20px;
+
+  .label {
+    font-size: var(--font-size-s);
+  }
+}
+
+.medium {
+  width: 200px;
+  height: 60px;
+
+  .label {
+    font-size: var(--font-size-m);
+  }
+}
+
+.large {
+  width: 280px;
+  height: 80px;
+
+  .label {
+    font-size: var(--font-size-l);
+  }
+}
+
+@keyframes Progress {
+  to {
+    width: 100%;
+    background-color: var(--color-solid-1);
+  }
+}

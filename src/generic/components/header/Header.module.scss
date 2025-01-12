@@ -7,13 +7,13 @@ $width: 20rem;
   align-items: flex-start;
   margin-left: -$width;
   will-change: margin-left;
-  transition-duration: 300ms;
+  transition-duration: 200ms;
   transition-property: margin-left;
   transition-timing-function: var(--easy-expo);
 
   &.open {
     margin-left: 0;
-    transition-duration: 500ms;
+    transition-duration: 400ms;
   }
 }
 
@@ -36,7 +36,7 @@ $width: 20rem;
   color: var(--color-neutral-4);
 
   &:focus-visible {
-    outline: 0.25rem solid var(--color-solid-2);
+    outline: 0.25rem solid var(--color-solid-3);
     outline-offset: -0.25rem;
   }
 }

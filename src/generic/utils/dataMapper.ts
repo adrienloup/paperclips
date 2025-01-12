@@ -1,4 +1,4 @@
-export function rangeMapper(value: number, ranges: number[], results: number[]) {
+export function dataMapper(value: number, ranges: number[], results: number[]) {
   let min = 0;
   for (let i = 0; i < ranges.length; i++) {
     const max = ranges[i];

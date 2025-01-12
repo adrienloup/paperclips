@@ -3,15 +3,7 @@ import { classNames } from '../../utils/classNames';
 import { Button } from './Button.type';
 import styles from './Button.module.scss';
 
-export const ButtonComponent = ({
-  children,
-  href,
-  to,
-  className,
-  innerRef,
-  onClick,
-  ...props
-}: Button<HTMLButtonElement & HTMLAnchorElement>) => {
+export const ButtonComponent = ({ children, href, to, className, innerRef, onClick, ...props }: Button<HTMLButtonElement & HTMLAnchorElement>) => {
   const link = (
     <Link to={to!} className={classNames([styles.button, className])} {...props}>
       {children}
@@ -19,25 +11,13 @@ export const ButtonComponent = ({
   );
 
   const a = (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener"
-      className={classNames([styles.button, className])}
-      {...props}
-    >
+    <a href={href} target="_blank" rel="noopener" className={classNames([styles.button, className])} {...props}>
       {children}
     </a>
   );
 
   const button = (
-    <button
-      type="button"
-      ref={innerRef}
-      onClick={onClick}
-      className={classNames([styles.button, className])}
-      {...props}
-    >
+    <button type="button" ref={innerRef} onClick={onClick} className={classNames([styles.button, className])} {...props}>
       {children}
     </button>
   );

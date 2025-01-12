@@ -23,7 +23,7 @@ export const HeaderComponent = () => {
         <div className={styles.inner}>header</div>
       </div>
       <ButtonComponent className={styles.button} aria-label={open ? 'Fermer les paramètres' : 'Ouvrir les paramètres'} onClick={onClick}>
-        <IconComponent icon={open ? 'arrow_menu_close' : 'arrow_menu_open'} />
+        <IconComponent icon={open ? 'arrow_menu_open' : 'arrow_menu_close'} />
       </ButtonComponent>
     </header>
   );

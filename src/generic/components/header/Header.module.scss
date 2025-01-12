@@ -7,13 +7,13 @@ $width: 20rem;
   align-items: flex-start;
   margin-left: -$width;
   will-change: margin-left;
-  transition-duration: 200ms;
+  transition-duration: 300ms;
   transition-property: margin-left;
-  transition-timing-function: var(--easy-expo);
+  transition-timing-function: var(--ease-expo);
 
   &.open {
     margin-left: 0;
-    transition-duration: 400ms;
+    transition-duration: 500ms;
   }
 }
 

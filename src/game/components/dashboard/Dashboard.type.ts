@@ -15,4 +15,36 @@ export interface Dashboard {
   marketingCost: number;
   clipsPerSecond: number;
   trust: number;
+  feature: {
+    autoClippers: {
+      enabled: boolean;
+      disabled: boolean;
+      incurred: boolean;
+    };
+    marketing: {
+      enabled: boolean;
+      disabled: boolean;
+      incurred: boolean;
+    };
+    computationalResources: {
+      enabled: boolean;
+      disabled: boolean;
+      incurred: boolean;
+    };
+    revTracker: {
+      enabled: boolean;
+      disabled: boolean;
+      incurred: boolean;
+    };
+    improvedProduction: {
+      enabled: boolean;
+      disabled: boolean;
+      incurred: boolean;
+    };
+    autoAverage: {
+      enabled: boolean;
+      disabled: boolean;
+      incurred: boolean;
+    };
+  };
 }

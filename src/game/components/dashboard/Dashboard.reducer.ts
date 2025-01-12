@@ -1,6 +1,6 @@
 import { Dashboard } from './Dashboard.type';
 
-type Action =
+export type Action =
   | { type: 'INCREASE' }
   | { type: 'DECREASE' }
   | { type: 'ADD_AUTOCLIPPER' }
@@ -10,8 +10,9 @@ type Action =
   | { type: 'DECREASE_CLIP_COST' }
   | { type: 'UPDATE_WIRE_COST' }
   | { type: 'INCREASE_MARKETING' }
-  | { type: 'UPDATE_PRODUCTION_BONUS'; productionBonusRatio: number }
-  | { type: 'UPDATE_WIRE_BONUS'; wireBonusRatio: number };
+  | { type: 'UPDATE_PRODUCTION_RATIO'; productionRatio: number }
+  | { type: 'UPDATE_WIRE_RATIO'; wireRatio: number }
+  | { type: 'UPDATE_DISPLAY_FEATURE'; feature: string; enabled: boolean; disabled: boolean; incurred: boolean };
 
 export const dashboardReducer = (state: Dashboard, action: Action): Dashboard => {
   switch (action.type) {
@@ -85,17 +86,22 @@ export const dashboardReducer = (state: Dashboard, action: Action): Dashboard =>
         marketing: state.marketing + 1,
         marketingCost: state.marketingCost + 100,
       };
-    case 'UPDATE_PRODUCTION_BONUS':
-      // console.log('productionBonusRatio', action.productionBonusRatio);
-      // console.log('productionBonusRatio limit', Math.min(1, Math.max(0, action.productionBonusRatio)));
+    case 'UPDATE_PRODUCTION_RATIO':
+      // console.log('productionRatio', action.productionRatio);
+      // console.log('productionRatio limit', Math.min(1, Math.max(0, action.productionRatio)));
       return {
         ...state,
-        productionBonus: Math.min(1, Math.max(0, action.productionBonusRatio)),
+        productionBonus: Math.min(1, Math.max(0, action.productionRatio)),
       };
-    case 'UPDATE_WIRE_BONUS':
+    case 'UPDATE_WIRE_RATIO':
       return {
         ...state,
-        wireBonus: Math.min(1, Math.max(0, action.wireBonusRatio)),
+        wireBonus: Math.min(1, Math.max(0, action.wireRatio)),
+      };
+    case 'UPDATE_DISPLAY_FEATURE':
+      return {
+        ...state,
+        feature: { ...state.feature, [action.feature]: { enabled: action.enabled, disabled: action.disabled, incurred: action.incurred } },
       };
     default:
       return state;

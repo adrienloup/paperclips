@@ -1,7 +1,7 @@
 import { Dashboard } from './Dashboard.type';
 
 export const initialState: Dashboard = {
-  clipTotal: 1000000, // @TODO
+  clipTotal: 10000, // @TODO
   clipStock: 0,
   clipCost: 0.65,
   transitStock: null,
@@ -17,4 +17,36 @@ export const initialState: Dashboard = {
   marketingCost: 100,
   clipsPerSecond: 0,
   trust: 1,
+  feature: {
+    autoClippers: {
+      enabled: false,
+      disabled: false,
+      incurred: false,
+    },
+    marketing: {
+      enabled: false,
+      disabled: false,
+      incurred: false,
+    },
+    computationalResources: {
+      enabled: false,
+      disabled: false,
+      incurred: false,
+    },
+    revTracker: {
+      enabled: false,
+      disabled: false,
+      incurred: false,
+    },
+    improvedProduction: {
+      enabled: false,
+      disabled: false,
+      incurred: false,
+    },
+    autoAverage: {
+      enabled: false,
+      disabled: false,
+      incurred: false,
+    },
+  },
 };

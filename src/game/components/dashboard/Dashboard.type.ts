@@ -14,4 +14,5 @@ export interface Dashboard {
   marketing: number;
   marketingCost: number;
   clipsPerSecond: number;
+  trust: number;
 }

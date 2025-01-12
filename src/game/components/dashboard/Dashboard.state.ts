@@ -16,4 +16,5 @@ export const initialState: Dashboard = {
   marketing: 1,
   marketingCost: 100,
   clipsPerSecond: 0,
+  trust: 1,
 };

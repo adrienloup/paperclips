@@ -1,4 +1,4 @@
-import { Dispatch, createContext } from 'react';
+import { createContext, Dispatch } from 'react';
 import { Dashboard } from './Dashboard.type';
 import { initialState } from './Dashboard.state';
 

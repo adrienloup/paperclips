@@ -8,7 +8,7 @@ export const NumberComponent = ({ locale, style, notation, number }: Number) => 
         currency: locale === 'en-US' ? 'USD' : 'EUR',
         notation,
         compactDisplay: notation ? 'short' : undefined,
-        maximumFractionDigits: style ? 2 : undefined,
+        maximumFractionDigits: style || notation ? 2 : undefined,
       }).format(number)}
     </>
   );

@@ -1,4 +1,4 @@
-import { Number } from '@/src/generic/components/number/Number.type';
+import { Number } from '@/src/common/components/number/Number.type';
 
 export const NumberComponent = ({ locale, style, notation, number }: Number) => {
   return (

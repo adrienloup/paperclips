@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { classNames } from '@/src/generic/utils/classNames';
-import { Button } from '@/src/generic/components/button/Button.type';
+import { Button } from '@/src/common/components/button/Button.type';
 import styles from './Button.module.scss';
 
 export const ButtonComponent = ({

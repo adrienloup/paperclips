@@ -7,7 +7,7 @@ import { LanguageContext } from '@/src/generic/i18n/Language.context';
 
 export function LanguageProvider({ children }: { children: Children }) {
   const { i18n } = useTranslation();
-  const [language, setLanguage] = useLocalStorage<Language>('_language_3mma_0', 'en');
+  const [language, setLanguage] = useLocalStorage<Language>('_3mma_0_language', 'en');
 
   useEffect(() => {
     setLanguage(language);
@@ -15,5 +15,9 @@ export function LanguageProvider({ children }: { children: Children }) {
     document.documentElement.lang = i18n.language;
   }, [i18n, language]);
 
-  return <LanguageContext.Provider value={{ language, setLanguage }}>{children}</LanguageContext.Provider>;
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage }}>
+      {children}
+    </LanguageContext.Provider>
+  );
 }

@@ -5,7 +5,7 @@ import { Theme } from '@/src/generic/theme/Theme.type';
 import { ThemeContext } from '@/src/generic/theme/Theme.context';
 
 export function ThemeProvider({ children }: { children: Children }) {
-  const [theme, setTheme] = useLocalStorage<Theme>('_theme_1mm2_3', 'light');
+  const [theme, setTheme] = useLocalStorage<Theme>('_3mma_0_theme', 'light');
 
   useEffect(() => {
     setTheme(theme);

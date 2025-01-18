@@ -19,7 +19,13 @@ export const ButtonComponent = ({
   );
 
   const a = (
-    <a href={href} target="_blank" rel="noopener" className={classNames([styles.button, className])} {...props}>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener"
+      className={classNames([styles.button, className])}
+      {...props}
+    >
       {children}
     </a>
   );

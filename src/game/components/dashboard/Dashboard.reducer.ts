@@ -1,4 +1,4 @@
-import { Dashboard } from './Dashboard.type';
+import { Dashboard } from '@/src/game/components/dashboard/Dashboard.type';
 
 export type Action =
   | { type: 'INCREASE' }

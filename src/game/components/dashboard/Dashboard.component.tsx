@@ -1,7 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import styles from './Dashboard.module.scss';
 
 function DashboardComponent() {
-  return <article className={styles.dashboard}>dashboard</article>;
+  const { t } = useTranslation();
+
+  return <article className={styles.dashboard}>dashboard {t('game.title')}</article>;
 }
 
 export default DashboardComponent;

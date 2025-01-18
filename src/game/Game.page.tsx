@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
-import { fallback } from '../generic/utils/fallback';
-import { PageComponent } from '../generic/components/page/Page.component';
-import { LoaderComponent } from '../generic/components/loader/Loader.component';
+import { fallback } from '@/src/generic/utils/fallback';
+import { PageComponent } from '@/src/generic/components/page/Page.component';
+import { LoaderComponent } from '@/src/generic/components/loader/Loader.component';
 import styles from './Game.module.scss';
 
 const DashboardComponent = lazy(() =>

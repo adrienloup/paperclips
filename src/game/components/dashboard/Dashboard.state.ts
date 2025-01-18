@@ -1,4 +1,4 @@
-import { Dashboard } from './Dashboard.type';
+import { Dashboard } from '@/src/game/components/dashboard/Dashboard.type';
 
 export const initialState: Dashboard = {
   clipTotal: 100000, // @TODO

@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
-import { classNames } from '../../utils/classNames';
-import { ButtonComponent } from '../button/Button.component';
-import { IconComponent } from '../icon/Icon.component';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '@/src/generic/i18n/useLanguage';
+import { classNames } from '@/src/generic/utils/classNames';
+import { ButtonComponent } from '@/src/generic/components/button/Button.component';
+import { IconComponent } from '@/src/generic/components/icon/Icon.component';
 import styles from './Header.module.scss';
 
 export const HeaderComponent = () => {
+  const { t } = useTranslation();
+  const { setLanguage } = useLanguage();
   const [open, setOpen] = useState(false);
-
-  const onClick = () => setOpen(!open);
 
   useEffect(() => {
     const onKeyDown = (e: { keyCode: number }) => {
@@ -20,12 +22,16 @@ export const HeaderComponent = () => {
   return (
     <header className={classNames([styles.header, open ? styles.open : ''])} role="banner">
       <div className={styles.inside}>
-        <div className={styles.inner}>header</div>
+        <div className={styles.inner}>
+          header
+          <button onClick={() => setLanguage('en')}>EN</button>
+          <button onClick={() => setLanguage('fr')}>FR</button>
+        </div>
       </div>
       <ButtonComponent
         className={styles.button}
-        aria-label={open ? 'Fermer les paramètres' : 'Ouvrir les paramètres'}
-        onClick={onClick}
+        aria-label={open ? t('generic.settings.close') : t('generic.settings.open')}
+        onClick={() => setOpen(!open)}
       >
         <IconComponent icon={open ? 'arrow_menu_open' : 'arrow_menu_close'} />
       </ButtonComponent>

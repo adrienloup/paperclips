@@ -1,5 +1,5 @@
-import { classNames } from '../../utils/classNames';
-import { Icon } from './Icon.type';
+import { classNames } from '@/src/generic/utils/classNames';
+import { Icon } from '@/src/generic/components/icon/Icon.type';
 import styles from './Icon.module.scss';
 
 export const IconComponent = ({ icon, className }: Icon) => {

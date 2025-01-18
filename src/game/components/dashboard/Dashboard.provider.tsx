@@ -1,16 +1,13 @@
 import { useEffect, useReducer } from 'react';
-import { useLocalStorage } from '../../../generic/hooks/useLocalStorage';
-import { Children } from '../../../generic/types/Children.type';
-import { DashboardContext, DashboardDispatchContext } from './Dashboard.context';
-import { Dashboard } from './Dashboard.type';
-import { initialState } from './Dashboard.state';
-import { dashboardReducer } from './Dashboard.reducer';
+import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage';
+import { Children } from '@/src/generic/types/Children.type';
+import { Dashboard } from '@/src/game/components/dashboard/Dashboard.type';
+import { DashboardContext, DashboardDispatchContext } from '@/src/game/components/dashboard/Dashboard.context';
+import { dashboardReducer } from '@/src/game/components/dashboard/Dashboard.reducer';
+import { initialState } from '@/src/game/components/dashboard/Dashboard.state';
 
 export function DashboardProvider({ children }: { children: Children }) {
-  const [localDashboard, setLocalDashboard] = useLocalStorage<Dashboard>(
-    '_dashboard_3mma_0',
-    initialState
-  );
+  const [localDashboard, setLocalDashboard] = useLocalStorage<Dashboard>('_dashboard_3mma_0', initialState);
   const [dashboard, setDashboard] = useReducer(dashboardReducer, localDashboard);
 
   useEffect(() => {
@@ -19,9 +16,7 @@ export function DashboardProvider({ children }: { children: Children }) {
 
   return (
     <DashboardContext.Provider value={dashboard}>
-      <DashboardDispatchContext.Provider value={setDashboard}>
-        {children}
-      </DashboardDispatchContext.Provider>
+      <DashboardDispatchContext.Provider value={setDashboard}>{children}</DashboardDispatchContext.Provider>
     </DashboardContext.Provider>
   );
 }

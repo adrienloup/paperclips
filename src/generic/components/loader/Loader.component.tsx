@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { classNames } from '../../utils/classNames';
-import { Loader } from './Loader.type';
+import { classNames } from '@/src/generic/utils/classNames';
+import { Loader } from '@/src/generic/components/loader/Loader.type';
 import styles from './Loader.module.scss';
 
 export const LoaderComponent = ({
@@ -14,7 +14,7 @@ export const LoaderComponent = ({
   useEffect(() => {
     if (count == 100) return;
 
-    const interval: number = setInterval(
+    const interval: NodeJS.Timeout = setInterval(
       () => setCount((count: number) => count + 1),
       duration / 200
     );

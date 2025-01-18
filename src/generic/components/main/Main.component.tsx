@@ -1,4 +1,4 @@
-import { Main } from './Main.type';
+import { Main } from '@/src/generic/components/main/Main.type';
 import styles from './Main.module.scss';
 
 export const MainComponent = ({ children }: Main) => {

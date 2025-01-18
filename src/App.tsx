@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import GamePage from './game/Game.page';
-import ExplorePage from './explore/Explore.page';
-import './App.scss';
+import GamePage from '@/src/game/Game.page';
+import ExplorePage from '@/src/explore/Explore.page';
+import '@/src/App.scss';
 
 function App() {
   return (

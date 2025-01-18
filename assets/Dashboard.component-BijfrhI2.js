@@ -1,0 +1,1 @@
+import{j as a}from"./index-CpbbO7Zd.js";const s="_dashboard_1a96f_1",r="_Appear_1a96f_1",o={dashboard:s,Appear:r};function t(){return a.jsx("article",{className:o.dashboard,children:"dashboard"})}export{t as default};

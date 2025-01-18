@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/src/generic/i18n/useLanguage';
 import { classNames } from '@/src/generic/utils/classNames';
-import { ButtonComponent } from '@/src/generic/components/button/Button.component';
-import { IconComponent } from '@/src/generic/components/icon/Icon.component';
+import { ButtonComponent } from '@/src/common/components/button/Button.component';
+import { IconComponent } from '@/src/common/components/icon/Icon.component';
 import styles from './Header.module.scss';
 
 export const HeaderComponent = () => {

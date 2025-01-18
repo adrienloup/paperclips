@@ -1,11 +1,11 @@
 import { initReactI18next } from 'react-i18next';
 import { translation } from '@/src/generic/utils/translation';
+import { CommonTranslation } from '@/src/common/Common.translation.ts';
 import { GameTranslation } from '@/src/game/Game.translation';
-import { GenericTranslation } from '@/src/generic/Generic.translation.ts';
 import i18n from 'i18next';
 
 i18n.use(initReactI18next).init({
-  resources: translation(GameTranslation, GenericTranslation),
+  resources: translation(CommonTranslation, GameTranslation),
   fallbackLng: 'en',
   interpolation: {
     escapeValue: false,

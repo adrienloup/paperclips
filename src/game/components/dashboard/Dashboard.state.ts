@@ -1,6 +1,6 @@
-import { Dashboard } from '@/src/game/components/dashboard/Dashboard.type';
+import { State } from '@/src/game/components/dashboard/Dashboard.type';
 
-export const initialState: Dashboard = {
+export const initialState: State = {
   clipTotal: 100000, // @TODO
   clipStock: 0,
   clipCost: 0.65,
@@ -45,3 +45,12 @@ export const initialState: Dashboard = {
     },
   },
 };
+
+/*
+import { State } from '@/src/game/components/dashboard/Dashboard.type.ts';
+
+export const initialState: State = {
+  clipStock: 0,
+};
+
+ */

@@ -10,6 +10,7 @@ export function LanguageProvider({ children }: { children: Children }) {
   const [language, setLanguage] = useLocalStorage<Language>('_language_3mma_0', 'en');
 
   useEffect(() => {
+    setLanguage(language);
     i18n.changeLanguage(language);
     document.documentElement.lang = i18n.language;
   }, [i18n, language]);

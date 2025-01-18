@@ -1,17 +1,17 @@
 import { useEffect, useReducer } from 'react';
 import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage';
 import { Children } from '@/src/generic/types/Children.type';
-import { Dashboard } from '@/src/game/components/dashboard/Dashboard.type';
+import { State } from '@/src/game/components/dashboard/Dashboard.type';
 import { DashboardContext, DashboardDispatchContext } from '@/src/game/components/dashboard/Dashboard.context';
 import { dashboardReducer } from '@/src/game/components/dashboard/Dashboard.reducer';
 import { initialState } from '@/src/game/components/dashboard/Dashboard.state';
 
 export function DashboardProvider({ children }: { children: Children }) {
-  const [localDashboard, setLocalDashboard] = useLocalStorage<Dashboard>('_dashboard_3mma_0', initialState);
-  const [dashboard, setDashboard] = useReducer(dashboardReducer, localDashboard);
+  const [local, setLocal] = useLocalStorage<State>('_dashboard_3mma_0', initialState);
+  const [dashboard, setDashboard] = useReducer(dashboardReducer, local);
 
   useEffect(() => {
-    setLocalDashboard(dashboard);
+    setLocal(dashboard);
   }, [dashboard]);
 
   return (

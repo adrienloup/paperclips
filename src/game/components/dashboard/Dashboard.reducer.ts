@@ -1,26 +1,6 @@
-import { Dashboard } from '@/src/game/components/dashboard/Dashboard.type';
+import { Action, State } from '@/src/game/components/dashboard/Dashboard.type';
 
-export type Action =
-  | { type: 'INCREASE' }
-  | { type: 'DECREASE' }
-  | { type: 'ADD_AUTOCLIPPER' }
-  | { type: 'PRODUCE_AUTOCLIPPER' }
-  | { type: 'BUY_WIRE' }
-  | { type: 'INCREASE_CLIP_COST' }
-  | { type: 'DECREASE_CLIP_COST' }
-  | { type: 'UPDATE_WIRE_COST' }
-  | { type: 'INCREASE_MARKETING' }
-  | { type: 'UPDATE_PRODUCTION_RATIO'; productionRatio: number }
-  | { type: 'UPDATE_WIRE_RATIO'; wireRatio: number }
-  | {
-      type: 'UPDATE_DISPLAY_FEATURE';
-      feature: string;
-      enabled: boolean;
-      disabled: boolean;
-      incurred: boolean;
-    };
-
-export const dashboardReducer = (state: Dashboard, action: Action): Dashboard => {
+export const dashboardReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'INCREASE':
       if (state.wireStock <= 0) return state;

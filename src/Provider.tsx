@@ -4,10 +4,7 @@ import { Children } from '@/src/generic/types/Children.type';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
 import { DashboardProvider } from '@/src/game/components/dashboard/Dashboard.provider';
 
-type ProvidersType = [
-  ComponentType<{ children: Children }>,
-  ComponentPropsWithoutRef<ElementType>?,
-][];
+type ProvidersType = [ComponentType<{ children: Children }>, ComponentPropsWithoutRef<ElementType>?][];
 
 const allProviders = (providers: ProvidersType) =>
   providers.reduce(

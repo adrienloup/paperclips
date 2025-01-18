@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
 import { NumberComponent } from '@/src/common/components/number/Number.component';
 import { ProjectsComponent } from '@/src/game/components/projects/Projects.component';
 import { ManufacturingComponent } from '@/src/game/components/manufacturing/Manufacturing.component';
 import { BusinessComponent } from '@/src/game/components/business/Business.component';
+import { TotalComponent } from '@/src/game/components/total/Total.component';
 import styles from './Dashboard.module.scss';
 
 function DashboardComponent() {
-  const { t } = useTranslation();
   const setDashboard = useDashboardDispatch();
   const dashboard = useDashboard();
 
@@ -80,7 +79,7 @@ function DashboardComponent() {
 
   return (
     <article className={styles.dashboard}>
-      {t('game.title')}
+      <TotalComponent dashboard={dashboard} />
       <p>
         total de Clips: <NumberComponent locale="en-US" number={dashboard.clipTotal} />
       </p>

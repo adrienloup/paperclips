@@ -1,8 +1,8 @@
 @mixin font {
-  --font-bold: 'Bold', sans-serif;
-  --font-medium: 'Medium', sans-serif;
-  --font-italic: 'Italic', sans-serif;
-  --font-symbol: 'Symbols', sans-serif;
+  --font-bold: 'Bold';
+  --font-medium: 'Medium';
+  --font-italic: 'Italic';
+  --font-symbol: 'Symbols';
 }
 
 @mixin color {

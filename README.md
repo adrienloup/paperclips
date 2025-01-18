@@ -1,6 +1,6 @@
 # Paperclips
 
-A React app inspired by Universal Paperclips, a game based on the idea of ​​artificial intelligence (AI) optimized for a single task.
+A React app inspired by Universal Paperclips, a game based on the idea of artificial intelligence (AI) optimized for a single task.
 
 [https://adrienloup.github.io/paperclips](https://adrienloup.github.io/paperclips)
 

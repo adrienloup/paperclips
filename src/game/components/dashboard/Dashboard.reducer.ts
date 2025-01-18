@@ -12,7 +12,13 @@ export type Action =
   | { type: 'INCREASE_MARKETING' }
   | { type: 'UPDATE_PRODUCTION_RATIO'; productionRatio: number }
   | { type: 'UPDATE_WIRE_RATIO'; wireRatio: number }
-  | { type: 'UPDATE_DISPLAY_FEATURE'; feature: string; enabled: boolean; disabled: boolean; incurred: boolean };
+  | {
+      type: 'UPDATE_DISPLAY_FEATURE';
+      feature: string;
+      enabled: boolean;
+      disabled: boolean;
+      incurred: boolean;
+    };
 
 export const dashboardReducer = (state: Dashboard, action: Action): Dashboard => {
   switch (action.type) {
@@ -33,8 +39,12 @@ export const dashboardReducer = (state: Dashboard, action: Action): Dashboard =>
           ...state,
           clipStock: decreasedStock,
           transitStock: decreasedStock > 0 ? decreasedStock : null, // Continue ou termine
-          funds: state.funds + (state.transitStock - decreasedStock) * state.clipCost + state.publicDemand * 0.001 + state.marketing * 0.001,
-          clipsPerSecond: state.autoClippers ? state.autoClippers : state.clipsPerSecond - 1,
+          funds:
+            state.funds +
+            (state.transitStock - decreasedStock) * state.clipCost +
+            state.publicDemand * 0.001 +
+            state.marketing * 0.001,
+          clipsPerSecond: state.autoClippers ? state.autoClippers : 0, // state.clipsPerSecond - 1
         };
       }
       return state;
@@ -43,7 +53,7 @@ export const dashboardReducer = (state: Dashboard, action: Action): Dashboard =>
       return {
         ...state,
         autoClippers: state.autoClippers + 1,
-        autoClippersCost: state.autoClippersCost * 2.5,
+        autoClippersCost: state.autoClippersCost * 2.2,
       };
     case 'PRODUCE_AUTOCLIPPER':
       if (state.wireStock < state.autoClippers) return state;
@@ -101,7 +111,14 @@ export const dashboardReducer = (state: Dashboard, action: Action): Dashboard =>
     case 'UPDATE_DISPLAY_FEATURE':
       return {
         ...state,
-        feature: { ...state.feature, [action.feature]: { enabled: action.enabled, disabled: action.disabled, incurred: action.incurred } },
+        feature: {
+          ...state.feature,
+          [action.feature]: {
+            enabled: action.enabled,
+            disabled: action.disabled,
+            incurred: action.incurred,
+          },
+        },
       };
     default:
       return state;

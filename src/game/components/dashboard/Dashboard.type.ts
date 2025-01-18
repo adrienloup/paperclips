@@ -16,11 +16,6 @@ export interface Dashboard {
   clipsPerSecond: number;
   trust: number;
   feature: {
-    autoClippers: {
-      enabled: boolean;
-      disabled: boolean;
-      incurred: boolean;
-    };
     marketing: {
       enabled: boolean;
       disabled: boolean;

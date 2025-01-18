@@ -7,7 +7,10 @@ import { initialState } from './Dashboard.state';
 import { dashboardReducer } from './Dashboard.reducer';
 
 export function DashboardProvider({ children }: { children: Children }) {
-  const [localDashboard, setLocalDashboard] = useLocalStorage<Dashboard>('_dashboard_3mma_0', initialState);
+  const [localDashboard, setLocalDashboard] = useLocalStorage<Dashboard>(
+    '_dashboard_3mma_0',
+    initialState
+  );
   const [dashboard, setDashboard] = useReducer(dashboardReducer, localDashboard);
 
   useEffect(() => {
@@ -16,7 +19,9 @@ export function DashboardProvider({ children }: { children: Children }) {
 
   return (
     <DashboardContext.Provider value={dashboard}>
-      <DashboardDispatchContext.Provider value={setDashboard}>{children}</DashboardDispatchContext.Provider>
+      <DashboardDispatchContext.Provider value={setDashboard}>
+        {children}
+      </DashboardDispatchContext.Provider>
     </DashboardContext.Provider>
   );
 }

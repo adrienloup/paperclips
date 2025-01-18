@@ -3,8 +3,7 @@
   align-items: center;
   position: relative;
   padding: var(--spacing-s);
-  border: 0.25rem solid var(--color-neutral-4);
-  border-radius: 0.25rem;
+  border: 0.25rem solid var(--color-neutral-6);
 
   &::after {
     content: '';
@@ -18,7 +17,7 @@
 
   &::after {
     width: 0;
-    animation: Progress calc(var(--loader-duration) - 0.2s) linear forwards;
+    animation: Progress calc(var(--duration) - 200ms) linear forwards;
   }
 }
 
@@ -38,7 +37,7 @@
 }
 
 .medium {
-  width: 200px;
+  width: 160px;
   height: 60px;
 
   .label {

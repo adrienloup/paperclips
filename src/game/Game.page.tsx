@@ -11,7 +11,7 @@ const DashboardComponent = lazy(() =>
 function GamePage() {
   return (
     <PageComponent>
-      {/*<Suspense
+      <Suspense
         fallback={
           <LoaderComponent
             className={styles.loader}
@@ -21,8 +21,7 @@ function GamePage() {
         }
       >
         <DashboardComponent />
-      </Suspense>*/}
-      <LoaderComponent className={styles.loader} aria-label="@TODO: Chargement..." duration={1e3} />
+      </Suspense>
     </PageComponent>
   );
 }

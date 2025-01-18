@@ -1,6 +1,5 @@
 import { createContext, Dispatch } from 'react';
-import { State } from '@/src/game/components/dashboard/Dashboard.type';
-import { Action } from '@/src/game/components/dashboard/Dashboard.reducer';
+import { Action, State } from '@/src/game/components/dashboard/Dashboard.type';
 import { initialState } from '@/src/game/components/dashboard/Dashboard.state';
 
 export const DashboardContext = createContext<State>(initialState);

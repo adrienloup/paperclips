@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/src/generic/i18n/useLanguage';
+import { useTheme } from '@/src/generic/theme/useTheme';
 import { classNames } from '@/src/generic/utils/classNames';
 import { ButtonComponent } from '@/src/common/components/button/Button.component';
 import { IconComponent } from '@/src/common/components/icon/Icon.component';
@@ -9,6 +10,7 @@ import styles from './Header.module.scss';
 export const HeaderComponent = () => {
   const { t } = useTranslation();
   const { setLanguage } = useLanguage();
+  const { setTheme } = useTheme();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -26,6 +28,10 @@ export const HeaderComponent = () => {
           header
           <button onClick={() => setLanguage('en')}>EN</button>
           <button onClick={() => setLanguage('fr')}>FR</button>
+          <br />
+          <button onClick={() => setTheme('dark')}>dark</button>
+          <button onClick={() => setTheme('light')}>light</button>
+          <button onClick={() => setTheme('system')}>system</button>
         </div>
       </div>
       <ButtonComponent

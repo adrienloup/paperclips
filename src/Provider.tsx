@@ -1,7 +1,8 @@
 import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent } from 'react';
 
 import { Children } from '@/src/generic/types/Children.type';
-import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
+import { LanguageProvider } from '@/src/generic/i18n/Language.provider';
+import { ThemeProvider } from '@/src/generic/theme/Theme.provider';
 import { DashboardProvider } from '@/src/game/components/dashboard/Dashboard.provider';
 
 type ProvidersType = [ComponentType<{ children: Children }>, ComponentPropsWithoutRef<ElementType>?][];
@@ -19,5 +20,6 @@ const allProviders = (providers: ProvidersType) =>
 
 export const Provider: FunctionComponent<{ children: Children }> = allProviders([
   [LanguageProvider],
+  [ThemeProvider],
   [DashboardProvider],
 ]);

@@ -2,8 +2,9 @@ import { Action, State } from '@/src/game/components/dashboard/Dashboard.type';
 
 export const dashboardReducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'INCREASE':
-      if (state.wireStock <= 0) return state;
+    case 'ADD_CLIP':
+      // console.log('ADD_CLIP');
+      if (state.wireStock < 1) return state;
       return {
         ...state,
         clipTotal: state.clipTotal + 1,
@@ -12,19 +13,20 @@ export const dashboardReducer = (state: State, action: Action): State => {
         wireStock: state.wireStock - 1,
         clipsPerSecond: state.clipsPerSecond + 1,
       };
-    case 'DECREASE':
-      if (state.transitStock !== null && state.transitStock > 0) {
-        const decreasedStock = Math.floor(state.transitStock * (1 - state.productionBonus));
+    case 'DECREASE_CLIP_STOCK':
+      // console.log('DECREASE_CLIP_STOCK');
+      //if (state.transitStock !== null && state.transitStock > 0) {
+      if (state.transitStock > 0) {
+        const decrease = Math.floor(state.transitStock * (1 - state.productionBonus));
         return {
           ...state,
-          clipStock: decreasedStock,
-          transitStock: decreasedStock > 0 ? decreasedStock : null, // Continue ou termine
+          clipStock: decrease,
+          transitStock: decrease > 0 ? decrease : 0,
           funds:
             state.funds +
-            (state.transitStock - decreasedStock) * state.clipCost +
+            (state.transitStock - decrease) * state.clipCost +
             state.publicDemand * 0.001 +
             state.marketing * 0.001,
-          clipsPerSecond: state.autoClippers ? state.autoClippers : 0, // state.clipsPerSecond - 1
         };
       }
       return state;
@@ -36,6 +38,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
         autoClippersCost: state.autoClippersCost * 2.2,
       };
     case 'PRODUCE_AUTOCLIPPER':
+      // console.log('PRODUCE_AUTOCLIPPER');
       if (state.wireStock < state.autoClippers) return state;
       return {
         ...state,
@@ -43,13 +46,12 @@ export const dashboardReducer = (state: State, action: Action): State => {
         clipStock: state.clipStock + state.autoClippers,
         transitStock: state.clipStock + state.autoClippers,
         wireStock: state.wireStock - state.autoClippers,
-        clipsPerSecond: state.autoClippers,
       };
-    case 'BUY_WIRE':
+    case 'ADD_WIRE':
       if (state.funds < state.wireCost) return state;
       return {
         ...state,
-        wireStock: state.wireStock + Math.round(state.wireBonus * 1e4), // @TODO 1000
+        wireStock: state.wireStock + Math.round(state.wireBonus * 1e4),
         funds: state.funds - state.wireCost,
       };
     case 'INCREASE_CLIP_COST':
@@ -67,26 +69,26 @@ export const dashboardReducer = (state: State, action: Action): State => {
     case 'UPDATE_WIRE_COST':
       return {
         ...state,
-        wireCost: state.wireCost > 8 ? state.wireCost - 0.02 : Math.random() * (24 - 12) + 12, // @TODO: wireCostBonus
+        wireCost: state.wireCost > 8 ? state.wireCost - 0.02 : Math.random() * (20 - 12) + 12, // @TODO: wireCostBonus
       };
-    case 'INCREASE_MARKETING':
-      if (state.marketing == 10) return state;
+    case 'UPDATE_MARKETING':
+      if (state.marketing >= 10) return state;
       return {
         ...state,
         marketing: state.marketing + 1,
         marketingCost: state.marketingCost + 100,
       };
-    case 'UPDATE_PRODUCTION_RATIO':
+    case 'UPDATE_PRODUCTION_BONUS':
       // console.log('productionRatio', action.productionRatio);
       // console.log('productionRatio limit', Math.min(1, Math.max(0, action.productionRatio)));
       return {
         ...state,
-        productionBonus: Math.min(1, Math.max(0, action.productionRatio)),
+        productionBonus: Math.min(1, Math.max(0, action.ratio)),
       };
-    case 'UPDATE_WIRE_RATIO':
+    case 'UPDATE_WIRE_BONUS':
       return {
         ...state,
-        wireBonus: Math.min(1, Math.max(0, action.wireRatio)),
+        wireBonus: Math.min(1, Math.max(0, action.ratio)),
       };
     case 'UPDATE_DISPLAY_FEATURE':
       return {
@@ -99,6 +101,21 @@ export const dashboardReducer = (state: State, action: Action): State => {
             incurred: action.incurred,
           },
         },
+      };
+    case 'UPDATE_PER_SECOND':
+      // console.log('UPDATE_PER_SECOND');
+      const clipsPerSecond =
+        state.autoClippers > 0 && state.autoClippers <= state.wireStock ? state.autoClippers : 0;
+      // console.log(clipsPerSecond);
+      return {
+        ...state,
+        clipsPerSecond: clipsPerSecond,
+      };
+    case 'LOAD_STATE':
+      return {
+        ...state,
+        clipTotal: 100000,
+        funds: 100000,
       };
     default:
       return state;

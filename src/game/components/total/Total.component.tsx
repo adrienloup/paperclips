@@ -10,7 +10,7 @@ export const TotalComponent = ({ dashboard }: Total) => {
   return (
     <h1 className={styles.total}>
       <IconComponent icon="attach_file" arial-label={t('game.title')} />
-      <NumberComponent locale="en-US" number={dashboard.clipTotal} />
+      <NumberComponent number={dashboard.clipTotal} />
     </h1>
   );
 };

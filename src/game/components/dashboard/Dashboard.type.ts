@@ -1,28 +1,31 @@
 export type Action =
-  | { type: 'INCREASE' }
-  | { type: 'DECREASE' }
+  | { type: 'UPDATE_PER_SECOND' }
+  | { type: 'DECREASE_CLIP_STOCK' }
+  | { type: 'ADD_CLIP' }
+  | { type: 'ADD_WIRE' }
   | { type: 'ADD_AUTOCLIPPER' }
   | { type: 'PRODUCE_AUTOCLIPPER' }
-  | { type: 'BUY_WIRE' }
   | { type: 'INCREASE_CLIP_COST' }
   | { type: 'DECREASE_CLIP_COST' }
   | { type: 'UPDATE_WIRE_COST' }
-  | { type: 'INCREASE_MARKETING' }
-  | { type: 'UPDATE_PRODUCTION_RATIO'; productionRatio: number }
-  | { type: 'UPDATE_WIRE_RATIO'; wireRatio: number }
+  | { type: 'UPDATE_MARKETING' }
+  | { type: 'UPDATE_PRODUCTION_BONUS'; ratio: number }
+  | { type: 'UPDATE_WIRE_BONUS'; ratio: number }
   | {
       type: 'UPDATE_DISPLAY_FEATURE';
       feature: string;
       enabled: boolean;
       disabled: boolean;
       incurred: boolean;
-    };
+    }
+  | { type: 'LOAD_STATE' };
 
 export interface State {
   clipTotal: number;
   clipStock: number;
   clipCost: number;
-  transitStock: number | null;
+  transitStock: number;
+  //transitStock: number | null;
   autoClippers: number;
   autoClippersCost: number;
   productionBonus: number;

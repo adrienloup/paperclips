@@ -31,7 +31,7 @@ export const ProjectsComponent = () => {
       disabled: true,
       incurred: false,
     });
-    setDashboard({ type: 'UPDATE_PRODUCTION_RATIO', productionRatio: 0.25 });
+    setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', ratio: 0.25 });
   };
 
   const onAnimationEndRevTracker = () => {

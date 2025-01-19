@@ -13,17 +13,18 @@ function DashboardComponent() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (dashboard.autoClippers > 0) {
+      if (dashboard.autoClippers > 0 && dashboard.autoClippers <= dashboard.wireStock) {
         setDashboard({ type: 'PRODUCE_AUTOCLIPPER' });
       }
     }, 1e3);
     return () => clearInterval(interval);
-  }, [dashboard.autoClippers]);
+  }, [dashboard.autoClippers, dashboard.wireStock]);
 
   useEffect(() => {
-    if (dashboard.transitStock !== null) {
+    //if (dashboard.transitStock !== null) {
+    if (dashboard.transitStock > 0) {
       const timer = setTimeout(() => {
-        setDashboard({ type: 'DECREASE' });
+        setDashboard({ type: 'DECREASE_CLIP_STOCK' });
       }, 5e2);
       return () => clearTimeout(timer);
     }
@@ -31,12 +32,17 @@ function DashboardComponent() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (dashboard.wireCost > 0) {
-        setDashboard({ type: 'UPDATE_WIRE_COST' });
-      }
+      setDashboard({ type: 'UPDATE_WIRE_COST' });
     }, 10e3);
     return () => clearInterval(interval);
   }, [dashboard.wireCost]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDashboard({ type: 'UPDATE_PER_SECOND' });
+    }, 2e3);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (!dashboard.feature.marketing.enabled && dashboard.clipTotal >= 200) {
@@ -80,22 +86,17 @@ function DashboardComponent() {
   return (
     <article className={styles.dashboard}>
       <TotalComponent dashboard={dashboard} />
-      <p>
-        total de Clips: <NumberComponent locale="en-US" number={dashboard.clipTotal} />
-      </p>
-      <p>
-        Clips par Seconde: <NumberComponent locale="en-US" number={dashboard.clipsPerSecond} />
-      </p>
       <ManufacturingComponent
         dashboard={dashboard}
-        makeClip={() => setDashboard({ type: 'INCREASE' })}
+        makeClip={() => setDashboard({ type: 'ADD_CLIP' })}
         buyAutoClippers={() => setDashboard({ type: 'ADD_AUTOCLIPPER' })}
-        buyWire={() => setDashboard({ type: 'BUY_WIRE' })}
+        buyWire={() => setDashboard({ type: 'ADD_WIRE' })}
       />
+      <br />
+      <br /> <br /> <br />
       <BusinessComponent dashboard={dashboard} />
       <br />
       <br />
-
       <br />
       <p>
         Stock de Clips: {dashboard.clipStock}
@@ -103,27 +104,23 @@ function DashboardComponent() {
         dashboard.feature.improvedProduction.disabled ? (
           <>
             (+
-            <NumberComponent
-              locale={'en-US'}
-              number={Math.round(dashboard.productionBonus * 100)}
-            />
+            <NumberComponent number={Math.round(dashboard.productionBonus * 100)} />
             %)
           </>
         ) : null}
       </p>
       <p>
-        Clip cost: <NumberComponent locale="en-US" number={dashboard.clipCost} style="currency" />
+        Clip cost: <NumberComponent number={dashboard.clipCost} style="currency" />
       </p>
       <button onClick={() => setDashboard({ type: 'INCREASE_CLIP_COST' })}>💰 Augmenter</button>
       <button onClick={() => setDashboard({ type: 'DECREASE_CLIP_COST' })}>💸 Diminuer</button>
       <p>publicDemand {dashboard.publicDemand}%</p>
       <br />
       <br />
-
       {dashboard.feature.marketing.enabled && !dashboard.feature.marketing.disabled ? (
         <>
           <button
-            onClick={() => setDashboard({ type: 'INCREASE_MARKETING' })}
+            onClick={() => setDashboard({ type: 'UPDATE_MARKETING' })}
             disabled={dashboard.funds < dashboard.marketingCost || dashboard.marketing == 10}
           >
             marketing
@@ -150,46 +147,29 @@ function DashboardComponent() {
         </>
       ) : null}
       <br />
+      <button onClick={() => setDashboard({ type: 'LOAD_STATE' })}>restart</button>
       <p>Bonus de production: {Math.round(dashboard.productionBonus * 100)}%</p>
-      <button
-        onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_RATIO', productionRatio: 0.1 })}
-      >
+      <button onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', ratio: 0.1 })}>
         10%
       </button>
-      <button
-        onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_RATIO', productionRatio: 0.25 })}
-      >
+      <button onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', ratio: 0.25 })}>
         25%
       </button>
-      <button
-        onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_RATIO', productionRatio: 0.5 })}
-      >
+      <button onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', ratio: 0.5 })}>
         50%
       </button>
-      <button
-        onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_RATIO', productionRatio: 0.75 })}
-      >
+      <button onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', ratio: 0.75 })}>
         75%
       </button>
-      <button onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_RATIO', productionRatio: 1 })}>
+      <button onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', ratio: 1 })}>
         100%
       </button>
       <p>Bonus de d'achats de fil: {Math.round(dashboard.wireBonus * 100)}%</p>
-      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_RATIO', wireRatio: 0.1 })}>
-        10%
-      </button>
-      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_RATIO', wireRatio: 0.25 })}>
-        25%
-      </button>
-      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_RATIO', wireRatio: 0.5 })}>
-        50%
-      </button>
-      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_RATIO', wireRatio: 0.75 })}>
-        75%
-      </button>
-      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_RATIO', wireRatio: 1 })}>
-        100%
-      </button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', ratio: 0.1 })}>10%</button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', ratio: 0.25 })}>25%</button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', ratio: 0.5 })}>50%</button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', ratio: 0.75 })}>75%</button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', ratio: 1 })}>100%</button>
     </article>
   );
 }

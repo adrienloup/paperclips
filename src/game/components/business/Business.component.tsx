@@ -11,7 +11,6 @@ export const BusinessComponent = ({ dashboard }: Business) => {
         <p>
           Argent par Seconde:{' '}
           <NumberComponent
-            locale="en-US"
             number={
               dashboard.clipsPerSecond *
               (dashboard.clipCost + dashboard.publicDemand * 0.001 + dashboard.marketing * 0.01)
@@ -19,27 +18,17 @@ export const BusinessComponent = ({ dashboard }: Business) => {
             style="currency"
           />
           (+
-          <NumberComponent
-            locale="en-US"
-            number={dashboard.publicDemand * 0.001}
-            notation="compact"
-          />
-          )
+          <NumberComponent number={dashboard.publicDemand * 0.001} notation="compact" />)
           {dashboard.feature.marketing.enabled && !dashboard.feature.marketing.disabled ? (
             <>
               (+
-              <NumberComponent
-                locale="en-US"
-                number={dashboard.marketing * 0.01}
-                notation="compact"
-              />
-              )
+              <NumberComponent number={dashboard.marketing * 0.01} notation="compact" />)
             </>
           ) : null}
         </p>
       ) : null}
       <p>
-        Fonds: <NumberComponent locale="en-US" number={dashboard.funds} style="currency" />
+        Fonds: <NumberComponent number={dashboard.funds} style="currency" />
       </p>
     </CardComponent>
   );

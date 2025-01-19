@@ -1,4 +1,4 @@
-import { Children } from '../../../generic/types/Children.type';
+import { Children } from '@/src/generic/types/Children.type';
 
 export interface Card {
   children: Children;

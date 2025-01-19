@@ -1,4 +1,4 @@
-import { Children } from '../../types/Children.type';
+import { Children } from '@/src/generic/types/Children.type';
 
 export interface Page {
   children: Children;

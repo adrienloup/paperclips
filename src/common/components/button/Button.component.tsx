@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { classNames } from '@/src/generic/utils/classNames';
 import { Button } from '@/src/common/components/button/Button.type';
-import styles from './Button.module.scss';
+import styles from '@/src/common/components/button/Button.module.scss';
 
 export const ButtonComponent = ({
   children,
@@ -9,6 +9,7 @@ export const ButtonComponent = ({
   to,
   className,
   innerRef,
+  disabled,
   onClick,
   ...props
 }: Button<HTMLButtonElement & HTMLAnchorElement>) => {
@@ -34,6 +35,7 @@ export const ButtonComponent = ({
     <button
       type="button"
       ref={innerRef}
+      disabled={disabled}
       onClick={onClick}
       className={classNames([styles.button, className])}
       {...props}

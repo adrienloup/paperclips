@@ -1,5 +1,5 @@
 import { version } from '@/package.json';
-import styles from './Footer.module.scss';
+import styles from '@/src/common/components/footer/Footer.module.scss';
 
 export const FooterComponent = () => {
   return (

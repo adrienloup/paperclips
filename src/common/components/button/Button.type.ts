@@ -6,5 +6,6 @@ export interface Button<T> extends ButtonAttributes<T> {
   href?: string;
   to?: string;
   innerRef?: RefObject<HTMLButtonElement>;
+  disabled?: boolean;
   onClick?: () => void;
 }

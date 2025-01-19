@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { classNames } from '@/src/generic/utils/classNames';
 import { Loader } from '@/src/common/components/loader/Loader.type';
-import styles from './Loader.module.scss';
+import styles from '@/src/common/components/loader/Loader.module.scss';
 
 export const LoaderComponent = ({
   className,

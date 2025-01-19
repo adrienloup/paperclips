@@ -1,6 +1,6 @@
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
 import { ProjectComponent } from '@/src/game/components/projects/Project.component';
-import styles from './Projects.module.scss';
+import styles from '@/src/game/components/projects/Projects.module.scss';
 
 export const ProjectsComponent = () => {
   const setDashboard = useDashboardDispatch();

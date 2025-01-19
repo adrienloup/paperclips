@@ -5,7 +5,7 @@ import { ProjectsComponent } from '@/src/game/components/projects/Projects.compo
 import { ManufacturingComponent } from '@/src/game/components/manufacturing/Manufacturing.component';
 import { BusinessComponent } from '@/src/game/components/business/Business.component';
 import { TotalComponent } from '@/src/game/components/total/Total.component';
-import styles from './Dashboard.module.scss';
+import styles from '@/src/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
   const setDashboard = useDashboardDispatch();
@@ -40,7 +40,7 @@ function DashboardComponent() {
   useEffect(() => {
     const interval = setInterval(() => {
       setDashboard({ type: 'UPDATE_PER_SECOND' });
-    }, 2e3);
+    }, 1e3);
     return () => clearInterval(interval);
   }, []);
 
@@ -100,8 +100,15 @@ function DashboardComponent() {
       <br />
       <p>
         Stock de Clips: {dashboard.clipStock}
-        {dashboard.feature.improvedProduction.enabled &&
-        dashboard.feature.improvedProduction.disabled ? (
+        {/*{dashboard.feature.improvedProduction.enabled &&*/}
+        {/*dashboard.feature.improvedProduction.disabled ? (*/}
+        {/*  <>*/}
+        {/*    (+*/}
+        {/*    <NumberComponent number={Math.round(dashboard.productionBonus * 100)} />*/}
+        {/*    %)*/}
+        {/*  </>*/}
+        {/*) : null}*/}
+        {dashboard.productionBonus > 0.1 ? (
           <>
             (+
             <NumberComponent number={Math.round(dashboard.productionBonus * 100)} />

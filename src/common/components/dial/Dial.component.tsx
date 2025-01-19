@@ -1,5 +1,5 @@
 import { Dial } from '@/src/common/components/dial/Dial.type';
-import styles from './Dial.module.scss';
+import styles from '@/src/common/components/dial/Dial.module.scss';
 
 export const DialComponent = ({ value, label }: Dial) => {
   return (

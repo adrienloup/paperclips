@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Total } from '@/src/game/components/total/Total.type';
 import { NumberComponent } from '@/src/common/components/number/Number.component';
-import styles from './Total.module.scss';
-import { IconComponent } from '@/src/common/components/icon/Icon.component.tsx';
+import { IconComponent } from '@/src/common/components/icon/Icon.component';
+import styles from '@/src/game/components/total/Total.module.scss';
 
 export const TotalComponent = ({ dashboard }: Total) => {
   const { t } = useTranslation();

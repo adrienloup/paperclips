@@ -5,7 +5,7 @@ import { useTheme } from '@/src/generic/theme/useTheme';
 import { classNames } from '@/src/generic/utils/classNames';
 import { ButtonComponent } from '@/src/common/components/button/Button.component';
 import { IconComponent } from '@/src/common/components/icon/Icon.component';
-import styles from './Header.module.scss';
+import styles from '@/src/common/components/header/Header.module.scss';
 
 export const HeaderComponent = () => {
   const { t } = useTranslation();
@@ -36,7 +36,7 @@ export const HeaderComponent = () => {
       </div>
       <ButtonComponent
         className={styles.button}
-        aria-label={open ? t('generic.settings.close') : t('generic.settings.open')}
+        aria-label={open ? t('common.settings.close') : t('common.settings.open')}
         onClick={() => setOpen(!open)}
       >
         <IconComponent icon={open ? 'arrow_menu_open' : 'arrow_menu_close'} />

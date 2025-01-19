@@ -1,5 +1,5 @@
 import { Main } from '@/src/common/components/main/Main.type';
-import styles from './Main.module.scss';
+import styles from '@/src/common/components/main/Main.module.scss';
 
 export const MainComponent = ({ children }: Main) => {
   return (

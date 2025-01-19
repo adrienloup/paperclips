@@ -1,1 +1,0 @@
-import{u as s,j as o}from"./index-D4bEFHHX.js";const r="_dashboard_1a96f_1",t="_Appear_1a96f_1",e={dashboard:r,Appear:t};function n(){const{t:a}=s();return o.jsxs("article",{className:e.dashboard,children:["dashboard ",a("game.title")]})}export{n as default};

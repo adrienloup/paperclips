@@ -45,6 +45,10 @@ export interface State {
       enabled: boolean;
       incurred: boolean;
     };
+    business: {
+      enabled: boolean;
+      incurred: boolean;
+    };
     computationalResources: {
       enabled: boolean;
       incurred: boolean;

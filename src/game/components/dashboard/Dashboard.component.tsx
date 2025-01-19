@@ -43,7 +43,7 @@ function DashboardComponent() {
     if (
       !dashboard.feature.autoClippers.enabled &&
       dashboard.clipTotal >= 100 &&
-      dashboard.clipTotal <= 10000
+      dashboard.clipTotal < 10000
     ) {
       setDashboard({
         type: 'UPDATE_DISPLAY_FEATURE',
@@ -60,7 +60,15 @@ function DashboardComponent() {
         incurred: false,
       });
     }
-    if (!dashboard.feature.computationalResources.enabled && dashboard.clipTotal >= 1000) {
+    if (!dashboard.feature.business.enabled && dashboard.clipTotal >= 1000) {
+      setDashboard({
+        type: 'UPDATE_DISPLAY_FEATURE',
+        feature: 'business',
+        enabled: true,
+        incurred: false,
+      });
+    }
+    if (!dashboard.feature.computationalResources.enabled && dashboard.clipTotal >= 2000) {
       setDashboard({
         type: 'UPDATE_DISPLAY_FEATURE',
         feature: 'computationalResources',
@@ -68,7 +76,7 @@ function DashboardComponent() {
         incurred: false,
       });
     }
-    if (!dashboard.feature.projects.enabled && dashboard.clipTotal >= 1000) {
+    if (!dashboard.feature.projects.enabled && dashboard.clipTotal >= 2000) {
       setDashboard({
         type: 'UPDATE_DISPLAY_FEATURE',
         feature: 'projects',
@@ -85,6 +93,31 @@ function DashboardComponent() {
     return () => clearInterval(interval);
   }, []);
 
+  const onRevTrackerClick = () => {
+    setDashboard({
+      type: 'UPDATE_DISPLAY_FEATURE',
+      feature: 'revTracker',
+      enabled: false,
+      incurred: false,
+    });
+    setDashboard({
+      type: 'UPDATE_DISPLAY_FEATURE',
+      feature: 'autoAverage',
+      enabled: true,
+      incurred: false,
+    });
+  };
+
+  const onImprovedProductionClick = () => {
+    setDashboard({
+      type: 'UPDATE_DISPLAY_FEATURE',
+      feature: 'improvedProduction',
+      enabled: true,
+      incurred: false,
+    });
+    setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', ratio: 0.25 });
+  };
+
   return (
     <article className={styles.dashboard}>
       <TotalComponent dashboard={dashboard} />
@@ -95,18 +128,42 @@ function DashboardComponent() {
           buyAutoClippers={() => setDashboard({ type: 'ADD_AUTOCLIPPER' })}
           buyWire={() => setDashboard({ type: 'ADD_WIRE' })}
         />
-        <BusinessComponent
-          dashboard={dashboard}
-          decreaseClipCost={() => setDashboard({ type: 'DECREASE_CLIP_COST' })}
-          increaseClipCost={() => setDashboard({ type: 'INCREASE_CLIP_COST' })}
-          updateMarketing={() => setDashboard({ type: 'UPDATE_MARKETING' })}
-        />
+        {dashboard.feature.business.enabled ? (
+          <BusinessComponent
+            dashboard={dashboard}
+            decreaseClipCost={() => setDashboard({ type: 'DECREASE_CLIP_COST' })}
+            increaseClipCost={() => setDashboard({ type: 'INCREASE_CLIP_COST' })}
+            updateMarketing={() => setDashboard({ type: 'UPDATE_MARKETING' })}
+          />
+        ) : null}
         {dashboard.feature.computationalResources.enabled || dashboard.feature.projects.enabled ? (
           <CardsGroupComponent>
             {dashboard.feature.computationalResources.enabled ? (
               <ComputationalComponent dashboard={dashboard} />
             ) : null}
-            {dashboard.feature.projects.enabled ? <ProjectsComponent /> : null}
+            {dashboard.feature.projects.enabled ? (
+              <ProjectsComponent
+                dashboard={dashboard}
+                onRevTrackerClick={onRevTrackerClick}
+                onImprovedProductionClick={onImprovedProductionClick}
+                onRevTrackerAnimationEnd={() =>
+                  setDashboard({
+                    type: 'UPDATE_DISPLAY_FEATURE',
+                    feature: 'revTracker',
+                    enabled: true,
+                    incurred: false,
+                  })
+                }
+                onImprovedProductionAnimationEnd={() =>
+                  setDashboard({
+                    type: 'UPDATE_DISPLAY_FEATURE',
+                    feature: 'improvedProduction',
+                    enabled: true,
+                    incurred: false,
+                  })
+                }
+              />
+            ) : null}
           </CardsGroupComponent>
         ) : null}
       </CardsComponent>

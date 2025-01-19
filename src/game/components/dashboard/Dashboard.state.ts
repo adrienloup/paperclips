@@ -26,6 +26,10 @@ export const initialState: State = {
       enabled: false,
       incurred: false,
     },
+    business: {
+      enabled: false,
+      incurred: false,
+    },
     computationalResources: {
       enabled: false,
       incurred: false,

@@ -3,7 +3,6 @@ import { Action, State } from '@/src/game/components/dashboard/Dashboard.type';
 export const dashboardReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'ADD_CLIP':
-      // console.log('ADD_CLIP');
       if (state.wireStock < 1) return state;
       return {
         ...state,
@@ -36,7 +35,6 @@ export const dashboardReducer = (state: State, action: Action): State => {
         autoClippersCost: state.autoClippersCost * (Math.random() * (2.25 - 1.25) + 1.25),
       };
     case 'PRODUCE_AUTOCLIPPER':
-      // console.log('PRODUCE_AUTOCLIPPER');
       if (state.wireStock < state.autoClippers) return state;
       return {
         ...state,
@@ -78,8 +76,6 @@ export const dashboardReducer = (state: State, action: Action): State => {
         marketingCost: state.marketingCost + 100,
       };
     case 'UPDATE_PRODUCTION_BONUS':
-      // console.log('productionRatio', action.productionRatio);
-      // console.log('productionRatio limit', Math.min(1, Math.max(0, action.productionRatio)));
       return {
         ...state,
         productionBonus: Math.min(1, Math.max(0, action.ratio)),
@@ -101,7 +97,6 @@ export const dashboardReducer = (state: State, action: Action): State => {
         },
       };
     case 'UPDATE_PER_SECOND':
-      // console.log('UPDATE_PER_SECOND');
       const clipsPerSecond =
         state.autoClippers > 0 && state.autoClippers <= state.wireStock ? state.autoClippers : 0;
       return {
@@ -111,7 +106,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
     case 'LOAD_STATE':
       return {
         ...state,
-        clipTotal: 10000000,
+        clipTotal: 9999,
         funds: 10000000,
         wireCost: 20,
       };

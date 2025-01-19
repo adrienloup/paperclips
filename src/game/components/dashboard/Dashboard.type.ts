@@ -10,7 +10,7 @@ export type Action =
   | { type: 'UPDATE_WIRE_COST' }
   | { type: 'UPDATE_MARKETING' }
   | { type: 'UPDATE_PRODUCTION_BONUS'; ratio: number }
-  | { type: 'UPDATE_WIRE_BONUS'; ratio: number }
+  | { type: 'UPDATE_WIRE_STOCK_BONUS'; ratio: number }
   | {
       type: 'UPDATE_DISPLAY_FEATURE';
       feature: string;

@@ -11,7 +11,7 @@
   --color-neutral-3: #8d8d8d;
   --color-neutral-4: #28292a;
   --color-neutral-5: #202124;
-  --color-neutral-6: #171717;
+  --color-neutral-6: #000; // 171717
   --color-solid-1: #62ff00;
   --color-solid-2: #ff0;
   --color-solid-3: #ff8c00;
@@ -20,7 +20,7 @@
 
 @mixin size {
   --font-size-l: 4rem; // 64px
-  --font-size-m: 1.5rem; // 24px
+  --font-size-m: 2rem; // 32px
   --font-size-s: 1rem; // 16px
 }
 

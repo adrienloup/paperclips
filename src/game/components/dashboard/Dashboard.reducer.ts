@@ -52,6 +52,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
       return {
         ...state,
         wireStock: state.wireStock + Math.round(state.wireBonus * 1e4),
+        wireCost: state.wireCost + (Math.random() * (2.5 - 1) + 1), // @TODO: update wire cost bonus
         funds: state.funds - state.wireCost,
       };
     case 'INCREASE_CLIP_COST':
@@ -69,7 +70,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
     case 'UPDATE_WIRE_COST':
       return {
         ...state,
-        wireCost: state.wireCost > 8 ? state.wireCost - 0.02 : Math.random() * (20 - 12) + 12, // @TODO: wireCostBonus
+        wireCost: state.wireCost > 8 ? state.wireCost - 0.25 : Math.random() * (20 - 10) + 10, // @TODO: update wire cost bonus
       };
     case 'UPDATE_MARKETING':
       if (state.marketing >= 10) return state;
@@ -85,7 +86,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
         ...state,
         productionBonus: Math.min(1, Math.max(0, action.ratio)),
       };
-    case 'UPDATE_WIRE_BONUS':
+    case 'UPDATE_WIRE_STOCK_BONUS':
       return {
         ...state,
         wireBonus: Math.min(1, Math.max(0, action.ratio)),
@@ -116,6 +117,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
         ...state,
         clipTotal: 100000,
         funds: 100000,
+        wireCost: 20,
       };
     default:
       return state;

@@ -1,4 +1,6 @@
+import { ReactNode } from 'react';
+
 export interface Dial {
-  value: string | number;
+  value: ReactNode;
   label?: string;
 }

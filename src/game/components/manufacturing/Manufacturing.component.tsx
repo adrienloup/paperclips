@@ -1,7 +1,9 @@
 import { Manufacturing } from '@/src/game/components/manufacturing/Manufacturing.type';
 import { CardComponent } from '@/src/common/components/card/Card.component';
 import { NumberComponent } from '@/src/common/components/number/Number.component';
-import styles from './Manufacturing.module.scss';
+import { DialComponent } from '@/src/common/components/dial/Dial.component.tsx';
+import { IconComponent } from '@/src/common/components/icon/Icon.component.tsx';
+import { TitleComponent } from '@/src/common/components/title/Title.tsx';
 
 export const ManufacturingComponent = ({
   dashboard,
@@ -11,11 +13,16 @@ export const ManufacturingComponent = ({
 }: Manufacturing) => {
   return (
     <CardComponent>
-      <h2 className={styles.title}>Manufacturing</h2>
+      <TitleComponent title="Manufacturing" />
+      <DialComponent
+        value={<NumberComponent number={dashboard.clipsPerSecond} />}
+        label={'Per second'}
+      />
       <p>
         Clips par Seconde: <NumberComponent number={dashboard.clipsPerSecond} />
       </p>
       <button onClick={makeClip} disabled={dashboard.wireStock < 1}>
+        <IconComponent icon="precision_manufacturing" />
         faire un Clip
       </button>
       <p>

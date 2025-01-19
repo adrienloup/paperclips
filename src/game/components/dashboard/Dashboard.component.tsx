@@ -165,11 +165,21 @@ function DashboardComponent() {
         100%
       </button>
       <p>Bonus de d'achats de fil: {Math.round(dashboard.wireBonus * 100)}%</p>
-      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', ratio: 0.1 })}>10%</button>
-      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', ratio: 0.25 })}>25%</button>
-      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', ratio: 0.5 })}>50%</button>
-      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', ratio: 0.75 })}>75%</button>
-      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', ratio: 1 })}>100%</button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_STOCK_BONUS', ratio: 0.1 })}>
+        10%
+      </button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_STOCK_BONUS', ratio: 0.25 })}>
+        25%
+      </button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_STOCK_BONUS', ratio: 0.5 })}>
+        50%
+      </button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_STOCK_BONUS', ratio: 0.75 })}>
+        75%
+      </button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_STOCK_BONUS', ratio: 1 })}>
+        100%
+      </button>
     </article>
   );
 }

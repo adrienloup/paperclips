@@ -6,6 +6,6 @@ export const fr: Translation = {
       open: 'Ouvrir les paramètres',
       close: 'Fermer les paramètres',
     },
-    per_second: 'Trombones par seconde',
+    per_second: 'Par seconde',
   },
 };

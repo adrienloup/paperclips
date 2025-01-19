@@ -15,7 +15,6 @@ export type Action =
       type: 'UPDATE_DISPLAY_FEATURE';
       feature: string;
       enabled: boolean;
-      disabled: boolean;
       incurred: boolean;
     }
   | { type: 'LOAD_STATE' };
@@ -25,7 +24,6 @@ export interface State {
   clipStock: number;
   clipCost: number;
   transitStock: number;
-  //transitStock: number | null;
   autoClippers: number;
   autoClippersCost: number;
   productionBonus: number;
@@ -39,29 +37,32 @@ export interface State {
   clipsPerSecond: number;
   trust: number;
   feature: {
+    autoClippers: {
+      enabled: boolean;
+      incurred: boolean;
+    };
     marketing: {
       enabled: boolean;
-      disabled: boolean;
       incurred: boolean;
     };
     computationalResources: {
       enabled: boolean;
-      disabled: boolean;
+      incurred: boolean;
+    };
+    projects: {
+      enabled: boolean;
       incurred: boolean;
     };
     revTracker: {
       enabled: boolean;
-      disabled: boolean;
       incurred: boolean;
     };
     improvedProduction: {
       enabled: boolean;
-      disabled: boolean;
       incurred: boolean;
     };
     autoAverage: {
       enabled: boolean;
-      disabled: boolean;
       incurred: boolean;
     };
   };

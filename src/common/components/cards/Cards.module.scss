@@ -1,0 +1,6 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-m);
+  padding-right: var(--spacing-m);
+}

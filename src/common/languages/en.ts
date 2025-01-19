@@ -6,6 +6,6 @@ export const en: Translation = {
       open: 'Open settings',
       close: 'Close settings',
     },
-    per_second: 'Per Second',
+    per_second: 'Per second',
   },
 };

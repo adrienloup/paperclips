@@ -18,29 +18,32 @@ export const initialState: State = {
   clipsPerSecond: 0,
   trust: 1,
   feature: {
+    autoClippers: {
+      enabled: false,
+      incurred: false,
+    },
     marketing: {
       enabled: false,
-      disabled: false,
       incurred: false,
     },
     computationalResources: {
       enabled: false,
-      disabled: false,
+      incurred: false,
+    },
+    projects: {
+      enabled: false,
       incurred: false,
     },
     revTracker: {
-      enabled: false,
-      disabled: false,
-      incurred: false,
+      enabled: true,
+      incurred: true,
     },
     improvedProduction: {
-      enabled: false,
-      disabled: false,
-      incurred: false,
+      enabled: true,
+      incurred: true,
     },
     autoAverage: {
       enabled: false,
-      disabled: false,
       incurred: false,
     },
   },

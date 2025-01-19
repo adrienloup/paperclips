@@ -1,6 +1,7 @@
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
+import { CardComponent } from '@/src/common/components/cards/Card.component';
+import { TitleComponent } from '@/src/common/components/title/Title.component';
 import { ProjectComponent } from '@/src/game/components/projects/Project.component';
-import styles from '@/src/game/components/projects/Projects.module.scss';
 
 export const ProjectsComponent = () => {
   const setDashboard = useDashboardDispatch();
@@ -10,15 +11,13 @@ export const ProjectsComponent = () => {
     setDashboard({
       type: 'UPDATE_DISPLAY_FEATURE',
       feature: 'revTracker',
-      enabled: true,
-      disabled: true,
+      enabled: false,
       incurred: false,
     });
     setDashboard({
       type: 'UPDATE_DISPLAY_FEATURE',
       feature: 'autoAverage',
       enabled: true,
-      disabled: false,
       incurred: false,
     });
   };
@@ -28,7 +27,6 @@ export const ProjectsComponent = () => {
       type: 'UPDATE_DISPLAY_FEATURE',
       feature: 'improvedProduction',
       enabled: true,
-      disabled: true,
       incurred: false,
     });
     setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', ratio: 0.25 });
@@ -39,7 +37,6 @@ export const ProjectsComponent = () => {
       type: 'UPDATE_DISPLAY_FEATURE',
       feature: 'revTracker',
       enabled: true,
-      disabled: false,
       incurred: false,
     });
   };
@@ -49,32 +46,31 @@ export const ProjectsComponent = () => {
       type: 'UPDATE_DISPLAY_FEATURE',
       feature: 'improvedProduction',
       enabled: true,
-      disabled: false,
       incurred: false,
     });
   };
 
   return (
-    <div className={styles.projects}>
-      {dashboard.feature.revTracker.enabled && !dashboard.feature.revTracker.disabled ? (
+    <CardComponent>
+      <TitleComponent title="Projects" />
+      {dashboard.feature.revTracker.enabled ? (
         <ProjectComponent
           title="Rev Tracker 1"
           text="Automatically calculates average revenue per second"
-          active={dashboard.feature.revTracker.incurred}
+          incurred={dashboard.feature.revTracker.incurred}
           onClick={onClickRevTracker}
           onAnimationEnd={onAnimationEndRevTracker}
         />
       ) : null}
-      {dashboard.feature.improvedProduction.enabled &&
-      !dashboard.feature.improvedProduction.disabled ? (
+      {dashboard.feature.improvedProduction.enabled ? (
         <ProjectComponent
           title="Improved Production"
           text="Increases Production performance 25%"
-          active={dashboard.feature.revTracker.incurred}
+          incurred={dashboard.feature.revTracker.incurred}
           onClick={onClickImprovedProduction}
           onAnimationEnd={onAnimationEndImprovedProduction}
         />
       ) : null}
-    </div>
+    </CardComponent>
   );
 };

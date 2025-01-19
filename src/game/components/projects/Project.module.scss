@@ -1,6 +1,6 @@
 .project {
   position: relative;
-  padding: var(--spacing-m) var(--spacing-l) var(--spacing-m) var(--spacing-m);
+  //padding: var(--spacing-m) var(--spacing-l) var(--spacing-m) var(--spacing-m);
   background-color: var(--color-neutral-1);
 
   & + & {
@@ -8,7 +8,7 @@
   }
 }
 
-.active {
+.incurred {
   animation: Appear 0.75s var(--ease-quad);
 }
 

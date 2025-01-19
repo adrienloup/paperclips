@@ -14,8 +14,6 @@ export const dashboardReducer = (state: State, action: Action): State => {
         clipsPerSecond: state.clipsPerSecond + 1,
       };
     case 'DECREASE_CLIP_STOCK':
-      // console.log('DECREASE_CLIP_STOCK');
-      //if (state.transitStock !== null && state.transitStock > 0) {
       if (state.transitStock > 0) {
         const decrease = Math.floor(state.transitStock * (1 - state.productionBonus));
         return {
@@ -35,7 +33,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
       return {
         ...state,
         autoClippers: state.autoClippers + 1,
-        autoClippersCost: state.autoClippersCost * 2.2,
+        autoClippersCost: state.autoClippersCost * (Math.random() * (2.25 - 1.25) + 1.25),
       };
     case 'PRODUCE_AUTOCLIPPER':
       // console.log('PRODUCE_AUTOCLIPPER');
@@ -70,7 +68,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
     case 'UPDATE_WIRE_COST':
       return {
         ...state,
-        wireCost: state.wireCost > 8 ? state.wireCost - 0.25 : Math.random() * (24 - 12) + 12, // @TODO: update wire cost bonus
+        wireCost: state.wireCost >= 8 ? state.wireCost - 0.25 : Math.random() * (24 - 12) + 12, // @TODO: update wire cost bonus
       };
     case 'UPDATE_MARKETING':
       if (state.marketing >= 10) return state;
@@ -98,7 +96,6 @@ export const dashboardReducer = (state: State, action: Action): State => {
           ...state.feature,
           [action.feature]: {
             enabled: action.enabled,
-            disabled: action.disabled,
             incurred: action.incurred,
           },
         },
@@ -107,7 +104,6 @@ export const dashboardReducer = (state: State, action: Action): State => {
       // console.log('UPDATE_PER_SECOND');
       const clipsPerSecond =
         state.autoClippers > 0 && state.autoClippers <= state.wireStock ? state.autoClippers : 0;
-      // console.log(clipsPerSecond);
       return {
         ...state,
         clipsPerSecond: clipsPerSecond,
@@ -115,8 +111,8 @@ export const dashboardReducer = (state: State, action: Action): State => {
     case 'LOAD_STATE':
       return {
         ...state,
-        clipTotal: 1000000,
-        funds: 1000000,
+        clipTotal: 10000000,
+        funds: 10000000,
         wireCost: 20,
       };
     default:

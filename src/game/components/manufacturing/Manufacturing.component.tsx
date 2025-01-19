@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { Manufacturing } from '@/src/game/components/manufacturing/Manufacturing.type';
-import { CardComponent } from '@/src/common/components/card/Card.component';
+import { CardComponent } from '@/src/common/components/cards/Card.component';
 import { NumberComponent } from '@/src/common/components/number/Number.component';
 import { DialComponent } from '@/src/common/components/dial/Dial.component';
 import { TitleComponent } from '@/src/common/components/title/Title.component';
 import { ButtonComponent } from '@/src/common/components/button/Button.component';
-import styles from '@/src/common/components/card/Card.module.scss';
+import styles from '@/src/common/components/cards/Card.module.scss';
+import { BonusComponent } from '@/src/common/components/bonus/Bonus.component.tsx';
 
 export const ManufacturingComponent = ({
   dashboard,
@@ -18,10 +19,7 @@ export const ManufacturingComponent = ({
   return (
     <CardComponent>
       <TitleComponent title="Manufacturing" />
-      <DialComponent
-        value={<NumberComponent number={dashboard.clipsPerSecond} />}
-        label={t('common.per_second')}
-      />
+      <DialComponent number={dashboard.clipsPerSecond} label={t('common.per_second')} />
       <ButtonComponent
         className={styles.button}
         onClick={makeClip}
@@ -30,15 +28,19 @@ export const ManufacturingComponent = ({
         Fabriquer
       </ButtonComponent>
       <div className={styles.group}>
+        <DialComponent number={dashboard.wireCost} style="currency" label={t('Prix fil de fer')} />
         <DialComponent
-          value={<NumberComponent number={dashboard.wireCost} style="currency" />}
-          label={t('Prix fil de fer')}
+          number={dashboard.wireStock}
+          notation="compact"
+          outStock={dashboard.wireStock < dashboard.autoClippers}
+          label={
+            dashboard.wireStock === 0
+              ? 'Out of stock'
+              : dashboard.wireStock < dashboard.autoClippers
+                ? 'Low stock'
+                : 'Stock fil de fer'
+          }
         />
-        <DialComponent
-          value={<NumberComponent number={dashboard.wireStock} notation="compact" />}
-          label={t('Stock Fil de Fer')}
-        />
-        {dashboard.wireStock < dashboard.autoClippers ? 'Empty stock!' : ''}
       </div>
       <div className={styles.group}>
         <ButtonComponent
@@ -50,30 +52,28 @@ export const ManufacturingComponent = ({
         </ButtonComponent>
         <NumberComponent number={Math.round(dashboard.wireBonus * 1e4)} notation="compact" /> inches
         {dashboard.wireBonus > 0.1 ? (
-          <>
-            (+
-            <NumberComponent number={Math.round(dashboard.wireBonus * 100)} />
-            %)
-          </>
+          <BonusComponent number={dashboard.wireBonus} style="percent" />
         ) : null}
       </div>
-      <div className={styles.group}>
-        <DialComponent
-          value={<NumberComponent number={dashboard.autoClippersCost} style="currency" />}
-          label={t('Prix machine')}
-        />
-        <DialComponent
-          value={<NumberComponent number={dashboard.autoClippers} />}
-          label={t('Machine')}
-        />
-      </div>
-      <ButtonComponent
-        className={styles.button}
-        onClick={buyAutoClippers}
-        disabled={dashboard.funds < dashboard.autoClippersCost}
-      >
-        Acheter
-      </ButtonComponent>
+      {dashboard.feature.autoClippers.enabled ? (
+        <>
+          <div className={styles.group}>
+            <DialComponent
+              number={dashboard.autoClippersCost}
+              style="currency"
+              label={t('Prix machine')}
+            />
+            <DialComponent number={dashboard.autoClippers} notation="compact" label="Machines" />
+          </div>
+          <ButtonComponent
+            className={styles.button}
+            onClick={buyAutoClippers}
+            disabled={dashboard.funds < dashboard.autoClippersCost}
+          >
+            Acheter
+          </ButtonComponent>
+        </>
+      ) : null}
     </CardComponent>
   );
 };

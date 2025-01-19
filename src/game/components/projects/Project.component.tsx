@@ -3,10 +3,10 @@ import { Project } from '@/src/game/components/projects/Project.type';
 import { ButtonComponent } from '@/src/common/components/button/Button.component';
 import styles from '@/src/game/components/projects/Project.module.scss';
 
-export const ProjectComponent = ({ title, text, active, onClick, onAnimationEnd }: Project) => {
+export const ProjectComponent = ({ title, text, incurred, onClick, onAnimationEnd }: Project) => {
   return (
     <div
-      className={classNames([styles.project, active ? styles.active : ''])}
+      className={classNames([styles.project, incurred ? styles.incurred : ''])}
       onAnimationEnd={onAnimationEnd!}
     >
       <div className={styles.title}>{title}</div>

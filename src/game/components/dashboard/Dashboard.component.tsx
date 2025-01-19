@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
-import { NumberComponent } from '@/src/common/components/number/Number.component';
-import { ProjectsComponent } from '@/src/game/components/projects/Projects.component';
+import { TotalComponent } from '@/src/game/components/total/Total.component';
+import { CardsComponent } from '@/src/common/components/cards/Cards.component';
+import { CardsGroupComponent } from '@/src/common/components/cards/CardsGroup.component';
 import { ManufacturingComponent } from '@/src/game/components/manufacturing/Manufacturing.component';
 import { BusinessComponent } from '@/src/game/components/business/Business.component';
-import { TotalComponent } from '@/src/game/components/total/Total.component';
+import { ComputationalComponent } from '@/src/game/components/computational/Computational.component';
+import { ProjectsComponent } from '@/src/game/components/projects/Projects.component';
 import styles from '@/src/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
@@ -38,121 +40,76 @@ function DashboardComponent() {
   }, [dashboard.wireCost]);
 
   useEffect(() => {
+    if (
+      !dashboard.feature.autoClippers.enabled &&
+      dashboard.clipTotal >= 100 &&
+      dashboard.clipTotal <= 10000
+    ) {
+      setDashboard({
+        type: 'UPDATE_DISPLAY_FEATURE',
+        feature: 'autoClippers',
+        enabled: true,
+        incurred: false,
+      });
+    }
+    if (!dashboard.feature.marketing.enabled && dashboard.clipTotal >= 200) {
+      setDashboard({
+        type: 'UPDATE_DISPLAY_FEATURE',
+        feature: 'marketing',
+        enabled: true,
+        incurred: false,
+      });
+    }
+    if (!dashboard.feature.computationalResources.enabled && dashboard.clipTotal >= 1000) {
+      setDashboard({
+        type: 'UPDATE_DISPLAY_FEATURE',
+        feature: 'computationalResources',
+        enabled: true,
+        incurred: false,
+      });
+    }
+    if (!dashboard.feature.projects.enabled && dashboard.clipTotal >= 1000) {
+      setDashboard({
+        type: 'UPDATE_DISPLAY_FEATURE',
+        feature: 'projects',
+        enabled: true,
+        incurred: false,
+      });
+    }
+  }, [dashboard.clipTotal]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setDashboard({ type: 'UPDATE_PER_SECOND' });
     }, 1e3);
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    if (!dashboard.feature.marketing.enabled && dashboard.clipTotal >= 200) {
-      setDashboard({
-        type: 'UPDATE_DISPLAY_FEATURE',
-        feature: 'marketing',
-        enabled: true,
-        disabled: false,
-        incurred: false,
-      });
-    }
-    if (!dashboard.feature.computationalResources.enabled && dashboard.clipTotal >= 2000) {
-      setDashboard({
-        type: 'UPDATE_DISPLAY_FEATURE',
-        feature: 'computationalResources',
-        enabled: true,
-        disabled: false,
-        incurred: false,
-      });
-    }
-    if (!dashboard.feature.revTracker.enabled && dashboard.clipTotal >= 2000) {
-      setDashboard({
-        type: 'UPDATE_DISPLAY_FEATURE',
-        feature: 'revTracker',
-        enabled: true,
-        disabled: false,
-        incurred: true,
-      });
-    }
-    if (!dashboard.feature.improvedProduction.enabled && dashboard.clipTotal >= 2000) {
-      setDashboard({
-        type: 'UPDATE_DISPLAY_FEATURE',
-        feature: 'improvedProduction',
-        enabled: true,
-        disabled: false,
-        incurred: true,
-      });
-    }
-  }, [dashboard.clipTotal]);
-
   return (
     <article className={styles.dashboard}>
       <TotalComponent dashboard={dashboard} />
-      <ManufacturingComponent
-        dashboard={dashboard}
-        makeClip={() => setDashboard({ type: 'ADD_CLIP' })}
-        buyAutoClippers={() => setDashboard({ type: 'ADD_AUTOCLIPPER' })}
-        buyWire={() => setDashboard({ type: 'ADD_WIRE' })}
-      />
-      <br />
-      <br /> <br /> <br />
-      <BusinessComponent dashboard={dashboard} />
-      <br />
-      <br />
-      <br />
-      <p>
-        Stock de Clips: {dashboard.clipStock}
-        {/*{dashboard.feature.improvedProduction.enabled &&*/}
-        {/*dashboard.feature.improvedProduction.disabled ? (*/}
-        {/*  <>*/}
-        {/*    (+*/}
-        {/*    <NumberComponent number={Math.round(dashboard.productionBonus * 100)} />*/}
-        {/*    %)*/}
-        {/*  </>*/}
-        {/*) : null}*/}
-        {dashboard.productionBonus > 0.1 ? (
-          <>
-            (+
-            <NumberComponent number={Math.round(dashboard.productionBonus * 100)} />
-            %)
-          </>
+      <CardsComponent>
+        <ManufacturingComponent
+          dashboard={dashboard}
+          makeClip={() => setDashboard({ type: 'ADD_CLIP' })}
+          buyAutoClippers={() => setDashboard({ type: 'ADD_AUTOCLIPPER' })}
+          buyWire={() => setDashboard({ type: 'ADD_WIRE' })}
+        />
+        <BusinessComponent
+          dashboard={dashboard}
+          decreaseClipCost={() => setDashboard({ type: 'DECREASE_CLIP_COST' })}
+          increaseClipCost={() => setDashboard({ type: 'INCREASE_CLIP_COST' })}
+          updateMarketing={() => setDashboard({ type: 'UPDATE_MARKETING' })}
+        />
+        {dashboard.feature.computationalResources.enabled || dashboard.feature.projects.enabled ? (
+          <CardsGroupComponent>
+            {dashboard.feature.computationalResources.enabled ? (
+              <ComputationalComponent dashboard={dashboard} />
+            ) : null}
+            {dashboard.feature.projects.enabled ? <ProjectsComponent /> : null}
+          </CardsGroupComponent>
         ) : null}
-      </p>
-      <p>
-        Clip cost: <NumberComponent number={dashboard.clipCost} style="currency" />
-      </p>
-      <button onClick={() => setDashboard({ type: 'INCREASE_CLIP_COST' })}>💰 Augmenter</button>
-      <button onClick={() => setDashboard({ type: 'DECREASE_CLIP_COST' })}>💸 Diminuer</button>
-      <p>publicDemand {dashboard.publicDemand}%</p>
-      <br />
-      <br />
-      {dashboard.feature.marketing.enabled && !dashboard.feature.marketing.disabled ? (
-        <>
-          <button
-            onClick={() => setDashboard({ type: 'UPDATE_MARKETING' })}
-            disabled={dashboard.funds < dashboard.marketingCost || dashboard.marketing == 10}
-          >
-            marketing
-          </button>
-          level {dashboard.marketing}
-          {dashboard.marketing < 10 ? <p>{dashboard.marketingCost} $</p> : null}
-        </>
-      ) : null}
-      {dashboard.feature.computationalResources.enabled &&
-      !dashboard.feature.computationalResources.disabled ? (
-        <>
-          <div>
-            <br />
-            Computational Resources
-            <p>Trust level {dashboard.trust}</p>
-            <p>+1 Trust at: 8,000 clips</p>
-          </div>
-          <div>
-            <br />
-            Projects
-            <br />
-            <ProjectsComponent />
-          </div>
-        </>
-      ) : null}
+      </CardsComponent>
       <br />
       <button onClick={() => setDashboard({ type: 'LOAD_STATE' })}>restart</button>
       <p>Bonus de production: {Math.round(dashboard.productionBonus * 100)}%</p>

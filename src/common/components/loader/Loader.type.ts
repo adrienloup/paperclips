@@ -1,4 +1,4 @@
-import { Size } from '../../types/Size.type';
+import { Size } from '@/src/generic/types/Size.type';
 
 export interface Loader {
   className?: string;

@@ -9,6 +9,7 @@ export type Action =
   | { type: 'DECREASE_CLIP_COST' }
   | { type: 'UPDATE_WIRE_COST' }
   | { type: 'UPDATE_MARKETING' }
+  | { type: 'INCREASE_OPERATIONS_STOCK' }
   | { type: 'UPDATE_PRODUCTION_BONUS'; ratio: number }
   | { type: 'UPDATE_WIRE_STOCK_BONUS'; ratio: number }
   | {
@@ -36,6 +37,8 @@ export interface State {
   marketingCost: number;
   clipsPerSecond: number;
   trust: number;
+  processors: number;
+  operations: number;
   feature: {
     autoClippers: {
       enabled: boolean;

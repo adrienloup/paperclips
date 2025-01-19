@@ -9,7 +9,8 @@
 }
 
 .incurred {
-  animation: Appear 0.75s var(--ease-quad);
+  animation: Appear 750ms var(--ease-quad);
+  will-change: background-color;
 }
 
 .title {

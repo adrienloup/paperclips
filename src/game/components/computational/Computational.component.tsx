@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
+import { useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
 import { Computational } from '@/src/game/components/computational/Computational.type';
 import { CardComponent } from '@/src/common/components/cards/Card.component';
 import { TitleComponent } from '@/src/common/components/title/Title.component';
+// import { operations } from '@/src/game/constants/operations.ts';
 
 /*
   trust:
@@ -43,6 +46,18 @@ import { TitleComponent } from '@/src/common/components/title/Title.component';
 */
 
 export const ComputationalComponent = ({ dashboard }: Computational) => {
+  const setDashboard = useDashboardDispatch();
+  //console.log(operations[1]);
+
+  useEffect(() => {
+    if (dashboard.processors > 0 && dashboard.operations <= 70000) {
+      const timer = setTimeout(() => {
+        setDashboard({ type: 'INCREASE_OPERATIONS_STOCK' });
+      }, 1e3);
+      return () => clearTimeout(timer);
+    }
+  }, [dashboard.processors, dashboard.operations]);
+
   return (
     <CardComponent>
       <TitleComponent title="Computational Resources" />
@@ -50,7 +65,7 @@ export const ComputationalComponent = ({ dashboard }: Computational) => {
       <p>+1 Trust at: 8,000 clips</p>
       <div>processors: 1</div>
       <div>memory: 1</div>
-      <div>operations: 500/500</div>
+      <div>operations: {dashboard.operations}/500</div>
       <div>crativity: 1</div>
     </CardComponent>
   );

@@ -23,7 +23,6 @@ function DashboardComponent() {
   }, [dashboard.autoClippers, dashboard.wireStock]);
 
   useEffect(() => {
-    //if (dashboard.transitStock !== null) {
     if (dashboard.transitStock > 0) {
       const timer = setTimeout(() => {
         setDashboard({ type: 'DECREASE_CLIP_STOCK' });

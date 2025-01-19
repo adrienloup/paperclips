@@ -2,15 +2,12 @@ import { Action, State } from '@/src/game/components/dashboard/Dashboard.type';
 
 export const dashboardReducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'ADD_CLIP':
-      if (state.wireStock < 1) return state;
+    case 'UPDATE_PER_SECOND':
+      const clipsPerSecond =
+        state.autoClippers > 0 && state.autoClippers <= state.wireStock ? state.autoClippers : 0;
       return {
         ...state,
-        clipTotal: state.clipTotal + 1,
-        clipStock: state.clipStock + 1,
-        transitStock: state.clipStock + 1,
-        wireStock: state.wireStock - 1,
-        clipsPerSecond: state.clipsPerSecond + 1,
+        clipsPerSecond: clipsPerSecond,
       };
     case 'DECREASE_CLIP_STOCK':
       if (state.transitStock > 0) {
@@ -27,6 +24,24 @@ export const dashboardReducer = (state: State, action: Action): State => {
         };
       }
       return state;
+    case 'ADD_CLIP':
+      if (state.wireStock < 1) return state;
+      return {
+        ...state,
+        clipTotal: state.clipTotal + 1,
+        clipStock: state.clipStock + 1,
+        transitStock: state.clipStock + 1,
+        wireStock: state.wireStock - 1,
+        clipsPerSecond: state.clipsPerSecond + 1,
+      };
+    case 'ADD_WIRE':
+      if (state.funds < state.wireCost) return state;
+      return {
+        ...state,
+        wireStock: state.wireStock + Math.round(state.wireBonus * 1e4),
+        wireCost: state.wireCost + (Math.random() * (1.25 - 0.25) + 0.25), // @TODO: update wire cost bonus
+        funds: state.funds - state.wireCost,
+      };
     case 'ADD_AUTOCLIPPER':
       if (state.funds < state.autoClippersCost) return state;
       return {
@@ -42,14 +57,6 @@ export const dashboardReducer = (state: State, action: Action): State => {
         clipStock: state.clipStock + state.autoClippers,
         transitStock: state.clipStock + state.autoClippers,
         wireStock: state.wireStock - state.autoClippers,
-      };
-    case 'ADD_WIRE':
-      if (state.funds < state.wireCost) return state;
-      return {
-        ...state,
-        wireStock: state.wireStock + Math.round(state.wireBonus * 1e4),
-        wireCost: state.wireCost + (Math.random() * (1.25 - 0.25) + 0.25), // @TODO: update wire cost bonus
-        funds: state.funds - state.wireCost,
       };
     case 'INCREASE_CLIP_COST':
       return {
@@ -75,6 +82,11 @@ export const dashboardReducer = (state: State, action: Action): State => {
         marketing: state.marketing + 1,
         marketingCost: state.marketingCost + 100,
       };
+    case 'INCREASE_OPERATIONS_STOCK':
+      return {
+        ...state,
+        operations: Math.min(500, state.operations + 10 * state.processors),
+      };
     case 'UPDATE_PRODUCTION_BONUS':
       return {
         ...state,
@@ -95,13 +107,6 @@ export const dashboardReducer = (state: State, action: Action): State => {
             incurred: action.incurred,
           },
         },
-      };
-    case 'UPDATE_PER_SECOND':
-      const clipsPerSecond =
-        state.autoClippers > 0 && state.autoClippers <= state.wireStock ? state.autoClippers : 0;
-      return {
-        ...state,
-        clipsPerSecond: clipsPerSecond,
       };
     case 'LOAD_STATE':
       return {

@@ -17,6 +17,8 @@ export const initialState: State = {
   marketingCost: 100,
   clipsPerSecond: 0,
   trust: 1,
+  processors: 1,
+  operations: 0,
   feature: {
     autoClippers: {
       enabled: false,
@@ -52,12 +54,3 @@ export const initialState: State = {
     },
   },
 };
-
-/*
-import { State } from '@/src/game/components/dashboard/Dashboard.type.ts';
-
-export const initialState: State = {
-  clipStock: 0,
-};
-
- */

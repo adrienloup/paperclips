@@ -1,13 +1,13 @@
 # Paperclips
 
-A React app inspired by Universal Paperclips, a game based on the idea of artificial intelligence (AI) optimized for a single task.
+Paperclips is a game inspired by "Universal Paperclips". This captivating game immerses you in an adventure where you play as an artificial intelligence (AI) responsible for maximizing the production of paperclips. This journey begins small, but quickly evolves into an immersive and strategic experience. Whether to kill time on a long trip or to explore your management skills, Universal Paperclips offers an authentic and atypical experience.
 
 [https://adrienloup.github.io/paperclips](https://adrienloup.github.io/paperclips)
 
 ## Requirements
 
-- `node` : `^20.0.0`
-- `npm` : `^9.6.4`
+- `node` : `^22.11.0`
+- `npm` : `^10.9.0`
 
 ## Installation
 

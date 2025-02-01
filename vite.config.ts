@@ -12,7 +12,7 @@ export default defineConfig({
         name: 'Paperclips App',
         short_name: 'Paperclips',
         description:
-          'A React app inspired by Universal Paperclips, a game based on the idea of artificial intelligence (AI) optimized for a single task.',
+          'Paperclips is a game inspired by "Universal Paperclips". This captivating game immerses you in an adventure where you play as an artificial intelligence (AI) responsible for maximizing the production of paperclips. This journey begins small, but quickly evolves into an immersive and strategic experience. Whether to kill time on a long trip or to explore your management skills, Universal Paperclips offers an authentic and atypical experience.',
         start_url: '/paperclips/',
         display: 'standalone',
         theme_color: '#e6e6e6',
@@ -47,5 +47,8 @@ export default defineConfig({
     alias: {
       '@': path.resolve('./'),
     },
+  },
+  server: {
+    port: 3000,
   },
 });

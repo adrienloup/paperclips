@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent
 import { Children } from '@/src/generic/types/Children.type.ts';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
 import { ThemeProvider } from '@/src/generic/theme/Theme.provider.tsx';
-import { DashboardProvider } from '@/src/game/components/dashboard/Dashboard.provider.tsx';
+//import { DashboardProvider } from '@/src/game/components/dashboard/Dashboard.provider.tsx';
 
 type ProvidersType = [
   ComponentType<{ children: Children }>,
@@ -24,5 +24,5 @@ const allProviders = (providers: ProvidersType) =>
 export const Provider: FunctionComponent<{ children: Children }> = allProviders([
   [LanguageProvider],
   [ThemeProvider],
-  [DashboardProvider],
+  //[DashboardProvider],
 ]);

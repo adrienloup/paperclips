@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { version } from '@/package.json';
-import { Provider } from '@/src/generic/providers/Provider';
+import { Provider } from '@/src/generic/provider/Provider';
 import App from '@/src/common/app/App';
 import '@/src/generic/i18n';
 

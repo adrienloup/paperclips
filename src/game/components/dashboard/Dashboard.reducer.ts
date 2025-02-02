@@ -8,12 +8,16 @@ export const dashboardReducer = (state: State, action: Action): State => {
         clips: state.clips + 1,
         clipsStock: state.clipsStock + 1,
         wireStock: state.wireStock - 1,
+        clipsPerSecond: state.clipsPerSecond + 1,
       };
     case 'PRODUCE_AUTOMATIC_CLIPS':
       return {
         ...state,
-        clips: state.clips + state.autoClippers + state.megaClippers,
-        clipsStock: state.clipsStock + state.autoClippers + state.megaClippers,
+        clips:
+          state.clips + (state.autoClippers + state.autoClippersBonus + (state.megaClippers + 5e2)),
+        clipsStock:
+          state.clipsStock +
+          (state.autoClippers + state.autoClippersBonus + (state.megaClippers + 5e2)),
         wireStock: state.wireStock - (state.autoClippers + state.megaClippers),
       };
     case 'SELL_CLIPS':
@@ -45,6 +49,26 @@ export const dashboardReducer = (state: State, action: Action): State => {
           100 - (maxPublicDemand * 10 - 2 + state.marketing + state.clipsBonus)
         ),
       };
+    case 'UPDATE_PER_SECOND':
+      return {
+        ...state,
+        clipsPerSecond:
+          state.autoClippers + state.autoClippersBonus + (state.megaClippers + 5e2) > 0
+            ? state.autoClippers + state.autoClippersBonus + (state.megaClippers + 5e2)
+            : 0,
+      };
+    case 'UPDATE_WIRE_COST':
+      return {
+        ...state,
+        wireCost: state.wireCost >= 8 ? state.wireCost - 0.25 : Math.random() * (24 - 12) + 12,
+      };
+    case 'UPDATE_WIRE_STOCK':
+      return {
+        ...state,
+        wireStock: state.wireStock + (state.wireBonus > 0 ? state.wireBonus : 1e3),
+        wireCost: state.wireCost + (Math.random() * (1.25 - 0.25) + 0.25),
+        funds: state.funds - state.wireCost,
+      };
     case 'UPDATE_MARKETING':
       return {
         ...state,
@@ -53,11 +77,42 @@ export const dashboardReducer = (state: State, action: Action): State => {
           100 - (state.marketing + 1 + state.publicDemandBonus + state.clipsBonus)
         ),
       };
+    case 'UPDATE_AUTOCLIPPERS':
+      return {
+        ...state,
+        autoClippers: state.autoClippers + 1,
+        autoClippersCost: 1.1 * state.autoClippersCost + (Math.random() * (2 - 1) + 1),
+        funds: state.funds - state.autoClippersCost,
+      };
+    case 'UPDATE_MEGACLIPPERS':
+      return {
+        ...state,
+        megaClippers: state.megaClippers + 1,
+        megaClippersCost: state.megaClippersCost + 1e3,
+        funds: state.funds - state.megaClippersCost,
+      };
     case 'UPDATE_CLIPS_BONUS':
       return {
         ...state,
         clipsBonus: action.bonus,
         clipsSales: Math.floor(100 - (action.bonus + state.publicDemandBonus + state.marketing)),
+      };
+    case 'UPDATE_AUTOCLIPPERS_BONUS':
+      return {
+        ...state,
+        autoClippersBonus: action.bonus,
+      };
+    case 'UPDATE_WIRE_BONUS':
+      return {
+        ...state,
+        wireBonus: action.bonus,
+      };
+    case 'LOAD_STATE':
+      return {
+        ...state,
+        clips: 9999,
+        funds: 9999999,
+        wireCost: 20,
       };
     default:
       return state;

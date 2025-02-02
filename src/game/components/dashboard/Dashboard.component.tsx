@@ -17,7 +17,7 @@ function DashboardComponent() {
   useEffect(() => {
     const interval = setInterval(() => {
       const { clipsStock, clipsSales } = dashboardRef.current;
-      if (clipsStock > 0 && clipsStock >= clipsSales) {
+      if (/*clipsStock > 0 &&*/ clipsStock >= clipsSales) {
         setSelling(true);
         setDashboard({ type: 'SELL_CLIPS' });
         setSelling(false);
@@ -26,14 +26,46 @@ function DashboardComponent() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const { wireStock } = dashboardRef.current;
+      if (wireStock > 0) {
+        setDashboard({ type: 'UPDATE_PER_SECOND' });
+      }
+    }, 1e3);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const { wireStock, autoClippers } = dashboardRef.current;
+      if (!selling && wireStock >= autoClippers) {
+        setDashboard({ type: 'PRODUCE_AUTOMATIC_CLIPS' });
+      }
+    }, 1e3);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDashboard({ type: 'UPDATE_WIRE_COST' });
+    }, 10e3);
+    return () => clearInterval(interval);
+  }, []);
+
   const produceClips = () => {
-    if (selling) return;
-    setDashboard({ type: 'PRODUCE_MANUAL_CLIPS' });
+    if (dashboard.wireStock > 0 && !selling) {
+      setDashboard({ type: 'PRODUCE_MANUAL_CLIPS' });
+    }
   };
 
   return (
     <article className={styles.dashboard}>
       <ClipsComponent clips={dashboard.clips} />
+      clipsPerSecond {dashboard.clipsPerSecond}
+      <br />
+      bonus +{dashboard.autoClippersBonus}
+      <br />
       <button onClick={produceClips} disabled={dashboard.wireStock < 1}>
         Fabriquer
       </button>
@@ -43,26 +75,47 @@ function DashboardComponent() {
       <br />
       publicDemandBonus {dashboard.publicDemandBonus}
       <br />
-      bonus produce{' '}
+      <br />
+      funds <NumberComponent number={dashboard.funds} style="currency" />
+      <br />
+      <br />
+      (ventes {dashboard.clipsSales})
+      <br />
+      Unsold inventory {dashboard.clipsStock}
+      <br />
+      bonus{' '}
       <NumberComponent
         number={(dashboard.clipsBonus + dashboard.publicDemandBonus + dashboard.marketing) * 0.01}
         style="percent"
       />
       <br />
       <br />
-      funds <NumberComponent number={dashboard.funds} style="currency" />
-      <br />
-      <br />
-      ventes {dashboard.clipsSales}
-      <br />
-      Unsold inventory {dashboard.clipsStock}
-      <br />
-      <br />
       Wire {dashboard.wireStock}
       <br />
+      <button
+        onClick={() => setDashboard({ type: 'UPDATE_WIRE_STOCK' })}
+        disabled={dashboard.funds < dashboard.wireCost}
+      >
+        Acheter
+      </button>
       <br />
-      <button onClick={() => setDashboard({ type: 'DECREASE_CLIPS_COST' })}>decrease</button>
-      <button onClick={() => setDashboard({ type: 'INCREASE_CLIPS_COST' })}>increase</button>
+      Cost <NumberComponent number={dashboard.wireCost} style="currency" />
+      <br />
+      bonus +{dashboard.wireBonus}
+      <br />
+      <br />
+      <button
+        onClick={() => setDashboard({ type: 'DECREASE_CLIPS_COST' })}
+        disabled={dashboard.publicDemand == 1}
+      >
+        decrease
+      </button>
+      <button
+        onClick={() => setDashboard({ type: 'INCREASE_CLIPS_COST' })}
+        disabled={dashboard.publicDemand == 0.01}
+      >
+        increase
+      </button>
       <br />
       clips cost {dashboard.clipsCost}
       <br />
@@ -82,14 +135,71 @@ function DashboardComponent() {
       </button>
       <br />
       <br />
+      AutoClippers {dashboard.autoClippers}
+      <br />
+      Cost <NumberComponent number={dashboard.autoClippersCost} style="currency" />
+      <br />
+      <button
+        onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS' })}
+        disabled={dashboard.autoClippersCost > dashboard.funds}
+      >
+        Acheter
+      </button>
+      <br />
+      <br />
+      MegaClippers {dashboard.megaClippers}
+      <br />
+      Cost <NumberComponent number={dashboard.megaClippersCost} style="currency" />
+      <br />
+      <button
+        onClick={() => setDashboard({ type: 'UPDATE_MEGACLIPPERS' })}
+        disabled={dashboard.megaClippersCost > dashboard.funds}
+      >
+        Acheter
+      </button>
+      <br />
+      <br />
+      clipsBonus
+      <br />
       <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 30 })}>30%</button>
       <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 40 })}>40%</button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 50 })}>50%</button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 60 })}>60%</button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 70 })}>70%</button>
       <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 80 })}>80%</button>
-      {/*<button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.15 })}>15%</button>*/}
-      {/*<button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.25 })}>25%</button>*/}
-      {/*<button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.5 })}>50%</button>*/}
-      {/*<button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.75 })}>75%</button>*/}
-      {/*<button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 1 })}>100%</button>*/}
+      <br />
+      <br />
+      autoClippersBonus
+      <br />
+      <button onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS_BONUS', bonus: 1 })}>
+        +1
+      </button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS_BONUS', bonus: 2 })}>
+        +2
+      </button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS_BONUS', bonus: 3 })}>
+        +3
+      </button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS_BONUS', bonus: 4 })}>
+        +4
+      </button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS_BONUS', bonus: 5 })}>
+        +5
+      </button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS_BONUS', bonus: 6 })}>
+        +6
+      </button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS_BONUS', bonus: 7 })}>
+        +7
+      </button>
+      <br />
+      <br />
+      wireBonus
+      <br />
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 2e3 })}>2000</button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 25e2 })}>2500</button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 5e3 })}>5000</button>
+      <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 1e4 })}>10000</button>
     </article>
   );
 }

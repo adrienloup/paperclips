@@ -8,7 +8,7 @@ export const NumberComponent = ({ style, notation, number }: Number) => {
     style: style,
     currency: language === 'en' ? 'USD' : 'EUR',
     notation: notation,
-    minimumFractionDigits: 0,
+    minimumFractionDigits: style === 'currency' ? 2 : 0,
     maximumFractionDigits: 2,
   };
 

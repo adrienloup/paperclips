@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
+import { ClipsComponent } from '@/src/game/components/clips/Clips.component';
 import { NumberComponent } from '@/src/common/components/number/Number.component';
 import styles from '@/src/game/components/dashboard/Dashboard.module.scss';
 
@@ -15,10 +16,8 @@ function DashboardComponent() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (
-        dashboardRef.current.clipsStock > 0 &&
-        dashboardRef.current.clipsStock >= dashboardRef.current.clipsSales
-      ) {
+      const { clipsStock, clipsSales } = dashboardRef.current;
+      if (clipsStock > 0 && clipsStock >= clipsSales) {
         setSelling(true);
         setDashboard({ type: 'SELL_CLIPS' });
         setSelling(false);
@@ -34,10 +33,7 @@ function DashboardComponent() {
 
   return (
     <article className={styles.dashboard}>
-      <h2>dashboard</h2>
-      <br />
-      Papersclips {dashboard.clips}
-      <br />
+      <ClipsComponent clips={dashboard.clips} />
       <button onClick={produceClips} disabled={dashboard.wireStock < 1}>
         Fabriquer
       </button>
@@ -53,11 +49,11 @@ function DashboardComponent() {
         style="percent"
       />
       <br />
-      ventes {dashboard.clipsSales}
-      <br />
       <br />
       funds <NumberComponent number={dashboard.funds} style="currency" />
       <br />
+      <br />
+      ventes {dashboard.clipsSales}
       <br />
       Unsold inventory {dashboard.clipsStock}
       <br />

@@ -2,15 +2,15 @@ import { State } from '@/src/game/components/dashboard/Dashboard.type';
 
 export const initialState: State = {
   clips: 0,
-  clipsCost: 0.01,
+  clipsCost: 0.2,
   clipsStock: 0, // Unsold inventory
   clipsSales: 90,
   clipsBonus: 0,
   wireCost: 0,
   wireStock: 1000,
   funds: 0,
-  publicDemand: 1,
-  publicDemandBonus: 10,
+  publicDemand: 0.8,
+  publicDemandBonus: 8,
   marketing: 1,
   marketingBonus: 0,
   autoClippers: 0,

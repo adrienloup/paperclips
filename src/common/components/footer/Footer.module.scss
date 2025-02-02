@@ -5,12 +5,4 @@
   text-align: right;
   font-family: var(--font-bold), sans-serif;
   font-size: var(--font-size-s);
-  animation: Appear 250ms var(--ease-quad);
-  will-change: opacity;
-}
-
-@keyframes Appear {
-  0% {
-    opacity: 0;
-  }
 }

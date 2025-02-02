@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/src/generic/i18n/useLanguage';
 import { useTheme } from '@/src/generic/theme/useTheme';
+import { useHeader } from '@/src/common/components/header/useHeader';
 import { classNames } from '@/src/generic/utils/classNames';
+import { NavigationComponent } from '@/src/common/components/navigation/Navigation.component';
 import { ButtonComponent } from '@/src/common/components/button/Button.component';
 import { IconComponent } from '@/src/common/components/icon/Icon.component';
 import styles from '@/src/common/components/header/Header.module.scss';
@@ -11,21 +13,21 @@ export const HeaderComponent = () => {
   const { t } = useTranslation();
   const { setLanguage } = useLanguage();
   const { setTheme } = useTheme();
-  const [open, setOpen] = useState(false);
+  const { header, setHeader } = useHeader();
 
   useEffect(() => {
     const onKeyDown = (e: { keyCode: number }) => {
-      if (e.keyCode === 27 && open) setOpen(false);
+      if (e.keyCode === 27 && header) setHeader(false); //setOpen(false);
     };
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
-  }, [open]);
+  }, [header]);
 
   return (
-    <header className={classNames([styles.header, open ? styles.open : ''])} role="banner">
+    <header className={classNames([styles.header, header ? styles.open : ''])} role="banner">
       <div className={styles.inside}>
         <div className={styles.inner}>
-          header
+          <NavigationComponent />
           <button onClick={() => setLanguage('en')}>EN</button>
           <button onClick={() => setLanguage('fr')}>FR</button>
           <br />
@@ -36,10 +38,10 @@ export const HeaderComponent = () => {
       </div>
       <ButtonComponent
         className={styles.button}
-        aria-label={open ? t('common.settings.close') : t('common.settings.open')}
-        onClick={() => setOpen(!open)}
+        aria-label={header ? t('common.settings.close') : t('common.settings.open')}
+        onClick={() => setHeader(!header)}
       >
-        <IconComponent icon={open ? 'arrow_menu_open' : 'arrow_menu_close'} />
+        <IconComponent icon={header ? 'arrow_menu_open' : 'arrow_menu_close'} />
       </ButtonComponent>
     </header>
   );

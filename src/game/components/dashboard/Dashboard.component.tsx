@@ -200,6 +200,9 @@ function DashboardComponent() {
       <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 25e2 })}>2500</button>
       <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 5e3 })}>5000</button>
       <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 1e4 })}>10000</button>
+      <br />
+      <br />
+      <button onClick={() => setDashboard({ type: 'LOAD_STATE' })}>restart</button>
     </article>
   );
 }

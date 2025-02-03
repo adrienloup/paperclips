@@ -11,13 +11,12 @@ export const dashboardReducer = (state: State, action: Action): State => {
         clipsPerSecond: state.clipsPerSecond + 1,
       };
     case 'PRODUCE_AUTOMATIC_CLIPS':
+      const automaticMegaClippers = state.megaClippers > 0 ? state.megaClippers + 5e2 : 0;
       return {
         ...state,
-        clips:
-          state.clips + (state.autoClippers + state.autoClippersBonus + (state.megaClippers + 5e2)),
+        clips: state.clips + (state.autoClippers + state.autoClippersBonus + automaticMegaClippers),
         clipsStock:
-          state.clipsStock +
-          (state.autoClippers + state.autoClippersBonus + (state.megaClippers + 5e2)),
+          state.clipsStock + (state.autoClippers + state.autoClippersBonus + automaticMegaClippers),
         wireStock: state.wireStock - (state.autoClippers + state.megaClippers),
       };
     case 'SELL_CLIPS':
@@ -50,11 +49,14 @@ export const dashboardReducer = (state: State, action: Action): State => {
         ),
       };
     case 'UPDATE_PER_SECOND':
+      const perSecondMegaClippers = state.megaClippers > 0 ? state.megaClippers + 5e2 : 0;
       return {
         ...state,
         clipsPerSecond:
-          state.autoClippers + state.autoClippersBonus + (state.megaClippers + 5e2) > 0
-            ? state.autoClippers + state.autoClippersBonus + (state.megaClippers + 5e2)
+          state.wireStock > 0
+            ? state.autoClippers + state.autoClippersBonus + perSecondMegaClippers > 0
+              ? state.autoClippers + state.autoClippersBonus + perSecondMegaClippers
+              : 0
             : 0,
       };
     case 'UPDATE_WIRE_COST':

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
 import { DebugComponent } from '@/src/generic/common/components/debug/Debug.component';
+import { InitializerComponent } from '@/src/game/components/initializer/Initializer.tsx';
 import { ClipsComponent } from '@/src/game/components/clips/Clips.component';
 import { CardGroupComponent } from '@/src/generic/common/components/cards/CardGroup.component';
 import { CardsComponent } from '@/src/generic/common/components/cards/Cards.component';
@@ -59,84 +60,7 @@ function DashboardComponent() {
   return (
     <>
       <DebugComponent>
-        <div>
-          <div>Données de test</div>
-          <div>
-            <button onClick={() => setDashboard({ type: 'REBOOT' })}>Reboot</button>
-          </div>
-        </div>
-        <div>
-          <div>
-            Bonus de production
-            <br />+ marketing level {dashboard.marketing}
-            <br />= {dashboard.productionBonus}
-          </div>
-          <div>
-            <button
-              onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', bonus: 0.15 })}
-              disabled={dashboard.marketing < 10}
-            >
-              +15%
-            </button>
-            <button
-              onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', bonus: 0.25 })}
-              disabled={dashboard.marketing < 10}
-            >
-              +25%
-            </button>
-            <button
-              onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', bonus: 0.35 })}
-              disabled={dashboard.marketing < 10}
-            >
-              +35%
-            </button>
-            <button
-              onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', bonus: 0.45 })}
-              disabled={dashboard.marketing < 10}
-            >
-              +45%
-            </button>
-            <button
-              onClick={() => setDashboard({ type: 'UPDATE_PRODUCTION_BONUS', bonus: 0.55 })}
-              disabled={dashboard.marketing < 10}
-            >
-              +55%
-            </button>
-          </div>
-        </div>
-        <div>
-          <div>Bonus d'achat de fer {dashboard.wiresBonus}</div>
-          <div>
-            <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0 })}>
-              0%
-            </button>
-            <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.1 })}>
-              10%
-            </button>
-            <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.25 })}>
-              25%
-            </button>
-            <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.5 })}>
-              50%
-            </button>
-            <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.75 })}>
-              75%
-            </button>
-            <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 1 })}>
-              100%
-            </button>
-          </div>
-        </div>
-        <div>
-          <div>Quantité d'achat de fer {dashboard.wires}</div>
-          <div>
-            <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 1e3 })}>1000</button>
-            <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 2e3 })}>2000</button>
-            <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 4e3 })}>4000</button>
-            <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 5e3 })}>5000</button>
-            <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 1e4 })}>10000</button>
-          </div>
-        </div>
+        <InitializerComponent />
       </DebugComponent>
       <article className={styles.dashboard}>
         <ClipsComponent />

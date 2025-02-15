@@ -13,13 +13,6 @@ export const dashboardReducer = (state: State, action: Action): State => {
           : 0;
 
   switch (action.type) {
-    case 'REBOOT':
-      return {
-        ...state,
-        clips: 9999,
-        funds: 10000000,
-        wiresCost: 20,
-      };
     case 'SELL_CLIPS':
       const decrease = Math.floor(state.clipsTransit * (1 - state.productionBonus));
       return {
@@ -72,7 +65,6 @@ export const dashboardReducer = (state: State, action: Action): State => {
         wiresCost: state.wiresCost > 8 ? state.wiresCost - 0.25 : Math.random() * (24 - 12) + 12,
       };
     case 'UPDATE_PER_SECOND':
-      console.log('UPDATE_PER_SECOND');
       return {
         ...state,
         clipsPerSecond: clippers,
@@ -112,6 +104,10 @@ export const dashboardReducer = (state: State, action: Action): State => {
       return {
         ...state,
         productionBonus: action.bonus + (state.marketing - 1) / 20,
+      };
+    case 'INITIALIZE_STATE':
+      return {
+        ...action.state,
       };
     default:
       return state;

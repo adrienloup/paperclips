@@ -65,7 +65,7 @@ export const BusinessComponent = () => {
           number={dashboard.marketingCost}
           style="currency"
           label="Prix marketing"
-          disabled={dashboard.marketing === 10}
+          disabled={dashboard.marketing >= 10}
         />
         <DialComponent
           number={dashboard.marketing}
@@ -76,7 +76,7 @@ export const BusinessComponent = () => {
       <CardGroupComponent>
         <ButtonComponent
           className={styles.button}
-          disabled={dashboard.marketingCost > dashboard.funds || dashboard.marketing === 10}
+          disabled={dashboard.marketingCost > dashboard.funds || dashboard.marketing >= 10}
           onClick={() => setDashboard({ type: 'UPDATE_MARKETING' })}
         >
           Acheter

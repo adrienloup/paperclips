@@ -1,8 +1,10 @@
-import { PageComponent } from '@/src/generic/common/components/page/Page.component.tsx';
+import { PageComponent } from '@/src/generic/common/components/page/Page.component';
+import { DebugComponent } from '@/src/generic/common/components/debug/Debug.component';
 
 function SummaryPage() {
   return (
     <PageComponent>
+      <DebugComponent>Debug</DebugComponent>
       <h1>Summary Page</h1>
       <p>
         Paperclips est un jeu inspiré de

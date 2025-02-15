@@ -3,7 +3,7 @@ import { Dial } from '@/src/generic/common/components/dial/Dial.type';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component';
 import styles from '@/src/generic/common/components/dial/Dial.module.scss';
 
-export const DialComponent = ({ number, style, notation, label, disabled }: Dial) => {
+export const DialComponent = ({ number, unit, style, notation, label, disabled }: Dial) => {
   return (
     <div className={classNames([styles.dial, disabled ? styles.disabled : ''])}>
       <NumberComponent
@@ -11,6 +11,7 @@ export const DialComponent = ({ number, style, notation, label, disabled }: Dial
         number={number}
         style={style}
         notation={notation}
+        unit={unit}
       />
       <span className={styles.label}>{label}</span>
     </div>

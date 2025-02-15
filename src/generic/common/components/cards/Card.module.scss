@@ -12,6 +12,17 @@
   @include desktop {
     width: calc((100vw - 6.5rem) / 2);
   }
+
+  @include tablet-portrait {
+    width: calc((100vw - 5rem));
+  }
+}
+
+.title {
+  align-self: end;
+  text-transform: uppercase;
+  font-family: var(--font-italic), sans-serif;
+  font-size: var(--font-size-m);
 }
 
 .button {
@@ -19,7 +30,7 @@
   background-color: #0053ff;
   border-radius: 2.75rem;
   font-family: var(--font-button), sans-serif;
-  font-weight: bold;
+  font-weight: var(--font-weight);
   font-size: var(--font-size-s);
   color: var(--color-neutral-1);
 

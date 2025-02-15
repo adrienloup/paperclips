@@ -10,17 +10,12 @@ import { dashboardReducer } from '@/src/game/components/dashboard/Dashboard.redu
 import { initialState } from '@/src/game/components/dashboard/Dashboard.state';
 
 export function DashboardProvider({ children }: { children: Children }) {
-  const [local, setLocal] = useLocalStorage<State>('_3mma_0_dashboard', initialState);
-  const [dashboard, setDashboard] = useReducer(dashboardReducer, local);
-
-  // useEffect(() => {
-  //   console.log('DashboardProvider');
-  //   setLocal(dashboard);
-  // }, [dashboard]);
+  const [state, setState] = useLocalStorage<State>('_3mma_0_dashboard', initialState);
+  const [dashboard, setDashboard] = useReducer(dashboardReducer, state);
 
   const update = useCallback(() => {
-    setLocal(dashboard);
-  }, [dashboard, setLocal]);
+    setState(dashboard);
+  }, [dashboard, setState]);
 
   useEffect(() => {
     update();

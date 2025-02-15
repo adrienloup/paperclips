@@ -16,7 +16,10 @@ export const ManufacturingComponent = () => {
 
   return (
     <CardComponent>
-      <TitleComponent title="Manufacturing" />
+      <TitleComponent
+        className={styles.title}
+        title="Manufacturing"
+      />
       <DialComponent
         number={dashboard.clipsPerSecond}
         label={t('game.per_second')}
@@ -52,6 +55,7 @@ export const ManufacturingComponent = () => {
           className={styles.number}
           number={dashboard.wires + dashboard.wiresBonus * dashboard.wires}
           notation="compact"
+          unit="inches"
         />
         {dashboard.wiresBonus > 0 ? (
           <BonusComponent

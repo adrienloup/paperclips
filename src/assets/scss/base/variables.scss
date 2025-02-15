@@ -20,9 +20,14 @@
 }
 
 @mixin size {
-  --font-size-l: 3.5rem; // 56px
+  --font-size-xl: 3.5rem; // 56px
+  --font-size-l: 2.5rem; // 40px
   --font-size-m: 1.5rem; // 24px
   --font-size-s: 1rem; // 16px
+}
+
+@mixin bold {
+  --font-weight: bold;
 }
 
 @mixin spacing {
@@ -40,6 +45,7 @@
   @include font();
   @include color();
   @include size();
+  @include bold();
   @include spacing();
   @include easing();
 }

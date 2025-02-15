@@ -1,8 +1,23 @@
 .footer {
   grid-column: 2;
   grid-row: 2;
-  padding: var(--spacing-s);
   text-align: right;
-  font-family: var(--font-medium), sans-serif;
+}
+
+.button {
+  padding: var(--spacing-s);
+  text-transform: uppercase;
+  font-family: var(--font-button), sans-serif;
+  font-weight: var(--font-weight);
   font-size: var(--font-size-s);
+  color: var(--color-neutral-6);
+
+  &:focus-visible {
+    outline: 0.25rem solid var(--color-solid-3);
+    outline-offset: -0.25rem;
+  }
+
+  &:hover {
+    background-color: var(--color-neutral-3);
+  }
 }

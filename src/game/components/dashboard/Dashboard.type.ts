@@ -34,4 +34,7 @@ export interface State {
   megaClippers: number;
   megaClippersCost: number;
   productionBonus: number;
+  trust: number;
+  trustCost: number;
+  processors: number;
 }

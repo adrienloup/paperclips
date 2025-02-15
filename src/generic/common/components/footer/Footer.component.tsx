@@ -1,13 +1,22 @@
+import { useTranslation } from 'react-i18next';
 import { version } from '@/package.json';
+import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';
 import styles from '@/src/generic/common/components/footer/Footer.module.scss';
 
 export const FooterComponent = () => {
+  const { t } = useTranslation();
+
   return (
     <footer
       className={styles.footer}
       role="contentinfo"
     >
-      {version}
+      <ButtonComponent
+        className={styles.button}
+        href="https://github.com/adrienloup/paperclips"
+      >
+        {t('common.copy', { version: version })}
+      </ButtonComponent>
     </footer>
   );
 };

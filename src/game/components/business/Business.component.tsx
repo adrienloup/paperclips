@@ -13,7 +13,10 @@ export const BusinessComponent = () => {
 
   return (
     <CardComponent>
-      <TitleComponent title="Business" />
+      <TitleComponent
+        className={styles.title}
+        title="Business"
+      />
       <DialComponent
         number={dashboard.funds}
         style="currency"
@@ -64,7 +67,7 @@ export const BusinessComponent = () => {
         <DialComponent
           number={dashboard.marketingCost}
           style="currency"
-          label="Prix marketing"
+          label="+1 Marketing"
           disabled={dashboard.marketing >= 10}
         />
         <DialComponent

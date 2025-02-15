@@ -1,16 +1,16 @@
 @mixin font {
   --font-button: Futura, 'Trebuchet MS', Arial, sans-serif;
-  --font-title: 'Title';
-  --font-text: 'Text';
-  --font-number: 'Number';
+  --font-medium: 'Medium';
+  --font-italic: 'Italic';
+  --font-bold: 'Bold';
   --font-icon: 'Icon';
 }
 
 @mixin color {
-  --color-neutral-1: #fdfdfd;
-  --color-neutral-2: #ececec;
-  --color-neutral-3: #8d8d8d;
-  --color-neutral-4: #28292a;
+  --color-neutral-1: #ffffff;
+  --color-neutral-2: #f8f8f8;
+  --color-neutral-3: #e3e3e3; // 8d8d8d
+  --color-neutral-4: #858585; // 28292a
   --color-neutral-5: #202124;
   --color-neutral-6: #000; // 171717
   --color-solid-1: #62ff00;

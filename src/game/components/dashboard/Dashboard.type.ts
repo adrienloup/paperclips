@@ -6,6 +6,7 @@ export type Action =
   | { type: 'INCREASE_CLIPS_COST' }
   | { type: 'DECREASE_CLIPS_COST' }
   | { type: 'BUY_WIRE' }
+  | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_AUTOCLIPPERS' }
   | { type: 'UPDATE_MEGACLIPPERS' }
   | { type: 'UPDATE_MARKETING' }

@@ -8,11 +8,26 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/paperclips/summary/" element={<SummaryPage />} />
-        <Route path="/paperclips/explore/" element={<ExplorePage />} />
-        <Route path="/paperclips/*" element={<GamePage />} />
-        <Route path="/paperclips/" element={<GamePage />} />
-        <Route path="/*" element={<GamePage />} />
+        <Route
+          path="/paperclips/summary/"
+          element={<SummaryPage />}
+        />
+        <Route
+          path="/paperclips/explore/"
+          element={<ExplorePage />}
+        />
+        <Route
+          path="/paperclips/*"
+          element={<GamePage />}
+        />
+        <Route
+          path="/paperclips/"
+          element={<GamePage />}
+        />
+        <Route
+          path="/*"
+          element={<GamePage />}
+        />
       </Routes>
     </BrowserRouter>
   );

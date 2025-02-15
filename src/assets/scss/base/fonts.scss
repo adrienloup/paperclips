@@ -1,17 +1,26 @@
 @font-face {
-  font-family: 'Text';
+  font-family: 'Medium';
   src:
-    url('../../fonts/Text.woff2') format('woff2'),
-    url('../../fonts/Text.woff') format('woff');
+    url('../../fonts/Medium.woff2') format('woff2'),
+    url('../../fonts/Medium.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Title';
+  font-family: 'Italic';
   src:
-    url('../../fonts/Title.woff2') format('woff2'),
-    url('../../fonts/Title.woff') format('woff');
+    url('../../fonts/Italic.woff2') format('woff2'),
+    url('../../fonts/Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bold';
+  src:
+    url('../../fonts/Bold.woff2') format('woff2'),
+    url('../../fonts/Bold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -21,15 +30,6 @@
   src:
     url('../../fonts/Icons.woff2') format('woff2'),
     url('../../fonts/Icons.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Number';
-  src:
-    url('../../fonts/Number.woff2') format('woff2'),
-    url('../../fonts/Number.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }

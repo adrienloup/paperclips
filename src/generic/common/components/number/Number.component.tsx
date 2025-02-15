@@ -1,7 +1,7 @@
 import { useLanguage } from '@/src/generic/i18n/useLanguage';
 import { Number } from '@/src/generic/common/components/number/Number.type';
 
-export const NumberComponent = ({ style, notation, number }: Number) => {
+export const NumberComponent = ({ className, style, notation, number }: Number) => {
   const { language } = useLanguage();
 
   const options = {
@@ -17,5 +17,5 @@ export const NumberComponent = ({ style, notation, number }: Number) => {
     options
   ).format(number);
 
-  return <>{formattedNumber}</>;
+  return <span className={className}>{formattedNumber}</span>;
 };

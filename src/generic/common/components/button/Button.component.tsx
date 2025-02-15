@@ -14,7 +14,11 @@ export const ButtonComponent = ({
   ...props
 }: Button<HTMLButtonElement & HTMLAnchorElement>) => {
   const link = (
-    <Link to={to!} className={classNames([styles.button, className])} {...props}>
+    <Link
+      to={to!}
+      className={classNames([styles.button, className])}
+      {...props}
+    >
       {children}
     </Link>
   );

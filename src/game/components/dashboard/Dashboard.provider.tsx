@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage';
 import { Children } from '@/src/generic/types/Children.type';
 import { State } from '@/src/game/components/dashboard/Dashboard.type';
@@ -13,10 +13,18 @@ export function DashboardProvider({ children }: { children: Children }) {
   const [local, setLocal] = useLocalStorage<State>('_3mma_0_dashboard', initialState);
   const [dashboard, setDashboard] = useReducer(dashboardReducer, local);
 
-  useEffect(() => {
-    console.log('DashboardProvider');
+  // useEffect(() => {
+  //   console.log('DashboardProvider');
+  //   setLocal(dashboard);
+  // }, [dashboard]);
+
+  const update = useCallback(() => {
     setLocal(dashboard);
-  }, [dashboard]);
+  }, [dashboard, setLocal]);
+
+  useEffect(() => {
+    update();
+  }, [update]);
 
   return (
     <DashboardContext.Provider value={dashboard}>

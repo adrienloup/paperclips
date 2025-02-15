@@ -1,0 +1,12 @@
+.cardGroup {
+  display: flex;
+  gap: var(--spacing-s);
+}
+
+.row {
+  align-items: center;
+}
+
+.column {
+  flex-direction: column;
+}

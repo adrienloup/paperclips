@@ -24,7 +24,10 @@ export const HeaderComponent = () => {
   }, [header]);
 
   return (
-    <header className={classNames([styles.header, header ? styles.open : ''])} role="banner">
+    <header
+      className={classNames([styles.header, header ? styles.open : ''])}
+      role="banner"
+    >
       <div className={styles.inside}>
         <div className={styles.inner}>
           <NavigationComponent />

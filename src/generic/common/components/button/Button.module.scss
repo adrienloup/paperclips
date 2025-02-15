@@ -9,8 +9,7 @@
   cursor: pointer;
 
   &:disabled {
-    //opacity: 0.6;
-    background-color: var(--color-solid-4);
+    opacity: 0.6;
     pointer-events: none;
     cursor: default;
   }

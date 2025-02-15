@@ -6,7 +6,11 @@ function SummaryPage() {
       <h1>Summary Page</h1>
       <p>
         Paperclips est un jeu inspiré de
-        <a href="https://www.decisionproblem.com/paperclips/" target="_blank" rel="noopener">
+        <a
+          href="https://www.decisionproblem.com/paperclips/"
+          target="_blank"
+          rel="noopener"
+        >
           "Universal Paperclips"
         </a>
         n’est pas un jeu comme les autres. Ce jeu captivant vous plonge dans une aventure où vous

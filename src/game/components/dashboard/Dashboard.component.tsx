@@ -1,6 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
 import { DebugComponent } from '@/src/generic/common/components/debug/Debug.component';
+import { ClipsComponent } from '@/src/game/components/clips/Clips.component';
+import { CardsComponent } from '@/src/generic/common/components/cards/Cards.component';
+import { ManufacturingComponent } from '@/src/game/components/manufacturing/Manufacturing.component';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component';
 import styles from '@/src/game/components/dashboard/Dashboard.module.scss';
 
@@ -25,8 +28,9 @@ function DashboardComponent() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const { wireStock, autoClippers, megaClippers } = dashboardRef.current;
-      if (wireStock >= autoClippers + megaClippers) {
+      const { autoClippers, megaClippers } = dashboardRef.current;
+      if (autoClippers > 0 || megaClippers > 0) {
+        console.log('tutu');
         setDashboard({ type: 'PRODUCE_AUTOMATIC_CLIPS' });
       }
     }, 1e3);
@@ -99,84 +103,104 @@ function DashboardComponent() {
         </div>
       </DebugComponent>
       <article className={styles.dashboard}>
+        <ClipsComponent />
+        <CardsComponent>
+          <ManufacturingComponent />
+        </CardsComponent>
         <div>
-          <div>clips : {dashboard.clips}</div>
           <div>
-            <div>wireCost : {dashboard.wireCost}</div>
             <div>
-              wireStock : <NumberComponent number={dashboard.wireStock} notation="compact" />
-              <br />
-              <NumberComponent
-                number={Math.round(dashboard.wireBonus * 1e4)}
-                notation="compact"
-              />{' '}
-              inches +<NumberComponent number={dashboard.wireBonus} style="percent" />
+              <div>wireCost : {dashboard.wireCost}</div>
+              <div>
+                wireStock :{' '}
+                <NumberComponent
+                  number={dashboard.wireStock}
+                  notation="compact"
+                />
+                <br />
+                <NumberComponent
+                  number={Math.round(dashboard.wireBonus * 1e4)}
+                  notation="compact"
+                />{' '}
+                inches +
+                <NumberComponent
+                  number={dashboard.wireBonus}
+                  style="percent"
+                />
+              </div>
+              <button
+                onClick={() => setDashboard({ type: 'BUY_WIRE' })}
+                disabled={dashboard.funds < dashboard.wireCost}
+              >
+                Acheter
+              </button>
             </div>
+            <div>clipsStock : {dashboard.clipsStock}</div>
+            <div>
+              +
+              <NumberComponent
+                number={dashboard.productionBonus}
+                style="percent"
+              />
+            </div>
+            {/*<div>clipsTransit : {dashboard.clipsTransit}</div>*/}
             <button
-              onClick={() => setDashboard({ type: 'BUY_WIRE' })}
-              disabled={dashboard.funds < dashboard.wireCost}
+              onClick={() => setDashboard({ type: 'PRODUCE_MANUAL_CLIPS' })}
+              disabled={dashboard.wireStock < 1}
+            >
+              Fabriquer
+            </button>
+            <br />
+            <div>AutoClippers {dashboard.autoClippers}</div>
+            <button
+              onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS' })}
+              disabled={dashboard.autoClippersCost > dashboard.funds}
+            >
+              Acheter
+            </button>
+            <br />
+            <div>MegaClippers {dashboard.megaClippers}</div>
+            <button
+              onClick={() => setDashboard({ type: 'UPDATE_MEGACLIPPERS' })}
+              disabled={dashboard.megaClippersCost > dashboard.funds}
             >
               Acheter
             </button>
           </div>
-          <div>clipsStock : {dashboard.clipsStock}</div>
           <div>
-            +<NumberComponent number={dashboard.productionBonus} style="percent" />
-          </div>
-          {/*<div>clipsTransit : {dashboard.clipsTransit}</div>*/}
-          <button
-            onClick={() => setDashboard({ type: 'PRODUCE_MANUAL_CLIPS' })}
-            disabled={dashboard.wireStock < 1}
-          >
-            Fabriquer
-          </button>
-          <br />
-          <div>AutoClippers {dashboard.autoClippers}</div>
-          <button
-            onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS' })}
-            disabled={dashboard.autoClippersCost > dashboard.funds}
-          >
-            Acheter
-          </button>
-          <br />
-          <div>MegaClippers {dashboard.megaClippers}</div>
-          <button
-            onClick={() => setDashboard({ type: 'UPDATE_MEGACLIPPERS' })}
-            disabled={dashboard.megaClippersCost > dashboard.funds}
-          >
-            Acheter
-          </button>
-        </div>
-        <div>
-          funds : {dashboard.funds}
-          <br />
-          clips cost {dashboard.clipsCost}
-          <br />
-          Public demand {dashboard.publicDemand}
-          <br />
-          <NumberComponent number={dashboard.publicDemand} style="percent" />
-          <div>
-            <button
-              onClick={() => setDashboard({ type: 'DECREASE_CLIPS_COST' })}
-              disabled={dashboard.publicDemand === 1}
-            >
-              decrease
-            </button>
-            <button
-              onClick={() => setDashboard({ type: 'INCREASE_CLIPS_COST' })}
-              disabled={dashboard.publicDemand === 0.01}
-            >
-              increase
-            </button>
+            funds : {dashboard.funds}
+            <br />
+            clips cost {dashboard.clipsCost}
+            <br />
+            Public demand {dashboard.publicDemand}
+            <br />
+            <NumberComponent
+              number={dashboard.publicDemand}
+              style="percent"
+            />
             <div>
-              Marketing level {dashboard.marketing}
-              <br />
               <button
-                onClick={() => setDashboard({ type: 'UPDATE_MARKETING' })}
-                disabled={dashboard.marketing === 10}
+                onClick={() => setDashboard({ type: 'DECREASE_CLIPS_COST' })}
+                disabled={dashboard.publicDemand === 1}
               >
-                Marketing
+                decrease
               </button>
+              <button
+                onClick={() => setDashboard({ type: 'INCREASE_CLIPS_COST' })}
+                disabled={dashboard.publicDemand === 0.01}
+              >
+                increase
+              </button>
+              <div>
+                Marketing level {dashboard.marketing}
+                <br />
+                <button
+                  onClick={() => setDashboard({ type: 'UPDATE_MARKETING' })}
+                  disabled={dashboard.marketing === 10}
+                >
+                  Marketing
+                </button>
+              </div>
             </div>
           </div>
         </div>

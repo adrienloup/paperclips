@@ -1,6 +1,17 @@
 import { Action, State } from '@/src/game/components/dashboard/Dashboard.type';
 
 export const dashboardReducer = (state: State, action: Action): State => {
+  const a = state.megaClippers * 5e2;
+  const b = state.autoClippers + a;
+  const c =
+    state.wireStock >= b
+      ? b
+      : state.wireStock >= a
+        ? a
+        : state.wireStock >= state.autoClippers
+          ? state.autoClippers
+          : 0;
+
   switch (action.type) {
     case 'REBOOT':
       return {
@@ -27,13 +38,12 @@ export const dashboardReducer = (state: State, action: Action): State => {
         wireStock: state.wireStock - 1,
       };
     case 'PRODUCE_AUTOMATIC_CLIPS':
-      const auto = state.autoClippers + state.megaClippers * 5e2;
       return {
         ...state,
-        clips: state.clips + auto,
-        clipsStock: state.clipsStock + auto,
-        clipsTransit: state.clipsStock + auto,
-        wireStock: state.wireStock - auto,
+        clips: state.clips + c,
+        clipsStock: state.clipsStock + c,
+        clipsTransit: state.clipsStock + c,
+        wireStock: state.wireStock - c,
       };
     case 'INCREASE_CLIPS_COST':
       const increasedCost = Math.min(state.clipsCost + 0.01, 1);
@@ -52,10 +62,15 @@ export const dashboardReducer = (state: State, action: Action): State => {
     case 'BUY_WIRE':
       return {
         ...state,
-        //wireStock: state.wireStock + (state.wireBonus > 0 ? state.wireBonus : 1e3),
         wireStock: state.wireStock + Math.round(state.wireBonus * 1e4),
         wireCost: state.wireCost + (Math.random() * (1.25 - 0.25) + 0.25),
         funds: state.funds - state.wireCost,
+      };
+    case 'UPDATE_PER_SECOND':
+      return {
+        ...state,
+        clipsPerSecond:
+          state.wireStock >= b ? b : state.wireStock >= state.autoClippers ? state.autoClippers : 0,
       };
     case 'UPDATE_AUTOCLIPPERS':
       return {

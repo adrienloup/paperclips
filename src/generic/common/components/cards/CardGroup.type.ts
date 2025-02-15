@@ -1,6 +1,7 @@
 import { Children } from '@/src/generic/types/Children.type';
 
-export interface CardsGroup {
+export interface CardGroup {
   children: Children;
   className?: string;
+  direction?: 'row' | 'column';
 }

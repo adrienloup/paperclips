@@ -1,10 +1,8 @@
 .clips {
-  //display: flex;
   //flex: 0 0 100%;
-  grid-column: 1 / span 4;
-  grid-row: 1;
-  padding: var(--spacing-m);
-  font-family: var(--font-number), sans-serif;
+  display: flex;
+  padding: var(--spacing-m) var(--spacing-m) var(--spacing-m) var(--spacing-s);
+  font-family: var(--font-medium), sans-serif;
   font-weight: normal;
   font-size: var(--font-size-l);
 }

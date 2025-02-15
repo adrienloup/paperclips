@@ -37,15 +37,15 @@ export const HeaderComponent = () => {
           <button onClick={() => setTheme('dark')}>dark</button>
           <button onClick={() => setTheme('light')}>light</button>
           <button onClick={() => setTheme('system')}>system</button>
+          <ButtonComponent
+            className={styles.button}
+            aria-label={header ? t('common.settings.close') : t('common.settings.open')}
+            onClick={() => setHeader(!header)}
+          >
+            <IconComponent icon={header ? 'arrow_menu_open' : 'arrow_menu_close'} />
+          </ButtonComponent>
         </div>
       </div>
-      <ButtonComponent
-        className={styles.button}
-        aria-label={header ? t('common.settings.close') : t('common.settings.open')}
-        onClick={() => setHeader(!header)}
-      >
-        <IconComponent icon={header ? 'arrow_menu_open' : 'arrow_menu_close'} />
-      </ButtonComponent>
     </header>
   );
 };

@@ -6,12 +6,14 @@ export type Action =
   | { type: 'INCREASE_CLIPS_COST' }
   | { type: 'DECREASE_CLIPS_COST' }
   | { type: 'BUY_WIRE' }
+  | { type: 'UPDATE_WIRE_COST' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_AUTOCLIPPERS' }
   | { type: 'UPDATE_MEGACLIPPERS' }
   | { type: 'UPDATE_MARKETING' }
+  | { type: 'UPDATE_WIRE'; wire: number }
   | { type: 'UPDATE_PRODUCTION_BONUS'; bonus: number }
-  | { type: 'UPDATE_WIRE_STOCK_BONUS'; bonus: number };
+  | { type: 'UPDATE_WIRE_BONUS'; bonus: number };
 
 export interface State {
   clips: number;
@@ -19,9 +21,10 @@ export interface State {
   clipsStock: number;
   clipsTransit: number;
   clipsPerSecond: number;
-  wireCost: number;
-  wireStock: number;
-  wireBonus: number;
+  wires: number; // Quantity
+  wiresCost: number;
+  wiresStock: number;
+  wiresBonus: number;
   funds: number;
   publicDemand: number;
   marketing: number;

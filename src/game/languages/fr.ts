@@ -4,7 +4,7 @@ export const fr: Translation = {
   game: {
     title: 'Trombones',
     per_second: 'Par seconde',
-    wire_cost: 'Prix du fer',
-    wire_stock: 'Stock du fer',
+    wire_cost: 'Prix fil de fer',
+    wire_stock: 'Stock fil de fer',
   },
 };

@@ -6,6 +6,12 @@
   background-color: var(--color-neutral-3);
 }
 
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: default;
+}
+
 .label {
   font-size: var(--font-size-s);
 }

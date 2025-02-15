@@ -1,4 +1,5 @@
 .card {
+  width: calc((100vw - 8rem) / 3);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -7,10 +8,10 @@
   background-color: var(--color-neutral-2);
   //animation: Appear 250ms var(--ease-quad);
   //will-change: opacity;
-}
 
-.small {
-  flex: 1;
+  @include desktop {
+    width: calc((100vw - 6.5rem) / 2);
+  }
 }
 
 .button {
@@ -26,26 +27,11 @@
     background-color: #0048e8;
   }
 }
-//
-//.group {
-//  display: flex;
-//  gap: var(--spacing-s);
-//  align-items: center;
-//}
-//
-//.button {
-//  padding: var(--spacing-s);
-//  background-color: var(--color-neutral-1);
-//  border: 0.075rem solid var(--color-neutral-6);
-//  font-family: var(--font-number), sans-serif;
-//  font-size: var(--font-size-s);
-//  color: var(--color-neutral-6);
-//
-//  &:hover {
-//    background-color: var(--color-neutral-6);
-//    color: var(--color-neutral-1);
-//  }
-//}
+
+.number {
+  font-family: var(--font-bold), sans-serif;
+  font-size: var(--font-size-m);
+}
 
 //@keyframes Appear {
 //  0% {

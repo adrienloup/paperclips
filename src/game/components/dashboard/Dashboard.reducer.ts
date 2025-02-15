@@ -1,14 +1,14 @@
 import { Action, State } from '@/src/game/components/dashboard/Dashboard.type';
 
 export const dashboardReducer = (state: State, action: Action): State => {
-  const a = state.megaClippers * 5e2;
-  const b = state.autoClippers + a;
-  const c =
-    state.wireStock >= b
-      ? b
-      : state.wireStock >= a
-        ? a
-        : state.wireStock >= state.autoClippers
+  const megaClippers = state.megaClippers * 5e2;
+  const autoMegaClippers = state.autoClippers + megaClippers;
+  const clippers =
+    state.wiresStock >= autoMegaClippers
+      ? autoMegaClippers
+      : state.wiresStock >= megaClippers
+        ? megaClippers
+        : state.wiresStock >= state.autoClippers
           ? state.autoClippers
           : 0;
 
@@ -18,7 +18,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
         ...state,
         clips: 9999,
         funds: 10000000,
-        wireCost: 20,
+        wiresCost: 20,
       };
     case 'SELL_CLIPS':
       const decrease = Math.floor(state.clipsTransit * (1 - state.productionBonus));
@@ -35,15 +35,15 @@ export const dashboardReducer = (state: State, action: Action): State => {
         clipsStock: state.clipsStock + 1,
         clipsTransit: state.clipsStock + 1,
         clipsPerSecond: state.clipsPerSecond + 1,
-        wireStock: state.wireStock - 1,
+        wiresStock: state.wiresStock - 1,
       };
     case 'PRODUCE_AUTOMATIC_CLIPS':
       return {
         ...state,
-        clips: state.clips + c,
-        clipsStock: state.clipsStock + c,
-        clipsTransit: state.clipsStock + c,
-        wireStock: state.wireStock - c,
+        clips: state.clips + clippers,
+        clipsStock: state.clipsStock + clippers,
+        clipsTransit: state.clipsStock + clippers,
+        wiresStock: state.wiresStock - clippers,
       };
     case 'INCREASE_CLIPS_COST':
       const increasedCost = Math.min(state.clipsCost + 0.01, 1);
@@ -62,15 +62,20 @@ export const dashboardReducer = (state: State, action: Action): State => {
     case 'BUY_WIRE':
       return {
         ...state,
-        wireStock: state.wireStock + Math.round(state.wireBonus * 1e4),
-        wireCost: state.wireCost + (Math.random() * (1.25 - 0.25) + 0.25),
-        funds: state.funds - state.wireCost,
+        wiresStock: state.wiresStock + (state.wires + state.wiresBonus * state.wires),
+        wiresCost: state.wiresCost + (Math.random() * (1.25 - 0.25) + 0.25),
+        funds: state.funds - state.wiresCost,
       };
-    case 'UPDATE_PER_SECOND':
+    case 'UPDATE_WIRE_COST':
       return {
         ...state,
-        clipsPerSecond:
-          state.wireStock >= b ? b : state.wireStock >= state.autoClippers ? state.autoClippers : 0,
+        wiresCost: state.wiresCost > 8 ? state.wiresCost - 0.25 : Math.random() * (24 - 12) + 12,
+      };
+    case 'UPDATE_PER_SECOND':
+      console.log('UPDATE_PER_SECOND');
+      return {
+        ...state,
+        clipsPerSecond: clippers,
       };
     case 'UPDATE_AUTOCLIPPERS':
       return {
@@ -83,7 +88,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
       return {
         ...state,
         megaClippers: state.megaClippers + 1,
-        megaClippersCost: state.megaClippersCost + 1e3, // Bonus
+        megaClippersCost: state.megaClippersCost + 1e3, // @TODO: add bonus
         funds: state.funds - state.megaClippersCost,
       };
     case 'UPDATE_MARKETING':
@@ -93,15 +98,20 @@ export const dashboardReducer = (state: State, action: Action): State => {
         marketingCost: state.marketingCost + 100,
         productionBonus: state.marketing / 20,
       };
+    case 'UPDATE_WIRE':
+      return {
+        ...state,
+        wires: action.wire,
+      };
+    case 'UPDATE_WIRE_BONUS':
+      return {
+        ...state,
+        wiresBonus: action.bonus,
+      };
     case 'UPDATE_PRODUCTION_BONUS':
       return {
         ...state,
         productionBonus: action.bonus + (state.marketing - 1) / 20,
-      };
-    case 'UPDATE_WIRE_STOCK_BONUS':
-      return {
-        ...state,
-        wireBonus: Math.min(1, Math.max(0, action.bonus)),
       };
     default:
       return state;

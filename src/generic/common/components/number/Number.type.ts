@@ -1,6 +1,6 @@
 export interface Number {
-  className?: string;
   number: number;
+  className?: string;
   style?: 'currency' | 'percent';
   notation?: 'compact';
 }

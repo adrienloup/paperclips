@@ -48,4 +48,12 @@ export default defineConfig({
       '@': path.resolve('./'),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['legacy-js-api'],
+        additionalData: '@use "@/src/assets/scss/base/breakpoints" as *;',
+      },
+    },
+  },
 });

@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
 import { CardComponent } from '@/src/generic/common/components/cards/Card.component';
@@ -14,20 +13,9 @@ export const ManufacturingComponent = () => {
   const { t } = useTranslation();
   const setDashboard = useDashboardDispatch();
   const dashboard = useDashboard();
-  const dashboardRef = useRef(dashboard);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const { wireStock } = dashboardRef.current;
-      if (wireStock > 0) {
-        setDashboard({ type: 'UPDATE_PER_SECOND' });
-      }
-    }, 1e3);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
-    <CardComponent className={styles.small}>
+    <CardComponent>
       <TitleComponent title="Manufacturing" />
       <DialComponent
         number={dashboard.clipsPerSecond}
@@ -35,19 +23,19 @@ export const ManufacturingComponent = () => {
       />
       <ButtonComponent
         className={styles.button}
-        disabled={dashboard.wireStock < 1}
+        disabled={dashboard.wiresStock < 1}
         onClick={() => setDashboard({ type: 'PRODUCE_MANUAL_CLIPS' })}
       >
         Fabriquer
       </ButtonComponent>
       <CardGroupComponent>
         <DialComponent
-          number={dashboard.wireCost}
+          number={dashboard.wiresCost}
           style="currency"
           label={t('game.wire_cost')}
         />
         <DialComponent
-          number={dashboard.wireStock}
+          number={dashboard.wiresStock}
           notation="compact"
           label={t('game.wire_stock')}
         />
@@ -55,25 +43,61 @@ export const ManufacturingComponent = () => {
       <CardGroupComponent>
         <ButtonComponent
           className={styles.button}
-          disabled={dashboard.funds < dashboard.wireCost}
+          disabled={dashboard.funds < dashboard.wiresCost}
           onClick={() => setDashboard({ type: 'BUY_WIRE' })}
         >
           Acheter
         </ButtonComponent>
-        <div>
-          <NumberComponent
-            number={Math.round(dashboard.wireBonus * 1e4)}
-            notation="compact"
-          />
-          &nbsp;inches
-        </div>
-        {dashboard.wireBonus > 0.1 ? (
+        <NumberComponent
+          className={styles.number}
+          number={dashboard.wires + dashboard.wiresBonus * dashboard.wires}
+          notation="compact"
+        />
+        {dashboard.wiresBonus > 0 ? (
           <BonusComponent
-            number={dashboard.wireBonus}
+            number={dashboard.wiresBonus}
             style="percent"
           />
         ) : null}
       </CardGroupComponent>
+      <CardGroupComponent>
+        <DialComponent
+          number={dashboard.autoClippersCost}
+          style="currency"
+          label="Prix machine"
+        />
+        <DialComponent
+          number={dashboard.autoClippers}
+          notation="compact"
+          label="Machines"
+        />
+      </CardGroupComponent>
+      <ButtonComponent
+        className={styles.button}
+        disabled={dashboard.autoClippersCost > dashboard.funds}
+        onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS' })}
+      >
+        Acheter
+      </ButtonComponent>
+      <CardGroupComponent>
+        <DialComponent
+          number={dashboard.megaClippersCost}
+          style="currency"
+          label="Prix mégamachine"
+        />
+        <DialComponent
+          number={dashboard.megaClippers}
+          notation="compact"
+          label="Mégamachines"
+        />
+      </CardGroupComponent>
+      <ButtonComponent
+        className={styles.button}
+        disabled={dashboard.megaClippersCost > dashboard.funds}
+        onClick={() => setDashboard({ type: 'UPDATE_MEGACLIPPERS' })}
+      >
+        Acheter
+      </ButtonComponent>
     </CardComponent>
   );
 };

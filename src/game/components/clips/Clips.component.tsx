@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { NumberComponent } from '@/src/common/components/number/Number.component';
-import { IconComponent } from '@/src/common/components/icon/Icon.component';
+import { NumberComponent } from '@/src/generic/common/components/number/Number.component';
+import { IconComponent } from '@/src/generic/common/components/icon/Icon.component';
 import styles from '@/src/game/components/clips/Clips.module.scss';
 
 export const ClipsComponent = ({ clips }: { clips: number }) => {

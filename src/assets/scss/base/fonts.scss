@@ -1,35 +1,35 @@
 @font-face {
-  font-family: 'Symbols';
+  font-family: 'Text';
   src:
-    url('../../fonts/Symbols.woff2') format('woff2'),
-    url('../../fonts/Symbols.woff') format('woff');
+    url('../../fonts/Text.woff2') format('woff2'),
+    url('../../fonts/Text.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Bold';
+  font-family: 'Title';
   src:
-    url('../../fonts/Bold.woff2') format('woff2'),
-    url('../../fonts/Bold.woff') format('woff');
+    url('../../fonts/Title.woff2') format('woff2'),
+    url('../../fonts/Title.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Medium';
+  font-family: 'Icon';
   src:
-    url('../../fonts/Medium.woff2') format('woff2'),
-    url('../../fonts/Medium.woff') format('woff');
+    url('../../fonts/Icons.woff2') format('woff2'),
+    url('../../fonts/Icons.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Italic';
+  font-family: 'Number';
   src:
-    url('../../fonts/Italic.woff2') format('woff2'),
-    url('../../fonts/Italic.woff') format('woff');
+    url('../../fonts/Number.woff2') format('woff2'),
+    url('../../fonts/Number.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }

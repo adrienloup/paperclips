@@ -14,6 +14,7 @@ export function DashboardProvider({ children }: { children: Children }) {
   const [dashboard, setDashboard] = useReducer(dashboardReducer, local);
 
   useEffect(() => {
+    console.log('DashboardProvider');
     setLocal(dashboard);
   }, [dashboard]);
 

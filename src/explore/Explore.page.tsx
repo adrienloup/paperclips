@@ -1,4 +1,4 @@
-import { PageComponent } from '@/src/common/components/page/Page.component.tsx';
+import { PageComponent } from '@/src/generic/common/components/page/Page.component.tsx';
 
 function ExplorePage() {
   return <PageComponent>Explore Page</PageComponent>;

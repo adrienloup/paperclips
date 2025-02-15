@@ -1,0 +1,34 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-s);
+  animation: Appear 250ms var(--ease-quad);
+  will-change: opacity;
+}
+
+.group {
+  display: flex;
+  gap: var(--spacing-s);
+  align-items: center;
+}
+
+.button {
+  padding: var(--spacing-s);
+  background-color: var(--color-neutral-1);
+  border: 0.075rem solid var(--color-neutral-6);
+  font-family: var(--font-number), sans-serif;
+  font-size: var(--font-size-s);
+  color: var(--color-neutral-6);
+
+  &:hover {
+    background-color: var(--color-neutral-6);
+    color: var(--color-neutral-1);
+  }
+}
+
+@keyframes Appear {
+  0% {
+    opacity: 0;
+  }
+}

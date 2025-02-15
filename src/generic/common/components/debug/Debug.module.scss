@@ -1,0 +1,18 @@
+.debug {
+  background-color: #fde2f0;
+}
+
+.inner {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--spacing-s);
+  width: 100%;
+  padding: var(--spacing-m);
+  color: #ff0076;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+  }
+}

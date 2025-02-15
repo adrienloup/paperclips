@@ -1,8 +1,9 @@
 @mixin font {
-  --font-bold: 'Bold';
-  --font-medium: 'Medium';
-  --font-italic: 'Italic';
-  --font-symbol: 'Symbols';
+  --font-button: Futura, 'Trebuchet MS', Arial, sans-serif;
+  --font-title: 'Title';
+  --font-text: 'Text';
+  --font-number: 'Number';
+  --font-icon: 'Icon';
 }
 
 @mixin color {

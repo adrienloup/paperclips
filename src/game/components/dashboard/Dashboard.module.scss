@@ -1,27 +1,27 @@
 .dashboard {
-  //display: flex;
-  //flex-flow: row wrap;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto;
+  display: flex;
+  flex-flow: row wrap;
+  //display: grid;
+  //grid-template-columns: 1fr 1fr 1fr 1fr;
+  //grid-template-rows: auto auto auto;
 }
-
-.manufacturing {
-  grid-column: 1;
-  grid-row: 2 / span 3;
-}
-
-.business {
-  grid-column: 2;
-  grid-row: 2 / span 3;
-}
-
-.computationalResources {
-  grid-column: 3 / span 4;
-  grid-row: 2;
-}
-
-.projects {
-  grid-column: 3 / span 4;
-  grid-row: 3;
-}
+//
+//.manufacturing {
+//  grid-column: 1;
+//  grid-row: 2 / span 3;
+//}
+//
+//.business {
+//  grid-column: 2;
+//  grid-row: 2 / span 3;
+//}
+//
+//.computationalResources {
+//  grid-column: 3 / span 4;
+//  grid-row: 2;
+//}
+//
+//.projects {
+//  grid-column: 3 / span 4;
+//  grid-row: 3;
+//}

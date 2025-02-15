@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent
 import { Children } from '@/src/generic/types/Children.type';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider';
 import { ThemeProvider } from '@/src/generic/theme/Theme.provider';
-import { HeaderProvider } from '@/src/common/components/header/Header.provider';
+import { HeaderProvider } from '@/src/generic/common/components/header/Header.provider';
 import { DashboardProvider } from '@/src/game/components/dashboard/Dashboard.provider';
 
 type ProvidersType = [

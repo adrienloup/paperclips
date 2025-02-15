@@ -18,7 +18,7 @@ export const initialState: State = {
   autoClippersCost: 5,
   megaClippers: 0,
   megaClippersCost: 500,
-  productionBonus: 0.025, // @TODO: initialize productionBonus at 0
+  productionBonus: 0.025, // @TODO: initialize productionBonus at 0 / 0.025
   trust: 1,
   trustCost: 8000,
   processors: 1,

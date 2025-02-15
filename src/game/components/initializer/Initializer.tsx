@@ -13,6 +13,21 @@ export const InitializerComponent = () => {
   const [autoClippers, setAutoClippers] = useState(dashboard.autoClippers);
   const [megaClippers, setMegaClippers] = useState(dashboard.megaClippers);
 
+  const clearDashboardItem = () => {
+    localStorage.removeItem('_3mma_0_dashboard');
+    window.location.reload();
+  };
+
+  const clearAllItems = () => {
+    //localStorage.clear();
+    localStorage.removeItem('_3mma_0_dashboard');
+    localStorage.removeItem('_3mma_0_theme');
+    localStorage.removeItem('_3mma_0_language');
+    localStorage.removeItem('_3mma_0_header');
+    localStorage.removeItem('_3mma_0_debug');
+    window.location.reload();
+  };
+
   function onSubmit(e: { preventDefault: () => void }) {
     e.preventDefault();
     setDashboard({
@@ -36,6 +51,13 @@ export const InitializerComponent = () => {
       method="post"
       onSubmit={onSubmit}
     >
+      <div>
+        <div>Supprimer localStorage :</div>
+        <div>
+          <button onClick={clearDashboardItem}>Dashboard</button>
+          <button onClick={clearAllItems}>Tous</button>
+        </div>
+      </div>
       <div>
         <div>Initiales valeurs :</div>
         <div>

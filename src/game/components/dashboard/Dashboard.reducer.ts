@@ -15,6 +15,10 @@ export const dashboardReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SELL_CLIPS':
       const decrease = Math.floor(state.clipsTransit * (1 - state.productionBonus));
+      console.log('clipsTransit', state.clipsTransit);
+      console.log('productionBonus', state.productionBonus);
+      console.log('1 - productionBonus', 1 - state.productionBonus);
+      console.log('total floor', Math.floor(state.clipsTransit * (1 - state.productionBonus)));
       return {
         ...state,
         clipsStock: decrease,

@@ -1,4 +1,4 @@
-import { Children } from '@/src/generic/types/Children.type';
+import { Children } from '@/src/generic/types/Children.type.ts';
 
 export interface CardGroup {
   children: Children;

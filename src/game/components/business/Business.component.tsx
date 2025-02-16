@@ -1,18 +1,18 @@
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
-import { CardComponent } from '@/src/generic/common/components/cards/Card.component';
-import { CardGroupComponent } from '@/src/generic/common/components/cards/CardGroup.component';
+import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
+import { GroupComponent } from '@/src/generic/common/components/group/Group.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';
 import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.component';
-import styles from '@/src/generic/common/components/cards/Card.module.scss';
+import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const BusinessComponent = () => {
   const setDashboard = useDashboardDispatch();
   const dashboard = useDashboard();
 
   return (
-    <CardComponent>
+    <CardComponent className={styles.cardB}>
       <TitleComponent
         className={styles.title}
         title="Business"
@@ -22,7 +22,7 @@ export const BusinessComponent = () => {
         style="currency"
         label="Fonds disponibles"
       />
-      <CardGroupComponent>
+      <GroupComponent>
         <DialComponent
           number={dashboard.clipsStock}
           notation="compact"
@@ -34,8 +34,8 @@ export const BusinessComponent = () => {
             style="percent"
           />
         ) : null}
-      </CardGroupComponent>
-      <CardGroupComponent>
+      </GroupComponent>
+      <GroupComponent>
         <DialComponent
           number={dashboard.clipsCost}
           style="currency"
@@ -46,15 +46,8 @@ export const BusinessComponent = () => {
           style="percent"
           label="publicDemand"
         />
-      </CardGroupComponent>
-      <CardGroupComponent>
-        <ButtonComponent
-          className={styles.button}
-          disabled={dashboard.publicDemand === 1}
-          onClick={() => setDashboard({ type: 'DECREASE_CLIPS_COST' })}
-        >
-          Diminuer
-        </ButtonComponent>
+      </GroupComponent>
+      <GroupComponent>
         <ButtonComponent
           className={styles.button}
           disabled={dashboard.publicDemand === 0.01}
@@ -62,8 +55,15 @@ export const BusinessComponent = () => {
         >
           Augmenter
         </ButtonComponent>
-      </CardGroupComponent>
-      <CardGroupComponent>
+        <ButtonComponent
+          className={styles.button}
+          disabled={dashboard.publicDemand === 1}
+          onClick={() => setDashboard({ type: 'DECREASE_CLIPS_COST' })}
+        >
+          Diminuer
+        </ButtonComponent>
+      </GroupComponent>
+      <GroupComponent>
         <DialComponent
           number={dashboard.marketingCost}
           style="currency"
@@ -76,8 +76,8 @@ export const BusinessComponent = () => {
           label="Level"
           unit="/ 10"
         />
-      </CardGroupComponent>
-      <CardGroupComponent>
+      </GroupComponent>
+      <GroupComponent>
         <ButtonComponent
           className={styles.button}
           disabled={dashboard.marketingCost > dashboard.funds || dashboard.marketing >= 10}
@@ -85,7 +85,7 @@ export const BusinessComponent = () => {
         >
           Acheter
         </ButtonComponent>
-      </CardGroupComponent>
+      </GroupComponent>
     </CardComponent>
   );
 };

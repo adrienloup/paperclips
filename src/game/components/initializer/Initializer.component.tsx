@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
 import { InputFieldProps } from '@/src/game/components/initializer/Initializer.type';
+import { initialState } from '@/src/game/components/dashboard/Dashboard.state';
 import styles from '@/src/game/components/initializer/Initializer.module.scss';
 
 const InputField = ({ label, name, value, onChange }: InputFieldProps) => (
@@ -63,6 +64,10 @@ export const InitializerComponent = () => {
 
   const clearAllItems = () => {
     localStorage.clear();
+    setDashboard({
+      type: 'INITIALIZE_STATE',
+      state: initialState,
+    });
     window.location.href = 'http://localhost:5173/paperclips/';
   };
 

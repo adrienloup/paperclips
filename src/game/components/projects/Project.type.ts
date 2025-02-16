@@ -1,7 +1,7 @@
 export interface Project {
   title: string;
   text: string;
-  incurred: boolean;
+  animate: boolean;
   onClick: () => void;
   onAnimationEnd: () => void;
 }

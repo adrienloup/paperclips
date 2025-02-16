@@ -8,14 +8,13 @@
   }
 }
 
-.incurred {
+.animate {
   animation: Appear 750ms var(--ease-quad);
   will-change: background-color;
 }
 
 .title {
   margin-bottom: var(--spacing-s);
-  // font-weight: var(--font-weight-s);
 }
 
 .text {

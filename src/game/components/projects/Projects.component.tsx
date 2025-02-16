@@ -1,7 +1,8 @@
+import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
-//import { ProjectComponent } from '@/src/game/components/projects/Project.component';
-//import styles from '@/src/generic/common/components/card/Card.module.scss';
+import { ProjectComponent } from '@/src/game/components/projects/Project.component';
+import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 /*
   Limerick (10 créativité) (+1 confiance)
@@ -22,6 +23,9 @@ import { TitleComponent } from '@/src/generic/common/components/title/Title.comp
 */
 
 export const ProjectsComponent = () => {
+  const setDashboard = useDashboardDispatch();
+  const dashboard = useDashboard();
+
   return (
     <CardComponent
       style={{
@@ -29,7 +33,33 @@ export const ProjectsComponent = () => {
         gridRow: '2',
       }}
     >
-      <TitleComponent title="Projects" />
+      <TitleComponent
+        className={styles.title}
+        title="Projects"
+      />
+      {dashboard.clips >= 2e3 && dashboard.revTrackerFeature.open ? (
+        <ProjectComponent
+          title="Rev Tracker 1"
+          text="Automatically calculates average revenue per second"
+          animate={dashboard.revTrackerFeature.animate}
+          onClick={() =>
+            setDashboard({
+              type: 'UPDATE_FEATURE',
+              feature: 'revTrackerFeature',
+              open: false,
+              animate: false,
+            })
+          }
+          onAnimationEnd={() =>
+            setDashboard({
+              type: 'UPDATE_FEATURE',
+              feature: 'revTrackerFeature',
+              open: true,
+              animate: false,
+            })
+          }
+        />
+      ) : null}
       {/*{dashboard.feature.revTracker.enabled ? (*/}
       {/*  <ProjectComponent*/}
       {/*    title="Rev Tracker 1"*/}

@@ -122,6 +122,14 @@ export const dashboardReducer = (state: State, action: Action): State => {
         clipsBonus: action.bonus,
         productionBonus: action.bonus + state.marketing / 20,
       };
+    case 'UPDATE_FEATURE':
+      return {
+        ...state,
+        [action.feature]: {
+          open: action.open,
+          animate: action.animate,
+        },
+      };
     case 'INITIALIZE_STATE':
       return {
         ...action.state,

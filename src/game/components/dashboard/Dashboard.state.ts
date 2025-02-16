@@ -28,4 +28,8 @@ export const initialState: State = {
   operations: 0,
   operationsLimit: 0,
   creativity: 0,
+  revTrackerFeature: {
+    open: true,
+    animate: true,
+  },
 };

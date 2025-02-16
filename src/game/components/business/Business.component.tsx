@@ -74,13 +74,14 @@ export const BusinessComponent = () => {
           number={dashboard.marketing}
           notation="compact"
           label="Level"
+          unit="/ 10"
         />
       </CardGroupComponent>
       <CardGroupComponent>
         <ButtonComponent
           className={styles.button}
           disabled={dashboard.marketingCost > dashboard.funds || dashboard.marketing >= 10}
-          onClick={() => setDashboard({ type: 'UPDATE_MARKETING' })}
+          onClick={() => setDashboard({ type: 'BUY_MARKETING' })}
         >
           Acheter
         </ButtonComponent>

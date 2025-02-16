@@ -79,7 +79,7 @@ export const ManufacturingComponent = () => {
       <ButtonComponent
         className={styles.button}
         disabled={dashboard.autoClippersCost > dashboard.funds}
-        onClick={() => setDashboard({ type: 'UPDATE_AUTOCLIPPERS' })}
+        onClick={() => setDashboard({ type: 'BUY_AUTOCLIPPERS' })}
       >
         Acheter
       </ButtonComponent>
@@ -98,7 +98,7 @@ export const ManufacturingComponent = () => {
       <ButtonComponent
         className={styles.button}
         disabled={dashboard.megaClippersCost > dashboard.funds}
-        onClick={() => setDashboard({ type: 'UPDATE_MEGACLIPPERS' })}
+        onClick={() => setDashboard({ type: 'BUY_MEGACLIPPERS' })}
       >
         Acheter
       </ButtonComponent>

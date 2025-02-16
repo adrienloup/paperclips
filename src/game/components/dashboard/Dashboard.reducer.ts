@@ -59,6 +59,39 @@ export const dashboardReducer = (state: State, action: Action): State => {
         wiresCost: state.wiresCost + (Math.random() * (1.25 - 0.25) + 0.25),
         funds: state.funds - state.wiresCost,
       };
+    case 'BUY_AUTOCLIPPERS':
+      return {
+        ...state,
+        autoClippers: state.autoClippers + 1,
+        autoClippersCost: 1.1 * state.autoClippersCost + (Math.random() * (2 - 1) + 1),
+        funds: state.funds - state.autoClippersCost,
+      };
+    case 'BUY_MEGACLIPPERS':
+      return {
+        ...state,
+        megaClippers: state.megaClippers + 1,
+        megaClippersCost: state.megaClippersCost + 1e3, // @TODO: add bonus
+        funds: state.funds - state.megaClippersCost,
+      };
+    case 'BUY_MARKETING':
+      return {
+        ...state,
+        marketing: state.marketing + 1,
+        marketingCost: state.marketingCost * 2,
+        productionBonus: (state.marketing + 1) / 20,
+      };
+    case 'INCREASE_PROCESSORS':
+      return {
+        ...state,
+        processors: state.processors + 1,
+        trust: state.trust - 1,
+      };
+    case 'INCREASE_MEMORY':
+      return {
+        ...state,
+        memory: state.memory + 1,
+        trust: state.trust - 1,
+      };
     case 'UPDATE_WIRE_COST':
       return {
         ...state,
@@ -69,31 +102,10 @@ export const dashboardReducer = (state: State, action: Action): State => {
         ...state,
         clipsPerSecond: clippersValue,
       };
-    case 'UPDATE_AUTOCLIPPERS':
+    case 'UPDATE_WIRE_QUANTITY':
       return {
         ...state,
-        autoClippers: state.autoClippers + 1,
-        autoClippersCost: 1.1 * state.autoClippersCost + (Math.random() * (2 - 1) + 1),
-        funds: state.funds - state.autoClippersCost,
-      };
-    case 'UPDATE_MEGACLIPPERS':
-      return {
-        ...state,
-        megaClippers: state.megaClippers + 1,
-        megaClippersCost: state.megaClippersCost + 1e3, // @TODO: add bonus
-        funds: state.funds - state.megaClippersCost,
-      };
-    case 'UPDATE_MARKETING':
-      return {
-        ...state,
-        marketing: state.marketing + 1,
-        marketingCost: state.marketingCost * 2,
-        productionBonus: (state.marketing + 1) / 20,
-      };
-    case 'UPDATE_WIRE':
-      return {
-        ...state,
-        wires: action.wire,
+        wires: action.quantity,
       };
     case 'UPDATE_WIRE_BONUS':
       return {

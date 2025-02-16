@@ -1,13 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
+import { useInterval } from '@/src/generic/hooks/useInterval';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
 import { DebugComponent } from '@/src/generic/common/components/debug/Debug.component';
-import { InitializerComponent } from '@/src/game/components/initializer/Initializer.component.tsx';
+import { InitializerComponent } from '@/src/game/components/initializer/Initializer.component';
 import { ClipsComponent } from '@/src/game/components/clips/Clips.component';
 import { CardGroupComponent } from '@/src/generic/common/components/cards/CardGroup.component';
 import { CardsComponent } from '@/src/generic/common/components/cards/Cards.component';
 import { ManufacturingComponent } from '@/src/game/components/manufacturing/Manufacturing.component';
 import { BusinessComponent } from '@/src/game/components/business/Business.component';
-import { ITResourcesComponent } from '@/src/game/components/it-resources/ITResources.component.tsx';
+import { ITResourcesComponent } from '@/src/game/components/it-resources/ITResources.component';
 import styles from '@/src/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
@@ -19,43 +20,28 @@ function DashboardComponent() {
     dashboardRef.current = dashboard;
   }, [dashboard]);
 
-  // SELL_CLIPS
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const { clipsTransit } = dashboardRef.current;
-      if (clipsTransit > 0) {
-        setDashboard({ type: 'SELL_CLIPS' });
-      }
-    }, 5e2);
-    return () => clearInterval(interval);
+  const sellClips = useCallback(() => {
+    const { clipsTransit } = dashboardRef.current;
+    if (clipsTransit > 0) {
+      setDashboard({ type: 'SELL_CLIPS' });
+    }
   }, []);
 
-  // UPDATE_PER_SECOND
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDashboard({ type: 'UPDATE_PER_SECOND' });
-    }, 1e3);
-    return () => clearInterval(interval);
+  const updateProduceClips = useCallback(() => {
+    const { autoClippers, megaClippers } = dashboardRef.current;
+    if (autoClippers > 0 || megaClippers > 0) {
+      setDashboard({ type: 'PRODUCE_AUTOMATIC_CLIPS' });
+    }
+    setDashboard({ type: 'UPDATE_PER_SECOND' });
   }, []);
 
-  // PRODUCE_AUTOMATIC_CLIPS
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const { autoClippers, megaClippers } = dashboardRef.current;
-      if (autoClippers > 0 || megaClippers > 0) {
-        setDashboard({ type: 'PRODUCE_AUTOMATIC_CLIPS' });
-      }
-    }, 1e3);
-    return () => clearInterval(interval);
+  const updateWireCost = useCallback(() => {
+    setDashboard({ type: 'UPDATE_WIRE_COST' });
   }, []);
 
-  // UPDATE_WIRE_COST
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDashboard({ type: 'UPDATE_WIRE_COST' });
-    }, 1e4);
-    return () => clearInterval(interval);
-  }, []);
+  useInterval(sellClips, 5e2);
+  useInterval(updateProduceClips, 1e3);
+  useInterval(updateWireCost, 1e4);
 
   return (
     <>

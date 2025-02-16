@@ -28,6 +28,7 @@ export const InitializerComponent = () => {
     marketing: dashboard.marketing,
     autoClippers: dashboard.autoClippers,
     megaClippers: dashboard.megaClippers,
+    trust: dashboard.trust,
   });
 
   const handleChange = useCallback(
@@ -51,6 +52,10 @@ export const InitializerComponent = () => {
     [dashboard, setDashboard]
   );
 
+  const reload = () => {
+    window.location.reload();
+  };
+
   const clearDashboardItem = () => {
     localStorage.removeItem('_3mma_0_dashboard');
     window.location.reload();
@@ -58,11 +63,7 @@ export const InitializerComponent = () => {
 
   const clearAllItems = () => {
     localStorage.clear();
-    window.location.reload();
-  };
-
-  const reload = () => {
-    window.location.reload();
+    window.location.href = 'http://localhost:5173/paperclips/';
   };
 
   return (
@@ -126,13 +127,13 @@ export const InitializerComponent = () => {
       <div>
         <div>Quantité d'achat de fer : {dashboard.wires}</div>
         <div>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 5e2 })}>500</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 1e3 })}>1000</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 2e3 })}>2000</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 4e3 })}>4000</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 8e3 })}>8000</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 1e4 })}>10000</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE', wire: 2e4 })}>20000</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e2 })}>500</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e3 })}>1000</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e3 })}>2000</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 4e3 })}>4000</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 8e3 })}>8000</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e4 })}>10000</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e4 })}>20000</button>
         </div>
       </div>
       <div>

@@ -22,7 +22,8 @@ export const ManufacturingComponent = () => {
       />
       <DialComponent
         number={dashboard.clipsPerSecond}
-        label={t('game.per_second')}
+        notation="compact"
+        label={t('game.clips_per_second')}
       />
       <ButtonComponent
         className={styles.button}
@@ -55,7 +56,6 @@ export const ManufacturingComponent = () => {
           className={styles.number}
           number={dashboard.wires + dashboard.wiresBonus * dashboard.wires}
           notation="compact"
-          unit="inches"
         />
         {dashboard.wiresBonus > 0 ? (
           <BonusComponent

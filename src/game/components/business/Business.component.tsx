@@ -18,6 +18,11 @@ export const BusinessComponent = () => {
         title="Business"
       />
       <DialComponent
+        number={dashboard.fundsPerSecond}
+        style="currency"
+        label="Funds per second"
+      />
+      <DialComponent
         number={dashboard.funds}
         style="currency"
         label="Fonds disponibles"
@@ -28,12 +33,12 @@ export const BusinessComponent = () => {
           notation="compact"
           label="Stock trombones"
         />
-        {dashboard.marketing > 1 ? (
-          <BonusComponent
-            number={dashboard.productionBonus}
-            style="percent"
-          />
-        ) : null}
+        {/*{dashboard.marketing > 1 ? (*/}
+        <BonusComponent
+          number={dashboard.productionBonus}
+          style="percent"
+        />
+        {/*) : null}*/}
       </GroupComponent>
       <GroupComponent>
         <DialComponent
@@ -50,31 +55,30 @@ export const BusinessComponent = () => {
       <GroupComponent>
         <ButtonComponent
           className={styles.button}
-          disabled={dashboard.publicDemand === 0.01}
+          disabled={dashboard.clipsCost === 1}
           onClick={() => setDashboard({ type: 'INCREASE_CLIPS_COST' })}
         >
-          Augmenter
+          Hausser
         </ButtonComponent>
         <ButtonComponent
           className={styles.button}
-          disabled={dashboard.publicDemand === 1}
+          disabled={dashboard.clipsCost === 0.1}
           onClick={() => setDashboard({ type: 'DECREASE_CLIPS_COST' })}
         >
-          Diminuer
+          Baisser
         </ButtonComponent>
       </GroupComponent>
       <GroupComponent>
         <DialComponent
           number={dashboard.marketingCost}
           style="currency"
-          label="+1 Marketing"
+          label="+1 Marketing level"
           disabled={dashboard.marketing >= 10}
         />
         <DialComponent
           number={dashboard.marketing}
           notation="compact"
-          label="Level"
-          unit="/ 10"
+          label="Marketing"
         />
       </GroupComponent>
       <GroupComponent>

@@ -128,12 +128,16 @@ export const InitializerComponent = () => {
         <div>Quantité d'achat de fer : {dashboard.wires}</div>
         <div>
           <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e2 })}>500</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e3 })}>1000</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e3 })}>2000</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 4e3 })}>4000</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 8e3 })}>8000</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e4 })}>10000</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e4 })}>20000</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e3 })}>1K</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e3 })}>2K</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 4e3 })}>4K</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 8e3 })}>8K</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e4 })}>10K</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e4 })}>20K</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e4 })}>50K</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e5 })}>100K</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e5 })}>500K</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e6 })}>1M</button>
         </div>
       </div>
       <div>

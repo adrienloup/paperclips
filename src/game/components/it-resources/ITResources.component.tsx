@@ -20,45 +20,49 @@ export const ITResourcesComponent = () => {
         <DialComponent
           number={dashboard.trustCost}
           notation="compact"
-          label="+1 Trust"
           unit="clips"
+          label="+1 Trust level"
         />
         <DialComponent
           number={dashboard.trust}
           notation="compact"
-          label="Level"
-          unit="/ 100"
+          label="Trust"
         />
       </GroupComponent>
       <GroupComponent>
-        <GroupComponent direction="column">
-          <DialComponent
-            number={dashboard.processors}
-            notation="compact"
-            label="Processors"
-          />
-          <ButtonComponent
-            className={styles.button}
-            disabled={dashboard.processors + dashboard.memory >= dashboard.trust}
-            onClick={() => setDashboard({ type: 'INCREASE_PROCESSORS' })}
-          >
-            Augmenter
-          </ButtonComponent>
-        </GroupComponent>
-        <GroupComponent direction="column">
-          <DialComponent
-            number={dashboard.memory}
-            notation="compact"
-            label="Memory"
-          />
-          <ButtonComponent
-            className={styles.button}
-            disabled={dashboard.memory + dashboard.processors >= dashboard.trust}
-            onClick={() => setDashboard({ type: 'INCREASE_MEMORY' })}
-          >
-            Augmenter
-          </ButtonComponent>
-        </GroupComponent>
+        <DialComponent
+          number={dashboard.processors}
+          notation="compact"
+          label="Processors"
+        />
+        <DialComponent
+          number={dashboard.memory}
+          notation="compact"
+          label="Memory"
+        />
+      </GroupComponent>
+      <GroupComponent>
+        <ButtonComponent
+          className={styles.button}
+          disabled={dashboard.processors + dashboard.memory >= dashboard.trust}
+          onClick={() => setDashboard({ type: 'INCREASE_PROCESSORS' })}
+        >
+          Obtenir
+        </ButtonComponent>
+        <ButtonComponent
+          className={styles.button}
+          disabled={dashboard.memory + dashboard.processors >= dashboard.trust}
+          onClick={() => setDashboard({ type: 'INCREASE_MEMORY' })}
+        >
+          Obtenir
+        </ButtonComponent>
+      </GroupComponent>
+      <GroupComponent>
+        <DialComponent
+          number={Number('50 000 / 50 000')}
+          notation="compact"
+          label="Operations"
+        />
       </GroupComponent>
     </CardComponent>
   );

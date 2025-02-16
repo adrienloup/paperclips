@@ -57,14 +57,14 @@ export const ITResourcesComponent = () => {
           disabled={dashboard.processors + dashboard.memory >= dashboard.trust}
           onClick={() => setDashboard({ type: 'INCREASE_PROCESSORS' })}
         >
-          Hausser
+          Augmenter
         </ButtonComponent>
         <ButtonComponent
           className={styles.button}
           disabled={dashboard.memory + dashboard.processors >= dashboard.trust}
           onClick={() => setDashboard({ type: 'INCREASE_MEMORY' })}
         >
-          Hausser
+          Augmenter
         </ButtonComponent>
       </GroupComponent>
       <GroupComponent>

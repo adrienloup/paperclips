@@ -122,6 +122,11 @@ export const dashboardReducer = (state: State, action: Action): State => {
         clipsBonus: action.bonus,
         productionBonus: action.bonus + state.marketing / 20,
       };
+    case 'DECREASE_OPERATIONS':
+      return {
+        ...state,
+        operations: state.operations - action.operations,
+      };
     case 'UPDATE_FEATURE':
       return {
         ...state,

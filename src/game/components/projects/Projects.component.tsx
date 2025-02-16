@@ -26,6 +26,25 @@ export const ProjectsComponent = () => {
   const setDashboard = useDashboardDispatch();
   const dashboard = useDashboard();
 
+  const onRevTrackerClick = () => {
+    setDashboard({
+      type: 'UPDATE_FEATURE',
+      feature: 'revTrackerFeature',
+      open: false,
+      animate: false,
+    });
+    setDashboard({
+      type: 'UPDATE_FEATURE',
+      feature: 'fundsPerSecondFeature',
+      open: true,
+      animate: false,
+    });
+    setDashboard({
+      type: 'DECREASE_OPERATIONS',
+      operations: 500,
+    });
+  };
+
   return (
     <CardComponent
       style={{
@@ -41,15 +60,9 @@ export const ProjectsComponent = () => {
         <ProjectComponent
           title="Rev Tracker 1"
           text="Automatically calculates average revenue per second"
+          disabled={dashboard.operations < 500}
           animate={dashboard.revTrackerFeature.animate}
-          onClick={() =>
-            setDashboard({
-              type: 'UPDATE_FEATURE',
-              feature: 'revTrackerFeature',
-              open: false,
-              animate: false,
-            })
-          }
+          onClick={onRevTrackerClick}
           onAnimationEnd={() =>
             setDashboard({
               type: 'UPDATE_FEATURE',

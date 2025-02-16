@@ -32,4 +32,8 @@ export const initialState: State = {
     open: true,
     animate: true,
   },
+  fundsPerSecondFeature: {
+    open: true,
+    animate: true,
+  },
 };

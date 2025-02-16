@@ -15,6 +15,7 @@ export type Action =
   | { type: 'UPDATE_WIRE_QUANTITY'; quantity: number }
   | { type: 'UPDATE_CLIPS_BONUS'; bonus: number }
   | { type: 'UPDATE_WIRE_BONUS'; bonus: number }
+  | { type: 'DECREASE_OPERATIONS'; operations: number }
   | { type: 'UPDATE_FEATURE'; feature: string; open: boolean; animate: boolean }
   | { type: 'INITIALIZE_STATE'; state: State };
 
@@ -47,6 +48,10 @@ export interface State {
   operationsLimit: number;
   creativity: number;
   revTrackerFeature: {
+    open: boolean;
+    animate: boolean;
+  };
+  fundsPerSecondFeature: {
     open: boolean;
     animate: boolean;
   };

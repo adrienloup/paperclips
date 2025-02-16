@@ -8,5 +8,10 @@ export const en: Translation = {
       open: 'Open settings',
       close: 'Close settings',
     },
+    button: {
+      raise: 'Raise',
+      lower: 'Lower',
+      buy: 'Buy',
+    },
   },
 };

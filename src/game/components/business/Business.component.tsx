@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { GroupComponent } from '@/src/generic/common/components/group/Group.component';
@@ -8,6 +9,7 @@ import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.comp
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const BusinessComponent = () => {
+  const { t } = useTranslation();
   const setDashboard = useDashboardDispatch();
   const dashboard = useDashboard();
 
@@ -22,11 +24,13 @@ export const BusinessComponent = () => {
         className={styles.title}
         title="Business"
       />
-      <DialComponent
-        value={dashboard.fundsPerSecond}
-        style="currency"
-        label="Funds per second"
-      />
+      {dashboard.fundsPerSecondFeature.open ? (
+        <DialComponent
+          value={dashboard.fundsPerSecond}
+          style="currency"
+          label="Funds per second"
+        />
+      ) : null}
       <DialComponent
         value={dashboard.funds}
         style="currency"
@@ -61,14 +65,14 @@ export const BusinessComponent = () => {
           disabled={dashboard.clipsCost === 1}
           onClick={() => setDashboard({ type: 'INCREASE_CLIPS_COST' })}
         >
-          Hausser
+          {t('common.button.raise')}
         </ButtonComponent>
         <ButtonComponent
           className={styles.button}
           disabled={dashboard.clipsCost === 0.1}
           onClick={() => setDashboard({ type: 'DECREASE_CLIPS_COST' })}
         >
-          Baisser
+          {t('common.button.lower')}
         </ButtonComponent>
       </GroupComponent>
       <GroupComponent>
@@ -91,7 +95,7 @@ export const BusinessComponent = () => {
           disabled={dashboard.marketingCost > dashboard.funds || dashboard.marketing >= 10}
           onClick={() => setDashboard({ type: 'BUY_MARKETING' })}
         >
-          Acheter
+          {t('common.button.buy')}
         </ButtonComponent>
       </GroupComponent>
     </CardComponent>

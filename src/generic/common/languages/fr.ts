@@ -8,5 +8,10 @@ export const fr: Translation = {
       open: 'Ouvrir les paramètres',
       close: 'Fermer les paramètres',
     },
+    button: {
+      raise: 'Augmenter',
+      lower: 'Baisser',
+      buy: 'Acheter',
+    },
   },
 };

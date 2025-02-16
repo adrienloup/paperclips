@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
-import { CardComponent } from '@/src/generic/common/components/cards/Card.component';
-import { CardGroupComponent } from '@/src/generic/common/components/cards/CardGroup.component';
+import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
+import { GroupComponent } from '@/src/generic/common/components/group/Group.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component';
 import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.component';
-import styles from '@/src/generic/common/components/cards/Card.module.scss';
+import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ManufacturingComponent = () => {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ export const ManufacturingComponent = () => {
   const dashboard = useDashboard();
 
   return (
-    <CardComponent>
+    <CardComponent className={styles.cardA}>
       <TitleComponent
         className={styles.title}
         title="Manufacturing"
@@ -31,7 +31,7 @@ export const ManufacturingComponent = () => {
       >
         Fabriquer
       </ButtonComponent>
-      <CardGroupComponent>
+      <GroupComponent>
         <DialComponent
           number={dashboard.wiresCost}
           style="currency"
@@ -42,8 +42,8 @@ export const ManufacturingComponent = () => {
           notation="compact"
           label={t('game.wire_stock')}
         />
-      </CardGroupComponent>
-      <CardGroupComponent>
+      </GroupComponent>
+      <GroupComponent>
         <ButtonComponent
           className={styles.button}
           disabled={dashboard.funds < dashboard.wiresCost}
@@ -63,8 +63,8 @@ export const ManufacturingComponent = () => {
             style="percent"
           />
         ) : null}
-      </CardGroupComponent>
-      <CardGroupComponent>
+      </GroupComponent>
+      <GroupComponent>
         <DialComponent
           number={dashboard.autoClippersCost}
           style="currency"
@@ -75,7 +75,7 @@ export const ManufacturingComponent = () => {
           notation="compact"
           label="Machines"
         />
-      </CardGroupComponent>
+      </GroupComponent>
       <ButtonComponent
         className={styles.button}
         disabled={dashboard.autoClippersCost > dashboard.funds}
@@ -83,7 +83,7 @@ export const ManufacturingComponent = () => {
       >
         Acheter
       </ButtonComponent>
-      <CardGroupComponent>
+      <GroupComponent>
         <DialComponent
           number={dashboard.megaClippersCost}
           style="currency"
@@ -94,7 +94,7 @@ export const ManufacturingComponent = () => {
           notation="compact"
           label="Mégamachines"
         />
-      </CardGroupComponent>
+      </GroupComponent>
       <ButtonComponent
         className={styles.button}
         disabled={dashboard.megaClippersCost > dashboard.funds}

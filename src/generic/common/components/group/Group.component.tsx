@@ -1,7 +1,7 @@
-import { classNames } from '@/src/generic/utils/classNames.ts';
-import { CardGroup } from '@/src/generic/common/components/group/CardGroup.type.ts';
-import styles from '@/src/generic/common/components/group/CardGroup.module.scss';
+import { classNames } from '@/src/generic/utils/classNames';
+import { Group } from '@/src/generic/common/components/group/Group.type';
+import styles from '@/src/generic/common/components/group/Group.module.scss';
 
-export const CardGroupComponent = ({ children, className, direction = 'row' }: CardGroup) => {
-  return <div className={classNames([styles.cardGroup, className, styles[direction]])}>{children}</div>;
+export const GroupComponent = ({ children, className, direction = 'row' }: Group) => {
+  return <div className={classNames([styles.group, className, styles[direction]])}>{children}</div>;
 };

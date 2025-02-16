@@ -20,6 +20,7 @@ function DashboardComponent() {
     dashboardRef.current = dashboard;
   }, [dashboard]);
 
+  // SELL_CLIPS
   const sellClips = useCallback(() => {
     const { clipsTransit } = dashboardRef.current;
     if (clipsTransit > 0) {
@@ -27,20 +28,23 @@ function DashboardComponent() {
     }
   }, []);
 
-  const updateProduceClips = useCallback(() => {
-    const { autoClippers, megaClippers } = dashboardRef.current;
-    if (autoClippers > 0 || megaClippers > 0) {
+  // PRODUCE_AUTOMATIC_CLIPS, UPDATE_PER_SECOND, INCREASE_OPERATIONS
+  const updatePerSecond = useCallback(() => {
+    const { autoClippers, megaClippers, wiresStock } = dashboardRef.current;
+    if ((autoClippers > 0 || megaClippers > 0) && wiresStock > 0) {
       setDashboard({ type: 'PRODUCE_AUTOMATIC_CLIPS' });
     }
     setDashboard({ type: 'UPDATE_PER_SECOND' });
+    setDashboard({ type: 'INCREASE_OPERATIONS' });
   }, []);
 
+  // UPDATE_WIRE_COST
   const updateWireCost = useCallback(() => {
     setDashboard({ type: 'UPDATE_WIRE_COST' });
   }, []);
 
   useInterval(sellClips, 5e2);
-  useInterval(updateProduceClips, 1e3);
+  useInterval(updatePerSecond, 1e3);
   useInterval(updateWireCost, 1e4);
 
   return (

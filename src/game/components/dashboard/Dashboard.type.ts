@@ -10,6 +10,7 @@ export type Action =
   | { type: 'BUY_MARKETING' }
   | { type: 'INCREASE_PROCESSORS' }
   | { type: 'INCREASE_MEMORY' }
+  | { type: 'INCREASE_OPERATIONS' }
   | { type: 'UPDATE_WIRE_COST' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_WIRE_QUANTITY'; quantity: number }
@@ -25,7 +26,8 @@ export interface State {
   clipsPerSecond: number;
   clipsBonus: number;
   funds: number;
-  wires: number; // Quantity
+  fundsPerSecond: number;
+  wires: number;
   wiresCost: number;
   wiresStock: number;
   wiresBonus: number;
@@ -41,4 +43,5 @@ export interface State {
   trustCost: number;
   processors: number;
   memory: number;
+  operations: number;
 }

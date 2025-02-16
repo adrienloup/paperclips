@@ -1,20 +1,10 @@
 import { Action, State } from '@/src/game/components/dashboard/Dashboard.type';
 
 export const dashboardReducer = (state: State, action: Action): State => {
-  const megaClips = state.megaClippers * 5e2;
-  const allClips = state.autoClippers + megaClips;
-  const clips =
-    state.wiresStock >= allClips
-      ? allClips
-      : state.wiresStock >= megaClips
-        ? megaClips
-        : state.wiresStock >= state.autoClippers
-          ? state.autoClippers
-          : 0;
-
   switch (action.type) {
     case 'SELL_CLIPS':
       const decrease = Math.floor(state.clipsTransit * (1 - state.productionBonus));
+
       return {
         ...state,
         clipsStock: decrease,
@@ -28,29 +18,40 @@ export const dashboardReducer = (state: State, action: Action): State => {
         clipsStock: state.clipsStock + 1,
         clipsTransit: state.clipsStock + 1,
         clipsPerSecond: state.clipsPerSecond + 1,
+        fundsPerSecond: (state.fundsPerSecond + 1) * state.clipsCost,
         wiresStock: state.wiresStock - 1,
       };
     case 'PRODUCE_AUTOMATIC_CLIPS':
+      const megaClippers = state.megaClippers * 5e2;
+      const allClippers = megaClippers + state.autoClippers;
+
       return {
         ...state,
-        clips: state.clips + clips,
-        clipsStock: state.clipsStock + clips,
-        clipsTransit: state.clipsStock + clips,
-        wiresStock: state.wiresStock - clips,
+        clips: state.clips + allClippers,
+        clipsStock: state.clipsStock + allClippers,
+        clipsTransit: state.clipsStock + allClippers,
+        wiresStock:
+          state.wiresStock >= allClippers
+            ? state.wiresStock - allClippers
+            : state.wiresStock >= megaClippers
+              ? state.wiresStock - megaClippers
+              : state.wiresStock >= state.autoClippers
+                ? state.wiresStock - state.autoClippers
+                : 0,
       };
     case 'INCREASE_CLIPS_COST':
-      const increasedCost = Math.min(state.clipsCost + 0.01, 1);
+      const increaseClipsCost = Math.min(state.clipsCost + 0.01, 1);
       return {
         ...state,
-        clipsCost: increasedCost,
-        publicDemand: 0.01 / increasedCost,
+        clipsCost: increaseClipsCost,
+        publicDemand: 0.1 / increaseClipsCost,
       };
     case 'DECREASE_CLIPS_COST':
-      const decreasedCost = Math.max(state.clipsCost - 0.01, 0.01);
+      const decreaseClipsCost = Math.max(state.clipsCost - 0.01, 0.1);
       return {
         ...state,
-        clipsCost: decreasedCost,
-        publicDemand: 0.01 / decreasedCost,
+        clipsCost: decreaseClipsCost,
+        publicDemand: 0.1 / decreaseClipsCost,
       };
     case 'BUY_WIRE':
       return {
@@ -70,7 +71,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
       return {
         ...state,
         megaClippers: state.megaClippers + 1,
-        megaClippersCost: state.megaClippersCost + 1e3, // @TODO: add bonus
+        megaClippersCost: state.megaClippersCost + 11e2, // @TODO: add megaClippersCostBonus
         funds: state.funds - state.megaClippersCost,
       };
     case 'BUY_MARKETING':
@@ -92,15 +93,23 @@ export const dashboardReducer = (state: State, action: Action): State => {
         memory: state.memory + 1,
         trust: state.trust - 1,
       };
+    case 'INCREASE_OPERATIONS':
+      //console.log('INCREASE_OPERATIONS');
+      return {
+        ...state,
+        //operations: state.operations + 1,
+      };
     case 'UPDATE_WIRE_COST':
       return {
         ...state,
         wiresCost: state.wiresCost > 8 ? state.wiresCost - 0.25 : Math.random() * (24 - 12) + 12,
       };
     case 'UPDATE_PER_SECOND':
+      const clipsPerSecond = state.wiresStock > 0 ? state.megaClippers * 5e2 + state.autoClippers : 0;
       return {
         ...state,
-        clipsPerSecond: clips,
+        clipsPerSecond: clipsPerSecond,
+        fundsPerSecond: state.clipsCost * clipsPerSecond,
       };
     case 'UPDATE_WIRE_QUANTITY':
       return {

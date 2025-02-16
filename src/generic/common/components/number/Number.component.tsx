@@ -12,10 +12,9 @@ export const NumberComponent = ({ number, className, unit, style, notation }: Nu
     maximumFractionDigits: 2,
   };
 
-  const formattedNumber = new Intl.NumberFormat(
-    language === 'en' ? 'en-US' : 'fr-FR',
-    options
-  ).format(number);
+  const formattedNumber = new Intl.NumberFormat(language === 'en' ? 'en-US' : 'fr-FR', options).format(
+    number
+  );
 
   return (
     <span className={className}>

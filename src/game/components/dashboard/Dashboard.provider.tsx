@@ -23,9 +23,7 @@ export function DashboardProvider({ children }: { children: Children }) {
 
   return (
     <DashboardContext.Provider value={dashboard}>
-      <DashboardDispatchContext.Provider value={setDashboard}>
-        {children}
-      </DashboardDispatchContext.Provider>
+      <DashboardDispatchContext.Provider value={setDashboard}>{children}</DashboardDispatchContext.Provider>
     </DashboardContext.Provider>
   );
 }

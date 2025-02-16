@@ -3,12 +3,7 @@ import { classNames } from '@/src/generic/utils/classNames';
 import { Loader } from '@/src/generic/common/components/loader/Loader.type';
 import styles from '@/src/generic/common/components/loader/Loader.module.scss';
 
-export const LoaderComponent = ({
-  className,
-  duration = 1e3,
-  size = 'large',
-  ...props
-}: Loader) => {
+export const LoaderComponent = ({ className, duration = 1e3, size = 'large', ...props }: Loader) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {

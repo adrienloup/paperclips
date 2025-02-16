@@ -6,6 +6,7 @@ export const initialState: State = {
   clipsStock: 0,
   clipsTransit: 0,
   clipsPerSecond: 0,
+  clipsBonus: 0,
   funds: 0,
   wires: 1000,
   wiresCost: 20,
@@ -18,7 +19,7 @@ export const initialState: State = {
   autoClippersCost: 5,
   megaClippers: 0,
   megaClippersCost: 500,
-  productionBonus: 0.025, // @TODO: initialize productionBonus at 0 / 0.025
+  productionBonus: 0.05,
   trust: 1,
   trustCost: 8000,
   processors: 1,

@@ -4,9 +4,7 @@ import { PageComponent } from '@/src/generic/common/components/page/Page.compone
 import { LoaderComponent } from '@/src/generic/common/components/loader/Loader.component';
 import styles from '@/src/game/Game.module.scss';
 
-const DashboardComponent = lazy(() =>
-  fallback(import('./components/dashboard/Dashboard.component'), 1e3)
-);
+const DashboardComponent = lazy(() => fallback(import('./components/dashboard/Dashboard.component'), 1e3));
 
 function GamePage() {
   return (

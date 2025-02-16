@@ -5,14 +5,14 @@ import { CardGroupComponent } from '@/src/generic/common/components/cards/CardGr
 import { useDashboard } from '@/src/game/components/dashboard/useDashboard';
 import styles from '@/src/generic/common/components/cards/Card.module.scss';
 
-export const ComputationalComponent = () => {
+export const ITResourcesComponent = () => {
   const dashboard = useDashboard();
 
   return (
     <CardComponent>
       <TitleComponent
         className={styles.title}
-        title="Computational Resources"
+        title="IT Resources"
       />
       <CardGroupComponent>
         <DialComponent

@@ -15,10 +15,6 @@ export const dashboardReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SELL_CLIPS':
       const decrease = Math.floor(state.clipsTransit * (1 - state.productionBonus));
-      console.log('clipsTransit', state.clipsTransit);
-      console.log('productionBonus', state.productionBonus);
-      console.log('1 - productionBonus', 1 - state.productionBonus);
-      console.log('total floor', Math.floor(state.clipsTransit * (1 - state.productionBonus)));
       return {
         ...state,
         clipsStock: decrease,
@@ -91,8 +87,8 @@ export const dashboardReducer = (state: State, action: Action): State => {
       return {
         ...state,
         marketing: state.marketing + 1,
-        marketingCost: state.marketingCost + 100,
-        productionBonus: state.marketing / 20,
+        marketingCost: state.marketingCost * 2,
+        productionBonus: (state.marketing + 1) / 20,
       };
     case 'UPDATE_WIRE':
       return {
@@ -104,14 +100,16 @@ export const dashboardReducer = (state: State, action: Action): State => {
         ...state,
         wiresBonus: action.bonus,
       };
-    case 'UPDATE_PRODUCTION_BONUS':
+    case 'UPDATE_CLIPS_BONUS':
       return {
         ...state,
-        productionBonus: action.bonus + (state.marketing - 1) / 20,
+        clipsBonus: action.bonus,
+        productionBonus: action.bonus + state.marketing / 20,
       };
     case 'INITIALIZE_STATE':
       return {
         ...action.state,
+        productionBonus: state.clipsBonus + action.state.marketing / 20,
       };
     default:
       return state;

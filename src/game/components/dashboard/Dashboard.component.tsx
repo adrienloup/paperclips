@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
 import { DebugComponent } from '@/src/generic/common/components/debug/Debug.component';
-import { InitializerComponent } from '@/src/game/components/initializer/Initializer.tsx';
+import { InitializerComponent } from '@/src/game/components/initializer/Initializer.component.tsx';
 import { ClipsComponent } from '@/src/game/components/clips/Clips.component';
 import { CardGroupComponent } from '@/src/generic/common/components/cards/CardGroup.component';
 import { CardsComponent } from '@/src/generic/common/components/cards/Cards.component';
 import { ManufacturingComponent } from '@/src/game/components/manufacturing/Manufacturing.component';
 import { BusinessComponent } from '@/src/game/components/business/Business.component';
-import { ComputationalComponent } from '@/src/game/components/computational/Computational.component';
+import { ITResourcesComponent } from '@/src/game/components/it-resources/ITResources.component.tsx';
 import styles from '@/src/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
@@ -68,7 +68,7 @@ function DashboardComponent() {
           <ManufacturingComponent />
           <BusinessComponent />
           <CardGroupComponent direction="column">
-            <ComputationalComponent />
+            <ITResourcesComponent />
           </CardGroupComponent>
         </CardsComponent>
       </article>

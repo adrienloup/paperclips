@@ -43,7 +43,7 @@ function DashboardComponent() {
     setDashboard({ type: 'UPDATE_WIRE_COST' });
   }, []);
 
-  useInterval(sellClips, 5e2);
+  useInterval(sellClips, 4e2);
   useInterval(updatePerSecond, 1e3);
   useInterval(updateWireCost, 1e4);
 

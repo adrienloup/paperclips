@@ -117,43 +117,95 @@ export const InitializerComponent = () => {
         </div>
         <div>
           <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0 })}>0%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.1 })}>10%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.2 })}>20%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.3 })}>30%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.4 })}>40%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.5 })}>50%</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.1 })}>
+            10%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.2 })}>
+            20%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.3 })}>
+            30%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.4 })}>
+            40%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.5 })}>
+            50%
+          </button>
         </div>
       </div>
       <div>
         <div>Quantité d'achat de fer : {dashboard.wires}</div>
         <div>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e2 })}>500</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e3 })}>1K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e3 })}>2K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 4e3 })}>4K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 8e3 })}>8K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e4 })}>10K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e4 })}>20K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e4 })}>50K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e5 })}>100K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e5 })}>500K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e6 })}>1M</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e2 })}>
+            500
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e3 })}>
+            1K
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e3 })}>
+            2K
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 4e3 })}>
+            4K
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 8e3 })}>
+            8K
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e4 })}>
+            10K
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e4 })}>
+            20K
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e4 })}>
+            50K
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e5 })}>
+            100K
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e5 })}>
+            500K
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e6 })}>
+            1M
+          </button>
         </div>
       </div>
       <div>
         <div>Bonus d'achat de fer : {dashboard.wiresBonus}</div>
         <div>
           <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0 })}>0%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.1 })}>10%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.2 })}>20%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.3 })}>30%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.4 })}>40%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.5 })}>50%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.6 })}>60%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.7 })}>70%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.8 })}>80%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.9 })}>90%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 1 })}>100%</button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.1 })}>
+            10%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.2 })}>
+            20%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.3 })}>
+            30%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.4 })}>
+            40%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.5 })}>
+            50%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.6 })}>
+            60%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.7 })}>
+            70%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.8 })}>
+            80%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.9 })}>
+            90%
+          </button>
+          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 1 })}>
+            100%
+          </button>
         </div>
       </div>
     </div>

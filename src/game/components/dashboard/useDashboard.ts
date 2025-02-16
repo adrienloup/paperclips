@@ -1,5 +1,8 @@
 import { useContext } from 'react';
-import { DashboardContext, DashboardDispatchContext } from '@/src/game/components/dashboard/Dashboard.context';
+import {
+  DashboardContext,
+  DashboardDispatchContext,
+} from '@/src/game/components/dashboard/Dashboard.context';
 
 export function useDashboard() {
   return useContext(DashboardContext);

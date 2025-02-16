@@ -15,5 +15,9 @@ export function LanguageProvider({ children }: { children: Children }) {
     document.documentElement.lang = i18n.language;
   }, [i18n, language]);
 
-  return <LanguageContext.Provider value={{ language, setLanguage }}>{children}</LanguageContext.Provider>;
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage }}>
+      {children}
+    </LanguageContext.Provider>
+  );
 }

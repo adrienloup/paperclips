@@ -22,25 +22,20 @@ export const dashboardReducer = (state: State, action: Action): State => {
         wiresStock: state.wiresStock - 1,
       };
     case 'PRODUCE_AUTOMATIC_CLIPS':
-      const megaClippers = state.megaClippers * 5e2;
-      const allClippers = megaClippers + state.autoClippers;
+      const totalClippers = state.megaClippers * 5e2 + state.autoClippers;
+      const newWiresStock =
+        state.wiresStock >= totalClippers ? state.wiresStock - totalClippers : state.wiresStock;
 
       return {
         ...state,
-        clips: state.clips + allClippers,
-        clipsStock: state.clipsStock + allClippers,
-        clipsTransit: state.clipsStock + allClippers,
-        wiresStock:
-          state.wiresStock >= allClippers
-            ? state.wiresStock - allClippers
-            : state.wiresStock >= megaClippers
-              ? state.wiresStock - megaClippers
-              : state.wiresStock >= state.autoClippers
-                ? state.wiresStock - state.autoClippers
-                : 0,
+        clips: state.clips + totalClippers,
+        clipsStock: state.clipsStock + totalClippers,
+        clipsTransit: state.clipsTransit + totalClippers,
+        wiresStock: newWiresStock,
       };
     case 'INCREASE_CLIPS_COST':
       const increaseClipsCost = Math.min(state.clipsCost + 0.01, 1);
+
       return {
         ...state,
         clipsCost: increaseClipsCost,
@@ -48,6 +43,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
       };
     case 'DECREASE_CLIPS_COST':
       const decreaseClipsCost = Math.max(state.clipsCost - 0.01, 0.1);
+
       return {
         ...state,
         clipsCost: decreaseClipsCost,
@@ -105,7 +101,8 @@ export const dashboardReducer = (state: State, action: Action): State => {
         wiresCost: state.wiresCost > 8 ? state.wiresCost - 0.25 : Math.random() * (24 - 12) + 12,
       };
     case 'UPDATE_PER_SECOND':
-      const clipsPerSecond = state.wiresStock > 0 ? state.megaClippers * 5e2 + state.autoClippers : 0;
+      const clipsPerSecond =
+        state.wiresStock > 0 ? state.megaClippers * 5e2 + state.autoClippers : 0;
       return {
         ...state,
         clipsPerSecond: clipsPerSecond,

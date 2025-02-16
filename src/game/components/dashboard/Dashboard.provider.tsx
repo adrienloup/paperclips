@@ -2,10 +2,7 @@ import { useCallback, useEffect, useReducer } from 'react';
 import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage';
 import { Children } from '@/src/generic/types/Children.type';
 import { State } from '@/src/game/components/dashboard/Dashboard.type';
-import {
-  DashboardContext,
-  DashboardDispatchContext,
-} from '@/src/game/components/dashboard/Dashboard.context';
+import { DashboardContext, DashboardDispatchContext } from '@/src/game/components/dashboard/Dashboard.context';
 import { dashboardReducer } from '@/src/game/components/dashboard/Dashboard.reducer';
 import { initialState } from '@/src/game/components/dashboard/Dashboard.state';
 

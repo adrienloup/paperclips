@@ -4,11 +4,11 @@ import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashbo
 import { DebugComponent } from '@/src/generic/common/components/debug/Debug.component';
 import { InitializerComponent } from '@/src/game/components/initializer/Initializer.component';
 import { ClipsComponent } from '@/src/game/components/clips/Clips.component';
-import { CardGroupComponent } from '@/src/generic/common/components/cards/CardGroup.component';
 import { CardsComponent } from '@/src/generic/common/components/cards/Cards.component';
 import { ManufacturingComponent } from '@/src/game/components/manufacturing/Manufacturing.component';
 import { BusinessComponent } from '@/src/game/components/business/Business.component';
 import { ITResourcesComponent } from '@/src/game/components/it-resources/ITResources.component';
+import { ProjectsComponent } from '@/src/game/components/projects/Projects.component';
 import styles from '@/src/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
@@ -53,9 +53,8 @@ function DashboardComponent() {
         <CardsComponent>
           <ManufacturingComponent />
           <BusinessComponent />
-          <CardGroupComponent direction="column">
-            <ITResourcesComponent />
-          </CardGroupComponent>
+          <ITResourcesComponent />
+          <ProjectsComponent />
         </CardsComponent>
       </article>
     </>

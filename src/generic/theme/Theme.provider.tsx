@@ -11,9 +11,7 @@ export function ThemeProvider({ children }: { children: Children }) {
     setTheme(theme);
     if (
       theme === 'dark' ||
-      (theme === 'system' &&
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
+      (theme === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       document.body.classList.add('_dark_1mm2_3');
     } else {
@@ -27,8 +25,7 @@ export function ThemeProvider({ children }: { children: Children }) {
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', changeTheme);
 
-    return () =>
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', changeTheme);
+    return () => window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', changeTheme);
   }, [theme]);
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;

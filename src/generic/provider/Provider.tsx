@@ -6,10 +6,7 @@ import { ThemeProvider } from '@/src/generic/theme/Theme.provider';
 import { HeaderProvider } from '@/src/generic/common/components/header/Header.provider';
 import { DashboardProvider } from '@/src/game/components/dashboard/Dashboard.provider';
 
-type ProvidersType = [
-  ComponentType<{ children: Children }>,
-  ComponentPropsWithoutRef<ElementType>?,
-][];
+type ProvidersType = [ComponentType<{ children: Children }>, ComponentPropsWithoutRef<ElementType>?][];
 
 const allProviders = (providers: ProvidersType) =>
   providers.reduce(

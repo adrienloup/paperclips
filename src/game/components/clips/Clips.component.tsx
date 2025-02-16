@@ -14,7 +14,7 @@ export const ClipsComponent = () => {
         icon="attach_file"
         arial-label={t('game.title')}
       />
-      <NumberComponent number={dashboard.clips} />
+      <NumberComponent value={dashboard.clips} />
     </h1>
   );
 };

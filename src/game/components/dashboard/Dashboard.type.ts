@@ -10,7 +10,6 @@ export type Action =
   | { type: 'BUY_MARKETING' }
   | { type: 'INCREASE_PROCESSORS' }
   | { type: 'INCREASE_MEMORY' }
-  | { type: 'INCREASE_OPERATIONS' }
   | { type: 'UPDATE_WIRE_COST' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_WIRE_QUANTITY'; quantity: number }
@@ -44,4 +43,6 @@ export interface State {
   processors: number;
   memory: number;
   operations: number;
+  operationsLimit: number;
+  creativity: number;
 }

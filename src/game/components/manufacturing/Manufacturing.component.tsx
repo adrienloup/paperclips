@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
-import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
-import { GroupComponent } from '@/src/generic/common/components/group/Group.component.tsx';
+import { CardComponent } from '@/src/generic/common/components/card/Card.component';
+import { GroupComponent } from '@/src/generic/common/components/group/Group.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';
@@ -15,13 +15,18 @@ export const ManufacturingComponent = () => {
   const dashboard = useDashboard();
 
   return (
-    <CardComponent className={styles.cardA}>
+    <CardComponent
+      style={{
+        gridColumn: '1',
+        gridRow: 'span 2',
+      }}
+    >
       <TitleComponent
         className={styles.title}
         title="Manufacturing"
       />
       <DialComponent
-        number={dashboard.clipsPerSecond}
+        value={dashboard.clipsPerSecond}
         notation="compact"
         label={t('game.clips_per_second')}
       />
@@ -34,12 +39,12 @@ export const ManufacturingComponent = () => {
       </ButtonComponent>
       <GroupComponent>
         <DialComponent
-          number={dashboard.wiresCost}
+          value={dashboard.wiresCost}
           style="currency"
           label={t('game.wire_cost')}
         />
         <DialComponent
-          number={dashboard.wiresStock}
+          value={dashboard.wiresStock}
           notation="compact"
           label={t('game.wire_stock')}
         />
@@ -52,26 +57,29 @@ export const ManufacturingComponent = () => {
         >
           Acheter
         </ButtonComponent>
-        <NumberComponent
-          className={styles.number}
-          number={dashboard.wires + dashboard.wiresBonus * dashboard.wires}
-          notation="compact"
-        />
+        <div className={styles.text}>
+          <NumberComponent
+            className={styles.number}
+            value={dashboard.wires + dashboard.wiresBonus * dashboard.wires}
+            notation="compact"
+          />
+          inches
+        </div>
         {dashboard.wiresBonus > 0 ? (
           <BonusComponent
-            number={dashboard.wiresBonus}
+            value={dashboard.wiresBonus}
             style="percent"
           />
         ) : null}
       </GroupComponent>
       <GroupComponent>
         <DialComponent
-          number={dashboard.autoClippersCost}
+          value={dashboard.autoClippersCost}
           style="currency"
           label="Prix machine"
         />
         <DialComponent
-          number={dashboard.autoClippers}
+          value={dashboard.autoClippers}
           notation="compact"
           label="Machines"
         />
@@ -85,12 +93,12 @@ export const ManufacturingComponent = () => {
       </ButtonComponent>
       <GroupComponent>
         <DialComponent
-          number={dashboard.megaClippersCost}
+          value={dashboard.megaClippersCost}
           style="currency"
           label="Prix mégamachine"
         />
         <DialComponent
-          number={dashboard.megaClippers}
+          value={dashboard.megaClippers}
           notation="compact"
           label="Mégamachines"
         />

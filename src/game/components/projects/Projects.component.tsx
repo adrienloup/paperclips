@@ -1,7 +1,7 @@
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 //import { ProjectComponent } from '@/src/game/components/projects/Project.component';
-import styles from '@/src/generic/common/components/card/Card.module.scss';
+//import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 /*
   Limerick (10 créativité) (+1 confiance)
@@ -23,7 +23,12 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ProjectsComponent = () => {
   return (
-    <CardComponent className={styles.cardD}>
+    <CardComponent
+      style={{
+        gridColumn: '3',
+        gridRow: '2',
+      }}
+    >
       <TitleComponent title="Projects" />
       {/*{dashboard.feature.revTracker.enabled ? (*/}
       {/*  <ProjectComponent*/}

@@ -1,3 +1,5 @@
+import { CREATIVITY, MEMORY, OPERATIONS } from '@/src/game/components/dashboard/Dashboard.constants';
+import { mapper } from '@/src/generic/utils/mapper';
 import { Action, State } from '@/src/game/components/dashboard/Dashboard.type';
 
 export const dashboardReducer = (state: State, action: Action): State => {
@@ -23,8 +25,7 @@ export const dashboardReducer = (state: State, action: Action): State => {
       };
     case 'PRODUCE_AUTOMATIC_CLIPS':
       const totalClippers = state.megaClippers * 5e2 + state.autoClippers;
-      const newWiresStock =
-        state.wiresStock >= totalClippers ? state.wiresStock - totalClippers : state.wiresStock;
+      const newWiresStock = state.wiresStock >= totalClippers ? state.wiresStock - totalClippers : state.wiresStock;
 
       return {
         ...state,
@@ -89,24 +90,21 @@ export const dashboardReducer = (state: State, action: Action): State => {
         memory: state.memory + 1,
         trust: state.trust - 1,
       };
-    case 'INCREASE_OPERATIONS':
-      //console.log('INCREASE_OPERATIONS');
+    case 'UPDATE_PER_SECOND':
+      const clipsPerSecond = state.wiresStock > 0 ? state.megaClippers * 5e2 + state.autoClippers : 0;
+
       return {
         ...state,
-        //operations: state.operations + 1,
+        clipsPerSecond: clipsPerSecond,
+        fundsPerSecond: state.clipsCost * clipsPerSecond,
+        operations: Math.min(mapper(state.memory, MEMORY, OPERATIONS), state.operations + 5 * state.processors),
+        operationsLimit: mapper(state.memory, MEMORY, OPERATIONS),
+        creativity: mapper(state.operations + 1, OPERATIONS, CREATIVITY),
       };
     case 'UPDATE_WIRE_COST':
       return {
         ...state,
         wiresCost: state.wiresCost > 8 ? state.wiresCost - 0.25 : Math.random() * (24 - 12) + 12,
-      };
-    case 'UPDATE_PER_SECOND':
-      const clipsPerSecond =
-        state.wiresStock > 0 ? state.megaClippers * 5e2 + state.autoClippers : 0;
-      return {
-        ...state,
-        clipsPerSecond: clipsPerSecond,
-        fundsPerSecond: state.clipsCost * clipsPerSecond,
       };
     case 'UPDATE_WIRE_QUANTITY':
       return {

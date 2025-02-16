@@ -1,9 +1,10 @@
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
-import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
+import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component';
-import { GroupComponent } from '@/src/generic/common/components/group/Group.component.tsx';
+import { GroupComponent } from '@/src/generic/common/components/group/Group.component';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';
+import { NumberComponent } from '@/src/generic/common/components/number/Number.component';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ITResourcesComponent = () => {
@@ -11,32 +12,41 @@ export const ITResourcesComponent = () => {
   const dashboard = useDashboard();
 
   return (
-    <CardComponent className={styles.cardC}>
+    <CardComponent
+      style={{
+        gridColumn: '3',
+        gridRow: '1',
+      }}
+    >
       <TitleComponent
         className={styles.title}
         title="IT Resources"
       />
       <GroupComponent>
         <DialComponent
-          number={dashboard.trustCost}
-          notation="compact"
-          unit="clips"
-          label="+1 Trust level"
-        />
-        <DialComponent
-          number={dashboard.trust}
+          value={dashboard.trust}
+          limit={100}
           notation="compact"
           label="Trust"
         />
+        <div className={styles.text}>
+          +1 Trust at
+          <NumberComponent
+            className={styles.number}
+            value={dashboard.trustCost}
+            notation="compact"
+          />
+          clips
+        </div>
       </GroupComponent>
       <GroupComponent>
         <DialComponent
-          number={dashboard.processors}
+          value={dashboard.processors}
           notation="compact"
           label="Processors"
         />
         <DialComponent
-          number={dashboard.memory}
+          value={dashboard.memory}
           notation="compact"
           label="Memory"
         />
@@ -47,21 +57,27 @@ export const ITResourcesComponent = () => {
           disabled={dashboard.processors + dashboard.memory >= dashboard.trust}
           onClick={() => setDashboard({ type: 'INCREASE_PROCESSORS' })}
         >
-          Obtenir
+          Hausser
         </ButtonComponent>
         <ButtonComponent
           className={styles.button}
           disabled={dashboard.memory + dashboard.processors >= dashboard.trust}
           onClick={() => setDashboard({ type: 'INCREASE_MEMORY' })}
         >
-          Obtenir
+          Hausser
         </ButtonComponent>
       </GroupComponent>
       <GroupComponent>
         <DialComponent
-          number={Number('50 000 / 50 000')}
+          value={dashboard.operations}
+          limit={dashboard.operationsLimit}
           notation="compact"
           label="Operations"
+        />
+        <DialComponent
+          value={dashboard.creativity}
+          notation="compact"
+          label="Creativity"
         />
       </GroupComponent>
     </CardComponent>

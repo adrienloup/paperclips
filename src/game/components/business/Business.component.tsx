@@ -1,6 +1,6 @@
 import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
-import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
-import { GroupComponent } from '@/src/generic/common/components/group/Group.component.tsx';
+import { CardComponent } from '@/src/generic/common/components/card/Card.component';
+import { GroupComponent } from '@/src/generic/common/components/group/Group.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';
@@ -12,42 +12,45 @@ export const BusinessComponent = () => {
   const dashboard = useDashboard();
 
   return (
-    <CardComponent className={styles.cardB}>
+    <CardComponent
+      style={{
+        gridColumn: '2',
+        gridRow: 'span 2',
+      }}
+    >
       <TitleComponent
         className={styles.title}
         title="Business"
       />
       <DialComponent
-        number={dashboard.fundsPerSecond}
+        value={dashboard.fundsPerSecond}
         style="currency"
         label="Funds per second"
       />
       <DialComponent
-        number={dashboard.funds}
+        value={dashboard.funds}
         style="currency"
         label="Fonds disponibles"
       />
       <GroupComponent>
         <DialComponent
-          number={dashboard.clipsStock}
+          value={dashboard.clipsStock}
           notation="compact"
-          label="Stock trombones"
+          label="Unsold Inventory"
         />
-        {/*{dashboard.marketing > 1 ? (*/}
         <BonusComponent
-          number={dashboard.productionBonus}
+          value={dashboard.productionBonus}
           style="percent"
         />
-        {/*) : null}*/}
       </GroupComponent>
       <GroupComponent>
         <DialComponent
-          number={dashboard.clipsCost}
+          value={dashboard.clipsCost}
           style="currency"
           label="Prix trombone"
         />
         <DialComponent
-          number={dashboard.publicDemand}
+          value={dashboard.publicDemand}
           style="percent"
           label="publicDemand"
         />
@@ -70,13 +73,14 @@ export const BusinessComponent = () => {
       </GroupComponent>
       <GroupComponent>
         <DialComponent
-          number={dashboard.marketingCost}
+          value={dashboard.marketingCost}
           style="currency"
-          label="+1 Marketing level"
+          label="Prix marketing"
           disabled={dashboard.marketing >= 10}
         />
         <DialComponent
-          number={dashboard.marketing}
+          value={dashboard.marketing}
+          limit={10}
           notation="compact"
           label="Marketing"
         />

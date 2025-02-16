@@ -17,26 +17,6 @@
   }
 }
 
-.cardA {
-  grid-column: 1;
-  grid-row: span 2;
-}
-
-.cardB {
-  grid-column: 2;
-  grid-row: span 2;
-}
-
-.cardC {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.cardD {
-  grid-column: 3;
-  grid-row: 2;
-}
-
 .title {
   align-self: end;
   text-transform: uppercase;
@@ -53,6 +33,10 @@
   font-size: var(--font-size-s);
   color: var(--color-neutral-1);
 
+  &:focus-visible {
+    outline: 0.25rem solid var(--color-solid-3);
+  }
+
   &:hover {
     background-color: #0044dd;
   }
@@ -61,6 +45,12 @@
 .number {
   font-family: var(--font-bold), sans-serif;
   font-size: var(--font-size-m);
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 //@keyframes Appear {

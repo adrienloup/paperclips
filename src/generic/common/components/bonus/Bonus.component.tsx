@@ -3,12 +3,12 @@ import { Bonus } from '@/src/generic/common/components/bonus/Bonus.type';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component';
 import styles from '@/src/generic/common/components/bonus/Bonus.module.scss';
 
-export const BonusComponent = ({ className, number, style }: Bonus) => {
+export const BonusComponent = ({ className, value, style }: Bonus) => {
   return (
     <div className={classNames([styles.bonus, className])}>
       +
       <NumberComponent
-        number={number}
+        value={value}
         style={style}
       />
     </div>

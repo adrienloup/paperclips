@@ -28,14 +28,13 @@ function DashboardComponent() {
     }
   }, []);
 
-  // PRODUCE_AUTOMATIC_CLIPS, UPDATE_PER_SECOND, INCREASE_OPERATIONS
+  // PRODUCE_AUTOMATIC_CLIPS, UPDATE_PER_SECOND
   const updatePerSecond = useCallback(() => {
     const { autoClippers, megaClippers, wiresStock } = dashboardRef.current;
     if ((autoClippers > 0 || megaClippers > 0) && wiresStock > 0) {
       setDashboard({ type: 'PRODUCE_AUTOMATIC_CLIPS' });
     }
     setDashboard({ type: 'UPDATE_PER_SECOND' });
-    setDashboard({ type: 'INCREASE_OPERATIONS' });
   }, []);
 
   // UPDATE_WIRE_COST

@@ -1,4 +1,4 @@
-import { Children } from '@/src/generic/types/Children.type.ts';
+import { Children } from '@/src/generic/types/Children.type';
 
 export interface Group {
   children: Children;

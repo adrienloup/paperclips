@@ -2,7 +2,7 @@ import { State } from '@/src/game/components/dashboard/Dashboard.type';
 
 export const initialState: State = {
   clips: 0,
-  clipsCost: 0.1,
+  clipsCost: 0.2,
   clipsStock: 0,
   clipsTransit: 0,
   clipsPerSecond: 0,
@@ -13,7 +13,7 @@ export const initialState: State = {
   wiresCost: 20,
   wiresStock: 100,
   wiresBonus: 0,
-  publicDemand: 1,
+  publicDemand: 0.5,
   marketing: 1,
   marketingCost: 100,
   autoClippers: 0,
@@ -26,4 +26,6 @@ export const initialState: State = {
   processors: 1,
   memory: 1,
   operations: 0,
+  operationsLimit: 0,
+  creativity: 0,
 };

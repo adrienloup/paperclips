@@ -3,7 +3,6 @@
 }
 
 .inner {
-  padding: var(--spacing-s) var(--spacing-s) var(--spacing-s)
-    calc(var(--spacing-l) + var(--spacing-s));
+  padding: var(--spacing-s) var(--spacing-s) var(--spacing-s) calc(var(--spacing-l) + var(--spacing-s));
   color: #ff0076;
 }

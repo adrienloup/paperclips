@@ -1,7 +1,7 @@
 import { useLanguage } from '@/src/generic/i18n/useLanguage';
 import { Number } from '@/src/generic/common/components/number/Number.type';
 
-export const NumberComponent = ({ number, className, unit, style, notation }: Number) => {
+export const NumberComponent = ({ className, value, limit, style, notation }: Number) => {
   const { language } = useLanguage();
 
   const options = {
@@ -12,14 +12,14 @@ export const NumberComponent = ({ number, className, unit, style, notation }: Nu
     maximumFractionDigits: 2,
   };
 
-  const formattedNumber = new Intl.NumberFormat(
-    language === 'en' ? 'en-US' : 'fr-FR',
-    options
-  ).format(number);
+  const formatValue: string = new Intl.NumberFormat(language === 'en' ? 'en-US' : 'fr-FR', options).format(value);
+
+  const formatMax: string = new Intl.NumberFormat(language === 'en' ? 'en-US' : 'fr-FR', options).format(limit!);
 
   return (
     <span className={className}>
-      {formattedNumber} {unit}
+      {formatValue}
+      {limit ? ' / ' + formatMax : null}
     </span>
   );
 };

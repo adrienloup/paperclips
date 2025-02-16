@@ -1,4 +1,4 @@
-import { Number } from '@/src/generic/common/components/number/Number.type.ts';
+import { Number } from '@/src/generic/common/components/number/Number.type';
 
 export interface Dial extends Number {
   label: string;

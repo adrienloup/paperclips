@@ -1,7 +1,7 @@
 .dial {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--spacing-xs);
   padding: var(--spacing-s);
   background-color: var(--color-neutral-3);
 }

@@ -1,5 +1,11 @@
 .cards {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr;
   gap: var(--spacing-m);
+
+  @include desktop {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

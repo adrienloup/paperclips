@@ -22,7 +22,7 @@
 @mixin size {
   --font-size-xl: 3.5rem; // 56px
   --font-size-l: 2.5rem; // 40px
-  --font-size-m: 1.5rem; // 24px
+  --font-size-m: 1.25rem; // 20px
   --font-size-s: 1rem; // 16px
 }
 
@@ -31,9 +31,10 @@
 }
 
 @mixin spacing {
-  --spacing-l: 2.5rem; // 40px
+  --spacing-l: 2.25rem; // 36px
   --spacing-m: 1.5rem; // 24px
   --spacing-s: 0.75rem; // 12px
+  --spacing-xs: 0.25rem; // 4px
 }
 
 @mixin easing {

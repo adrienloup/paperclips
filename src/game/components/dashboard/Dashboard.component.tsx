@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useInterval } from '@/src/generic/hooks/useInterval';
-import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
+import { useGame, useDashboardDispatch } from '@/src/game/repository/useGame.ts';
 import { DebugComponent } from '@/src/generic/common/components/debug/Debug.component';
 import { InitializerComponent } from '@/src/game/components/initializer/Initializer.component';
 import { ClipsComponent } from '@/src/game/components/clips/Clips.component';
@@ -12,34 +12,34 @@ import { ProjectsComponent } from '@/src/game/components/projects/Projects.compo
 import styles from '@/src/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
-  const setDashboard = useDashboardDispatch();
-  const dashboard = useDashboard();
-  const dashboardRef = useRef(dashboard);
+  const setGame = useDashboardDispatch();
+  const game = useGame();
+  const gameRef = useRef(game);
 
   useEffect(() => {
-    dashboardRef.current = dashboard;
-  }, [dashboard]);
+    gameRef.current = game;
+  }, [game]);
 
   // SELL_CLIPS
   const sellClips = useCallback(() => {
-    const { clipsTransit } = dashboardRef.current;
+    const { clipsTransit } = gameRef.current;
     if (clipsTransit > 0) {
-      setDashboard({ type: 'SELL_CLIPS' });
+      setGame({ type: 'SELL_CLIPS' });
     }
   }, []);
 
   // PRODUCE_AUTOMATIC_CLIPS, UPDATE_PER_SECOND
   const updatePerSecond = useCallback(() => {
-    const { autoClippers, megaClippers, wiresStock } = dashboardRef.current;
+    const { autoClippers, megaClippers, wiresStock } = gameRef.current;
     if ((autoClippers > 0 || megaClippers > 0) && wiresStock > 0) {
-      setDashboard({ type: 'PRODUCE_AUTOMATIC_CLIPS' });
+      setGame({ type: 'PRODUCE_AUTOMATIC_CLIPS' });
     }
-    setDashboard({ type: 'UPDATE_PER_SECOND' });
+    setGame({ type: 'UPDATE_PER_SECOND' });
   }, []);
 
   // UPDATE_WIRE_COST
   const updateWireCost = useCallback(() => {
-    setDashboard({ type: 'UPDATE_WIRE_COST' });
+    setGame({ type: 'UPDATE_WIRE_COST' });
   }, []);
 
   useInterval(sellClips, 4e2);

@@ -1,4 +1,4 @@
-import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
+import { useGame, useDashboardDispatch } from '@/src/game/repository/useGame.ts';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { ProjectComponent } from '@/src/game/components/projects/Project.component';
@@ -23,23 +23,23 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 */
 
 export const ProjectsComponent = () => {
-  const setDashboard = useDashboardDispatch();
-  const dashboard = useDashboard();
+  const setGame = useDashboardDispatch();
+  const game = useGame();
 
   const onRevTrackerClick = () => {
-    setDashboard({
+    setGame({
       type: 'UPDATE_FEATURE',
       feature: 'revTrackerFeature',
       open: false,
       animate: false,
     });
-    setDashboard({
+    setGame({
       type: 'UPDATE_FEATURE',
       feature: 'fundsPerSecondFeature',
       open: true,
       animate: false,
     });
-    setDashboard({
+    setGame({
       type: 'DECREASE_OPERATIONS',
       operations: 500,
     });
@@ -56,15 +56,15 @@ export const ProjectsComponent = () => {
         className={styles.title}
         title="Projects"
       />
-      {dashboard.clips >= 2e3 && dashboard.revTrackerFeature.open ? (
+      {game.clips >= 2e3 && game.revTrackerFeature.open ? (
         <ProjectComponent
           title="Rev Tracker 1"
           text="Automatically calculates average revenue per second"
-          disabled={dashboard.operations < 500}
-          animate={dashboard.revTrackerFeature.animate}
+          disabled={game.operations < 500}
+          animate={game.revTrackerFeature.animate}
           onClick={onRevTrackerClick}
           onAnimationEnd={() =>
-            setDashboard({
+            setGame({
               type: 'UPDATE_FEATURE',
               feature: 'revTrackerFeature',
               open: true,
@@ -73,20 +73,20 @@ export const ProjectsComponent = () => {
           }
         />
       ) : null}
-      {/*{dashboard.feature.revTracker.enabled ? (*/}
+      {/*{game.feature.revTracker.enabled ? (*/}
       {/*  <ProjectComponent*/}
       {/*    title="Rev Tracker 1"*/}
       {/*    text="Automatically calculates average revenue per second"*/}
-      {/*    incurred={dashboard.feature.revTracker.incurred}*/}
+      {/*    incurred={game.feature.revTracker.incurred}*/}
       {/*    onClick={onRevTrackerClick}*/}
       {/*    onAnimationEnd={onRevTrackerAnimationEnd}*/}
       {/*  />*/}
       {/*) : null}*/}
-      {/*{dashboard.feature.improvedProduction.enabled ? (*/}
+      {/*{game.feature.improvedProduction.enabled ? (*/}
       {/*  <ProjectComponent*/}
       {/*    title="Improved Production"*/}
       {/*    text="Increases Production performance 25%"*/}
-      {/*    incurred={dashboard.feature.revTracker.incurred}*/}
+      {/*    incurred={game.feature.revTracker.incurred}*/}
       {/*    onClick={onImprovedProductionClick}*/}
       {/*    onAnimationEnd={onImprovedProductionAnimationEnd}*/}
       {/*  />*/}

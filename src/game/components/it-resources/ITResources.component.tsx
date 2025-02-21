@@ -1,4 +1,4 @@
-import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
+import { useGame, useDashboardDispatch } from '@/src/game/repository/useGame.ts';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component';
@@ -9,7 +9,7 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ITResourcesComponent = () => {
   const setDashboard = useDashboardDispatch();
-  const dashboard = useDashboard();
+  const game = useGame();
 
   return (
     <CardComponent
@@ -24,7 +24,7 @@ export const ITResourcesComponent = () => {
       />
       <GroupComponent>
         <DialComponent
-          value={dashboard.trust}
+          value={game.trust}
           limit={100}
           notation="compact"
           label="Trust"
@@ -33,7 +33,7 @@ export const ITResourcesComponent = () => {
           +1 at&nbsp;
           <NumberComponent
             className={styles.number}
-            value={dashboard.trustCost}
+            value={game.trustCost}
             notation="compact"
           />
           &nbsp;clips
@@ -41,12 +41,12 @@ export const ITResourcesComponent = () => {
       </GroupComponent>
       <GroupComponent>
         <DialComponent
-          value={dashboard.processors}
+          value={game.processors}
           notation="compact"
           label="Processors"
         />
         <DialComponent
-          value={dashboard.memory}
+          value={game.memory}
           notation="compact"
           label="Memory"
         />
@@ -54,14 +54,14 @@ export const ITResourcesComponent = () => {
       <GroupComponent>
         <ButtonComponent
           className={styles.button}
-          disabled={dashboard.processors + dashboard.memory >= dashboard.trust}
+          disabled={game.processors + game.memory >= game.trust}
           onClick={() => setDashboard({ type: 'INCREASE_PROCESSORS' })}
         >
           Élever
         </ButtonComponent>
         <ButtonComponent
           className={styles.button}
-          disabled={dashboard.memory + dashboard.processors >= dashboard.trust}
+          disabled={game.memory + game.processors >= game.trust}
           onClick={() => setDashboard({ type: 'INCREASE_MEMORY' })}
         >
           Élever
@@ -69,13 +69,13 @@ export const ITResourcesComponent = () => {
       </GroupComponent>
       <GroupComponent>
         <DialComponent
-          value={dashboard.operations}
-          limit={dashboard.operationsLimit}
+          value={game.operations}
+          limit={game.operationsLimit}
           notation="compact"
           label="Operations"
         />
         <DialComponent
-          value={dashboard.creativity}
+          value={game.creativity}
           notation="compact"
           label="Creativity"
         />

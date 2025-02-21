@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
-import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
+import { useGame, useDashboardDispatch } from '@/src/game/repository/useGame.ts';
 import { InputFieldProps } from '@/src/game/components/initializer/Initializer.type';
-import { initialState } from '@/src/game/components/dashboard/Dashboard.state';
+import { initialState } from '@/src/game/repository/Game.state.ts';
 import styles from '@/src/game/components/initializer/Initializer.module.scss';
 
 const InputField = ({ label, name, value, onChange }: InputFieldProps) => (
@@ -18,18 +18,18 @@ const InputField = ({ label, name, value, onChange }: InputFieldProps) => (
 );
 
 export const InitializerComponent = () => {
-  const setDashboard = useDashboardDispatch();
-  const dashboard = useDashboard();
+  const setGame = useDashboardDispatch();
+  const game = useGame();
 
   const [formState, setFormState] = useState({
-    clips: dashboard.clips,
-    clipsStock: dashboard.clipsStock,
-    funds: dashboard.funds,
-    wiresStock: dashboard.wiresStock,
-    marketing: dashboard.marketing,
-    autoClippers: dashboard.autoClippers,
-    megaClippers: dashboard.megaClippers,
-    trust: dashboard.trust,
+    clips: game.clips,
+    clipsStock: game.clipsStock,
+    funds: game.funds,
+    wiresStock: game.wiresStock,
+    marketing: game.marketing,
+    autoClippers: game.autoClippers,
+    megaClippers: game.megaClippers,
+    trust: game.trust,
   });
 
   const handleChange = useCallback(
@@ -42,15 +42,15 @@ export const InitializerComponent = () => {
         [name]: newValue,
       }));
 
-      setDashboard({
+      setGame({
         type: 'INITIALIZE_STATE',
         state: {
-          ...dashboard,
+          ...game,
           [name]: newValue,
         },
       });
     },
-    [dashboard, setDashboard]
+    [game, setGame]
   );
 
   const reload = () => {
@@ -58,13 +58,13 @@ export const InitializerComponent = () => {
   };
 
   const clearDashboardItem = () => {
-    localStorage.removeItem('_3mma_0_dashboard');
+    localStorage.removeItem('_3mma_0_game');
     window.location.reload();
   };
 
   const clearAllItems = () => {
     localStorage.clear();
-    setDashboard({
+    setGame({
       type: 'INITIALIZE_STATE',
       state: initialState,
     });
@@ -116,49 +116,49 @@ export const InitializerComponent = () => {
         <div>
           Bonus de production :
           <br />
-          Marketing ({dashboard.marketing}) + Bonus clips ({dashboard.clipsBonus * 100})
+          Marketing ({game.marketing}) + Bonus clips ({game.clipsBonus * 100})
           <br />
-          {dashboard.marketing / 20} + {dashboard.clipsBonus} = {dashboard.productionBonus}
+          {game.marketing / 20} + {game.clipsBonus} = {game.productionBonus}
         </div>
         <div>
-          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0 })}>0%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.1 })}>10%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.2 })}>20%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.3 })}>30%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.4 })}>40%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.5 })}>50%</button>
-        </div>
-      </div>
-      <div>
-        <div>Quantité d'achat de fer : {dashboard.wires}</div>
-        <div>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e2 })}>500</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e3 })}>1K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e3 })}>2K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 4e3 })}>4K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 8e3 })}>8K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e4 })}>10K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e4 })}>20K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e4 })}>50K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e5 })}>100K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e5 })}>500K</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e6 })}>1M</button>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0 })}>0%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.1 })}>10%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.2 })}>20%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.3 })}>30%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.4 })}>40%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.5 })}>50%</button>
         </div>
       </div>
       <div>
-        <div>Bonus d'achat de fer : {dashboard.wiresBonus}</div>
+        <div>Quantité d'achat de fer : {game.wires}</div>
         <div>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0 })}>0%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.1 })}>10%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.2 })}>20%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.3 })}>30%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.4 })}>40%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.5 })}>50%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.6 })}>60%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.7 })}>70%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.8 })}>80%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 0.9 })}>90%</button>
-          <button onClick={() => setDashboard({ type: 'UPDATE_WIRE_BONUS', bonus: 1 })}>100%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e2 })}>500</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e3 })}>1K</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e3 })}>2K</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 4e3 })}>4K</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 8e3 })}>8K</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e4 })}>10K</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e4 })}>20K</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e4 })}>50K</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e5 })}>100K</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e5 })}>500K</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e6 })}>1M</button>
+        </div>
+      </div>
+      <div>
+        <div>Bonus d'achat de fer : {game.wiresBonus}</div>
+        <div>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0 })}>0%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.1 })}>10%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.2 })}>20%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.3 })}>30%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.4 })}>40%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.5 })}>50%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.6 })}>60%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.7 })}>70%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.8 })}>80%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.9 })}>90%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 1 })}>100%</button>
         </div>
       </div>
     </div>

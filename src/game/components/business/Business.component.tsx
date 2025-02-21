@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
+import { useGame, useDashboardDispatch } from '@/src/game/repository/useGame.ts';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { GroupComponent } from '@/src/generic/common/components/group/Group.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
@@ -11,7 +11,7 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 export const BusinessComponent = () => {
   const { t } = useTranslation();
   const setDashboard = useDashboardDispatch();
-  const dashboard = useDashboard();
+  const game = useGame();
 
   return (
     <CardComponent
@@ -25,37 +25,37 @@ export const BusinessComponent = () => {
         className={styles.title}
         title="Business"
       />
-      {dashboard.fundsPerSecondFeature.open ? (
+      {game.fundsPerSecondFeature.open ? (
         <DialComponent
-          value={dashboard.fundsPerSecond}
+          value={game.fundsPerSecond}
           style="currency"
           label="Funds per second"
         />
       ) : null}
       <DialComponent
-        value={dashboard.funds}
+        value={game.funds}
         style="currency"
         label="Fonds disponibles"
       />
       <GroupComponent>
         <DialComponent
-          value={dashboard.clipsStock}
+          value={game.clipsStock}
           notation="compact"
           label="Unsold Inventory"
         />
         <BonusComponent
-          value={dashboard.productionBonus}
+          value={game.productionBonus}
           style="percent"
         />
       </GroupComponent>
       <GroupComponent>
         <DialComponent
-          value={dashboard.clipsCost}
+          value={game.clipsCost}
           style="currency"
           label="Prix trombone"
         />
         <DialComponent
-          value={dashboard.publicDemand}
+          value={game.publicDemand}
           style="percent"
           label="publicDemand"
         />
@@ -63,14 +63,14 @@ export const BusinessComponent = () => {
       <GroupComponent>
         <ButtonComponent
           className={styles.button}
-          disabled={dashboard.clipsCost === 1}
+          disabled={game.clipsCost === 1}
           onClick={() => setDashboard({ type: 'INCREASE_CLIPS_COST' })}
         >
           {t('common.button.raise')}
         </ButtonComponent>
         <ButtonComponent
           className={styles.button}
-          disabled={dashboard.clipsCost === 0.1}
+          disabled={game.clipsCost === 0.1}
           onClick={() => setDashboard({ type: 'DECREASE_CLIPS_COST' })}
         >
           {t('common.button.lower')}
@@ -78,13 +78,13 @@ export const BusinessComponent = () => {
       </GroupComponent>
       <GroupComponent>
         <DialComponent
-          value={dashboard.marketingCost}
+          value={game.marketingCost}
           style="currency"
           label="Prix marketing"
-          disabled={dashboard.marketing >= 10}
+          disabled={game.marketing >= 10}
         />
         <DialComponent
-          value={dashboard.marketing}
+          value={game.marketing}
           limit={10}
           notation="compact"
           label="Marketing"
@@ -93,7 +93,7 @@ export const BusinessComponent = () => {
       <GroupComponent>
         <ButtonComponent
           className={styles.button}
-          disabled={dashboard.marketingCost > dashboard.funds || dashboard.marketing >= 10}
+          disabled={game.marketingCost > game.funds || game.marketing >= 10}
           onClick={() => setDashboard({ type: 'BUY_MARKETING' })}
         >
           {t('common.button.buy')}

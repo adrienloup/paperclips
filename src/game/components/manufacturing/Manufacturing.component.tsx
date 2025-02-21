@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useDashboard, useDashboardDispatch } from '@/src/game/components/dashboard/useDashboard';
+import { useGame, useDashboardDispatch } from '@/src/game/repository/useGame.ts';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { GroupComponent } from '@/src/generic/common/components/group/Group.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
@@ -11,8 +11,8 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ManufacturingComponent = () => {
   const { t } = useTranslation();
-  const setDashboard = useDashboardDispatch();
-  const dashboard = useDashboard();
+  const setGame = useDashboardDispatch();
+  const game = useGame();
 
   return (
     <CardComponent
@@ -26,25 +26,25 @@ export const ManufacturingComponent = () => {
         title="Manufacturing"
       />
       <DialComponent
-        value={dashboard.clipsPerSecond}
+        value={game.clipsPerSecond}
         notation="compact"
         label={t('game.clips_per_second')}
       />
       <ButtonComponent
         className={styles.button}
-        disabled={dashboard.wiresStock < 1}
-        onClick={() => setDashboard({ type: 'PRODUCE_MANUAL_CLIPS' })}
+        disabled={game.wiresStock < 1}
+        onClick={() => setGame({ type: 'PRODUCE_MANUAL_CLIPS' })}
       >
         Fabriquer
       </ButtonComponent>
       <GroupComponent>
         <DialComponent
-          value={dashboard.wiresCost}
+          value={game.wiresCost}
           style="currency"
           label={t('game.wire_cost')}
         />
         <DialComponent
-          value={dashboard.wiresStock}
+          value={game.wiresStock}
           notation="compact"
           label={t('game.wire_stock')}
         />
@@ -52,8 +52,8 @@ export const ManufacturingComponent = () => {
       <GroupComponent>
         <ButtonComponent
           className={styles.button}
-          disabled={dashboard.funds < dashboard.wiresCost}
-          onClick={() => setDashboard({ type: 'BUY_WIRE' })}
+          disabled={game.funds < game.wiresCost}
+          onClick={() => setGame({ type: 'BUY_WIRE' })}
         >
           Acheter
         </ButtonComponent>
@@ -61,53 +61,53 @@ export const ManufacturingComponent = () => {
           +
           <NumberComponent
             className={styles.number}
-            value={dashboard.wires + dashboard.wiresBonus * dashboard.wires}
+            value={game.wires + game.wiresBonus * game.wires}
             notation="compact"
           />
           &nbsp;inches
         </div>
-        {dashboard.wiresBonus > 0 ? (
+        {game.wiresBonus > 0 ? (
           <BonusComponent
-            value={dashboard.wiresBonus}
+            value={game.wiresBonus}
             style="percent"
           />
         ) : null}
       </GroupComponent>
       <GroupComponent>
         <DialComponent
-          value={dashboard.autoClippersCost}
+          value={game.autoClippersCost}
           style="currency"
           label="Prix machine"
         />
         <DialComponent
-          value={dashboard.autoClippers}
+          value={game.autoClippers}
           notation="compact"
           label="Machines"
         />
       </GroupComponent>
       <ButtonComponent
         className={styles.button}
-        disabled={dashboard.autoClippersCost > dashboard.funds}
-        onClick={() => setDashboard({ type: 'BUY_AUTOCLIPPERS' })}
+        disabled={game.autoClippersCost > game.funds}
+        onClick={() => setGame({ type: 'BUY_AUTOCLIPPERS' })}
       >
         Acheter
       </ButtonComponent>
       <GroupComponent>
         <DialComponent
-          value={dashboard.megaClippersCost}
+          value={game.megaClippersCost}
           style="currency"
           label="Prix mégamachine"
         />
         <DialComponent
-          value={dashboard.megaClippers}
+          value={game.megaClippers}
           notation="compact"
           label="Mégamachines"
         />
       </GroupComponent>
       <ButtonComponent
         className={styles.button}
-        disabled={dashboard.megaClippersCost > dashboard.funds}
-        onClick={() => setDashboard({ type: 'BUY_MEGACLIPPERS' })}
+        disabled={game.megaClippersCost > game.funds}
+        onClick={() => setGame({ type: 'BUY_MEGACLIPPERS' })}
       >
         Acheter
       </ButtonComponent>

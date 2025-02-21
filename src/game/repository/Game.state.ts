@@ -1,4 +1,4 @@
-import { State } from '@/src/game/components/dashboard/Dashboard.type';
+import { State } from '@/src/game/repository/Game.type.ts';
 
 export const initialState: State = {
   clips: 0,

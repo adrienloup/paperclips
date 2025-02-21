@@ -15,6 +15,7 @@ export const BusinessComponent = () => {
 
   return (
     <CardComponent
+      className={styles.red}
       style={{
         gridColumn: '2',
         gridRow: 'span 2',

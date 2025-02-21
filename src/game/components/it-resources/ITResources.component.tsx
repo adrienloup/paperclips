@@ -30,13 +30,13 @@ export const ITResourcesComponent = () => {
           label="Trust"
         />
         <div className={styles.text}>
-          +1 Trust at
+          +1 at&nbsp;
           <NumberComponent
             className={styles.number}
             value={dashboard.trustCost}
             notation="compact"
           />
-          clips
+          &nbsp;clips
         </div>
       </GroupComponent>
       <GroupComponent>

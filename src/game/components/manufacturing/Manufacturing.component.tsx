@@ -58,12 +58,13 @@ export const ManufacturingComponent = () => {
           Acheter
         </ButtonComponent>
         <div className={styles.text}>
+          +
           <NumberComponent
             className={styles.number}
             value={dashboard.wires + dashboard.wiresBonus * dashboard.wires}
             notation="compact"
           />
-          inches
+          &nbsp;inches
         </div>
         {dashboard.wiresBonus > 0 ? (
           <BonusComponent

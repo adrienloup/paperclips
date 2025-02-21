@@ -4,6 +4,7 @@
   gap: var(--spacing-xs);
   padding: var(--spacing-s);
   background-color: var(--color-neutral-3);
+  border-radius: 0.35rem;
 }
 
 .disabled {
@@ -14,9 +15,10 @@
 
 .label {
   font-size: var(--font-size-s);
+  opacity: 0.4;
 }
 
 .number {
-  font-family: var(--font-bold), sans-serif;
+  color: var(--color-primary);
   font-size: var(--font-size-m);
 }

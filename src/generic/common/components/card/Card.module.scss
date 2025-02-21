@@ -5,6 +5,7 @@
   gap: var(--spacing-s);
   padding: var(--spacing-s);
   background-color: var(--color-neutral-2);
+  border-radius: 0.35rem;
   //animation: Appear 250ms var(--ease-quad);
   //will-change: opacity;
 
@@ -20,37 +21,32 @@
 .title {
   align-self: end;
   text-transform: uppercase;
-  font-family: var(--font-italic), sans-serif;
   font-size: var(--font-size-m);
+  opacity: 0.25;
 }
 
 .button {
   padding: 1.25rem;
-  background-color: #0053ff;
+  background-color: var(--color-primary);
   border-radius: 2.75rem;
-  font-family: var(--font-button), sans-serif;
+  font-family: var(--font-text), sans-serif;
   font-weight: var(--font-weight);
   font-size: var(--font-size-s);
   color: var(--color-neutral-1);
 
   &:focus-visible {
-    outline: 0.25rem solid var(--color-solid-3);
+    outline: 0.25rem solid var(--color-solid-4);
   }
 
   &:hover {
-    background-color: #0044dd;
+    background-color: var(--color-primary-dark);
   }
-}
-
-.number {
-  font-family: var(--font-bold), sans-serif;
-  font-size: var(--font-size-m);
 }
 
 .text {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  font-size: var(--font-size-s);
 }
 
 //@keyframes Appear {

@@ -5,11 +5,11 @@ import styles from '@/src/generic/common/components/button/Button.module.scss';
 
 export const ButtonComponent = ({
   children,
+  className,
   href,
   to,
-  className,
-  innerRef,
   disabled,
+  innerRef,
   onClick,
   ...props
 }: Button<HTMLButtonElement & HTMLAnchorElement>) => {

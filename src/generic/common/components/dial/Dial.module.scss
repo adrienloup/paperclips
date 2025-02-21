@@ -15,10 +15,10 @@
 
 .label {
   font-size: var(--font-size-s);
-  opacity: 0.4;
+  color: var(--color-primary-darker);
 }
 
 .number {
-  color: var(--color-primary);
   font-size: var(--font-size-m);
+  color: var(--color-primary);
 }

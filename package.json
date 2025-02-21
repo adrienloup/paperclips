@@ -7,9 +7,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
-    "format": "prettier . --write"
+    "lint": "eslint .",
+    "format": "prettier . --write",
+    "lint-and-format": "npm run lint && npm run format"
   },
   "dependencies": {
     "react": "^19.0.0",

@@ -19,7 +19,7 @@ export const NumberComponent = ({ className, value, limit, style, notation }: Nu
   return (
     <span className={className}>
       {formatValue}
-      {limit ? ' / ' + formatMax : null}
+      {limit && '/' + formatMax}
     </span>
   );
 };

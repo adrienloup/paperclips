@@ -61,52 +61,48 @@ export const ITResourcesComponent = () => {
               &nbsp;clips
             </div>
           </GroupComponent>
-          <GroupComponent>
-            <DialComponent
-              value={game.processors}
-              notation="compact"
-              label="Processors"
-              animate={game.itResourcesFeature.animate}
-              onAnimationEnd={() =>
-                setGame({
-                  type: 'UPDATE_FEATURE',
-                  feature: 'itResourcesFeature',
-                  open: true,
-                  animate: false,
-                })
-              }
-            />
-            <ButtonComponent
-              className={styles.button}
-              disabled={game.processors + game.memory >= game.trust}
-              onClick={() => setGame({ type: 'INCREASE_PROCESSORS' })}
-            >
-              Créer
-            </ButtonComponent>
-          </GroupComponent>
-          <GroupComponent>
-            <DialComponent
-              value={game.memory}
-              notation="compact"
-              label="Memory"
-              animate={game.itResourcesFeature.animate}
-              onAnimationEnd={() =>
-                setGame({
-                  type: 'UPDATE_FEATURE',
-                  feature: 'itResourcesFeature',
-                  open: true,
-                  animate: false,
-                })
-              }
-            />
-            <ButtonComponent
-              className={styles.button}
-              disabled={game.memory + game.processors >= game.trust}
-              onClick={() => setGame({ type: 'INCREASE_MEMORY' })}
-            >
-              Créer
-            </ButtonComponent>
-          </GroupComponent>
+          <DialComponent
+            value={game.processors}
+            notation="compact"
+            label="Processors"
+            animate={game.itResourcesFeature.animate}
+            onAnimationEnd={() =>
+              setGame({
+                type: 'UPDATE_FEATURE',
+                feature: 'itResourcesFeature',
+                open: true,
+                animate: false,
+              })
+            }
+          />
+          <ButtonComponent
+            className={styles.button}
+            disabled={game.processors + game.memory >= game.trust}
+            onClick={() => setGame({ type: 'INCREASE_PROCESSORS' })}
+          >
+            Créer
+          </ButtonComponent>
+          <DialComponent
+            value={game.memory}
+            notation="compact"
+            label="Memory"
+            animate={game.itResourcesFeature.animate}
+            onAnimationEnd={() =>
+              setGame({
+                type: 'UPDATE_FEATURE',
+                feature: 'itResourcesFeature',
+                open: true,
+                animate: false,
+              })
+            }
+          />
+          <ButtonComponent
+            className={styles.button}
+            disabled={game.memory + game.processors >= game.trust}
+            onClick={() => setGame({ type: 'INCREASE_MEMORY' })}
+          >
+            Créer
+          </ButtonComponent>
           <GroupComponent>
             <DialComponent
               value={game.operations}

@@ -1,7 +1,7 @@
 .project {
   display: flex;
   gap: var(--spacing-xs);
-  align-items: flex-start;
+  align-items: center;
   padding: var(--spacing-s);
   background-color: var(--color-neutral-3);
   border-radius: 0.35rem;
@@ -21,6 +21,16 @@
   &:focus-visible {
     outline: 0.25rem solid var(--color-solid-4);
   }
+
+  &:hover {
+    color: var(--color-primary-dark);
+
+    span {
+      span {
+        color: var(--color-primary-dark);
+      }
+    }
+  }
 }
 
 .animate {
@@ -29,8 +39,7 @@
 }
 
 .icon {
-  position: relative;
-  top: -0.188rem;
+  align-self: baseline;
   font-size: var(--font-size-m);
 }
 

@@ -70,6 +70,22 @@ export const ProjectsComponent = () => {
               }
             />
           ) : null}
+          {game.creativity >= 100e3 && game.driosReInitializationFeature.open ? (
+            <ProjectComponent
+              title="Drios Re-initialization"
+              text="Re-allocate accumulated trust"
+              animate={game.driosReInitializationFeature.animate}
+              onClick={() => console.log('clicked')}
+              onAnimationEnd={() =>
+                setGame({
+                  type: 'UPDATE_FEATURE',
+                  feature: 'driosReInitializationFeature',
+                  open: true,
+                  animate: false,
+                })
+              }
+            />
+          ) : null}
         </CardComponent>
       ) : null}
     </>

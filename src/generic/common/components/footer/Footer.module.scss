@@ -2,6 +2,8 @@
   grid-column: 2;
   grid-row: 2;
   text-align: right;
+  animation: Appear 250ms var(--ease-quad);
+  will-change: opacity;
 }
 
 .button {
@@ -18,5 +20,11 @@
 
   &:hover {
     background-color: var(--color-neutral-3);
+  }
+}
+
+@keyframes Appear {
+  0% {
+    opacity: 0;
   }
 }

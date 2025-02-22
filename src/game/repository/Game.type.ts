@@ -69,4 +69,8 @@ export interface State {
     open: boolean;
     animate: boolean;
   };
+  driosReInitializationFeature: {
+    open: boolean;
+    animate: boolean;
+  };
 }

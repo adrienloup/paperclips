@@ -49,4 +49,8 @@ export const initialState: State = {
     open: true,
     animate: true,
   },
+  driosReInitializationFeature: {
+    open: true,
+    animate: true,
+  },
 };

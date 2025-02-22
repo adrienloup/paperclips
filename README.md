@@ -1,8 +1,8 @@
 # Paperclips
 
-Paperclips is a game inspired by "Universal Paperclips". This captivating game immerses you in an adventure where you play as an artificial intelligence (AI) responsible for maximizing the production of paperclips. This journey begins small, but quickly evolves into an immersive and strategic experience. Whether to kill time on a long trip or to explore your management skills, Universal Paperclips offers an authentic and atypical experience.
+Idle Paperclips is a idle and clicker game, also known as a incremental game. Inspired by "Universal Paperclips", Paperclips immerses you in an adventure where you play as an artificial intelligence (AI) responsible for maximizing the production of paperclips.
 
-[https://adrienloup.github.io/paperclips](https://adrienloup.github.io/paperclips)
+[>> Play idle control <<](https://adrienloup.github.io/paperclips)
 
 ## Requirements
 

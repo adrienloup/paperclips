@@ -55,8 +55,8 @@ export const ProjectsComponent = () => {
           />
           {game.revTrackerFeature.open ? (
             <ProjectComponent
-              title="Rev Tracker 1"
-              text="Automatically calculates average revenue per second"
+              title="RevTracker"
+              text="(500 Operations) Automatically calculates average revenue per second"
               disabled={game.operations < 500}
               animate={game.revTrackerFeature.animate}
               onClick={onRevTrackerClick}
@@ -70,24 +70,6 @@ export const ProjectsComponent = () => {
               }
             />
           ) : null}
-          {/*{game.feature.revTracker.enabled ? (*/}
-          {/*  <FeatureComponent*/}
-          {/*    title="Rev Tracker 1"*/}
-          {/*    text="Automatically calculates average revenue per second"*/}
-          {/*    incurred={game.feature.revTracker.incurred}*/}
-          {/*    onClick={onRevTrackerClick}*/}
-          {/*    onAnimationEnd={onRevTrackerAnimationEnd}*/}
-          {/*  />*/}
-          {/*) : null}*/}
-          {/*{game.feature.improvedProduction.enabled ? (*/}
-          {/*  <FeatureComponent*/}
-          {/*    title="Improved Production"*/}
-          {/*    text="Increases Production performance 25%"*/}
-          {/*    incurred={game.feature.revTracker.incurred}*/}
-          {/*    onClick={onImprovedProductionClick}*/}
-          {/*    onAnimationEnd={onImprovedProductionAnimationEnd}*/}
-          {/*  />*/}
-          {/*) : null}*/}
         </CardComponent>
       ) : null}
     </>

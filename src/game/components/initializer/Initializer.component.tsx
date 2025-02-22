@@ -33,6 +33,7 @@ export const InitializerComponent = () => {
     processors: game.processors,
     memory: game.memory,
     operations: game.operations,
+    creativity: game.creativity,
   });
 
   const handleChange = useCallback(

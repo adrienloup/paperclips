@@ -1,10 +1,25 @@
 .project {
-  position: relative;
-  //padding: var(--spacing-m) var(--spacing-l) var(--spacing-m) var(--spacing-m);
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: flex-start;
+  padding: var(--spacing-s);
   background-color: var(--color-neutral-3);
+  border-radius: 0.35rem;
+  line-height: 1.1;
+  text-align: left;
+  font-family: var(--font-text), sans-serif;
+  font-weight: var(--font-weight);
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
 
-  & + & {
-    margin-top: var(--spacing-s);
+  span {
+    span {
+      color: var(--color-primary-darker);
+    }
+  }
+
+  &:focus-visible {
+    outline: 0.25rem solid var(--color-solid-4);
   }
 }
 
@@ -13,31 +28,10 @@
   will-change: background-color;
 }
 
-.title {
-  margin-bottom: var(--spacing-s);
-}
-
-.text {
-  padding-right: var(--spacing-s);
-  // line-height: var(--line-height-l);
-}
-
-.button {
-  // position: absolute;
-  // top: 0;
-  // right: 0;
-  // z-index: 2;
-  // width: 30px;
-  // height: 100%;
-  // background-color: transparent;
-  // border: none;
+.icon {
+  position: relative;
+  top: -0.188rem;
   font-size: var(--font-size-m);
-  // color: var(--color-4);
-
-  // &:hover {
-  //   background-color: var(--color-4);
-  //   color: var(--color-1);
-  // }
 }
 
 @keyframes Appear {

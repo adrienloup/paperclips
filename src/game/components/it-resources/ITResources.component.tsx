@@ -1,4 +1,4 @@
-import { useGame, useDashboardDispatch } from '@/src/game/repository/useGame.ts';
+import { useGame, useGameDispatch } from '@/src/game/repository/useGame';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component';
@@ -8,7 +8,7 @@ import { NumberComponent } from '@/src/generic/common/components/number/Number.c
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ITResourcesComponent = () => {
-  const setDashboard = useDashboardDispatch();
+  const setDashboard = useGameDispatch();
   const game = useGame();
 
   return (

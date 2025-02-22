@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useGame, useDashboardDispatch } from '@/src/game/repository/useGame.ts';
+import { useGame, useGameDispatch } from '@/src/game/repository/useGame';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { GroupComponent } from '@/src/generic/common/components/group/Group.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
@@ -7,11 +7,12 @@ import { DialComponent } from '@/src/generic/common/components/dial/Dial.compone
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component';
 import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.component';
+import { FeatureComponent } from '@/src/game/components/feature/Feature.component';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ManufacturingComponent = () => {
   const { t } = useTranslation();
-  const setGame = useDashboardDispatch();
+  const setGame = useGameDispatch();
   const game = useGame();
 
   return (
@@ -92,25 +93,39 @@ export const ManufacturingComponent = () => {
       >
         Acheter
       </ButtonComponent>
-      <GroupComponent>
-        <DialComponent
-          value={game.megaClippersCost}
-          style="currency"
-          label="Prix mégamachine"
-        />
-        <DialComponent
-          value={game.megaClippers}
-          notation="compact"
-          label="Mégamachines"
-        />
-      </GroupComponent>
-      <ButtonComponent
-        className={styles.button}
-        disabled={game.megaClippersCost > game.funds}
-        onClick={() => setGame({ type: 'BUY_MEGACLIPPERS' })}
-      >
-        Acheter
-      </ButtonComponent>
+      {game.operations >= 12000 && game.megaClippersFeature.open ? (
+        <FeatureComponent
+          animate={game.megaClippersFeature.animate}
+          onAnimationEnd={() =>
+            setGame({
+              type: 'UPDATE_FEATURE',
+              feature: 'megaClippersFeature',
+              open: true,
+              animate: false,
+            })
+          }
+        >
+          <GroupComponent>
+            <DialComponent
+              value={game.megaClippersCost}
+              style="currency"
+              label="Prix mégamachine"
+            />
+            <DialComponent
+              value={game.megaClippers}
+              notation="compact"
+              label="Mégamachines"
+            />
+          </GroupComponent>
+          <ButtonComponent
+            className={styles.button}
+            disabled={game.megaClippersCost > game.funds}
+            onClick={() => setGame({ type: 'BUY_MEGACLIPPERS' })}
+          >
+            Acheter
+          </ButtonComponent>
+        </FeatureComponent>
+      ) : null}
     </CardComponent>
   );
 };

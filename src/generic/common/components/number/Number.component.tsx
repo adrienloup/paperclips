@@ -12,9 +12,15 @@ export const NumberComponent = ({ className, value, limit, style, notation }: Nu
     maximumFractionDigits: 2,
   };
 
-  const formatValue: string = new Intl.NumberFormat(language === 'en' ? 'en-US' : 'fr-FR', options).format(value);
+  const formatValue: string = new Intl.NumberFormat(
+    language === 'en' ? 'en-US' : 'fr-FR',
+    options
+  ).format(value);
 
-  const formatMax: string = new Intl.NumberFormat(language === 'en' ? 'en-US' : 'fr-FR', options).format(limit!);
+  const formatMax: string = new Intl.NumberFormat(
+    language === 'en' ? 'en-US' : 'fr-FR',
+    options
+  ).format(limit!);
 
   return (
     <span className={className}>

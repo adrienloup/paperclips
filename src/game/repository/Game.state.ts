@@ -20,7 +20,7 @@ export const initialState: State = {
   autoClippersCost: 5,
   megaClippers: 0,
   megaClippersCost: 500,
-  productionBonus: 0.05,
+  productionBonus: 0.025,
   trust: 2,
   trustCost: 8000,
   processors: 1,
@@ -28,11 +28,19 @@ export const initialState: State = {
   operations: 0,
   operationsLimit: 0,
   creativity: 0,
+  marketingFeature: {
+    open: true,
+    animate: true,
+  },
   revTrackerFeature: {
     open: true,
     animate: true,
   },
   fundsPerSecondFeature: {
+    open: false,
+    animate: true,
+  },
+  megaClippersFeature: {
     open: true,
     animate: true,
   },

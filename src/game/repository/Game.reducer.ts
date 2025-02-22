@@ -1,6 +1,7 @@
 import { CREATIVITY, MEMORY, OPERATIONS } from '@/src/game/repository/Game.constants.ts';
 import { mapper } from '@/src/generic/utils/mapper.ts';
 import { Action, State } from '@/src/game/repository/Game.type.ts';
+import { produceRatio } from '@/src/game/repository/Game.utils.ts';
 
 export const gameReducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -25,7 +26,8 @@ export const gameReducer = (state: State, action: Action): State => {
       };
     case 'PRODUCE_AUTOMATIC_CLIPS':
       const totalClippers = state.megaClippers * 5e2 + state.autoClippers;
-      const newWiresStock = state.wiresStock >= totalClippers ? state.wiresStock - totalClippers : state.wiresStock;
+      const newWiresStock =
+        state.wiresStock >= totalClippers ? state.wiresStock - totalClippers : state.wiresStock;
 
       return {
         ...state,
@@ -41,6 +43,10 @@ export const gameReducer = (state: State, action: Action): State => {
         ...state,
         clipsCost: increaseClipsCost,
         publicDemand: 0.1 / increaseClipsCost,
+        productionBonus: produceRatio(
+          state.marketing / 20 + state.clipsBonus,
+          0.1 / increaseClipsCost
+        ),
       };
     case 'DECREASE_CLIPS_COST':
       const decreaseClipsCost = Math.max(state.clipsCost - 0.01, 0.1);
@@ -49,6 +55,10 @@ export const gameReducer = (state: State, action: Action): State => {
         ...state,
         clipsCost: decreaseClipsCost,
         publicDemand: 0.1 / decreaseClipsCost,
+        productionBonus: produceRatio(
+          state.marketing / 20 + state.clipsBonus,
+          0.1 / decreaseClipsCost
+        ),
       };
     case 'BUY_WIRE':
       return {
@@ -76,7 +86,10 @@ export const gameReducer = (state: State, action: Action): State => {
         ...state,
         marketing: state.marketing + 1,
         marketingCost: state.marketingCost * 2,
-        productionBonus: (state.marketing + 1) / 20,
+        productionBonus: produceRatio(
+          (state.marketing + 1) / 20 + state.clipsBonus,
+          state.publicDemand
+        ),
       };
     case 'INCREASE_PROCESSORS':
       return {
@@ -91,13 +104,17 @@ export const gameReducer = (state: State, action: Action): State => {
         trust: state.trust - 1,
       };
     case 'UPDATE_PER_SECOND':
-      const clipsPerSecond = state.wiresStock > 0 ? state.megaClippers * 5e2 + state.autoClippers : 0;
+      const clipsPerSecond =
+        state.wiresStock > 0 ? state.megaClippers * 5e2 + state.autoClippers : 0;
 
       return {
         ...state,
         clipsPerSecond: clipsPerSecond,
         fundsPerSecond: state.clipsCost * clipsPerSecond,
-        operations: Math.min(mapper(state.memory, MEMORY, OPERATIONS), state.operations + 5 * state.processors),
+        operations: Math.min(
+          mapper(state.memory, MEMORY, OPERATIONS),
+          state.operations + 5 * state.processors
+        ),
         operationsLimit: mapper(state.memory, MEMORY, OPERATIONS),
         creativity: mapper(state.operations + 1, OPERATIONS, CREATIVITY),
       };
@@ -120,7 +137,7 @@ export const gameReducer = (state: State, action: Action): State => {
       return {
         ...state,
         clipsBonus: action.bonus,
-        productionBonus: action.bonus + state.marketing / 20,
+        productionBonus: produceRatio(action.bonus + state.marketing / 20, state.publicDemand),
       };
     case 'DECREASE_OPERATIONS':
       return {
@@ -138,7 +155,10 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'INITIALIZE_STATE':
       return {
         ...action.state,
-        productionBonus: state.clipsBonus + action.state.marketing / 20,
+        productionBonus: produceRatio(
+          state.clipsBonus + action.state.marketing / 20,
+          state.publicDemand
+        ),
       };
     default:
       return state;

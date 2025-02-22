@@ -8,7 +8,8 @@ export const DebugComponent = ({ children }: Debug) => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
-    const debug = location.search.split('=')[0] === '?debug' ? location.search.split('=').pop() : '';
+    const debug =
+      location.search.split('=')[0] === '?debug' ? location.search.split('=').pop() : '';
 
     if (debug === '1') {
       window.localStorage.setItem('_3mma_0_debug', '1');

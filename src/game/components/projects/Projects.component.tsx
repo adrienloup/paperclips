@@ -1,4 +1,4 @@
-import { useGame, useDashboardDispatch } from '@/src/game/repository/useGame.ts';
+import { useGame, useGameDispatch } from '@/src/game/repository/useGame';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { ProjectComponent } from '@/src/game/components/projects/Project.component';
@@ -23,7 +23,7 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 */
 
 export const ProjectsComponent = () => {
-  const setGame = useDashboardDispatch();
+  const setGame = useGameDispatch();
   const game = useGame();
 
   const onRevTrackerClick = () => {
@@ -37,7 +37,7 @@ export const ProjectsComponent = () => {
       type: 'UPDATE_FEATURE',
       feature: 'fundsPerSecondFeature',
       open: true,
-      animate: false,
+      animate: true,
     });
     setGame({
       type: 'DECREASE_OPERATIONS',
@@ -74,7 +74,7 @@ export const ProjectsComponent = () => {
         />
       ) : null}
       {/*{game.feature.revTracker.enabled ? (*/}
-      {/*  <ProjectComponent*/}
+      {/*  <FeatureComponent*/}
       {/*    title="Rev Tracker 1"*/}
       {/*    text="Automatically calculates average revenue per second"*/}
       {/*    incurred={game.feature.revTracker.incurred}*/}
@@ -83,7 +83,7 @@ export const ProjectsComponent = () => {
       {/*  />*/}
       {/*) : null}*/}
       {/*{game.feature.improvedProduction.enabled ? (*/}
-      {/*  <ProjectComponent*/}
+      {/*  <FeatureComponent*/}
       {/*    title="Improved Production"*/}
       {/*    text="Increases Production performance 25%"*/}
       {/*    incurred={game.feature.revTracker.incurred}*/}

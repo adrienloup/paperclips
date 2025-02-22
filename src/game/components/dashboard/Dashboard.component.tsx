@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useInterval } from '@/src/generic/hooks/useInterval';
-import { useGame, useDashboardDispatch } from '@/src/game/repository/useGame.ts';
+import { useGame, useGameDispatch } from '@/src/game/repository/useGame';
 import { DebugComponent } from '@/src/generic/common/components/debug/Debug.component';
 import { InitializerComponent } from '@/src/game/components/initializer/Initializer.component';
 import { ClipsComponent } from '@/src/game/components/clips/Clips.component';
@@ -12,7 +12,7 @@ import { ProjectsComponent } from '@/src/game/components/projects/Projects.compo
 import styles from '@/src/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
-  const setGame = useDashboardDispatch();
+  const setGame = useGameDispatch();
   const game = useGame();
   const gameRef = useRef(game);
 

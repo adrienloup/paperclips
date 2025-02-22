@@ -47,11 +47,19 @@ export interface State {
   operations: number;
   operationsLimit: number;
   creativity: number;
+  marketingFeature: {
+    open: boolean;
+    animate: boolean;
+  };
   revTrackerFeature: {
     open: boolean;
     animate: boolean;
   };
   fundsPerSecondFeature: {
+    open: boolean;
+    animate: boolean;
+  };
+  megaClippersFeature: {
     open: boolean;
     animate: boolean;
   };

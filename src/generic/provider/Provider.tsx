@@ -6,7 +6,10 @@ import { ThemeProvider } from '@/src/generic/theme/Theme.provider';
 import { HeaderProvider } from '@/src/generic/common/components/header/Header.provider';
 import { GameProvider } from '@/src/game/repository/Game.provider.tsx';
 
-type ProvidersType = [ComponentType<{ children: Children }>, ComponentPropsWithoutRef<ElementType>?][];
+type ProvidersType = [
+  ComponentType<{ children: Children }>,
+  ComponentPropsWithoutRef<ElementType>?,
+][];
 
 const allProviders = (providers: ProvidersType) =>
   providers.reduce(

@@ -4,6 +4,6 @@ import { GameContext, GameDispatchContext } from '@/src/game/repository/Game.con
 export function useGame() {
   return useContext(GameContext);
 }
-export function useDashboardDispatch() {
+export function useGameDispatch() {
   return useContext(GameDispatchContext);
 }

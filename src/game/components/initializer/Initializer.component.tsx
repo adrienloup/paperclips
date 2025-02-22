@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
-import { useGame, useDashboardDispatch } from '@/src/game/repository/useGame.ts';
+import { useGame, useGameDispatch } from '@/src/game/repository/useGame';
 import { InputFieldProps } from '@/src/game/components/initializer/Initializer.type';
-import { initialState } from '@/src/game/repository/Game.state.ts';
+import { initialState } from '@/src/game/repository/Game.state';
 import styles from '@/src/game/components/initializer/Initializer.module.scss';
 
 const InputField = ({ label, name, value, onChange }: InputFieldProps) => (
@@ -18,7 +18,7 @@ const InputField = ({ label, name, value, onChange }: InputFieldProps) => (
 );
 
 export const InitializerComponent = () => {
-  const setGame = useDashboardDispatch();
+  const setGame = useGameDispatch();
   const game = useGame();
 
   const [formState, setFormState] = useState({
@@ -30,12 +30,20 @@ export const InitializerComponent = () => {
     autoClippers: game.autoClippers,
     megaClippers: game.megaClippers,
     trust: game.trust,
+    processors: game.processors,
+    memory: game.memory,
+    operations: game.operations,
   });
 
   const handleChange = useCallback(
     (e: { target: { name: string; value: string } }) => {
       const { name, value } = e.target;
-      const newValue = name === 'marketing' && Number(value) > 10 ? 10 : Number(value);
+      const newValue =
+        name === 'marketing' && Number(value) > 10
+          ? 10
+          : name === 'trust' && Number(value) > 100
+            ? 100
+            : Number(value);
 
       setFormState((prev) => ({
         ...prev,
@@ -118,7 +126,10 @@ export const InitializerComponent = () => {
           <br />
           Marketing ({game.marketing}) + Bonus clips ({game.clipsBonus * 100})
           <br />
-          {game.marketing / 20} + {game.clipsBonus} = {game.productionBonus}
+          {game.marketing / 20} + {game.clipsBonus} = {game.marketing / 20 + game.clipsBonus}
+          <br />
+          Public ({(game.publicDemand * 100).toFixed(2)}) =&nbsp;
+          {game.productionBonus}
         </div>
         <div>
           <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0 })}>0%</button>
@@ -132,17 +143,39 @@ export const InitializerComponent = () => {
       <div>
         <div>Quantité d'achat de fer : {game.wires}</div>
         <div>
-          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e2 })}>500</button>
-          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e3 })}>1K</button>
-          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e3 })}>2K</button>
-          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 4e3 })}>4K</button>
-          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 8e3 })}>8K</button>
-          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e4 })}>10K</button>
-          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e4 })}>20K</button>
-          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e4 })}>50K</button>
-          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e5 })}>100K</button>
-          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e5 })}>500K</button>
-          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e6 })}>1M</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e2 })}>
+            500
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e3 })}>
+            1K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e3 })}>
+            2K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 4e3 })}>
+            4K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 8e3 })}>
+            8K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e4 })}>
+            10K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e4 })}>
+            20K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e4 })}>
+            50K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e5 })}>
+            100K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e5 })}>
+            500K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e6 })}>
+            1M
+          </button>
         </div>
       </div>
       <div>

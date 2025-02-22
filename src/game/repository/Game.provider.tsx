@@ -20,7 +20,9 @@ export function GameProvider({ children }: { children: Children }) {
 
   return (
     <GameContext.Provider value={game}>
-      <GameDispatchContext.Provider value={setGame}>{children}</GameDispatchContext.Provider>
+      <GameDispatchContext.Provider value={setGame}>
+        {children}
+      </GameDispatchContext.Provider>
     </GameContext.Provider>
   );
 }

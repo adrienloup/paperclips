@@ -9,6 +9,8 @@ export function HeaderProvider({ children }: { children: Children }) {
   const onHeaderChange = useCallback((newHeader: boolean) => setHeader(newHeader), []);
 
   return (
-    <HeaderContext.Provider value={[header, onHeaderChange]}>{children}</HeaderContext.Provider>
+    <HeaderContext.Provider value={[header, onHeaderChange]}>
+      {children}
+    </HeaderContext.Provider>
   );
 }

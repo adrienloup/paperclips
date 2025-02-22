@@ -12,6 +12,7 @@ export type Action =
   | { type: 'INCREASE_MEMORY' }
   | { type: 'UPDATE_WIRE_COST' }
   | { type: 'UPDATE_PER_SECOND' }
+  | { type: 'UPDATE_TRUST'; trust: number }
   | { type: 'UPDATE_WIRE_QUANTITY'; quantity: number }
   | { type: 'UPDATE_CLIPS_BONUS'; bonus: number }
   | { type: 'UPDATE_WIRE_BONUS'; bonus: number }
@@ -41,6 +42,7 @@ export interface State {
   megaClippersCost: number;
   productionBonus: number;
   trust: number;
+  trustTransit: number;
   trustCost: number;
   processors: number;
   memory: number;

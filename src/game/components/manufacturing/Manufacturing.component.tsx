@@ -16,12 +16,7 @@ export const ManufacturingComponent = () => {
   const game = useGame();
 
   return (
-    <CardComponent
-      style={{
-        gridColumn: '1',
-        gridRow: 'span 2',
-      }}
-    >
+    <CardComponent>
       <TitleComponent
         className={styles.title}
         title="Manufacturing"

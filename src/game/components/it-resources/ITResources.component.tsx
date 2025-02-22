@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useGame, useGameDispatch } from '@/src/game/repository/useGame';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
@@ -8,78 +9,88 @@ import { NumberComponent } from '@/src/generic/common/components/number/Number.c
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ITResourcesComponent = () => {
-  const setDashboard = useGameDispatch();
+  const setGame = useGameDispatch();
   const game = useGame();
 
+  useEffect(() => {
+    const milestones = [
+      { clips: 3e3, trustTransit: 0 },
+      { clips: 5e3, trustTransit: 1 },
+      { clips: 8e3, trustTransit: 2 },
+      { clips: 13e3, trustTransit: 3 },
+    ];
+
+    milestones.forEach(({ clips, trustTransit }) => {
+      if (game.clips >= clips && game.trustTransit === trustTransit) {
+        setGame({ type: 'UPDATE_TRUST', trust: 0 });
+      }
+    });
+  }, [game.clips, game.trustTransit]);
+
   return (
-    <CardComponent
-      style={{
-        gridColumn: '3',
-        gridRow: '1',
-      }}
-    >
-      <TitleComponent
-        className={styles.title}
-        title="IT Resources"
-      />
-      <GroupComponent>
-        <DialComponent
-          value={game.trust}
-          limit={100}
-          notation="compact"
-          label="Trust"
-        />
-        <div className={styles.text}>
-          +1 at&nbsp;
-          <NumberComponent
-            className={styles.number}
-            value={game.trustCost}
-            notation="compact"
+    <>
+      {game.clips >= 2e3 ? (
+        <CardComponent>
+          <TitleComponent
+            className={styles.title}
+            title="IT Resources"
           />
-          &nbsp;clips
-        </div>
-      </GroupComponent>
-      <GroupComponent>
-        <DialComponent
-          value={game.processors}
-          notation="compact"
-          label="Processors"
-        />
-        <DialComponent
-          value={game.memory}
-          notation="compact"
-          label="Memory"
-        />
-      </GroupComponent>
-      <GroupComponent>
-        <ButtonComponent
-          className={styles.button}
-          disabled={game.processors + game.memory >= game.trust}
-          onClick={() => setDashboard({ type: 'INCREASE_PROCESSORS' })}
-        >
-          Élever
-        </ButtonComponent>
-        <ButtonComponent
-          className={styles.button}
-          disabled={game.memory + game.processors >= game.trust}
-          onClick={() => setDashboard({ type: 'INCREASE_MEMORY' })}
-        >
-          Élever
-        </ButtonComponent>
-      </GroupComponent>
-      <GroupComponent>
-        <DialComponent
-          value={game.operations}
-          limit={game.operationsLimit}
-          notation="compact"
-          label="Operations"
-        />
-        <DialComponent
-          value={game.creativity}
-          notation="compact"
-          label="Creativity"
-        />
-      </GroupComponent>
-    </CardComponent>
+          <GroupComponent>
+            <DialComponent
+              value={game.trust}
+              limit={100}
+              notation="compact"
+              label="Trust"
+            />
+            <div className={styles.text}>
+              +1 at&nbsp;
+              <NumberComponent
+                className={styles.number}
+                value={game.trustCost}
+                notation="compact"
+              />
+              &nbsp;clips
+            </div>
+          </GroupComponent>
+          <DialComponent
+            value={game.processors}
+            notation="compact"
+            label="Processors"
+          />
+          <ButtonComponent
+            className={styles.button}
+            disabled={game.processors + game.memory >= game.trust}
+            onClick={() => setGame({ type: 'INCREASE_PROCESSORS' })}
+          >
+            Élever
+          </ButtonComponent>
+          <DialComponent
+            value={game.memory}
+            notation="compact"
+            label="Memory"
+          />
+          <ButtonComponent
+            className={styles.button}
+            disabled={game.memory + game.processors >= game.trust}
+            onClick={() => setGame({ type: 'INCREASE_MEMORY' })}
+          >
+            Élever
+          </ButtonComponent>
+          <GroupComponent>
+            <DialComponent
+              value={game.operations}
+              limit={game.operationsLimit}
+              notation="compact"
+              label="Operations"
+            />
+            <DialComponent
+              value={game.creativity}
+              notation="compact"
+              label="Creativity"
+            />
+          </GroupComponent>
+        </CardComponent>
+      ) : null}
+    </>
   );
 };

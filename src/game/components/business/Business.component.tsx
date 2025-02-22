@@ -15,13 +15,7 @@ export const BusinessComponent = () => {
   const game = useGame();
 
   return (
-    <CardComponent
-      className={styles.red}
-      style={{
-        gridColumn: '2',
-        gridRow: 'span 2',
-      }}
-    >
+    <CardComponent>
       <TitleComponent
         className={styles.title}
         title="Business"

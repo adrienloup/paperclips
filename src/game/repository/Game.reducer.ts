@@ -6,13 +6,13 @@ import { produceRatio } from '@/src/game/repository/Game.utils.ts';
 export const gameReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SELL_CLIPS':
-      const decrease = Math.floor(state.clipsTransit * (1 - state.productionBonus));
+      const decreaseClipsTransit = Math.floor(state.clipsTransit * (1 - state.productionBonus));
 
       return {
         ...state,
-        clipsStock: decrease,
-        clipsTransit: decrease > 0 ? decrease : 0,
-        funds: state.funds + (state.clipsTransit - decrease) * state.clipsCost,
+        clipsStock: decreaseClipsTransit,
+        clipsTransit: decreaseClipsTransit > 0 ? decreaseClipsTransit : 0,
+        funds: state.funds + (state.clipsTransit - decreaseClipsTransit) * state.clipsCost,
       };
     case 'PRODUCE_MANUAL_CLIPS':
       return {
@@ -84,7 +84,7 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'BUY_MARKETING':
       return {
         ...state,
-        marketing: state.marketing + 1,
+        marketing: Math.min(state.marketing + 1, 10),
         marketingCost: state.marketingCost * 2,
         productionBonus: produceRatio(
           (state.marketing + 1) / 20 + state.clipsBonus,
@@ -117,6 +117,15 @@ export const gameReducer = (state: State, action: Action): State => {
         ),
         operationsLimit: mapper(state.memory, MEMORY, OPERATIONS),
         creativity: mapper(state.operations + 1, OPERATIONS, CREATIVITY),
+      };
+    case 'UPDATE_TRUST':
+      const incrementTrust = action.trust === 0 ? 1 : action.trust;
+      const trust = Math.max(2, Math.min(state.trust + incrementTrust, 100));
+
+      return {
+        ...state,
+        trust: trust,
+        trustTransit: action.trust === 0 ? state.trustTransit + 1 : state.trustTransit,
       };
     case 'UPDATE_WIRE_COST':
       return {

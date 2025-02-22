@@ -46,51 +46,50 @@ export const ProjectsComponent = () => {
   };
 
   return (
-    <CardComponent
-      style={{
-        gridColumn: '3',
-        gridRow: '2',
-      }}
-    >
-      <TitleComponent
-        className={styles.title}
-        title="Projects"
-      />
-      {game.clips >= 2e3 && game.revTrackerFeature.open ? (
-        <ProjectComponent
-          title="Rev Tracker 1"
-          text="Automatically calculates average revenue per second"
-          disabled={game.operations < 500}
-          animate={game.revTrackerFeature.animate}
-          onClick={onRevTrackerClick}
-          onAnimationEnd={() =>
-            setGame({
-              type: 'UPDATE_FEATURE',
-              feature: 'revTrackerFeature',
-              open: true,
-              animate: false,
-            })
-          }
-        />
+    <>
+      {game.clips >= 2e3 ? (
+        <CardComponent>
+          <TitleComponent
+            className={styles.title}
+            title="Projects"
+          />
+          {game.revTrackerFeature.open ? (
+            <ProjectComponent
+              title="Rev Tracker 1"
+              text="Automatically calculates average revenue per second"
+              disabled={game.operations < 500}
+              animate={game.revTrackerFeature.animate}
+              onClick={onRevTrackerClick}
+              onAnimationEnd={() =>
+                setGame({
+                  type: 'UPDATE_FEATURE',
+                  feature: 'revTrackerFeature',
+                  open: true,
+                  animate: false,
+                })
+              }
+            />
+          ) : null}
+          {/*{game.feature.revTracker.enabled ? (*/}
+          {/*  <FeatureComponent*/}
+          {/*    title="Rev Tracker 1"*/}
+          {/*    text="Automatically calculates average revenue per second"*/}
+          {/*    incurred={game.feature.revTracker.incurred}*/}
+          {/*    onClick={onRevTrackerClick}*/}
+          {/*    onAnimationEnd={onRevTrackerAnimationEnd}*/}
+          {/*  />*/}
+          {/*) : null}*/}
+          {/*{game.feature.improvedProduction.enabled ? (*/}
+          {/*  <FeatureComponent*/}
+          {/*    title="Improved Production"*/}
+          {/*    text="Increases Production performance 25%"*/}
+          {/*    incurred={game.feature.revTracker.incurred}*/}
+          {/*    onClick={onImprovedProductionClick}*/}
+          {/*    onAnimationEnd={onImprovedProductionAnimationEnd}*/}
+          {/*  />*/}
+          {/*) : null}*/}
+        </CardComponent>
       ) : null}
-      {/*{game.feature.revTracker.enabled ? (*/}
-      {/*  <FeatureComponent*/}
-      {/*    title="Rev Tracker 1"*/}
-      {/*    text="Automatically calculates average revenue per second"*/}
-      {/*    incurred={game.feature.revTracker.incurred}*/}
-      {/*    onClick={onRevTrackerClick}*/}
-      {/*    onAnimationEnd={onRevTrackerAnimationEnd}*/}
-      {/*  />*/}
-      {/*) : null}*/}
-      {/*{game.feature.improvedProduction.enabled ? (*/}
-      {/*  <FeatureComponent*/}
-      {/*    title="Improved Production"*/}
-      {/*    text="Increases Production performance 25%"*/}
-      {/*    incurred={game.feature.revTracker.incurred}*/}
-      {/*    onClick={onImprovedProductionClick}*/}
-      {/*    onAnimationEnd={onImprovedProductionAnimationEnd}*/}
-      {/*  />*/}
-      {/*) : null}*/}
-    </CardComponent>
+    </>
   );
 };

@@ -3,18 +3,21 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--spacing-s);
+  width: calc((100vw - 3.5rem));
   padding: var(--spacing-s);
   background-color: var(--color-neutral-2);
   border-radius: 0.35rem;
-  //animation: Appear 250ms var(--ease-quad);
-  //will-change: opacity;
 
-  @include desktop {
+  @include tablet-portrait {
     width: calc((100vw - 5rem) / 2);
   }
 
-  @include tablet-portrait {
-    width: calc((100vw - 3.5rem));
+  @include desktop {
+    width: calc((100vw - 6.5rem) / 3);
+  }
+
+  @include widescreen {
+    width: calc((100vw - 8rem) / 4);
   }
 }
 
@@ -48,9 +51,3 @@
   align-items: center;
   font-size: var(--font-size-s);
 }
-
-//@keyframes Appear {
-//  0% {
-//    opacity: 0;
-//  }
-//}

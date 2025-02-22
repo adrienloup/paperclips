@@ -61,22 +61,19 @@ export const InitializerComponent = () => {
     [game, setGame]
   );
 
-  const reload = () => {
-    window.location.reload();
-  };
-
-  const clearDashboardItem = () => {
+  const clearGameLocalItem = () => {
     localStorage.removeItem('_3mma_0_game');
+    //window.location.href = 'http://localhost:5173/paperclips/';
     window.location.reload();
   };
 
-  const clearAllItems = () => {
+  const clearAllLocalItems = () => {
     localStorage.clear();
     setGame({
       type: 'INITIALIZE_STATE',
       state: initialState,
     });
-    window.location.href = 'http://localhost:5173/paperclips/';
+    window.location.reload();
   };
 
   return (
@@ -86,23 +83,15 @@ export const InitializerComponent = () => {
         <div>
           <button
             type="button"
-            onClick={clearDashboardItem}
+            onClick={clearGameLocalItem}
           >
             Réinitialiser le Dashboard
           </button>
-          <br />
           <button
             type="button"
-            onClick={clearAllItems}
+            onClick={clearAllLocalItems}
           >
             Tout réinitialiser
-          </button>
-          <br />
-          <button
-            type="button"
-            onClick={reload}
-          >
-            Reload
           </button>
         </div>
       </div>
@@ -192,6 +181,15 @@ export const InitializerComponent = () => {
           <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.8 })}>80%</button>
           <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.9 })}>90%</button>
           <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 1 })}>100%</button>
+        </div>
+      </div>
+      <div>
+        <div>
+          Trust : {game.trust} {game.trustTransit}
+        </div>
+        <div>
+          <button onClick={() => setGame({ type: 'UPDATE_TRUST', trust: 1 })}>+1</button>
+          <button onClick={() => setGame({ type: 'UPDATE_TRUST', trust: 10 })}>+10</button>
         </div>
       </div>
     </div>

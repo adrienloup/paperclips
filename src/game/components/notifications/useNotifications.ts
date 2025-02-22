@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import {
-  NotificationsContext,
-  NotificationsDispatchContext,
-} from '@/src/game/components/notifications/repository/Notifications.context';
+  NotificationContext,
+  NotificationDispatchContext,
+} from '@/src/game/components/notifications/repository/Notification.context.ts';
 
 export function useNotifications() {
-  return useContext(NotificationsContext);
+  return useContext(NotificationContext);
 }
 export function useNotificationsDispatch() {
-  return useContext(NotificationsDispatchContext);
+  return useContext(NotificationDispatchContext);
 }

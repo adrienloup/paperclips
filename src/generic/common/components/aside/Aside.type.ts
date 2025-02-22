@@ -5,4 +5,5 @@ export interface Aside {
   openLabel?: string;
   closeLabel?: string;
   icon?: string;
+  onClick?: (open: boolean) => void;
 }

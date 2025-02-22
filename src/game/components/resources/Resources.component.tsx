@@ -32,7 +32,7 @@ export const ResourcesComponent = () => {
   useEffect(() => {
     if (game.clips >= 2e3 && game.resourcesFeature.show) {
       setNotifications({
-        type: 'ADDED',
+        type: 'ADD',
         id: 1,
       });
     }

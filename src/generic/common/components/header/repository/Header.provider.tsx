@@ -6,11 +6,9 @@ import { HeaderContext } from '@/src/generic/common/components/header/repository
 export function HeaderProvider({ children }: { children: Children }) {
   const [header, setHeader] = useLocalStorage<boolean>('_3mma_0_header', false);
 
-  const onHeaderChange = useCallback((newHeader: boolean) => setHeader(newHeader), []);
+  const handleHeaderChange = useCallback((newHeader: boolean) => setHeader(newHeader), []);
 
   return (
-    <HeaderContext.Provider value={[header, onHeaderChange]}>
-      {children}
-    </HeaderContext.Provider>
+    <HeaderContext.Provider value={[header, handleHeaderChange]}>{children}</HeaderContext.Provider>
   );
 }

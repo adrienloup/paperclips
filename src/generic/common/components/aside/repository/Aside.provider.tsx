@@ -17,9 +17,5 @@ export function AsideProvider({ children }: { children: Children }) {
     updateAside(newAside);
   }, []);
 
-  return (
-    <AsideContext.Provider value={[aside, onAsideChange]}>
-      {children}
-    </AsideContext.Provider>
-  );
+  return <AsideContext.Provider value={[aside, onAsideChange]}>{children}</AsideContext.Provider>;
 }

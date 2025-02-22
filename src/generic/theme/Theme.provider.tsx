@@ -34,17 +34,13 @@ export function ThemeProvider({ children }: { children: Children }) {
       updateTheme(event.matches ? 'dark' : 'light');
     };
 
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', changeTheme);
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', changeTheme);
 
     return () =>
-      window
-        .matchMedia('(prefers-color-scheme: dark)')
-        .removeEventListener('change', changeTheme);
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', changeTheme);
   }, []);
 
-  const onThemeChange = useCallback(
+  const handleThemeChange = useCallback(
     (newTheme: Theme) => {
       updateTheme(newTheme);
     },
@@ -52,8 +48,6 @@ export function ThemeProvider({ children }: { children: Children }) {
   );
 
   return (
-    <ThemeContext.Provider value={[theme, onThemeChange]}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={[theme, handleThemeChange]}>{children}</ThemeContext.Provider>
   );
 }

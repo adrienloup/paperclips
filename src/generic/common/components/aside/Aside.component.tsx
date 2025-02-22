@@ -11,6 +11,7 @@ export const AsideComponent = ({
   icon = 'arrow_menu_close',
   openLabel,
   closeLabel,
+  onClick,
 }: Aside) => {
   const asideContext = useAside();
   const [open, setOpen] = asideContext!;
@@ -25,6 +26,11 @@ export const AsideComponent = ({
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [open]);
 
+  const onButtonClick = () => {
+    setOpen(!open);
+    onClick!(!open);
+  };
+
   return (
     <aside
       className={classNames([styles.aside, open ? styles.open : ''])}
@@ -36,7 +42,7 @@ export const AsideComponent = ({
           <ButtonComponent
             className={styles.button}
             aria-label={open ? closeLabel : openLabel}
-            onClick={() => setOpen(!open)}
+            onClick={onButtonClick}
           >
             <IconComponent icon={open ? 'arrow_menu_open' : icon} />
           </ButtonComponent>

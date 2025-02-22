@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent } from 'react';
 
 import { Children } from '@/src/generic/types/Children.type';
-import { NotificationsProvider } from '@/src/game/components/notifications/repository/Notifications.provider';
+import { NotificationProvider } from '@/src/game/components/notifications/repository/Notification.provider.tsx';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider';
 import { HeaderProvider } from '@/src/generic/common/components/header/repository/Header.provider';
 import { ThemeProvider } from '@/src/generic/theme/Theme.provider';
@@ -25,7 +25,7 @@ const allProviders = (providers: ProvidersType) =>
   );
 
 export const Provider: FunctionComponent<{ children: Children }> = allProviders([
-  [NotificationsProvider],
+  [NotificationProvider],
   [LanguageProvider],
   [HeaderProvider],
   [ThemeProvider],

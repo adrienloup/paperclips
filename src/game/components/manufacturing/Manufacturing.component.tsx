@@ -7,7 +7,6 @@ import { DialComponent } from '@/src/generic/common/components/dial/Dial.compone
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component';
 import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.component';
-import { FeatureComponent } from '@/src/game/components/feature/Feature.component';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ManufacturingComponent = () => {
@@ -88,28 +87,36 @@ export const ManufacturingComponent = () => {
       >
         Acheter
       </ButtonComponent>
-      {game.operations >= 12000 && game.megaClippersFeature.open ? (
-        <FeatureComponent
-          animate={game.megaClippersFeature.animate}
-          onAnimationEnd={() =>
-            setGame({
-              type: 'UPDATE_FEATURE',
-              feature: 'megaClippersFeature',
-              open: true,
-              animate: false,
-            })
-          }
-        >
+      {game.operations >= 12e3 && game.megaClippersFeature.open ? (
+        <>
           <GroupComponent>
             <DialComponent
               value={game.megaClippersCost}
               style="currency"
               label="Prix mégamachine"
+              animate={game.megaClippersFeature.animate}
+              onAnimationEnd={() =>
+                setGame({
+                  type: 'UPDATE_FEATURE',
+                  feature: 'megaClippersFeature',
+                  open: true,
+                  animate: false,
+                })
+              }
             />
             <DialComponent
               value={game.megaClippers}
               notation="compact"
               label="Mégamachines"
+              animate={game.megaClippersFeature.animate}
+              onAnimationEnd={() =>
+                setGame({
+                  type: 'UPDATE_FEATURE',
+                  feature: 'megaClippersFeature',
+                  open: true,
+                  animate: false,
+                })
+              }
             />
           </GroupComponent>
           <ButtonComponent
@@ -119,7 +126,7 @@ export const ManufacturingComponent = () => {
           >
             Acheter
           </ButtonComponent>
-        </FeatureComponent>
+        </>
       ) : null}
     </CardComponent>
   );

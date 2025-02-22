@@ -1,4 +1,4 @@
-import { State } from '@/src/game/repository/Game.type.ts';
+import { State } from '@/src/game/repository/Game.type';
 
 export const initialState: State = {
   clips: 0,
@@ -30,6 +30,10 @@ export const initialState: State = {
   operationsLimit: 0,
   creativity: 0,
   marketingFeature: {
+    open: true,
+    animate: true,
+  },
+  itResourcesFeature: {
     open: true,
     animate: true,
   },

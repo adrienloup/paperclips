@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { GameContext, GameDispatchContext } from '@/src/game/repository/Game.context.ts';
+import { GameContext, GameDispatchContext } from '@/src/game/repository/Game.context';
 
 export function useGame() {
   return useContext(GameContext);

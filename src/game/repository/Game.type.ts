@@ -53,6 +53,10 @@ export interface State {
     open: boolean;
     animate: boolean;
   };
+  itResourcesFeature: {
+    open: boolean;
+    animate: boolean;
+  };
   revTrackerFeature: {
     open: boolean;
     animate: boolean;

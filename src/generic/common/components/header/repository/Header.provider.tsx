@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage';
 import { Children } from '@/src/generic/types/Children.type';
-import { Header } from '@/src/generic/common/components/header/Header.type';
-import { HeaderContext } from '@/src/generic/common/components/header/Header.context';
+import { Header } from '@/src/generic/common/components/header/repository/Header.type';
+import { HeaderContext } from '@/src/generic/common/components/header/repository/Header.context';
 
 export function HeaderProvider({ children }: { children: Children }) {
   const [header, setHeader] = useLocalStorage<Header>('_3mma_0_header', false);

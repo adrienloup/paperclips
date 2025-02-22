@@ -1,7 +1,7 @@
-import { CREATIVITY, MEMORY, OPERATIONS } from '@/src/game/repository/Game.constants.ts';
-import { mapper } from '@/src/generic/utils/mapper.ts';
-import { Action, State } from '@/src/game/repository/Game.type.ts';
-import { produceRatio } from '@/src/game/repository/Game.utils.ts';
+import { CREATIVITY, MEMORY, OPERATIONS } from '@/src/game/repository/Game.constants';
+import { mapper } from '@/src/generic/utils/mapper';
+import { Action, State } from '@/src/game/repository/Game.type';
+import { produceRatio } from '@/src/game/repository/Game.utils';
 
 export const gameReducer = (state: State, action: Action): State => {
   switch (action.type) {

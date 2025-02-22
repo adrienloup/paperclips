@@ -6,7 +6,6 @@ import { TitleComponent } from '@/src/generic/common/components/title/Title.comp
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';
 import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.component';
-import { FeatureComponent } from '@/src/game/components/feature/Feature.component';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const BusinessComponent = () => {
@@ -61,7 +60,7 @@ export const BusinessComponent = () => {
         <DialComponent
           value={game.publicDemand}
           style="percent"
-          label="publicDemand"
+          label="Public demand"
         />
       </GroupComponent>
       <GroupComponent>
@@ -81,29 +80,37 @@ export const BusinessComponent = () => {
         </ButtonComponent>
       </GroupComponent>
       {game.clips >= 1e3 && game.marketingFeature.open ? (
-        <FeatureComponent
-          animate={game.marketingFeature.animate}
-          onAnimationEnd={() =>
-            setGame({
-              type: 'UPDATE_FEATURE',
-              feature: 'marketingFeature',
-              open: true,
-              animate: false,
-            })
-          }
-        >
+        <>
           <GroupComponent>
             <DialComponent
               value={game.marketingCost}
               style="currency"
               label="Prix marketing"
               disabled={game.marketing >= 10}
+              animate={game.marketingFeature.animate}
+              onAnimationEnd={() =>
+                setGame({
+                  type: 'UPDATE_FEATURE',
+                  feature: 'marketingFeature',
+                  open: true,
+                  animate: false,
+                })
+              }
             />
             <DialComponent
               value={game.marketing}
               limit={10}
               notation="compact"
               label="Marketing"
+              animate={game.marketingFeature.animate}
+              onAnimationEnd={() =>
+                setGame({
+                  type: 'UPDATE_FEATURE',
+                  feature: 'marketingFeature',
+                  open: true,
+                  animate: false,
+                })
+              }
             />
           </GroupComponent>
           <ButtonComponent
@@ -113,7 +120,7 @@ export const BusinessComponent = () => {
           >
             {t('common.button.buy')}
           </ButtonComponent>
-        </FeatureComponent>
+        </>
       ) : null}
     </CardComponent>
   );

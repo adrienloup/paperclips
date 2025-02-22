@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useReducer } from 'react';
-import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage.ts';
-import { Children } from '@/src/generic/types/Children.type.ts';
-import { State } from '@/src/game/repository/Game.type.ts';
-import { GameContext, GameDispatchContext } from '@/src/game/repository/Game.context.ts';
-import { gameReducer } from '@/src/game/repository/Game.reducer.ts';
-import { initialState } from '@/src/game/repository/Game.state.ts';
+import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage';
+import { Children } from '@/src/generic/types/Children.type';
+import { State } from '@/src/game/repository/Game.type';
+import { GameContext, GameDispatchContext } from '@/src/game/repository/Game.context';
+import { gameReducer } from '@/src/game/repository/Game.reducer';
+import { initialState } from '@/src/game/repository/Game.state';
 
 export function GameProvider({ children }: { children: Children }) {
   const [state, setState] = useLocalStorage<State>('_3mma_0_game', initialState);

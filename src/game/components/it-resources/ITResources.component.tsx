@@ -29,7 +29,7 @@ export const ITResourcesComponent = () => {
 
   return (
     <>
-      {game.clips >= 2e3 ? (
+      {game.clips >= 2e3 && game.itResourcesFeature.open ? (
         <CardComponent>
           <TitleComponent
             className={styles.title}
@@ -41,6 +41,15 @@ export const ITResourcesComponent = () => {
               limit={100}
               notation="compact"
               label="Trust"
+              animate={game.itResourcesFeature.animate}
+              onAnimationEnd={() =>
+                setGame({
+                  type: 'UPDATE_FEATURE',
+                  feature: 'itResourcesFeature',
+                  open: true,
+                  animate: false,
+                })
+              }
             />
             <div className={styles.text}>
               +1 at&nbsp;
@@ -52,41 +61,81 @@ export const ITResourcesComponent = () => {
               &nbsp;clips
             </div>
           </GroupComponent>
-          <DialComponent
-            value={game.processors}
-            notation="compact"
-            label="Processors"
-          />
-          <ButtonComponent
-            className={styles.button}
-            disabled={game.processors + game.memory >= game.trust}
-            onClick={() => setGame({ type: 'INCREASE_PROCESSORS' })}
-          >
-            Élever
-          </ButtonComponent>
-          <DialComponent
-            value={game.memory}
-            notation="compact"
-            label="Memory"
-          />
-          <ButtonComponent
-            className={styles.button}
-            disabled={game.memory + game.processors >= game.trust}
-            onClick={() => setGame({ type: 'INCREASE_MEMORY' })}
-          >
-            Élever
-          </ButtonComponent>
+          <GroupComponent>
+            <DialComponent
+              value={game.processors}
+              notation="compact"
+              label="Processors"
+              animate={game.itResourcesFeature.animate}
+              onAnimationEnd={() =>
+                setGame({
+                  type: 'UPDATE_FEATURE',
+                  feature: 'itResourcesFeature',
+                  open: true,
+                  animate: false,
+                })
+              }
+            />
+            <ButtonComponent
+              className={styles.button}
+              disabled={game.processors + game.memory >= game.trust}
+              onClick={() => setGame({ type: 'INCREASE_PROCESSORS' })}
+            >
+              Créer
+            </ButtonComponent>
+          </GroupComponent>
+          <GroupComponent>
+            <DialComponent
+              value={game.memory}
+              notation="compact"
+              label="Memory"
+              animate={game.itResourcesFeature.animate}
+              onAnimationEnd={() =>
+                setGame({
+                  type: 'UPDATE_FEATURE',
+                  feature: 'itResourcesFeature',
+                  open: true,
+                  animate: false,
+                })
+              }
+            />
+            <ButtonComponent
+              className={styles.button}
+              disabled={game.memory + game.processors >= game.trust}
+              onClick={() => setGame({ type: 'INCREASE_MEMORY' })}
+            >
+              Créer
+            </ButtonComponent>
+          </GroupComponent>
           <GroupComponent>
             <DialComponent
               value={game.operations}
               limit={game.operationsLimit}
               notation="compact"
               label="Operations"
+              animate={game.itResourcesFeature.animate}
+              onAnimationEnd={() =>
+                setGame({
+                  type: 'UPDATE_FEATURE',
+                  feature: 'itResourcesFeature',
+                  open: true,
+                  animate: false,
+                })
+              }
             />
             <DialComponent
               value={game.creativity}
               notation="compact"
               label="Creativity"
+              animate={game.itResourcesFeature.animate}
+              onAnimationEnd={() =>
+                setGame({
+                  type: 'UPDATE_FEATURE',
+                  feature: 'itResourcesFeature',
+                  open: true,
+                  animate: false,
+                })
+              }
             />
           </GroupComponent>
         </CardComponent>

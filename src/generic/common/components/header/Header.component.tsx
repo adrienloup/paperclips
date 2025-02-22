@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/src/generic/i18n/useLanguage';
 import { useTheme } from '@/src/generic/theme/useTheme';
-import { useHeader } from '@/src/generic/common/components/header/useHeader';
+import { useHeader } from '@/src/generic/common/components/header/repository/useHeader';
 import { classNames } from '@/src/generic/utils/classNames';
 import { NavigationComponent } from '@/src/generic/common/components/navigation/Navigation.component';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';

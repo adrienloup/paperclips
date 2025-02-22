@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { HeaderContext } from '@/src/generic/common/components/header/Header.context';
+import { HeaderContext } from '@/src/generic/common/components/header/repository/Header.context';
 
 export function useHeader() {
   return useContext(HeaderContext);

@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Header } from '@/src/generic/common/components/header/Header.type';
+import { Header } from '@/src/generic/common/components/header/repository/Header.type';
 
 export const HeaderContext = createContext<{
   header: Header;

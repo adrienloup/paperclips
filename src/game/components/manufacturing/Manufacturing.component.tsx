@@ -49,15 +49,14 @@ export const ManufacturingComponent = () => {
         >
           Acheter
         </ButtonComponent>
-        <div className={styles.text}>
+        <span>
           +
           <NumberComponent
             className={styles.number}
             value={game.wires + game.wiresBonus * game.wires}
             notation="compact"
           />
-          &nbsp;inches
-        </div>
+        </span>
         {game.wiresBonus > 0 ? (
           <BonusComponent
             value={game.wiresBonus}
@@ -84,7 +83,7 @@ export const ManufacturingComponent = () => {
       >
         Acheter
       </ButtonComponent>
-      {game.operations >= 12e3 && game.megaClippersFeature.open ? (
+      {game.operations >= 12e3 && game.megaClippersFeature.show ? (
         <>
           <GroupComponent>
             <DialComponent
@@ -96,7 +95,7 @@ export const ManufacturingComponent = () => {
                 setGame({
                   type: 'UPDATE_FEATURE',
                   feature: 'megaClippersFeature',
-                  open: true,
+                  show: true,
                   animate: false,
                 })
               }
@@ -110,7 +109,7 @@ export const ManufacturingComponent = () => {
                 setGame({
                   type: 'UPDATE_FEATURE',
                   feature: 'megaClippersFeature',
-                  open: true,
+                  show: true,
                   animate: false,
                 })
               }

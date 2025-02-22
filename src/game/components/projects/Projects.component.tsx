@@ -30,13 +30,13 @@ export const ProjectsComponent = () => {
     setGame({
       type: 'UPDATE_FEATURE',
       feature: 'revTrackerFeature',
-      open: false,
+      show: false,
       animate: false,
     });
     setGame({
       type: 'UPDATE_FEATURE',
       feature: 'fundsPerSecondFeature',
-      open: true,
+      show: true,
       animate: true,
     });
     setGame({
@@ -50,7 +50,7 @@ export const ProjectsComponent = () => {
       {game.clips >= 2e3 ? (
         <CardComponent>
           <TitleComponent className={styles.title}>Projects</TitleComponent>
-          {game.revTrackerFeature.open ? (
+          {game.revTrackerFeature.show ? (
             <ProjectComponent
               title="RevTracker"
               text="(500 Operations) Automatically calculates average revenue per second"
@@ -61,13 +61,13 @@ export const ProjectsComponent = () => {
                 setGame({
                   type: 'UPDATE_FEATURE',
                   feature: 'revTrackerFeature',
-                  open: true,
+                  show: true,
                   animate: false,
                 })
               }
             />
           ) : null}
-          {game.creativity >= 100e3 && game.driosReInitializationFeature.open ? (
+          {game.creativity >= 100e3 && game.driosReInitializationFeature.show ? (
             <ProjectComponent
               title="Drios Re-initialization"
               text="Re-allocate accumulated trust"
@@ -77,7 +77,7 @@ export const ProjectsComponent = () => {
                 setGame({
                   type: 'UPDATE_FEATURE',
                   feature: 'driosReInitializationFeature',
-                  open: true,
+                  show: true,
                   animate: false,
                 })
               }

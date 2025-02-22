@@ -17,7 +17,7 @@ export type Action =
   | { type: 'UPDATE_CLIPS_BONUS'; bonus: number }
   | { type: 'UPDATE_WIRE_BONUS'; bonus: number }
   | { type: 'DECREASE_OPERATIONS'; operations: number }
-  | { type: 'UPDATE_FEATURE'; feature: string; open: boolean; animate: boolean }
+  | { type: 'UPDATE_FEATURE'; feature: string; show: boolean; animate: boolean }
   | { type: 'INITIALIZE_STATE'; state: State };
 
 export interface State {
@@ -50,27 +50,27 @@ export interface State {
   operationsLimit: number;
   creativity: number;
   marketingFeature: {
-    open: boolean;
+    show: boolean;
     animate: boolean;
   };
   resourcesFeature: {
-    open: boolean;
+    show: boolean;
     animate: boolean;
   };
   revTrackerFeature: {
-    open: boolean;
+    show: boolean;
     animate: boolean;
   };
   fundsPerSecondFeature: {
-    open: boolean;
+    show: boolean;
     animate: boolean;
   };
   megaClippersFeature: {
-    open: boolean;
+    show: boolean;
     animate: boolean;
   };
   driosReInitializationFeature: {
-    open: boolean;
+    show: boolean;
     animate: boolean;
   };
 }

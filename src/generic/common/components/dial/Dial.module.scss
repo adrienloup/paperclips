@@ -1,7 +1,7 @@
 .dial {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: 0.35rem;
   padding: var(--spacing-s);
   background-color: var(--color-neutral-3);
   border-radius: 0.35rem;
@@ -20,7 +20,7 @@
 
 .label {
   font-size: var(--font-size-s);
-  color: var(--color-primary-darker);
+  color: var(--color-neutral-4);
 }
 
 .number {

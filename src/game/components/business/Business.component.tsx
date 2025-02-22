@@ -16,7 +16,7 @@ export const BusinessComponent = () => {
   return (
     <CardComponent>
       <TitleComponent className={styles.title}>Business</TitleComponent>
-      {game.fundsPerSecondFeature.open ? (
+      {game.fundsPerSecondFeature.show ? (
         <DialComponent
           value={game.fundsPerSecond}
           style="currency"
@@ -26,7 +26,7 @@ export const BusinessComponent = () => {
             setGame({
               type: 'UPDATE_FEATURE',
               feature: 'fundsPerSecondFeature',
-              open: true,
+              show: true,
               animate: false,
             })
           }
@@ -76,7 +76,7 @@ export const BusinessComponent = () => {
           {t('common.button.lower')}
         </ButtonComponent>
       </GroupComponent>
-      {game.clips >= 1e3 && game.marketingFeature.open ? (
+      {game.clips >= 1e3 && game.marketingFeature.show ? (
         <>
           <GroupComponent>
             <DialComponent
@@ -89,7 +89,7 @@ export const BusinessComponent = () => {
                 setGame({
                   type: 'UPDATE_FEATURE',
                   feature: 'marketingFeature',
-                  open: true,
+                  show: true,
                   animate: false,
                 })
               }
@@ -104,7 +104,7 @@ export const BusinessComponent = () => {
                 setGame({
                   type: 'UPDATE_FEATURE',
                   feature: 'marketingFeature',
-                  open: true,
+                  show: true,
                   animate: false,
                 })
               }

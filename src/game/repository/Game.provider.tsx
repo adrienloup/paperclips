@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useReducer } from 'react';
 import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage';
-import { GameContext, GameDispatchContext } from '@/src/game/repository/Game.context';
 import { gameReducer } from '@/src/game/repository/Game.reducer';
+import { GameContext, GameDispatchContext } from '@/src/game/repository/Game.context';
 import { initialState } from '@/src/game/repository/Game.state';
 import { Children } from '@/src/generic/types/Children.type';
 import { State } from '@/src/game/repository/Game.type';
@@ -20,9 +20,7 @@ export function GameProvider({ children }: { children: Children }) {
 
   return (
     <GameContext.Provider value={game}>
-      <GameDispatchContext.Provider value={setGame}>
-        {children}
-      </GameDispatchContext.Provider>
+      <GameDispatchContext.Provider value={setGame}>{children}</GameDispatchContext.Provider>
     </GameContext.Provider>
   );
 }

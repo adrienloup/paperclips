@@ -30,27 +30,27 @@ export const initialState: State = {
   operationsLimit: 0,
   creativity: 0,
   marketingFeature: {
-    open: true,
+    show: true,
     animate: true,
   },
   resourcesFeature: {
-    open: true,
+    show: true,
     animate: true,
   },
   revTrackerFeature: {
-    open: true,
+    show: true,
     animate: true,
   },
   fundsPerSecondFeature: {
-    open: false,
+    show: false,
     animate: true,
   },
   megaClippersFeature: {
-    open: true,
+    show: true,
     animate: true,
   },
   driosReInitializationFeature: {
-    open: true,
+    show: true,
     animate: true,
   },
 };

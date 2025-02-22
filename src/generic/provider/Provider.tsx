@@ -1,16 +1,12 @@
-import {
-  ComponentPropsWithoutRef,
-  ComponentType,
-  ElementType,
-  FunctionComponent,
-} from 'react';
+import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent } from 'react';
 
 import { Children } from '@/src/generic/types/Children.type';
+import { NotificationsProvider } from '@/src/game/components/notifications/repository/Notifications.provider';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider';
-import { ThemeProvider } from '@/src/generic/theme/Theme.provider';
 import { HeaderProvider } from '@/src/generic/common/components/header/repository/Header.provider';
-import { GameProvider } from '@/src/game/repository/Game.provider';
+import { ThemeProvider } from '@/src/generic/theme/Theme.provider';
 import { AsideProvider } from '@/src/generic/common/components/aside/repository/Aside.provider';
+import { GameProvider } from '@/src/game/repository/Game.provider';
 
 type ProvidersType = [
   ComponentType<{ children: Children }>,
@@ -29,9 +25,10 @@ const allProviders = (providers: ProvidersType) =>
   );
 
 export const Provider: FunctionComponent<{ children: Children }> = allProviders([
+  [NotificationsProvider],
   [LanguageProvider],
-  [ThemeProvider],
   [HeaderProvider],
+  [ThemeProvider],
   [AsideProvider],
   [GameProvider],
 ]);

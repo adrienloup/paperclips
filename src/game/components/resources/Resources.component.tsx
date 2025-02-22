@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useGame, useGameDispatch } from '@/src/game/repository/useGame';
+import { useNotificationsDispatch } from '@/src/game/components/notifications/useNotifications';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component';
@@ -8,28 +9,38 @@ import { ButtonComponent } from '@/src/generic/common/components/button/Button.c
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
+const trusts = [
+  { clips: 3e3, trustTransit: 0 },
+  { clips: 5e3, trustTransit: 1 },
+  { clips: 8e3, trustTransit: 2 },
+  { clips: 13e3, trustTransit: 3 },
+];
+
 export const ResourcesComponent = () => {
   const setGame = useGameDispatch();
   const game = useGame();
+  const setNotifications = useNotificationsDispatch();
 
   useEffect(() => {
-    const milestones = [
-      { clips: 3e3, trustTransit: 0 },
-      { clips: 5e3, trustTransit: 1 },
-      { clips: 8e3, trustTransit: 2 },
-      { clips: 13e3, trustTransit: 3 },
-    ];
-
-    milestones.forEach(({ clips, trustTransit }) => {
+    trusts.forEach(({ clips, trustTransit }) => {
       if (game.clips >= clips && game.trustTransit === trustTransit) {
         setGame({ type: 'UPDATE_TRUST', trust: 0 });
       }
     });
   }, [game.clips, game.trustTransit]);
 
+  useEffect(() => {
+    if (game.clips >= 2e3 && game.resourcesFeature.show) {
+      setNotifications({
+        type: 'ADDED',
+        id: 1,
+      });
+    }
+  }, [game.clips]);
+
   return (
     <>
-      {game.clips >= 2e3 && game.resourcesFeature.open ? (
+      {game.clips >= 2e3 && game.resourcesFeature.show ? (
         <CardComponent>
           <TitleComponent className={styles.title}>IT Resources</TitleComponent>
           <GroupComponent>
@@ -43,7 +54,7 @@ export const ResourcesComponent = () => {
                 setGame({
                   type: 'UPDATE_FEATURE',
                   feature: 'resourcesFeature',
-                  open: true,
+                  show: true,
                   animate: false,
                 })
               }
@@ -55,7 +66,7 @@ export const ResourcesComponent = () => {
                 value={game.trustCost}
                 notation="compact"
               />
-              &nbsp;clips
+              &nbsp;Clips
             </div>
           </GroupComponent>
           <DialComponent
@@ -67,7 +78,7 @@ export const ResourcesComponent = () => {
               setGame({
                 type: 'UPDATE_FEATURE',
                 feature: 'resourcesFeature',
-                open: true,
+                show: true,
                 animate: false,
               })
             }
@@ -88,7 +99,7 @@ export const ResourcesComponent = () => {
               setGame({
                 type: 'UPDATE_FEATURE',
                 feature: 'resourcesFeature',
-                open: true,
+                show: true,
                 animate: false,
               })
             }
@@ -111,7 +122,7 @@ export const ResourcesComponent = () => {
                 setGame({
                   type: 'UPDATE_FEATURE',
                   feature: 'resourcesFeature',
-                  open: true,
+                  show: true,
                   animate: false,
                 })
               }
@@ -125,7 +136,7 @@ export const ResourcesComponent = () => {
                 setGame({
                   type: 'UPDATE_FEATURE',
                   feature: 'resourcesFeature',
-                  open: true,
+                  show: true,
                   animate: false,
                 })
               }

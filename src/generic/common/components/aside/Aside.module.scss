@@ -1,6 +1,8 @@
 $width: 20rem;
 
 .aside {
+  grid-column: 2;
+  grid-row: span 2;
   margin-right: -$width;
   transition-duration: 200ms;
   transition-property: margin-right;
@@ -36,7 +38,7 @@ $width: 20rem;
   padding: var(--spacing-s) var(--spacing-xs);
   background-color: var(--color-neutral-3);
   font-size: var(--font-size-m);
-  color: var(--color-neutral-4);
+  color: var(--color-neutral-5);
 
   &:focus-visible {
     outline: 0.25rem solid var(--color-solid-4);

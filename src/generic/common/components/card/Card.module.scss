@@ -25,7 +25,8 @@
   align-self: end;
   text-transform: uppercase;
   font-size: var(--font-size-m);
-  opacity: 0.25;
+  color: var(--color-neutral-4);
+  opacity: 0.5;
 }
 
 .button {
@@ -44,10 +45,4 @@
   &:hover {
     background-color: var(--color-primary-dark);
   }
-}
-
-.text {
-  display: flex;
-  align-items: center;
-  font-size: var(--font-size-s);
 }

@@ -6,16 +6,13 @@ import { produceRatio } from '@/src/game/repository/Game.utils';
 export const gameReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SELL_CLIPS':
-      const decreaseClipsTransit = Math.floor(
-        state.clipsTransit * (1 - state.productionBonus)
-      );
+      const decreaseClipsTransit = Math.floor(state.clipsTransit * (1 - state.productionBonus));
 
       return {
         ...state,
         clipsStock: decreaseClipsTransit,
         clipsTransit: decreaseClipsTransit > 0 ? decreaseClipsTransit : 0,
-        funds:
-          state.funds + (state.clipsTransit - decreaseClipsTransit) * state.clipsCost,
+        funds: state.funds + (state.clipsTransit - decreaseClipsTransit) * state.clipsCost,
       };
     case 'PRODUCE_MANUAL_CLIPS':
       return {
@@ -30,9 +27,7 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'PRODUCE_AUTOMATIC_CLIPS':
       const totalClippers = state.megaClippers * 5e2 + state.autoClippers;
       const newWiresStock =
-        state.wiresStock >= totalClippers
-          ? state.wiresStock - totalClippers
-          : state.wiresStock;
+        state.wiresStock >= totalClippers ? state.wiresStock - totalClippers : state.wiresStock;
 
       return {
         ...state,
@@ -135,8 +130,7 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'UPDATE_WIRE_COST':
       return {
         ...state,
-        wiresCost:
-          state.wiresCost > 8 ? state.wiresCost - 0.25 : Math.random() * (24 - 12) + 12,
+        wiresCost: state.wiresCost > 8 ? state.wiresCost - 0.25 : Math.random() * (24 - 12) + 12,
       };
     case 'UPDATE_WIRE_QUANTITY':
       return {
@@ -152,10 +146,7 @@ export const gameReducer = (state: State, action: Action): State => {
       return {
         ...state,
         clipsBonus: action.bonus,
-        productionBonus: produceRatio(
-          action.bonus + state.marketing / 20,
-          state.publicDemand
-        ),
+        productionBonus: produceRatio(action.bonus + state.marketing / 20, state.publicDemand),
       };
     case 'DECREASE_OPERATIONS':
       return {
@@ -166,7 +157,7 @@ export const gameReducer = (state: State, action: Action): State => {
       return {
         ...state,
         [action.feature]: {
-          open: action.open,
+          show: action.show,
           animate: action.animate,
         },
       };

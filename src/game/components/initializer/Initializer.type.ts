@@ -1,4 +1,4 @@
-export type InputFieldProps = {
+export type Initializer = {
   label: string;
   name: string;
   value: number;

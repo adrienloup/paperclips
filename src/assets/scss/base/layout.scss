@@ -11,7 +11,7 @@
 
 :root {
   overflow-x: hidden;
-  background-color: var(--color-neutral-1);
+  background-color: var(--color-neutral-2);
   line-height: 1;
   font-family: var(--font-text), sans-serif;
   font-weight: var(--font-weight);
@@ -25,4 +25,5 @@
   grid-template-rows: 1fr auto;
   position: relative;
   min-height: 100vh;
+  background-color: var(--color-neutral-1);
 }

@@ -8,7 +8,7 @@ import { ButtonComponent } from '@/src/generic/common/components/button/Button.c
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
-export const ITResourcesComponent = () => {
+export const ResourcesComponent = () => {
   const setGame = useGameDispatch();
   const game = useGame();
 
@@ -29,7 +29,7 @@ export const ITResourcesComponent = () => {
 
   return (
     <>
-      {game.clips >= 2e3 && game.itResourcesFeature.open ? (
+      {game.clips >= 2e3 && game.resourcesFeature.open ? (
         <CardComponent>
           <TitleComponent className={styles.title}>IT Resources</TitleComponent>
           <GroupComponent>
@@ -38,11 +38,11 @@ export const ITResourcesComponent = () => {
               limit={100}
               notation="compact"
               label="Trust"
-              animate={game.itResourcesFeature.animate}
+              animate={game.resourcesFeature.animate}
               onAnimationEnd={() =>
                 setGame({
                   type: 'UPDATE_FEATURE',
-                  feature: 'itResourcesFeature',
+                  feature: 'resourcesFeature',
                   open: true,
                   animate: false,
                 })
@@ -62,11 +62,11 @@ export const ITResourcesComponent = () => {
             value={game.processors}
             notation="compact"
             label="Processors"
-            animate={game.itResourcesFeature.animate}
+            animate={game.resourcesFeature.animate}
             onAnimationEnd={() =>
               setGame({
                 type: 'UPDATE_FEATURE',
-                feature: 'itResourcesFeature',
+                feature: 'resourcesFeature',
                 open: true,
                 animate: false,
               })
@@ -83,11 +83,11 @@ export const ITResourcesComponent = () => {
             value={game.memory}
             notation="compact"
             label="Memory"
-            animate={game.itResourcesFeature.animate}
+            animate={game.resourcesFeature.animate}
             onAnimationEnd={() =>
               setGame({
                 type: 'UPDATE_FEATURE',
-                feature: 'itResourcesFeature',
+                feature: 'resourcesFeature',
                 open: true,
                 animate: false,
               })
@@ -106,11 +106,11 @@ export const ITResourcesComponent = () => {
               limit={game.operationsLimit}
               notation="compact"
               label="Operations"
-              animate={game.itResourcesFeature.animate}
+              animate={game.resourcesFeature.animate}
               onAnimationEnd={() =>
                 setGame({
                   type: 'UPDATE_FEATURE',
-                  feature: 'itResourcesFeature',
+                  feature: 'resourcesFeature',
                   open: true,
                   animate: false,
                 })
@@ -120,11 +120,11 @@ export const ITResourcesComponent = () => {
               value={game.creativity}
               notation="compact"
               label="Creativity"
-              animate={game.itResourcesFeature.animate}
+              animate={game.resourcesFeature.animate}
               onAnimationEnd={() =>
                 setGame({
                   type: 'UPDATE_FEATURE',
-                  feature: 'itResourcesFeature',
+                  feature: 'resourcesFeature',
                   open: true,
                   animate: false,
                 })

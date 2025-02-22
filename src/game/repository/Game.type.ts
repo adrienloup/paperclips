@@ -53,7 +53,7 @@ export interface State {
     open: boolean;
     animate: boolean;
   };
-  itResourcesFeature: {
+  resourcesFeature: {
     open: boolean;
     animate: boolean;
   };

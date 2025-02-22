@@ -11,7 +11,7 @@ import styles from '@/src/generic/common/components/header/Header.module.scss';
 
 export const HeaderComponent = () => {
   const { t } = useTranslation();
-  const { setLanguage } = useLanguage();
+  const [, setLanguage] = useLanguage();
   const [, setTheme] = useTheme();
   const [open, setOpen] = useHeader();
 

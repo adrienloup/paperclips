@@ -2,7 +2,7 @@ import { useLanguage } from '@/src/generic/i18n/useLanguage';
 import { Number } from '@/src/generic/common/components/number/Number.type';
 
 export const NumberComponent = ({ className, value, limit, style, notation }: Number) => {
-  const { language } = useLanguage();
+  const [language] = useLanguage();
 
   const options = {
     style: style,

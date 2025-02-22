@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 import { useGame, useGameDispatch } from '@/src/game/repository/useGame';
-import { InputFieldProps } from '@/src/game/components/initializer/Initializer.type';
 import { initialState } from '@/src/game/repository/Game.state';
+import { Initializer } from '@/src/game/components/initializer/Initializer.type';
 import styles from '@/src/game/components/initializer/Initializer.module.scss';
 
-const InputField = ({ label, name, value, onChange }: InputFieldProps) => (
+const InputField = ({ label, name, value, onChange }: Initializer) => (
   <label>
     {label}&nbsp;
     <input

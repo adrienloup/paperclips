@@ -2,8 +2,6 @@
   grid-column: 2;
   grid-row: 2;
   text-align: right;
-  animation: Appear 250ms var(--ease-quad);
-  will-change: opacity;
 }
 
 .button {
@@ -17,11 +15,5 @@
   &:focus-visible {
     outline: 0.25rem solid var(--color-solid-4);
     outline-offset: -0.25rem;
-  }
-}
-
-@keyframes Appear {
-  0% {
-    opacity: 0;
   }
 }

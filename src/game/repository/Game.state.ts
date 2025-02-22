@@ -33,7 +33,7 @@ export const initialState: State = {
     open: true,
     animate: true,
   },
-  itResourcesFeature: {
+  resourcesFeature: {
     open: true,
     animate: true,
   },

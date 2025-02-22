@@ -1,8 +1,8 @@
 import { classNames } from '@/src/generic/utils/classNames';
-import { Project } from '@/src/game/components/projects/Project.type';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';
+import { IconComponent } from '@/src/generic/common/components/icon/Icon.component';
+import { Project } from '@/src/game/components/projects/Project.type';
 import styles from '@/src/game/components/projects/Project.module.scss';
-import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 
 export const ProjectComponent = ({
   title,

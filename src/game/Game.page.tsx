@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { fallback } from '@/src/generic/utils/fallback';
 import { useTitle } from '@/src/generic/hooks/useTitle';
 import { PageComponent } from '@/src/generic/common/components/page/Page.component';
-import { AsideComponent } from '@/src/game/components/aside/Aside.component';
+import { NotificationsComponent } from '@/src/game/components/notifications/Notifications.component';
 import { LoaderComponent } from '@/src/generic/common/components/loader/Loader.component';
 import styles from '@/src/game/Game.module.scss';
 
@@ -21,14 +21,14 @@ function GamePage() {
       fallback={
         <LoaderComponent
           className={styles.loader}
-          aria-label="@TODO: Chargement..."
+          aria-label={t('game.loading')}
           duration={1e3}
         />
       }
     >
       <PageComponent>
         <DashboardComponent />
-        <AsideComponent />
+        <NotificationsComponent />
       </PageComponent>
     </Suspense>
   );

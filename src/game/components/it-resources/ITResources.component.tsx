@@ -31,10 +31,7 @@ export const ITResourcesComponent = () => {
     <>
       {game.clips >= 2e3 && game.itResourcesFeature.open ? (
         <CardComponent>
-          <TitleComponent
-            className={styles.title}
-            title="IT Resources"
-          />
+          <TitleComponent className={styles.title}>IT Resources</TitleComponent>
           <GroupComponent>
             <DialComponent
               value={game.trust}

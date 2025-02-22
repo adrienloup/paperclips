@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useGame } from '@/src/game/repository/useGame';
+import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component';
 import { IconComponent } from '@/src/generic/common/components/icon/Icon.component';
 import styles from '@/src/game/components/clips/Clips.module.scss';
@@ -9,12 +10,15 @@ export const ClipsComponent = () => {
   const game = useGame();
 
   return (
-    <h1 className={styles.clips}>
+    <TitleComponent
+      tag={'h1'}
+      className={styles.clips}
+    >
       <IconComponent
         icon="attach_file"
         arial-label={t('game.title')}
       />
       <NumberComponent value={game.clips} />
-    </h1>
+    </TitleComponent>
   );
 };

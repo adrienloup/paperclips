@@ -1,10 +1,3 @@
-import { createContext } from 'react';
-import { Header } from '@/src/generic/common/components/header/repository/Header.type';
+import { createContext, Dispatch } from 'react';
 
-export const HeaderContext = createContext<{
-  header: Header;
-  setHeader: (header: Header) => void;
-}>({
-  header: false,
-  setHeader: (header: Header) => header,
-});
+export const HeaderContext = createContext<[boolean, Dispatch<boolean>]>([false, () => {}]);

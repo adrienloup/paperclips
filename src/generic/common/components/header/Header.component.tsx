@@ -12,20 +12,22 @@ import styles from '@/src/generic/common/components/header/Header.module.scss';
 export const HeaderComponent = () => {
   const { t } = useTranslation();
   const { setLanguage } = useLanguage();
-  const { setTheme } = useTheme();
-  const { header, setHeader } = useHeader();
+  const [, setTheme] = useTheme();
+  const [open, setOpen] = useHeader();
 
   useEffect(() => {
     const onKeyDown = (e: { keyCode: number }) => {
-      if (e.keyCode === 27 && header) setHeader(false); //setOpen(false);
+      if (e.keyCode === 27 && open) {
+        setOpen(false);
+      }
     };
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
-  }, [header]);
+  }, [open]);
 
   return (
     <header
-      className={classNames([styles.header, header ? styles.open : ''])}
+      className={classNames([styles.header, open ? styles.open : ''])}
       role="banner"
     >
       <div className={styles.inside}>
@@ -39,10 +41,10 @@ export const HeaderComponent = () => {
           <button onClick={() => setTheme('system')}>system</button>
           <ButtonComponent
             className={styles.button}
-            aria-label={header ? t('common.settings.close') : t('common.settings.open')}
-            onClick={() => setHeader(!header)}
+            aria-label={open ? t('common.menu.close') : t('common.menu.open')}
+            onClick={() => setOpen(!open)}
           >
-            <IconComponent icon={header ? 'arrow_menu_open' : 'arrow_menu_close'} />
+            <IconComponent icon={open ? 'arrow_menu_close' : 'menu'} />
           </ButtonComponent>
         </div>
       </div>

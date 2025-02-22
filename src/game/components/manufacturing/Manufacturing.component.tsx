@@ -16,10 +16,7 @@ export const ManufacturingComponent = () => {
 
   return (
     <CardComponent>
-      <TitleComponent
-        className={styles.title}
-        title="Manufacturing"
-      />
+      <TitleComponent className={styles.title}>Manufacturing</TitleComponent>
       <DialComponent
         value={game.clipsPerSecond}
         notation="compact"

@@ -1,21 +1,15 @@
-$width: 10rem;
+$width: 15rem;
 
-.header {
-  position: relative;
-  z-index: 2;
-  grid-column: 1;
-  grid-row: 1;
-  display: flex;
-  align-items: flex-start;
-  margin-left: -$width;
+.aside {
+  margin-right: -$width;
   transition-duration: 200ms;
-  transition-property: margin-left;
+  transition-property: margin-right;
   transition-timing-function: var(--ease-expo);
-  animation: Appear 250ms var(--ease-quad);
-  will-change: opacity, margin-left;
+  animation: _Appear_15ffx_1 250ms var(--ease-quad);
+  will-change: opacity, margin-right;
 
   &.open {
-    margin-left: 0;
+    margin-right: 0;
     transition-duration: 400ms;
   }
 }
@@ -35,7 +29,7 @@ $width: 10rem;
 .button {
   position: absolute;
   top: 0;
-  left: 100%;
+  right: 100%;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);

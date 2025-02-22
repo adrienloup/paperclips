@@ -8,18 +8,15 @@
 
 .button {
   padding: var(--spacing-s);
+  background-color: var(--color-neutral-3);
   font-family: var(--font-text), sans-serif;
   font-weight: var(--font-weight);
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
   color: var(--color-neutral-4);
 
   &:focus-visible {
     outline: 0.25rem solid var(--color-solid-4);
     outline-offset: -0.25rem;
-  }
-
-  &:hover {
-    background-color: var(--color-neutral-3);
   }
 }
 

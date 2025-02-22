@@ -9,6 +9,7 @@ export function LanguageProvider({ children }: { children: Children }) {
   const { i18n } = useTranslation();
   const [language, setLanguage] = useLocalStorage<Language>('_3mma_0_language', 'en');
 
+  // @TODO: infinite loop
   useEffect(() => {
     setLanguage(language);
     i18n.changeLanguage(language);

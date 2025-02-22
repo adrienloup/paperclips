@@ -15,10 +15,7 @@ export const BusinessComponent = () => {
 
   return (
     <CardComponent>
-      <TitleComponent
-        className={styles.title}
-        title="Business"
-      />
+      <TitleComponent className={styles.title}>Business</TitleComponent>
       {game.fundsPerSecondFeature.open ? (
         <DialComponent
           value={game.fundsPerSecond}

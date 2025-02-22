@@ -49,10 +49,7 @@ export const ProjectsComponent = () => {
     <>
       {game.clips >= 2e3 ? (
         <CardComponent>
-          <TitleComponent
-            className={styles.title}
-            title="Projects"
-          />
+          <TitleComponent className={styles.title}>Projects</TitleComponent>
           {game.revTrackerFeature.open ? (
             <ProjectComponent
               title="RevTracker"

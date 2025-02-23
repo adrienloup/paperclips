@@ -1,14 +1,16 @@
-$width: 20rem;
-
 .aside {
   grid-column: 2;
   grid-row: span 2;
-  margin-right: -$width;
+  margin-right: -10rem;
   transition-duration: 200ms;
   transition-property: margin-right;
   transition-timing-function: var(--ease-expo);
   animation: _Appear_15ffx_1 250ms var(--ease-quad);
   will-change: opacity, margin-right;
+
+  @include tablet-portrait {
+    margin-right: -20rem;
+  }
 
   &.open {
     margin-right: 0;
@@ -17,9 +19,13 @@ $width: 20rem;
 }
 
 .inside {
-  width: $width;
+  width: 10rem;
   height: 100%;
   background-color: var(--color-neutral-3);
+
+  @include tablet-portrait {
+    width: 20rem;
+  }
 }
 
 .inner {

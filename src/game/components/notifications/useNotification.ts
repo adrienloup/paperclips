@@ -4,9 +4,9 @@ import {
   NotificationDispatchContext,
 } from '@/src/game/components/notifications/repository/Notification.context.ts';
 
-export function useNotifications() {
+export function useNotification() {
   return useContext(NotificationContext);
 }
-export function useNotificationsDispatch() {
+export function useNotificationDispatch() {
   return useContext(NotificationDispatchContext);
 }

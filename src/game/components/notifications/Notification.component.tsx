@@ -1,17 +1,22 @@
 import styles from '@/src/game/components/notifications/Notification.module.scss';
+import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
 
 export const NotificationComponent = ({
   notification,
+  onClick,
 }: {
-  notification: { id: number; text?: string; show?: boolean };
+  notification: { id: number; text: string; show: boolean };
+  onClick: () => void;
 }) => {
   return (
     <>
       {notification.show && (
-        <div className={styles.notification}>
-          {notification.id}
+        <ButtonComponent
+          className={styles.notification}
+          onClick={onClick}
+        >
           {notification.text}
-        </div>
+        </ButtonComponent>
       )}
     </>
   );

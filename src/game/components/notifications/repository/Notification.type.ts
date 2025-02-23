@@ -4,6 +4,6 @@ export type Action =
   | { type: 'NOTIFY'; notify: boolean };
 
 export type State = {
-  notifications: { id: number; text?: string; show?: boolean }[];
+  notifications: { id: number; text: string; show: boolean }[];
   notify: boolean;
 };

@@ -79,129 +79,117 @@ export const InitializerComponent = () => {
   return (
     <div className={styles.initializater}>
       <div>
+        <div>Supprimer localStorage :</div>
         <div>
-          <div>Supprimer localStorage :</div>
-          <div>
-            <button
-              type="button"
-              onClick={clearGameLocalItem}
-            >
-              Réinitialiser
-            </button>
-            <button
-              type="button"
-              onClick={clearAllLocalItems}
-            >
-              Tout réinitialiser
-            </button>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div>
-          <div>
-            Bonus de production :
-            <br />
-            Marketing ({game.marketing}) + Bonus clips ({game.clipsBonus * 100})
-            <br />
-            {game.marketing / 20} + {game.clipsBonus} = {game.marketing / 20 + game.clipsBonus}
-            <br />
-            Public ({(game.publicDemand * 100).toFixed(2)}) =&nbsp;
-            {game.productionBonus}
-          </div>
-          <div>
-            <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0 })}>0%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.1 })}>10%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.2 })}>20%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.3 })}>30%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.4 })}>40%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.5 })}>50%</button>
-          </div>
-        </div>
-        <div>
-          <div>Quantité d'achat de fer : {game.wires}</div>
-          <div>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e2 })}>
-              500
-            </button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e3 })}>
-              1K
-            </button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e3 })}>
-              2K
-            </button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 4e3 })}>
-              4K
-            </button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 8e3 })}>
-              8K
-            </button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e4 })}>
-              10K
-            </button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e4 })}>
-              20K
-            </button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e4 })}>
-              50K
-            </button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e5 })}>
-              100K
-            </button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e5 })}>
-              500K
-            </button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e6 })}>
-              1M
-            </button>
-          </div>
-        </div>
-        <div>
-          <div>Bonus d'achat de fer : {game.wiresBonus}</div>
-          <div>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0 })}>0%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.1 })}>10%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.2 })}>20%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.3 })}>30%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.4 })}>40%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.5 })}>50%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.6 })}>60%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.7 })}>70%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.8 })}>80%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.9 })}>90%</button>
-            <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 1 })}>100%</button>
-          </div>
-        </div>
-        <div>
-          <div>
-            Trust : {game.trust} {game.trustTransit}
-          </div>
-          <div>
-            <button onClick={() => setGame({ type: 'UPDATE_TRUST', trust: 1 })}>+1</button>
-            <button onClick={() => setGame({ type: 'UPDATE_TRUST', trust: 10 })}>+10</button>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div>
-          <div>Initiales valeurs :</div>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'auto auto',
-              gridTemplateRows: 'auto',
-            }}
+          <button
+            type="button"
+            onClick={clearGameLocalItem}
           >
-            {Object.entries(formState).map(([key, value]) => (
-              <InputField
-                key={key}
-                label={key}
-                name={key}
-                value={value}
-                onChange={handleChange}
-              />
-            ))}
-          </div>
+            Réinitialiser
+          </button>
+          <button
+            type="button"
+            onClick={clearAllLocalItems}
+          >
+            Tout réinitialiser
+          </button>
+        </div>
+      </div>
+      <div>
+        <div>
+          Bonus de production :
+          <br />
+          Marketing ({game.marketing}) + Bonus clips ({game.clipsBonus * 100})
+          <br />
+          {game.marketing / 20} + {game.clipsBonus} = {game.marketing / 20 + game.clipsBonus}
+          <br />
+          Public ({(game.publicDemand * 100).toFixed(2)}) =&nbsp;
+          {game.productionBonus}
+        </div>
+        <div>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0 })}>0%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.1 })}>10%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.2 })}>20%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.3 })}>30%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.4 })}>40%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_CLIPS_BONUS', bonus: 0.5 })}>50%</button>
+        </div>
+      </div>
+      <div>
+        <div>Quantité d'achat de fer : {game.wires}</div>
+        <div>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e2 })}>
+            500
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e3 })}>
+            1K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e3 })}>
+            2K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 4e3 })}>
+            4K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 8e3 })}>
+            8K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e4 })}>
+            10K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 2e4 })}>
+            20K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e4 })}>
+            50K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e5 })}>
+            100K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 5e5 })}>
+            500K
+          </button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_QUANTITY', quantity: 1e6 })}>
+            1M
+          </button>
+        </div>
+      </div>
+      <div>
+        <div>Bonus d'achat de fer : {game.wiresBonus}</div>
+        <div>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0 })}>0%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.1 })}>10%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.2 })}>20%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.3 })}>30%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.4 })}>40%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.5 })}>50%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.6 })}>60%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.7 })}>70%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.8 })}>80%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 0.9 })}>90%</button>
+          <button onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 1 })}>100%</button>
+        </div>
+      </div>
+      <div>
+        <div>
+          Trust : {game.trust} {game.trustTransit}
+        </div>
+        <div>
+          <button onClick={() => setGame({ type: 'UPDATE_TRUST', trust: 1 })}>+1</button>
+          <button onClick={() => setGame({ type: 'UPDATE_TRUST', trust: 10 })}>+10</button>
+        </div>
+      </div>
+      <div>
+        <div>Initiales valeurs :</div>
+        <div style={{ display: 'flex', flexFlow: 'row wrap' }}>
+          {Object.entries(formState).map(([key, value]) => (
+            <InputField
+              key={key}
+              label={key}
+              name={key}
+              value={value}
+              onChange={handleChange}
+            />
+          ))}
         </div>
       </div>
     </div>

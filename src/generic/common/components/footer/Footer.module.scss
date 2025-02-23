@@ -1,12 +1,14 @@
 .footer {
-  grid-column: 2;
+  grid-column: span 2;
   grid-row: 2;
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--color-neutral-2);
 }
 
 .button {
   padding: 0.5rem;
-  background-color: var(--color-neutral-3);
+  background: none;
   font-family: var(--font-text), sans-serif;
   font-weight: var(--font-weight);
   font-size: var(--font-size-s);

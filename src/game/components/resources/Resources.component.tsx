@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useGame, useGameDispatch } from '@/src/game/repository/useGame';
-import { useNotificationsDispatch } from '@/src/game/components/notifications/useNotifications';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component';
@@ -19,7 +18,6 @@ const trusts = [
 export const ResourcesComponent = () => {
   const setGame = useGameDispatch();
   const game = useGame();
-  const setNotifications = useNotificationsDispatch();
 
   useEffect(() => {
     trusts.forEach(({ clips, trustTransit }) => {
@@ -28,15 +26,6 @@ export const ResourcesComponent = () => {
       }
     });
   }, [game.clips, game.trustTransit]);
-
-  useEffect(() => {
-    if (game.clips >= 2e3 && game.resourcesFeature.show) {
-      setNotifications({
-        type: 'ADD',
-        id: 1,
-      });
-    }
-  }, [game.clips]);
 
   return (
     <>

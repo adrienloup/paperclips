@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
 import { version } from '@/package.json';
+import { useTranslation } from 'react-i18next';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component';
 import styles from '@/src/generic/common/components/footer/Footer.module.scss';
 

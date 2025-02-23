@@ -1,12 +1,12 @@
 import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent } from 'react';
 
 import { Children } from '@/src/generic/types/Children.type';
-import { NotificationProvider } from '@/src/game/components/notifications/repository/Notification.provider.tsx';
+import { NotificationProvider } from '@/src/pages/game/components/notifications/repository/Notification.provider.tsx';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider';
 import { HeaderProvider } from '@/src/generic/common/components/header/repository/Header.provider';
 import { ThemeProvider } from '@/src/generic/theme/Theme.provider';
 import { AsideProvider } from '@/src/generic/common/components/aside/repository/Aside.provider';
-import { GameProvider } from '@/src/game/repository/Game.provider';
+import { GameProvider } from '@/src/pages/game/repository/Game.provider';
 
 type ProvidersType = [
   ComponentType<{ children: Children }>,

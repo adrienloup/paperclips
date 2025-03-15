@@ -3,33 +3,29 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow: hidden;
   display: flex;
-  align-items: center;
-  width: 280px;
-  padding: var(--spacing-m);
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    background-color: var(--color-primary);
-    animation: Progress calc(var(--duration) - 200ms) linear forwards;
-    will-change: width, background-color;
-  }
+  flex-direction: column;
+  gap: var(--spacing-s);
 }
 
 .label {
   position: relative;
-  z-index: 2;
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-xl);
+  color: var(--color-secondary);
+
+  &:after {
+    content: attr(title);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    -webkit-text-stroke: 0.22em var(--color-primary);
+  }
 }
 
-@keyframes Progress {
-  100% {
-    width: 100%;
-  }
+.value {
+  text-align: right;
+  font-size: var(--font-size-l);
+  color: var(--color-primary);
 }

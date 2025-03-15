@@ -4,13 +4,15 @@
 }
 
 @mixin color {
-  --color-neutral-0: #000;
-  --color-neutral-1: #fff;
-  --color-primary: #0053ff;
+  --color-neutral-0: #292825;
+  --color-neutral-1: #fffbf4;
+  --color-primary: #ff9800;
+  --color-secondary: #feecd0;
 }
 
 @mixin size {
-  --font-size-l: 2rem; // 32px
+  --font-size-xl: 6rem; // 96px
+  --font-size-l: 4rem; // 64px
   --font-size-m: 1rem; // 16px
   --font-size-s: 0.5rem; // 8px
 }

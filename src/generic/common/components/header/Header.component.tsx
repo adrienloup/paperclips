@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '@/src/generic/i18n/useLanguage.ts';
 import { useMode } from '@/src/generic/mode/useMode.ts';
@@ -9,9 +9,7 @@ import { ButtonComponent } from '@/src/generic/common/components/button/Button.c
 import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 import styles from '@/src/generic/common/components/header/Header.module.scss';
 
-export const HeaderComponent = () => {
-  console.log('HeaderComponent');
-
+export const HeaderComponent = React.memo(() => {
   const { t } = useTranslation();
   const [, setLanguage] = useLanguage();
   const [, setMode] = useMode();
@@ -49,4 +47,4 @@ export const HeaderComponent = () => {
       </div>
     </header>
   );
-};
+});

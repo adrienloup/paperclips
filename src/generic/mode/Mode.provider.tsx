@@ -10,9 +10,9 @@ export function ModeProvider({ children }: { children: Children }) {
   const updateMode = useCallback(
     (newMode: Mode) => {
       if (newMode === 'dark' || newMode === 'system') {
-        document.body.classList.add('dark');
+        document.body.classList.add('_dark_3mma_0');
       } else {
-        document.body.classList.remove('dark');
+        document.body.classList.remove('_dark_3mma_0');
       }
       setMode(newMode);
     },

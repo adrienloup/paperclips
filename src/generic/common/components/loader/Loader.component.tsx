@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { Loader } from '@/src/generic/common/components/loader/Loader.type.ts';
 import styles from '@/src/generic/common/components/loader/Loader.module.scss';
 
-export const LoaderComponent = ({ className, duration = 1e3, ...props }: Loader) => {
+export const LoaderComponent = React.memo(({ className, duration = 1e3, ...props }: Loader) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (count == 100) return;
-    const interval = setInterval(() => setCount((count: number) => count + 1), duration / 200);
+    if (count >= 100) return;
+    const interval = setInterval(
+      () => setCount((prev) => (prev < 100 ? prev + 1 : prev)),
+      duration / 200
+    );
     return () => clearInterval(interval);
-  }, [count]);
+  }, [count, duration]);
 
   return (
     <div
@@ -26,4 +29,4 @@ export const LoaderComponent = ({ className, duration = 1e3, ...props }: Loader)
       <span className={styles.value}>{count}%</span>
     </div>
   );
-};
+});

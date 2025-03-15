@@ -1,36 +1,8 @@
 .dashboard {
-  animation: Appear 250ms var(--ease-quad);
-  will-change: opacity;
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 var(--spacing-l);
 }
-
-@keyframes Appear {
-  0% {
-    opacity: 0;
-  }
-}
-//
-//.test {
-//  font-size: 8rem;
-//  color: white;
-//  position: relative;
-//  //-webkit-text-stroke-width: 6px;
-//  //-webkit-text-stroke-color: black;
-//
-//  &:before {
-//    content: attr(title);
-//    position: absolute;
-//    -webkit-text-stroke: 0.22em yellow;
-//    top: 0;
-//    left: 0;
-//    z-index: -1;
-//  }
-//
-//  &:after {
-//    content: attr(title);
-//    position: absolute;
-//    -webkit-text-stroke: 0.32em black;
-//    top: 0;
-//    left: 0;
-//    z-index: -2;
-//  }
-//}

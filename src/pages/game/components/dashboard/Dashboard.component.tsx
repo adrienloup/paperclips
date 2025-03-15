@@ -8,14 +8,18 @@ import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss'
 
 function DashboardComponent() {
   console.log('DashboardComponent');
-
   const setGame = useGameDispatch();
+
+  const sellClips = useCallback(() => {
+    console.log('sellClips');
+  }, []);
 
   const updatePerSecond = useCallback(() => {
     console.log('updatePerSecond');
     setGame({ type: 'UPDATE_PER_SECOND' });
   }, []);
 
+  useInterval(sellClips, 5e2);
   useInterval(updatePerSecond, 1e3);
 
   return (

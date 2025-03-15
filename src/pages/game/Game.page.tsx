@@ -5,7 +5,7 @@ import { useTitle } from '@/src/generic/hooks/useTitle.ts';
 import { LoaderComponent } from '@/src/generic/common/components/loader/Loader.component.tsx';
 import { LayoutComponent } from '@/src/generic/common/components/layout/Layout.component.tsx';
 
-const IntroductionComponent = lazy(() =>
+const DashboardComponent = lazy(() =>
   fallback(import('@/src/pages/game/components/dashboard/Dashboard.component.tsx'), 1e3)
 );
 
@@ -24,7 +24,7 @@ function GamePage() {
       }
     >
       <LayoutComponent>
-        <IntroductionComponent />
+        <DashboardComponent />
       </LayoutComponent>
     </Suspense>
   );

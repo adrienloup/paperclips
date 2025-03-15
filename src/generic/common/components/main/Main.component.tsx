@@ -7,7 +7,6 @@ export const MainComponent = ({ children }: Main) => {
       className={styles.main}
       role="main"
     >
-      Main
       {children}
     </main>
   );

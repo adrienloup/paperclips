@@ -39,6 +39,8 @@
   background-color: var(--color-2);
   font-size: var(--font-size-m);
   color: var(--color-1);
+  animation: Appear 250ms var(--ease-quad);
+  will-change: opacity;
 
   &:focus-visible {
     outline: 0.25rem solid var(--color-solid-1);

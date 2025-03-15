@@ -10,7 +10,7 @@ export const FooterComponent = () => {
       className={styles.footer}
       role="contentinfo"
     >
-      Footer {t('common.copy', { version: version })}
+      {t('common.copy', { version: version })}
     </footer>
   );
 };

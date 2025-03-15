@@ -1,8 +1,47 @@
 .header {
-  border: 1px solid red;
+  position: relative;
+  z-index: 2;
+  grid-column: 1;
+  grid-row: span 2;
+  display: flex;
+  align-items: flex-start;
+  margin-left: -12rem;
+  background: hsl(89, 85%, 66%);
+  transition-duration: 200ms;
+  transition-property: margin-left;
+  transition-timing-function: var(--ease-expo);
+
+  &.open {
+    margin-left: 0;
+    transition-duration: 400ms;
+  }
+}
+
+.inside {
+  width: 12rem;
+  height: 100%;
+  background-color: var(--color-2);
+}
+
+.inner {
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
 .button {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  display: flex;
+  flex-direction: column;
   padding: var(--spacing-s);
-  background-color: var(--color-primary);
+  background-color: var(--color-2);
+  font-size: var(--font-size-m);
+  color: var(--color-1);
+
+  &:focus-visible {
+    outline: 0.25rem solid var(--color-solid-1);
+    outline-offset: -0.25rem;
+  }
 }

@@ -1,0 +1,35 @@
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 280px;
+  padding: var(--spacing-m);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    background-color: var(--color-primary);
+    animation: Progress calc(var(--duration) - 200ms) linear forwards;
+    will-change: width, background-color;
+  }
+}
+
+.label {
+  position: relative;
+  z-index: 2;
+  font-size: var(--font-size-l);
+}
+
+@keyframes Progress {
+  100% {
+    width: 100%;
+  }
+}

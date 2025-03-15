@@ -1,0 +1,35 @@
+@mixin font {
+  --font-text: 'Text', sans-serif;
+  --font-icon: 'Icon';
+}
+
+@mixin color {
+  --color-neutral-0: #000;
+  --color-neutral-1: #fff;
+  --color-primary: #0053ff;
+}
+
+@mixin size {
+  --font-size-l: 2rem; // 32px
+  --font-size-m: 1rem; // 16px
+  --font-size-s: 0.5rem; // 8px
+}
+
+@mixin spacing {
+  --spacing-l: 2rem; // 32px
+  --spacing-m: 1rem; // 16px
+  --spacing-s: 0.5rem; // 8px
+}
+
+@mixin easing {
+  --ease-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --ease-expo: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+:root {
+  @include font();
+  @include color();
+  @include size();
+  @include spacing();
+  @include easing();
+}

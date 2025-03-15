@@ -44,7 +44,6 @@
   color: var(--color-1);
 
   &:focus-visible {
-    outline: 0.25rem solid var(--color-solid-1);
-    outline-offset: -0.25rem;
+    outline-offset: calc(-1 * var(--outline-s));
   }
 }

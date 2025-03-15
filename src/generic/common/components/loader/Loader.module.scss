@@ -11,7 +11,7 @@
 .label {
   position: relative;
   font-size: var(--font-size-xl);
-  color: var(--color-secondary);
+  color: var(--color-neutral-3);
 
   &:after {
     content: attr(title);

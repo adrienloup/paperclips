@@ -1,0 +1,17 @@
+.dial {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-xs);
+  background-color: var(--color-neutral-3);
+  color: var(--color-primary);
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
+.number {
+  font-size: var(--font-size-m);
+}

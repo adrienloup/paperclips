@@ -3,7 +3,7 @@
   display: flex;
   max-width: 20rem;
   height: 3rem;
-  background-color: var(--color-secondary);
+  background-color: var(--color-neutral-3);
   color: var(--color-primary);
 }
 
@@ -25,11 +25,15 @@
   width: 2rem;
   background-color: var(--color-primary);
   font-size: var(--font-size-s);
-  color: var(--color-secondary);
+  color: var(--color-neutral-3);
 
   .animate & {
     animation: Appear 800ms var(--ease-quad);
     will-change: background-color;
+  }
+
+  &:focus-visible {
+    outline-offset: calc(-1 * var(--outline-s));
   }
 }
 

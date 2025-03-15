@@ -10,7 +10,6 @@ export const ClipsComponent = () => {
     <TitleComponent
       tag={'h1'}
       className={styles.clips}
-      title={game.clips.toString()}
     >
       <NumberComponent value={game.clips} />
     </TitleComponent>

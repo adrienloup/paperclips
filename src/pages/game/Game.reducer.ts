@@ -17,9 +17,25 @@ export const gameReducer = (state: State, action: Action): State => {
       }
       return { ...state };
     case 'UPDATE_PER_SECOND':
+      // const clipsPerSecond =
+      //     state.wiresStock > 0
+      //         ? state.autoClippers
+      //         : 0;
       return {
         ...state,
+        clipsPerSecond: 0,
+      };
+    case 'PRODUCE_MANUAL_CLIPS':
+      return {
+        ...state,
+        clips: state.clips + 1,
+        clipsStock: state.clipsStock + 1,
+        clipsTransit: state.clipsStock + 1,
         clipsPerSecond: state.clipsPerSecond + 1,
+      };
+    case 'INITIALIZE_STATE':
+      return {
+        ...action.state,
       };
     default:
       return state;

@@ -8,6 +8,10 @@
   font-weight: normal;
   cursor: pointer;
 
+  &:focus-visible {
+    outline: var(--outline-s) solid var(--color-solid-1);
+  }
+
   &:disabled {
     opacity: 0.5;
     pointer-events: none;

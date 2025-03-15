@@ -4,12 +4,12 @@
 }
 
 @mixin color {
-  --color-neutral-0: #252529;
-  --color-neutral-1: #fff7ea;
+  --color-primary: #ff9800;
+  --color-neutral-1: #252529;
+  --color-neutral-2: #fff7ea;
+  --color-neutral-3: #ffe5bd;
   --color-solid-1: #ffe500;
   --color-solid-2: #00ff05;
-  --color-primary: #ff9800;
-  --color-secondary: #ffe3b7;
 }
 
 @mixin size {
@@ -17,15 +17,21 @@
   --font-size-l: 3rem; // 48px
   --font-size-m: 2rem; // 32px
   --font-size-s: 1rem; // 16px
+  --font-size-xs: 0.75rem; // 12px
 }
 
 @mixin spacing {
   --spacing-xl: 4rem; // 64px
   --spacing-l: 3rem; // 48px
   --spacing-m: 2rem; // 32px
-  --spacing-s: 1rem; // 16px
+  --spacing-s: 1.5rem; // 20px
   --spacing-xs: 0.5rem; // 8px
 }
+
+@mixin outline {
+  --outline-s: 0.25rem; // 4px
+}
+
 
 @mixin easing {
   --ease-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -37,5 +43,6 @@
   @include color();
   @include size();
   @include spacing();
+  @include outline();
   @include easing();
 }

@@ -1,7 +1,7 @@
 import { useLanguage } from '@/src/generic/i18n/useLanguage';
 import { Number } from '@/src/generic/common/components/number/Number.type';
 
-export const NumberComponent = ({ className, value, limit, style, notation }: Number) => {
+export const NumberComponent = ({ className, value, style, notation, sign, limit }: Number) => {
   const [language] = useLanguage();
 
   const options = {
@@ -24,6 +24,7 @@ export const NumberComponent = ({ className, value, limit, style, notation }: Nu
 
   return (
     <span className={className}>
+      {sign}
       {formatValue}
       {limit && '/' + formatMax}
     </span>

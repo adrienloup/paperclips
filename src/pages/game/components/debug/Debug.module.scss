@@ -1,5 +1,7 @@
 .debug {
-  padding: var(--spacing-s) var(--spacing-s) var(--spacing-s) var(--spacing-xl);
+  display: flex;
+  gap: var(--spacing-xs);
+  padding: 0 var(--spacing-xs) 0 var(--spacing-l);
   background-color: #fde2f0;
   color: #ff0076;
 
@@ -7,6 +9,7 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
+    padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-xs);
   }
 
   input {

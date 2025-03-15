@@ -5,6 +5,7 @@ import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
 import { ModeProvider } from '@/src/generic/mode/Mode.provider.tsx';
 import { HeaderProvider } from '@/src/generic/common/components/header/Header.provider.tsx';
 import { GameProvider } from '@/src/pages/game/Game.provider.tsx';
+import { NotificationProvider } from '@/src/pages/game/components/notification/Notification.provider.tsx';
 
 type ProvidersType = [
   ComponentType<{ children: Children }>,
@@ -27,4 +28,5 @@ export const Provider: FunctionComponent<{ children: Children }> = allProviders(
   [ModeProvider],
   [HeaderProvider],
   [GameProvider],
+  [NotificationProvider],
 ]);

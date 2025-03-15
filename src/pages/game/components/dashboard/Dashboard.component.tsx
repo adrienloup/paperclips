@@ -1,6 +1,8 @@
 import { useCallback } from 'react';
 import { useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { useInterval } from '@/src/generic/hooks/useInterval.ts';
+import { DebugComponent } from '@/src/pages/game/components/debug/Debug.component.tsx';
+import { NotificationsComponent } from '@/src/pages/game/components/notification/Notifications.component.tsx';
 import { ManufacturingComponent } from '@/src/pages/game/components/manufacturing/Manufacturing.component.tsx';
 import { BusinessComponent } from '@/src/pages/game/components/business/Business.component.tsx';
 import { ResourcesComponent } from '@/src/pages/game/components/resources/Resources.component.tsx';
@@ -24,6 +26,8 @@ function DashboardComponent() {
 
   return (
     <article className={styles.dashboard}>
+      <DebugComponent />
+      <NotificationsComponent />
       <ManufacturingComponent />
       <BusinessComponent />
       <ResourcesComponent />

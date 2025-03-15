@@ -4,11 +4,5 @@ export const BusinessComponent = () => {
   console.log('BusinessComponent');
   const game = useGame();
 
-  return (
-    <>
-      Business
-      <br />
-      {game.clipsPerSecond}
-    </>
-  );
+  return <>Business {game.clipsPerSecond}</>;
 };

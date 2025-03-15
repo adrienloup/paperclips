@@ -1,12 +1,25 @@
+import { useCallback } from 'react';
+import { useGameDispatch } from '@/src/pages/game/useGame.ts';
+import { useInterval } from '@/src/generic/hooks/useInterval.ts';
 import { ManufacturingComponent } from '@/src/pages/game/components/manufacturing/Manufacturing.component.tsx';
 import { BusinessComponent } from '@/src/pages/game/components/business/Business.component.tsx';
 import { ResourcesComponent } from '@/src/pages/game/components/resources/Resources.component.tsx';
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
+  console.log('DashboardComponent');
+
+  const setGame = useGameDispatch();
+
+  const updatePerSecond = useCallback(() => {
+    console.log('updatePerSecond');
+    setGame({ type: 'UPDATE_PER_SECOND' });
+  }, []);
+
+  useInterval(updatePerSecond, 1e3);
+
   return (
     <article className={styles.dashboard}>
-      dashboard
       <ManufacturingComponent />
       <BusinessComponent />
       <ResourcesComponent />

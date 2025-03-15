@@ -15,7 +15,7 @@ createRoot(document.getElementById('_paperclips_3mma_0')!).render(
 
 console.log(
   `%c[paperclips]%c${version}%c@jff`,
-  'padding: 4px 3px 3px; background: #000; font-weight: bold; color: #ff0;',
-  'padding: 4px 3px 3px; background: #ff0; font-weight: bold; color: #000;',
-  'padding: 4px 3px 3px; background: #000; font-weight: bold; color: #ff0;'
+  'padding: 4px 3px 3px; background: #252529; font-weight: bold; color: #ff9800;',
+  'padding: 4px 3px 3px; background: #ff9800; font-weight: bold; color: #252529;',
+  'padding: 4px 3px 3px; background: #252529; font-weight: bold; color: #ff9800;'
 );

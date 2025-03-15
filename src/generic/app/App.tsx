@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from '@/src/pages/home/Home.page.tsx';
+import GamePage from '@/src/pages/game/Game.page.tsx';
 import PagePage from '@/src/pages/page/Page.page.tsx';
 import '@/src/generic/app/App.scss';
 
@@ -9,11 +9,11 @@ function App() {
       <Routes>
         <Route
           path="/paperclips"
-          element={<HomePage />}
+          element={<GamePage />}
         />
         <Route
           path="/paperclips/*"
-          element={<HomePage />}
+          element={<GamePage />}
         />
         <Route
           path="/paperclips/page"

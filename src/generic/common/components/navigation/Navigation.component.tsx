@@ -7,7 +7,7 @@ export const NavigationComponent = () => {
       className={styles.navigation}
       role="navigation"
     >
-      <Link to={'/paperclips'}>Home</Link>
+      <Link to={'/paperclips'}>Game</Link>
       <br />
       <Link to={'/paperclips/page'}>page</Link>
     </nav>

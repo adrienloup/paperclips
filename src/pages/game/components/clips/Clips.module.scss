@@ -1,0 +1,21 @@
+.clips {
+  //flex: 0 0 100%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-m);
+  font-weight: normal;
+  font-size: var(--font-size-l);
+  color: var(--color-secondary);
+
+  &:after {
+    content: attr(title);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    -webkit-text-stroke: 0.22em var(--color-primary);
+  }
+}

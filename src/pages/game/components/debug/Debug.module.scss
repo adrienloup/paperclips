@@ -10,6 +10,17 @@
   }
 
   input {
-    width: 5rem;
+    width: 4rem;
+    font-family: var(--font-text), sans-serif;
+    font-weight: normal;
+    font-size: var(--font-size-s);
+    color: #ff0076;
+  }
+
+  button {
+    font-family: var(--font-text), sans-serif;
+    font-weight: normal;
+    font-size: var(--font-size-s);
+    color: #ff0076;
   }
 }

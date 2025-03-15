@@ -5,15 +5,16 @@
 
 @mixin color {
   --color-neutral-0: #252529;
-  --color-neutral-1: #fffbf4;
+  --color-neutral-1: #fff7ea;
   --color-solid-1: #ffe500;
+  --color-solid-2: #00ff05;
   --color-primary: #ff9800;
-  --color-secondary: #feecd0;
+  --color-secondary: #ffe3b7;
 }
 
 @mixin size {
   --font-size-xl: 6rem; // 96px
-  --font-size-l: 4rem; // 64px
+  --font-size-l: 3rem; // 48px
   --font-size-m: 2rem; // 32px
   --font-size-s: 1rem; // 16px
 }

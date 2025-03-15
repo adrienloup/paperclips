@@ -6,6 +6,7 @@ export type Action =
 export interface Notification {
   id: number;
   text: string;
+  page: string;
   enable: boolean;
   animate: boolean;
 }

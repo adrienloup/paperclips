@@ -3,6 +3,7 @@ import { classNames } from '@/src/generic/utils/classNames.ts';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
 import { Notification } from '@/src/pages/game/components/notification/Notification.type.ts';
 import styles from '@/src/pages/game/components/notification/Notification.module.scss';
+import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 
 export const NotificationComponent = ({ notification }: { notification: Notification }) => {
   const setNotifications = useNotificationDispatch();
@@ -18,12 +19,20 @@ export const NotificationComponent = ({ notification }: { notification: Notifica
       className={classNames([styles.notification, notification.animate ? styles.animate : ''])}
       onAnimationEnd={onAnimationEnd}
     >
-      {notification.text}
+      <span className={styles.text}>
+        {notification.text}{' '}
+        <ButtonComponent
+          className={styles.link}
+          to={`/paperclips/explore/${notification.page}`}
+        >
+          {notification.page}
+        </ButtonComponent>
+      </span>
       <ButtonComponent
         className={styles.button}
         onClick={onClick}
       >
-        x
+        <IconComponent icon="cancel" />
       </ButtonComponent>
     </div>
   );

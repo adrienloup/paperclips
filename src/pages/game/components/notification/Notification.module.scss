@@ -1,16 +1,36 @@
 .notification {
-  //display: flex;
-  //gap: var(--spacing-xs);
-  //align-items: center;
-  padding: var(--spacing-s);
-  //background-color: var(--color-neutral-3);
-  //line-height: 1.1;
-  //text-align: left;
-  //font-family: var(--font-text), sans-serif;
-  //font-weight: var(--font-weight);
-  //font-size: var(--font-size-s);
-  //color: var(--color-primary);
-  background-color: blue;
+  overflow: hidden;
+  display: flex;
+  max-width: 20rem;
+  height: 3rem;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.text {
+  flex: 1;
+  align-self: center;
+  padding: 0 var(--spacing-xs);
+  line-height: 1.1;
+}
+
+.link {
+  color: inherit;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  background-color: var(--color-primary);
+  font-size: var(--font-size-s);
+  color: var(--color-secondary);
+
+  .animate & {
+    animation: Appear 800ms var(--ease-quad);
+    will-change: background-color;
+  }
 }
 
 .animate {
@@ -20,6 +40,6 @@
 
 @keyframes Appear {
   0% {
-    background-color: red;
+    background-color: var(--color-solid-2);
   }
 }

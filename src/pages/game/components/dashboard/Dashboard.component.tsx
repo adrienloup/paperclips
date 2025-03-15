@@ -15,6 +15,7 @@ function DashboardComponent() {
 
   const sellClips = useCallback(() => {
     console.log('sellClips');
+    setGame({ type: 'SELL_CLIPS' });
   }, []);
 
   const updatePerSecond = useCallback(() => {

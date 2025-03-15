@@ -1,10 +1,21 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useNotificationDispatch } from '@/src/pages/game/components/notification/useNotification.ts';
 import styles from '@/src/pages/game/components/debug/Debug.module.scss';
 
 export const DebugComponent = () => {
   const location = useLocation();
+  const setNotifications = useNotificationDispatch();
   const [display, setDisplay] = useState(false);
+  const [idNotification, setIdNotification] = useState('');
+
+  const onNotificationChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setIdNotification(e.target.value);
+
+  const onNotificationSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setNotifications({ type: 'ADD_NOTIFICATION', id: parseInt(idNotification) });
+  };
 
   useEffect(() => {
     const debug =
@@ -21,7 +32,17 @@ export const DebugComponent = () => {
     <>
       {display && (
         <div className={styles.debug}>
-          <div className={styles.inner}>debug</div>
+          <form onSubmit={onNotificationSubmit}>
+            <label>
+              Notifications
+              <input
+                type="text"
+                value={idNotification}
+                onChange={onNotificationChange}
+              />
+              <button type="submit">Add</button>
+            </label>
+          </form>
         </div>
       )}
     </>

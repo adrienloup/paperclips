@@ -1,7 +1,14 @@
 import { useLanguage } from '@/src/generic/i18n/useLanguage';
 import { Number } from '@/src/generic/common/components/number/Number.type';
 
-export const NumberComponent = ({ className, value, style, notation, sign, limit }: Number) => {
+export const NumberComponent = ({
+  className,
+  value,
+  style,
+  notation,
+  sign,
+  limit,
+}: Number) => {
   const [language] = useLanguage();
 
   const options = {

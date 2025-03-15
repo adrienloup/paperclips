@@ -12,6 +12,7 @@
   align-self: center;
   padding: 0 var(--spacing-xs);
   line-height: 1.1;
+  font-size: var(--font-size-xs);
 }
 
 .link {
@@ -23,9 +24,9 @@
   align-items: center;
   justify-content: center;
   width: 2rem;
-  background-color: var(--color-primary);
+  background-color: var(--color-neutral-3);
   font-size: var(--font-size-s);
-  color: var(--color-neutral-3);
+  color: var(--color-primary);
 
   .animate & {
     animation: Appear 800ms var(--ease-quad);

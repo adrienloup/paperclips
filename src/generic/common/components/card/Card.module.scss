@@ -18,13 +18,13 @@
   font-family: var(--font-text), sans-serif;
   font-size: var(--font-size-s);
   color: var(--color-neutral-2);
+  transition: box-shadow 100ms var(--ease-quad);
 
   &:focus-visible {
     outline-offset: calc(-1 * var(--outline-s));
   }
 
-  &:hover {
-    background-color: var(--color-2);
-    color: var(--color-primary);
+  &:active {
+    box-shadow: 0 0 0 var(--outline-s) var(--color-2);
   }
 }

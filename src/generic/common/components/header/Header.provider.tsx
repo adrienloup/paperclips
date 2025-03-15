@@ -4,11 +4,18 @@ import { HeaderContext } from '@/src/generic/common/components/header/Header.con
 import { Children } from '@/src/generic/types/Children.type.ts';
 
 export function HeaderProvider({ children }: { children: Children }) {
-  const [header, setHeader] = useLocalStorage<boolean>('_paperclips_3mma_0_header', false);
+  const [header, setHeader] = useLocalStorage<boolean>(
+    '_paperclips_3mma_0_header',
+    false
+  );
 
   const handleChange = useCallback((open: boolean) => {
     setHeader(open);
   }, []);
 
-  return <HeaderContext.Provider value={[header, handleChange]}>{children}</HeaderContext.Provider>;
+  return (
+    <HeaderContext.Provider value={[header, handleChange]}>
+      {children}
+    </HeaderContext.Provider>
+  );
 }

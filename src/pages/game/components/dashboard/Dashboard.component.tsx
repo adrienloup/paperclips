@@ -11,16 +11,14 @@ import { ResourcesComponent } from '@/src/pages/game/components/resources/Resour
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
-  console.log('DashboardComponent');
+  //console.log('DashboardComponent');
   const setGame = useGameDispatch();
 
   const sellClips = useCallback(() => {
-    console.log('sellClips');
     setGame({ type: 'SELL_CLIPS' });
   }, []);
 
   const updatePerSecond = useCallback(() => {
-    console.log('updatePerSecond');
     setGame({ type: 'UPDATE_PER_SECOND' });
   }, []);
 

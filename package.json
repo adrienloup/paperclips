@@ -1,7 +1,7 @@
 {
   "name": "paperclips",
   "private": true,
-  "version": "1.4.3",
+  "version": "0.4.3",
   "type": "module",
   "author": "Adrien Loup",
   "scripts": {

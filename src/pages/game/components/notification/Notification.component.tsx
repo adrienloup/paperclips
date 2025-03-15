@@ -5,10 +5,15 @@ import { Notification } from '@/src/pages/game/components/notification/Notificat
 import styles from '@/src/pages/game/components/notification/Notification.module.scss';
 import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 
-export const NotificationComponent = ({ notification }: { notification: Notification }) => {
+export const NotificationComponent = ({
+  notification,
+}: {
+  notification: Notification;
+}) => {
   const setNotifications = useNotificationDispatch();
 
-  const onClick = () => setNotifications({ type: 'DELETE_NOTIFICATION', id: notification.id });
+  const onClick = () =>
+    setNotifications({ type: 'DELETE_NOTIFICATION', id: notification.id });
 
   const onAnimationEnd = () => {
     setNotifications({ type: 'UPDATE_NOTIFICATION', id: notification.id });
@@ -16,7 +21,10 @@ export const NotificationComponent = ({ notification }: { notification: Notifica
 
   return (
     <div
-      className={classNames([styles.notification, notification.animate ? styles.animate : ''])}
+      className={classNames([
+        styles.notification,
+        notification.animate ? styles.animate : '',
+      ])}
       onAnimationEnd={onAnimationEnd}
     >
       <span className={styles.text}>

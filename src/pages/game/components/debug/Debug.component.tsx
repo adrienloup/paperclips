@@ -71,6 +71,37 @@ export const DebugComponent = () => {
               <button type="submit">Add</button>
             </label>
           </form>
+          <label>
+            ProduceBonus
+            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 0.1 })}>
+              10%
+            </button>
+            <button
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 0.25 })}
+            >
+              25%
+            </button>
+            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 0.5 })}>
+              50%
+            </button>
+            <button
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 0.75 })}
+            >
+              75%
+            </button>
+            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 1 })}>
+              100%
+            </button>
+            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 1.5 })}>
+              150%
+            </button>
+            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 2 })}>
+              200%
+            </button>
+            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 5 })}>
+              500%
+            </button>
+          </label>
         </div>
       )}
     </>

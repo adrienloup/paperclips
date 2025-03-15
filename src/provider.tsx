@@ -1,4 +1,9 @@
-import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent } from 'react';
+import {
+  ComponentPropsWithoutRef,
+  ComponentType,
+  ElementType,
+  FunctionComponent,
+} from 'react';
 
 import { Children } from '@/src/generic/types/Children.type.ts';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';

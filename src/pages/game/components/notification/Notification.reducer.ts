@@ -1,4 +1,7 @@
-import { Action, State } from '@/src/pages/game/components/notification/Notification.type.ts';
+import {
+  Action,
+  State,
+} from '@/src/pages/game/components/notification/Notification.type.ts';
 
 export const notificationReducer = (state: State, action: Action): State => {
   switch (action.type) {

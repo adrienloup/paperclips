@@ -34,10 +34,14 @@ export function ModeProvider({ children }: { children: Children }) {
       updateMode(event.matches ? 'dark' : 'light');
     };
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', changeMode);
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', changeMode);
 
     return () =>
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', changeMode);
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', changeMode);
   }, []);
 
   const handleModeChange = useCallback(
@@ -47,5 +51,9 @@ export function ModeProvider({ children }: { children: Children }) {
     [updateMode]
   );
 
-  return <ModeContext.Provider value={[mode, handleModeChange]}>{children}</ModeContext.Provider>;
+  return (
+    <ModeContext.Provider value={[mode, handleModeChange]}>
+      {children}
+    </ModeContext.Provider>
+  );
 }

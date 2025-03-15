@@ -3,35 +3,42 @@ import { Action, State } from '@/src/pages/game/Game.type.ts';
 export const gameReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SELL_CLIPS':
-      if (state.clipsTransit > 0) {
-        // console.log('clipsTransit', state.clipsTransit);
-        // console.log('productionBonus', state.productionBonus);
-        // console.log('clipsCost', state.clipsCost);
-        const decreaseClipsTransit = Math.floor(state.clipsTransit * (1 - state.productionBonus));
-        return {
-          ...state,
-          clipsStock: decreaseClipsTransit,
-          clipsTransit: decreaseClipsTransit > 0 ? decreaseClipsTransit : 0,
-          funds: state.funds + (state.clipsTransit - decreaseClipsTransit) * state.clipsCost,
-        };
-      }
-      return { ...state };
-    case 'UPDATE_PER_SECOND':
-      // const clipsPerSecond =
-      //     state.wiresStock > 0
-      //         ? state.autoClippers
-      //         : 0;
+      if (state.unsoldInventory <= 0) return state;
+      const unsoldInventory = Math.max(
+        0,
+        Math.floor(state.unsoldInventory * (1 - state.publicDemand))
+      );
       return {
         ...state,
-        clipsPerSecond: 0,
+        unsoldInventory,
+        funds: state.funds + (state.unsoldInventory - unsoldInventory) * state.clipsCost,
+      };
+    case 'UPDATE_PER_SECOND':
+      const producePerSecond =
+        state.wiresStock > 0
+          ? state.autoClippers +
+            state.megaClippers +
+            state.produceBonus * (state.autoClippers + state.megaClippers) // V + (P / 100 * V)
+          : 0;
+      return {
+        ...state,
+        producePerSecond,
+        fundsPerSecond: producePerSecond * state.clipsCost,
       };
     case 'PRODUCE_MANUAL_CLIPS':
+      const increaseClips = Math.floor(1 + state.produceBonus); // V + (P / 100 * V)
       return {
         ...state,
-        clips: state.clips + 1,
-        clipsStock: state.clipsStock + 1,
-        clipsTransit: state.clipsStock + 1,
-        clipsPerSecond: state.clipsPerSecond + 1,
+        clips: state.clips + increaseClips,
+        unsoldInventory: state.unsoldInventory + increaseClips,
+        producePerSecond: state.producePerSecond + increaseClips,
+        fundsPerSecond: state.fundsPerSecond + increaseClips * state.clipsCost,
+        wiresStock: state.wiresStock - 1,
+      };
+    case 'UPDATE_PRODUCE_BONUS':
+      return {
+        ...state,
+        produceBonus: action.bonus,
       };
     case 'INITIALIZE_STATE':
       return {

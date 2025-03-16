@@ -1,5 +1,5 @@
 import { HTMLProps } from 'react';
-import { Children } from '@/src/generic/types/Children.type';
+import { Children } from '@/src/generic/types/Children.type.ts';
 
 export interface Title extends HTMLProps<HTMLElement> {
   children: Children;

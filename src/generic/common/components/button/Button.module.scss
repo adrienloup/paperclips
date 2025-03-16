@@ -9,7 +9,7 @@
   cursor: pointer;
 
   &:focus-visible {
-    outline: var(--outline-s) solid var(--color-solid-1);
+    outline: var(--border-m) solid var(--color-solid-1);
   }
 
   &:disabled {

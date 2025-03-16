@@ -34,7 +34,7 @@
   }
 
   &:focus-visible {
-    outline-offset: calc(-1 * var(--outline-s));
+    outline-offset: calc(-1 * var(--outline));
   }
 }
 

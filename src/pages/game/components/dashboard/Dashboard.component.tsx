@@ -4,7 +4,7 @@ import { useInterval } from '@/src/generic/hooks/useInterval.ts';
 import { DebugComponent } from '@/src/pages/game/components/debug/Debug.component.tsx';
 import { NotificationsComponent } from '@/src/pages/game/components/notification/Notifications.component.tsx';
 import { ClipsComponent } from '@/src/pages/game/components/clips/Clips.component.tsx';
-import { CardsComponent } from '@/src/generic/common/components/cards/Cards.component.tsx';
+import { GridComponent } from '@/src/generic/common/components/grid/Grid.component.tsx';
 import { ManufacturingComponent } from '@/src/pages/game/components/manufacturing/Manufacturing.component.tsx';
 import { BusinessComponent } from '@/src/pages/game/components/business/Business.component.tsx';
 import { ResourcesComponent } from '@/src/pages/game/components/resources/Resources.component.tsx';
@@ -35,11 +35,11 @@ function DashboardComponent() {
       <DebugComponent />
       <NotificationsComponent />
       <ClipsComponent />
-      <CardsComponent>
+      <GridComponent>
         <ManufacturingComponent />
         <BusinessComponent />
         <ResourcesComponent />
-      </CardsComponent>
+      </GridComponent>
     </article>
   );
 }

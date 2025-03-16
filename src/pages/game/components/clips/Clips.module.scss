@@ -2,17 +2,10 @@
   //flex: 0 0 100%;
   display: flex;
   align-items: center;
-  padding: var(--spacing-m) var(--spacing-l);
-}
-
-.title {
+  padding: var(--spacing-l) var(--spacing-l);
   letter-spacing: 0.1rem;
   font-family: var(--font-text-bold), sans-serif;
   font-size: var(--font-size-m);
   -webkit-text-stroke: 0.08rem var(--color-1);
   color: transparent;
-}
-
-.icon {
-  font-size: var(--font-size-m);
 }

@@ -10,7 +10,7 @@ export const en: Translation = {
     megaClippersCost: 'Cost',
     autoClippers: 'Machine',
     autoClippersCost: 'Cost',
-    wireStock: 'Wire',
+    wireStock: 'Wire stock',
     wireCost: 'Cost',
   },
 };

@@ -1,7 +1,6 @@
 import { Children } from '@/src/generic/types/Children.type.ts';
 
-export interface Group {
+export interface Grid {
   children: Children;
   className?: string;
-  direction?: 'row' | 'column';
 }

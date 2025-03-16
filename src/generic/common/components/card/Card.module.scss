@@ -1,17 +1,22 @@
 .card {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-flow: row wrap;
   gap: var(--spacing-xs);
+  padding: var(--spacing-l) var(--spacing-l) var(--spacing-xl) var(--spacing-l);
+  border-top: var(--border-s) solid var(--color-3);
 }
 
 .title {
+  flex: 0 0 100%;
   margin-bottom: var(--spacing-m);
   font-family: var(--font-text-bold), sans-serif;
   font-size: var(--font-size-m);
 }
 
 .button {
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-xs);
   position: relative;
   z-index: 1;
   padding: var(--spacing-s);
@@ -24,10 +29,14 @@
   transition: box-shadow 100ms var(--ease-quad);
 
   &:focus-visible {
-    outline-offset: calc(-1 * var(--outline-s));
+    outline-offset: calc(-1 * var(--outline));
   }
 
   &:active {
-    box-shadow: 0 0 0 var(--outline-s) rgb(0, 217, 255);
+    box-shadow: 0 0 0 var(--shadow) rgb(0, 217, 255);
   }
+}
+
+.number {
+  font-size: var(--font-size-xs);
 }

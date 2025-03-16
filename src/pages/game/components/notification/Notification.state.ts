@@ -1,4 +1,4 @@
-import { State } from '@/src/pages/game/components/notification/Notification.type';
+import { State } from '@/src/pages/game/components/notification/Notification.type.ts';
 
 export const initialState: State = [
   {

@@ -17,12 +17,6 @@ export const LoaderComponent = React.memo(({ className, duration = 1e3, ...props
       className={classNames([styles.loader, className])}
       {...props}
     >
-      <span
-        className={styles.label}
-        title="Paperclips"
-      >
-        Paperclips
-      </span>
       <span className={styles.value}>{count}%</span>
     </div>
   );

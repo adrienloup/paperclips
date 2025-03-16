@@ -4,8 +4,8 @@ import { GroupComponent } from '@/src/generic/common/components/group/Group.comp
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
 import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.component.tsx';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
-import styles from '@/src/generic/common/components/card/Card.module.scss';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component.tsx';
+import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const WireComponent = () => {
   //console.log('WireComponent');
@@ -20,10 +20,10 @@ export const WireComponent = () => {
           className={styles.button}
           disabled={game.funds < game.wireCost}
           onClick={() => setGame({ type: 'BUY_WIRE' })}
-          style={{ flexDirection: 'column', justifyContent: 'center' }}
         >
           Buy
           <NumberComponent
+            className={styles.number}
             value={game.wire}
             notation="compact"
           />

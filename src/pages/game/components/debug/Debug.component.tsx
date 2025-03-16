@@ -261,6 +261,12 @@ export const DebugComponent = () => {
             >
               1e5
             </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 1e6 })}
+            >
+              1e6
+            </button>
           </form>
         </div>
       )}

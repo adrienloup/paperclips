@@ -1,5 +1,5 @@
-import { useLanguage } from '@/src/generic/i18n/useLanguage';
-import { Number } from '@/src/generic/common/components/number/Number.type';
+import { useLanguage } from '@/src/generic/i18n/useLanguage.ts';
+import { Number } from '@/src/generic/common/components/number/Number.type.ts';
 
 export const NumberComponent = ({ className, value, style, notation, limit }: Number) => {
   const [language] = useLanguage();

@@ -18,8 +18,8 @@
 }
 
 @mixin size {
-  --font-size-xl: 8rem;
-  --font-size-l: 6rem;
+  --font-size-xl: 6rem;
+  --font-size-l: 5rem;
   --font-size-m: 4rem;
   --font-size-s: 1.5rem;
   --font-size-xs: 1rem;
@@ -30,11 +30,20 @@
   --spacing-l: 3rem;
   --spacing-m: 2rem;
   --spacing-s: 1rem;
-  --spacing-xs: 0.5rem;
+  --spacing-xs: 0.25rem;
+}
+
+@mixin border {
+  --border-m: 0.25rem;
+  --border-s: 0.15rem;
 }
 
 @mixin outline {
-  --outline-s: 0.25rem;
+  --outline: 0.25rem;
+}
+
+@mixin shadow {
+  --shadow: 0.25rem;
 }
 
 @mixin easing {
@@ -47,6 +56,8 @@
   @include color();
   @include size();
   @include spacing();
+  @include border();
   @include outline();
+  @include shadow();
   @include easing();
 }

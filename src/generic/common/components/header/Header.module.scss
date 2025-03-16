@@ -39,10 +39,10 @@
   align-items: center;
   justify-content: center;
   background-color: var(--color-3);
-  font-size: var(--font-size-s);
+  font-size: 2rem;
   color: var(--color-1);
 
   &:focus-visible {
-    outline-offset: calc(-1 * var(--outline-s));
+    outline-offset: calc(-1 * var(--outline));
   }
 }

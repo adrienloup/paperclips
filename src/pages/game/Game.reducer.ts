@@ -22,13 +22,13 @@ export const gameReducer = (state: State, action: Action): State => {
       return {
         ...state,
         autoClippers: state.autoClippers + 1,
-        autoClippersCost: state.autoClippersCost + (Math.random() * (8 - 4) + 4), // ≥ 4 et < 8
+        autoClippersCost: state.autoClippersCost + (Math.random() * (10 - 5) + 5), // ≥ 5 et < 10
         funds: state.funds - state.autoClippersCost,
       };
     case 'BUY_MEGACLIPPERS':
       return {
         ...state,
-        megaClippers: state.megaClippers + 500,
+        megaClippers: state.megaClippers + 1,
         megaClippersCost: state.megaClippersCost + 11e2,
         funds: state.funds - state.megaClippersCost,
       };
@@ -36,53 +36,35 @@ export const gameReducer = (state: State, action: Action): State => {
       if (state.wireStock <= 0) return state;
       return {
         ...state,
-        clips: (state.clips + 1) * state.produceBonus,
-        unsoldInventory: (state.unsoldInventory + 1) * state.produceBonus,
+        clips: state.clips + state.produceBonus,
+        unsoldInventory: state.unsoldInventory + state.produceBonus,
         wireStock: state.wireStock - 1,
-        producePerSecond: (state.producePerSecond + 1) * state.produceBonus,
-        fundsPerSecond: (state.fundsPerSecond + state.clipsCost) * state.produceBonus,
+        producePerSecond: state.producePerSecond + state.produceBonus,
+        fundsPerSecond: state.fundsPerSecond + state.clipsCost,
       };
-    // case 'UPDATE_PER_SECOND':
-    //   const clippersPerSecond = (state.autoClippers + state.megaClippers) * state.produceBonus;
-    //   const producePerSecond = state.wireStock > 0 ? clippersPerSecond : 0;
-    //   const fundsPerSecond = producePerSecond * state.clipsCost;
-    //   if (state.wireStock >= clippersPerSecond) {
-    //     return {
-    //       ...state,
-    //       clips: state.clips + producePerSecond,
-    //       unsoldInventory: state.unsoldInventory + producePerSecond,
-    //       wireStock: state.wireStock,
-    //       producePerSecond,
-    //       fundsPerSecond,
-    //     };
-    //   } else {
-    //     return {
-    //       ...state,
-    //       producePerSecond,
-    //       fundsPerSecond,
-    //     };
-    //   }
     case 'UPDATE_PER_SECOND': {
-      const clippersPerSecond = (state.autoClippers + state.megaClippers) * state.produceBonus;
-      const producePerSecond = state.wireStock > 0 ? clippersPerSecond : 0;
+      const clippersPerSecond = state.megaClippers * 500 + state.autoClippers;
+      const maxProducible = Math.min(clippersPerSecond, state.wireStock);
+      const producePerSecond = maxProducible * state.produceBonus;
       const fundsPerSecond = producePerSecond * state.clipsCost;
-      const updatedState = {
+      return {
         ...state,
+        clips: state.clips + producePerSecond,
+        unsoldInventory: state.unsoldInventory + producePerSecond,
+        wireStock: state.wireStock - maxProducible,
         producePerSecond,
         fundsPerSecond,
       };
-      if (state.wireStock >= clippersPerSecond) {
-        updatedState.clips = state.clips + producePerSecond;
-        updatedState.unsoldInventory = state.unsoldInventory + producePerSecond;
-        updatedState.wireStock = state.wireStock - clippersPerSecond;
-      }
-      return updatedState;
     }
-
     case 'UPDATE_WIRE_COST':
       return {
         ...state,
         wireCost: state.wireCost > 10 ? state.wireCost - 0.25 : Math.random() * (20 - 12) + 12, // ≥ 12 et < 20
+      };
+    case 'UPDATE_WIRE':
+      return {
+        ...state,
+        wire: action.value,
       };
     case 'UPDATE_WIRE_BONUS':
       return {

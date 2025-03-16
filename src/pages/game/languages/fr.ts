@@ -4,7 +4,11 @@ export const fr: Translation = {
   game: {
     titlePage: 'Un trombone. Deux trombones. Trois trombones.',
     produceManual: 'Créer',
-    producePerSecond: 'Production par seconde',
+    producePerSecond: 'Clips par seconde',
     fundsPerSecond: 'Fonds par seconde',
+    megaClippers: 'Mégamachine',
+    megaClippersCost: 'Coût',
+    autoClippers: 'Machine',
+    autoClippersCost: 'Coût',
   },
 };

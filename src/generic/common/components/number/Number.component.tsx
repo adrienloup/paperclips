@@ -8,7 +8,7 @@ export const NumberComponent = ({ className, value, style, notation, limit }: Nu
     style: style,
     currency: language === 'en' ? 'USD' : 'EUR',
     notation: notation,
-    minimumFractionDigits: style === 'currency' ? 2 : 0,
+    minimumFractionDigits: 0,
     maximumFractionDigits: 2,
   };
 

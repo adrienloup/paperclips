@@ -12,28 +12,25 @@ export const MegaClippersComponent = () => {
   const game = useGame();
 
   return (
-    <>
-      <GroupComponent>
-        <DialComponent
-          value={game.megaClippersCost}
-          style="currency"
-          label={t('game.megaClippersCost')}
-        />
-        <DialComponent
-          value={game.megaClippers}
-          notation="compact"
-          label={t('game.megaClippers')}
-        />
-      </GroupComponent>
-      <GroupComponent>
-        <ButtonComponent
-          className={styles.button}
-          disabled={game.funds < game.megaClippersCost}
-          onClick={() => setGame({ type: 'BUY_MEGACLIPPERS' })}
-        >
-          Buy
-        </ButtonComponent>
-      </GroupComponent>
-    </>
+    <GroupComponent>
+      <ButtonComponent
+        className={styles.button}
+        disabled={game.funds < game.megaClippersCost}
+        onClick={() => setGame({ type: 'BUY_MEGACLIPPERS' })}
+      >
+        Buy
+      </ButtonComponent>
+      <DialComponent
+        value={game.megaClippersCost}
+        style="currency"
+        notation="compact"
+        label={t('game.megaClippersCost')}
+      />
+      <DialComponent
+        value={game.megaClippers}
+        notation="compact"
+        label={t('game.megaClippers')}
+      />
+    </GroupComponent>
   );
 };

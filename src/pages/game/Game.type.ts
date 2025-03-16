@@ -6,6 +6,7 @@ export type Action =
   | { type: 'PRODUCE_MANUAL' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_WIRE_COST' }
+  | { type: 'UPDATE_WIRE'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; bonus: number }
   | { type: 'UPDATE_PRODUCE_BONUS'; bonus: number }
   | { type: 'INITIALIZE_STATE'; state: State };

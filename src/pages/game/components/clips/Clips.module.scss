@@ -6,10 +6,13 @@
 }
 
 .title {
-  font-size: var(--font-size-l);
+  letter-spacing: 0.1rem;
+  font-family: var(--font-text-bold), sans-serif;
+  font-size: var(--font-size-m);
+  -webkit-text-stroke: 0.08rem var(--color-1);
+  color: transparent;
 }
 
 .icon {
-  font-size: var(--font-size-l);
-  color: var(--color-primary);
+  font-size: var(--font-size-m);
 }

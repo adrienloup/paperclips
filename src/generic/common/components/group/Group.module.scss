@@ -1,11 +1,12 @@
 .group {
   display: flex;
   flex-wrap: nowrap;
-  gap: var(--spacing-xs);
+  border: 0.2rem solid var(--color-3);
+  border-radius: 0.5rem;
 }
 
 .row {
-  align-items: center;
+  flex-direction: row;
 }
 
 .column {

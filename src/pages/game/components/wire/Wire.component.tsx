@@ -5,6 +5,7 @@ import { DialComponent } from '@/src/generic/common/components/dial/Dial.compone
 import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.component.tsx';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
+import { NumberComponent } from '@/src/generic/common/components/number/Number.component.tsx';
 
 export const WireComponent = () => {
   //console.log('WireComponent');
@@ -15,6 +16,18 @@ export const WireComponent = () => {
   return (
     <>
       <GroupComponent>
+        <ButtonComponent
+          className={styles.button}
+          disabled={game.funds < game.wireCost}
+          onClick={() => setGame({ type: 'BUY_WIRE' })}
+          style={{ flexDirection: 'column', justifyContent: 'center' }}
+        >
+          Buy
+          <NumberComponent
+            value={game.wire}
+            notation="compact"
+          />
+        </ButtonComponent>
         <DialComponent
           value={game.wireCost}
           style="currency"
@@ -25,16 +38,6 @@ export const WireComponent = () => {
           notation="compact"
           label={t('game.wireStock')}
         />
-      </GroupComponent>
-      <GroupComponent>
-        <ButtonComponent
-          className={styles.button}
-          disabled={game.funds < game.wireCost}
-          onClick={() => setGame({ type: 'BUY_WIRE' })}
-        >
-          Buy
-        </ButtonComponent>
-        +{game.wire}
         {game.wireBonus > 1 && <BonusComponent value={game.wireBonus} />}
       </GroupComponent>
     </>

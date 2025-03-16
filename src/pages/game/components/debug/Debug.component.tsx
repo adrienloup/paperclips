@@ -150,7 +150,7 @@ export const DebugComponent = () => {
             </button>
           </form>
           <form>
-            wireBonus{' '}
+            WireBonus{' '}
             <button
               type="button"
               onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 1 })}
@@ -222,6 +222,45 @@ export const DebugComponent = () => {
               />
               <button type="submit">Add</button>
             </label>
+          </form>
+          <form>
+            Wire{' '}
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 1e2 })}
+            >
+              1e2
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 5e2 })}
+            >
+              5e2
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 1e3 })}
+            >
+              1e3
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 5e3 })}
+            >
+              5e3
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 1e4 })}
+            >
+              1e4
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 1e5 })}
+            >
+              1e5
+            </button>
           </form>
         </div>
       )}

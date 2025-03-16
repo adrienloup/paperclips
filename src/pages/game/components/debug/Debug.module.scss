@@ -20,7 +20,7 @@
 
   input {
     width: 4rem;
-    font-family: var(--font-text), sans-serif;
+    font-family: var(--font-text-regular), sans-serif;
     font-weight: normal;
     font-size: inherit;
     color: inherit;
@@ -28,7 +28,7 @@
 
   button {
     padding: 0 var(--spacing-xs);
-    font-family: var(--font-text), sans-serif;
+    font-family: var(--font-text-regular), sans-serif;
     font-weight: normal;
     font-size: inherit;
     color: inherit;

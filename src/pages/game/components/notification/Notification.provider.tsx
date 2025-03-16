@@ -10,10 +10,7 @@ import { State } from '@/src/pages/game/components/notification/Notification.typ
 import { Children } from '@/src/generic/types/Children.type.ts';
 
 export function NotificationProvider({ children }: { children: Children }) {
-  const [state, setState] = useLocalStorage<State>(
-    '_paperclips_3mma_0_notification',
-    initialState
-  );
+  const [state, setState] = useLocalStorage<State>('_paperclips_3mma_0_notification', initialState);
   const [notifications, setNotifications] = useReducer(notificationReducer, state);
 
   const update = useCallback(() => {

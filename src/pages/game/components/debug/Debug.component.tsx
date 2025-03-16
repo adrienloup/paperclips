@@ -12,6 +12,7 @@ export const DebugComponent = () => {
   const [display, setDisplay] = useState(false);
   const [idNotification, setIdNotification] = useState('');
   const [clips, setClips] = useState('');
+  const [funds, setFunds] = useState('');
 
   const onClipsChange = (e: ChangeEvent<HTMLInputElement>) => setClips(e.target.value);
 
@@ -26,17 +27,31 @@ export const DebugComponent = () => {
     });
   };
 
-  const onNotificationChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setIdNotification(e.target.value);
+  const onFundsChange = (e: ChangeEvent<HTMLInputElement>) => setFunds(e.target.value);
+
+  const onFundsSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE_STATE',
+      state: {
+        ...game,
+        funds: parseInt(funds),
+      },
+    });
+  };
+
+  const onNotificationChange = (e: ChangeEvent<HTMLInputElement>) => setIdNotification(e.target.value);
 
   const onNotificationSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setNotifications({ type: 'ADD_NOTIFICATION', id: parseInt(idNotification) });
+    setNotifications({
+      type: 'ADD_NOTIFICATION',
+      id: parseInt(idNotification),
+    });
   };
 
   useEffect(() => {
-    const debug =
-      location.search.split('=')[0] === '?debug' ? location.search.split('=').pop() : '';
+    const debug = location.search.split('=')[0] === '?debug' ? location.search.split('=').pop() : '';
     if (debug === '1') {
       window.localStorage.setItem('_paperclips_3mma_0_debug', '1');
     } else if (debug === '0') {
@@ -71,37 +86,143 @@ export const DebugComponent = () => {
               <button type="submit">Add</button>
             </label>
           </form>
-          <label>
-            ProduceBonus
-            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 0.1 })}>
-              10%
+          <form>
+            ProduceBonus{' '}
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 1 })}
+            >
+              1
             </button>
             <button
-              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 0.25 })}
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 2 })}
             >
-              25%
-            </button>
-            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 0.5 })}>
-              50%
+              2
             </button>
             <button
-              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 0.75 })}
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 3 })}
             >
-              75%
+              3
             </button>
-            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 1 })}>
-              100%
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 4 })}
+            >
+              4
             </button>
-            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 1.5 })}>
-              150%
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 5 })}
+            >
+              5
             </button>
-            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 2 })}>
-              200%
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 6 })}
+            >
+              6
             </button>
-            <button onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 5 })}>
-              500%
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 7 })}
+            >
+              7
             </button>
-          </label>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 8 })}
+            >
+              8
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 9 })}
+            >
+              9
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_PRODUCE_BONUS', bonus: 10 })}
+            >
+              10
+            </button>
+          </form>
+          <form>
+            wireBonus{' '}
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 1 })}
+            >
+              1
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 2 })}
+            >
+              2
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 3 })}
+            >
+              3
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 4 })}
+            >
+              4
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 5 })}
+            >
+              5
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 6 })}
+            >
+              6
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 7 })}
+            >
+              7
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 8 })}
+            >
+              8
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 9 })}
+            >
+              9
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 10 })}
+            >
+              10
+            </button>
+          </form>
+          <form onSubmit={onFundsSubmit}>
+            <label>
+              Funds
+              <input
+                type="text"
+                value={funds}
+                onChange={onFundsChange}
+              />
+              <button type="submit">Add</button>
+            </label>
+          </form>
         </div>
       )}
     </>

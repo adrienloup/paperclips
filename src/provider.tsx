@@ -1,9 +1,4 @@
-import {
-  ComponentPropsWithoutRef,
-  ComponentType,
-  ElementType,
-  FunctionComponent,
-} from 'react';
+import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent } from 'react';
 
 import { Children } from '@/src/generic/types/Children.type.ts';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
@@ -12,10 +7,7 @@ import { HeaderProvider } from '@/src/generic/common/components/header/Header.pr
 import { GameProvider } from '@/src/pages/game/Game.provider.tsx';
 import { NotificationProvider } from '@/src/pages/game/components/notification/Notification.provider.tsx';
 
-type ProvidersType = [
-  ComponentType<{ children: Children }>,
-  ComponentPropsWithoutRef<ElementType>?,
-][];
+type ProvidersType = [ComponentType<{ children: Children }>, ComponentPropsWithoutRef<ElementType>?][];
 
 const allProviders = (providers: ProvidersType) =>
   providers.reduce(

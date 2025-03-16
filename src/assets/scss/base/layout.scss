@@ -11,7 +11,7 @@
 
 body {
   overflow-x: hidden;
-  background-color: var(--color-2);
+  background-color: var(--color-3);
   line-height: 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -29,5 +29,5 @@ body {
   grid-template-rows: 1fr auto;
   position: relative;
   min-height: 100vh;
-  background-color: var(--color-1);
+  background-color: var(--color-2);
 }

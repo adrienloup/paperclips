@@ -8,7 +8,13 @@ export const initialState: State = [
     enable: true,
     animate: true,
   },
-  { id: 2, text: 'Notification 2', page: 'page2', enable: false, animate: false },
+  {
+    id: 2,
+    text: 'Notification 2',
+    page: 'page2',
+    enable: false,
+    animate: false,
+  },
   {
     id: 3,
     text: 'Notification 3 lorem ipsum',
@@ -16,6 +22,18 @@ export const initialState: State = [
     enable: false,
     animate: false,
   },
-  { id: 4, text: 'Notification 4', page: 'page4', enable: false, animate: false },
-  { id: 5, text: 'Notification 5 lorem', page: 'page5', enable: false, animate: false },
+  {
+    id: 4,
+    text: 'Notification 4',
+    page: 'page4',
+    enable: false,
+    animate: false,
+  },
+  {
+    id: 5,
+    text: 'Notification 5 lorem',
+    page: 'page5',
+    enable: false,
+    animate: false,
+  },
 ];

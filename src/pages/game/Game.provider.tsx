@@ -7,10 +7,7 @@ import { State } from '@/src/pages/game/Game.type.ts';
 import { Children } from '@/src/generic/types/Children.type.ts';
 
 export function GameProvider({ children }: { children: Children }) {
-  const [state, setState] = useLocalStorage<State>(
-    '_paperclips_3mma_0_game',
-    initialState
-  );
+  const [state, setState] = useLocalStorage<State>('_paperclips_3mma_0_game', initialState);
   const [game, setGame] = useReducer(gameReducer, state);
 
   const update = useCallback(() => {
@@ -23,9 +20,7 @@ export function GameProvider({ children }: { children: Children }) {
 
   return (
     <GameContext.Provider value={game}>
-      <GameDispatchContext.Provider value={setGame}>
-        {children}
-      </GameDispatchContext.Provider>
+      <GameDispatchContext.Provider value={setGame}>{children}</GameDispatchContext.Provider>
     </GameContext.Provider>
   );
 }

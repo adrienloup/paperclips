@@ -7,10 +7,7 @@ import { LanguageContext } from '@/src/generic/i18n/Language.context.ts';
 
 export function LanguageProvider({ children }: { children: Children }) {
   const { i18n } = useTranslation();
-  const [language, setLanguage] = useLocalStorage<Language>(
-    '_paperclips_3mma_0_language',
-    'en'
-  );
+  const [language, setLanguage] = useLocalStorage<Language>('_paperclips_3mma_0_language', 'en');
 
   useEffect(() => {
     i18n.changeLanguage(language);
@@ -23,9 +20,5 @@ export function LanguageProvider({ children }: { children: Children }) {
     document.documentElement.lang = i18n.language;
   }, []);
 
-  return (
-    <LanguageContext.Provider value={[language, onLangueChange]}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={[language, onLangueChange]}>{children}</LanguageContext.Provider>;
 }

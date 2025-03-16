@@ -10,15 +10,18 @@ export const ClipsComponent = () => {
   const game = useGame();
 
   return (
-    <TitleComponent
-      tag={'h1'}
-      className={styles.clips}
-    >
+    <div className={styles.clips}>
       <IconComponent
         icon="attach_file"
         arial-label={t('game.titlePage')}
+        className={styles.icon}
       />
-      <NumberComponent value={game.clips} />
-    </TitleComponent>
+      <TitleComponent
+        tag={'h1'}
+        className={styles.title}
+      >
+        <NumberComponent value={game.clips} />
+      </TitleComponent>
+    </div>
   );
 };

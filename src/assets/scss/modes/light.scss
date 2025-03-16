@@ -3,8 +3,10 @@
 }
 
 @mixin light {
+  --color-primary: #ff9800;
   --color-1: var(--color-neutral-2);
-  --color-2: var(--color-neutral-1);
+  --color-2: #fffbec;
+  --color-3: #ffe0b1;
 }
 
 :root {

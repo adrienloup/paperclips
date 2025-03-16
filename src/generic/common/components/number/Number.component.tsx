@@ -1,14 +1,7 @@
 import { useLanguage } from '@/src/generic/i18n/useLanguage';
 import { Number } from '@/src/generic/common/components/number/Number.type';
 
-export const NumberComponent = ({
-  className,
-  value,
-  style,
-  notation,
-  sign,
-  limit,
-}: Number) => {
+export const NumberComponent = ({ className, value, style, notation, limit }: Number) => {
   const [language] = useLanguage();
 
   const options = {
@@ -19,19 +12,16 @@ export const NumberComponent = ({
     maximumFractionDigits: 2,
   };
 
-  const formatValue: string = new Intl.NumberFormat(
-    language === 'en' ? 'en-US' : 'fr-FR',
-    options
-  ).format(value);
+  const formatValue: string = new Intl.NumberFormat(language === 'en' ? 'en-US' : 'fr-FR', options).format(
+    value
+  );
 
-  const formatMax: string = new Intl.NumberFormat(
-    language === 'en' ? 'en-US' : 'fr-FR',
-    options
-  ).format(limit!);
+  const formatMax: string = new Intl.NumberFormat(language === 'en' ? 'en-US' : 'fr-FR', options).format(
+    limit!
+  );
 
   return (
     <span className={className}>
-      {sign}
       {formatValue}
       {limit && '/' + formatMax}
     </span>

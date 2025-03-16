@@ -1,5 +1,4 @@
-import { Number } from '@/src/generic/common/components/number/Number.type';
-
-export interface Bonus extends Number {
+export interface Bonus {
   className?: string;
+  value: number;
 }

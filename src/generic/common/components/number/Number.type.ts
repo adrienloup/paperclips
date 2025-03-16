@@ -3,6 +3,5 @@ export interface Number {
   value: number;
   style?: 'currency' | 'percent';
   notation?: 'compact';
-  sign?: string;
   limit?: number;
 }

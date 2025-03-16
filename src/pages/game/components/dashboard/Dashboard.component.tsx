@@ -22,8 +22,13 @@ function DashboardComponent() {
     setGame({ type: 'UPDATE_PER_SECOND' });
   }, []);
 
+  const updateWireCost = useCallback(() => {
+    setGame({ type: 'UPDATE_WIRE_COST' });
+  }, []);
+
   useInterval(sellClips, 5e2);
   useInterval(updatePerSecond, 1e3);
+  useInterval(updateWireCost, 1e4);
 
   return (
     <article className={styles.dashboard}>

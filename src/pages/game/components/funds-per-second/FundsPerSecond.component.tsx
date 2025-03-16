@@ -17,13 +17,7 @@ export const FundsPerSecondComponent = () => {
         notation="compact"
         label={t('game.fundsPerSecond')}
       />
-      {game.sellBonus > 0 && (
-        <BonusComponent
-          value={game.sellBonus}
-          style="percent"
-          sign="+"
-        />
-      )}
+      {game.sellBonus > 1 && <BonusComponent value={game.sellBonus} />}
     </GroupComponent>
   );
 };

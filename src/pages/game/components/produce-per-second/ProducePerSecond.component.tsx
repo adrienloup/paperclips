@@ -16,13 +16,7 @@ export const ProducePerSecondComponent = () => {
         notation="compact"
         label={t('game.producePerSecond')}
       />
-      {game.produceBonus > 0 && (
-        <BonusComponent
-          value={game.produceBonus}
-          style="percent"
-          sign="+"
-        />
-      )}
+      {game.produceBonus > 1 && <BonusComponent value={game.produceBonus} />}
     </GroupComponent>
   );
 };

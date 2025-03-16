@@ -1,9 +1,13 @@
 .dial {
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-xs);
   padding: var(--spacing-xs);
-  background-color: var(--color-neutral-3);
-  color: var(--color-primary);
+  //background-color: var(--color-1);
+  //background-color: var(--color-neutral-3);
+  border: 0.15rem solid var(--color-3);
+  border-radius: 0.5rem;
+  //color: var(--color-primary);
 }
 
 .disabled {
@@ -14,4 +18,10 @@
 
 .number {
   font-size: var(--font-size-m);
+  color: var(--color-primary);
+}
+
+.label {
+  font-size: var(--font-size-s);
+  color: #98989f;
 }

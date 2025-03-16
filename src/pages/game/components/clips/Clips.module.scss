@@ -3,7 +3,13 @@
   display: flex;
   align-items: center;
   padding: var(--spacing-m) var(--spacing-l);
-  font-weight: normal;
+}
+
+.title {
+  font-size: var(--font-size-l);
+}
+
+.icon {
   font-size: var(--font-size-l);
   color: var(--color-primary);
 }

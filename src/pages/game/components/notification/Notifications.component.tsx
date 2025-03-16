@@ -13,9 +13,7 @@ export const NotificationsComponent = () => {
         <div className={styles.notifications}>
           {notifications.map((notification: Notification) => (
             <React.Fragment key={notification.id}>
-              {notification.enable && (
-                <NotificationComponent notification={notification} />
-              )}
+              {notification.enable && <NotificationComponent notification={notification} />}
             </React.Fragment>
           ))}
         </div>

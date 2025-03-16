@@ -1,8 +1,17 @@
 @font-face {
-  font-family: 'Text';
+  font-family: 'Text-Bold';
   src:
-    url('../../fonts/Text.woff2') format('woff2'),
-    url('../../fonts/Text.woff') format('woff');
+    url('../../fonts/Text-Bold.woff2') format('woff2'),
+    url('../../fonts/Text-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Text-Regular';
+  src:
+    url('../../fonts/Text-Regular.woff2') format('woff2'),
+    url('../../fonts/Text-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }

@@ -24,7 +24,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "overrides": [
+      {
+        "files": ["*.html"],
+        "rules": {}
+      }
+    ],
+    "ignorePatterns": ["*.html"]
   },
   "include": ["src", "cypress"]
 }

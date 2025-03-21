@@ -5,7 +5,7 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'SELL_CLIPS':
       if (state.unsoldInventory <= 0) return state;
       const unsoldInventory = Math.max(0, Math.floor(state.unsoldInventory * (1 - state.publicDemand)));
-      const funds = state.funds + (state.unsoldInventory - unsoldInventory) * state.clipsCost;
+      const funds = state.funds + (state.unsoldInventory - unsoldInventory) * state.sellingPrice;
       return {
         ...state,
         unsoldInventory,
@@ -40,18 +40,50 @@ export const gameReducer = (state: State, action: Action): State => {
         unsoldInventory: state.unsoldInventory + state.produceBonus,
         wireStock: state.wireStock - 1,
         producePerSecond: state.producePerSecond + state.produceBonus,
-        fundsPerSecond: state.fundsPerSecond + state.clipsCost,
+        fundsPerSecond: state.fundsPerSecond + state.produceBonus * state.sellingPrice,
+      };
+    case 'BUY_MARKETING':
+      const marketing = Math.min(state.marketing + 1, 10);
+      return {
+        ...state,
+        marketing,
+        marketingCost: state.marketingCost * 2,
+        funds: state.funds - state.marketingCost,
+        sellingPrice: state.sellingPriceRef * marketing,
+      };
+    case 'INCREASE_SELLING_PRICE':
+      const increaseSellingPrice = Math.min(state.sellingPriceRef + 0.01, 1);
+      return {
+        ...state,
+        sellingPriceRef: increaseSellingPrice,
+        sellingPrice: increaseSellingPrice * state.marketing,
+        publicDemand: 0.1 / increaseSellingPrice,
+      };
+    case 'DECREASE_SELLING_PRICE':
+      const decreaseSellingPrice = Math.max(state.sellingPriceRef - 0.01, 0.1);
+      return {
+        ...state,
+        sellingPriceRef: decreaseSellingPrice,
+        sellingPrice: decreaseSellingPrice * state.marketing,
+        publicDemand: 0.1 / decreaseSellingPrice,
       };
     case 'UPDATE_PER_SECOND': {
-      const clippersPerSecond = state.megaClippers * 500 + state.autoClippers;
-      const maxProducible = Math.min(clippersPerSecond, state.wireStock);
-      const producePerSecond = maxProducible * state.produceBonus;
-      const fundsPerSecond = producePerSecond * state.clipsCost;
+      const megaClippersPerSecond = state.megaClippers * 500;
+      const clippersPerSecond =
+        state.wireStock >= megaClippersPerSecond + state.autoClippers
+          ? megaClippersPerSecond + state.autoClippers
+          : state.wireStock >= megaClippersPerSecond
+            ? megaClippersPerSecond
+            : state.wireStock >= state.autoClippers
+              ? state.autoClippers
+              : 0;
+      const producePerSecond = clippersPerSecond * state.produceBonus;
+      const fundsPerSecond = producePerSecond * state.sellingPrice;
       return {
         ...state,
         clips: state.clips + producePerSecond,
         unsoldInventory: state.unsoldInventory + producePerSecond,
-        wireStock: state.wireStock - maxProducible,
+        wireStock: state.wireStock - clippersPerSecond,
         producePerSecond,
         fundsPerSecond,
       };

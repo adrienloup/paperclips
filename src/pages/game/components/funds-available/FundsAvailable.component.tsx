@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useGame } from '@/src/pages/game/useGame.ts';
+import { GroupComponent } from '@/src/generic/common/components/group/Group.component.tsx';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
 
 export const FundsAvailableComponent = () => {
@@ -8,11 +9,13 @@ export const FundsAvailableComponent = () => {
   const game = useGame();
 
   return (
-    <DialComponent
-      value={game.funds}
-      style="currency"
-      notation="compact"
-      label={t('game.fundsAvailable')}
-    />
+    <GroupComponent>
+      <DialComponent
+        value={game.funds}
+        style="currency"
+        notation="compact"
+        label={t('game.fundsAvailable')}
+      />
+    </GroupComponent>
   );
 };

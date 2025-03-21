@@ -8,21 +8,20 @@
   --color-solid-1: #ff00a6;
   --color-solid-2: #00ff05;
   --color-solid-3: #ffe500;
+  --color-solid-4: #ffe0ea;
+  --color-solid-5: #00d9ff;
   --color-neutral-1: #1b1b1b;
-  --color-neutral-2: #2b2b2b;
-  --color-neutral-3: #5e5e5e;
+  --color-neutral-2: #262626;
+  --color-neutral-3: #3b3b3b;
   --color-neutral-4: #989898;
-  --color-neutral-5: #c3c3c3;
-  --color-neutral-6: #eee;
-  --color-neutral-7: #fff;
+  --color-neutral-5: #eee;
+  --color-neutral-6: #fff;
 }
 
 @mixin size {
-  --font-size-xl: 6rem;
-  --font-size-l: 5rem;
-  --font-size-m: 4rem;
-  --font-size-s: 1.5rem;
-  --font-size-xs: 1rem;
+  --font-size-l: 3rem;
+  --font-size-m: 2rem;
+  --font-size-s: 1rem;
 }
 
 @mixin spacing {

@@ -1,11 +1,11 @@
 .clips {
-  //flex: 0 0 100%;
   display: flex;
-  align-items: center;
-  padding: var(--spacing-l) var(--spacing-l);
+  align-self: stretch;
+  padding: var(--spacing-m);
+  background-color: var(--color-neutral-2);
   letter-spacing: 0.1rem;
   font-family: var(--font-text-bold), sans-serif;
-  font-size: var(--font-size-m);
-  -webkit-text-stroke: 0.08rem var(--color-1);
+  font-size: var(--font-size-l);
+  -webkit-text-stroke: 0.075rem var(--color-neutral-6);
   color: transparent;
 }

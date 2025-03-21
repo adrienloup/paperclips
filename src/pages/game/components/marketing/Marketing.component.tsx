@@ -5,8 +5,8 @@ import { DialComponent } from '@/src/generic/common/components/dial/Dial.compone
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
-export const ProducePerSecondComponent = () => {
-  //console.log('ProducePerSecondComponent');
+export const MarketingComponent = () => {
+  //console.log('MarketingComponent');
   const { t } = useTranslation();
   const setGame = useGameDispatch();
   const game = useGame();
@@ -14,17 +14,21 @@ export const ProducePerSecondComponent = () => {
   return (
     <GroupComponent>
       <DialComponent
-        value={game.producePerSecond}
-        notation="compact"
-        label={t('game.producePerSecond')}
+        value={game.marketingCost}
+        style="currency"
+        label={t('game.marketingCost')}
+        disabled={game.marketing >= 10}
+      />
+      <DialComponent
+        value={game.marketing}
+        label={t('game.marketing')}
       />
       <ButtonComponent
         className={styles.button}
-        disabled={game.wireStock <= 0}
-        onClick={() => setGame({ type: 'PRODUCE_MANUAL' })}
+        disabled={game.funds < game.marketingCost || game.marketing >= 10}
+        onClick={() => setGame({ type: 'BUY_MARKETING' })}
       >
-        {t('game.produceManual')}
-        <span>1</span>
+        Buy
       </ButtonComponent>
     </GroupComponent>
   );

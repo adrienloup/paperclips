@@ -3,4 +3,32 @@
   grid-row: 1;
   display: flex;
   flex-direction: column;
+  animation:
+    headerSlide 0.75s var(--ease-quad),
+    headerFade 1s var(--ease-quad);
+  will-change: transform, opacity;
+}
+
+@keyframes headerSlide {
+  0% {
+    transform: translateY(1200px);
+  }
+  20% {
+    transform: translateY(120px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes headerFade {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

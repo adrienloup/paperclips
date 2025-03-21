@@ -13,24 +13,25 @@ export const AutoClippersComponent = () => {
 
   return (
     <GroupComponent>
-      <ButtonComponent
-        className={styles.button}
-        disabled={game.funds < game.autoClippersCost}
-        onClick={() => setGame({ type: 'BUY_AUTOCLIPPERS' })}
-      >
-        Buy
-      </ButtonComponent>
+      <DialComponent
+        value={game.autoClippers}
+        notation="compact"
+        label={t('game.autoClippers')}
+      />
       <DialComponent
         value={game.autoClippersCost}
         style="currency"
         notation="compact"
         label={t('game.autoClippersCost')}
       />
-      <DialComponent
-        value={game.autoClippers}
-        notation="compact"
-        label={t('game.autoClippers')}
-      />
+      <ButtonComponent
+        className={styles.button}
+        disabled={game.funds < game.autoClippersCost}
+        onClick={() => setGame({ type: 'BUY_AUTOCLIPPERS' })}
+      >
+        Buy
+        <span>1</span>
+      </ButtonComponent>
     </GroupComponent>
   );
 };

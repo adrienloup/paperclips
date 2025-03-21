@@ -9,7 +9,7 @@ export const NumberComponent = ({ className, value, style, notation, limit }: Nu
     currency: language === 'en' ? 'USD' : 'EUR',
     notation: notation,
     minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
+    maximumFractionDigits: style === 'percent' ? 0 : 2,
   };
 
   const formatValue: string = new Intl.NumberFormat(language === 'en' ? 'en-US' : 'fr-FR', options).format(

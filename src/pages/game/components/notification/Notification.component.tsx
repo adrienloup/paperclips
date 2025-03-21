@@ -1,9 +1,9 @@
 import { useNotificationDispatch } from '@/src/pages/game/components/notification/useNotification.ts';
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
+import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 import { Notification } from '@/src/pages/game/components/notification/Notification.type.ts';
 import styles from '@/src/pages/game/components/notification/Notification.module.scss';
-import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 
 export const NotificationComponent = ({ notification }: { notification: Notification }) => {
   const setNotifications = useNotificationDispatch();

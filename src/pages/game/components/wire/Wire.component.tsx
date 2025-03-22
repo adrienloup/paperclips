@@ -7,7 +7,7 @@ import { NumberComponent } from '@/src/generic/common/components/number/Number.c
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const WireComponent = () => {
-  //console.log('WireComponent');
+  //console.log('WalletComponent');
   const { t } = useTranslation();
   const setGame = useGameDispatch();
   const game = useGame();

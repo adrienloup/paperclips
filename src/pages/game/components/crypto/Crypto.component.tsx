@@ -1,11 +1,11 @@
 import { useCallback, useState } from 'react';
 import { useInterval } from '@/src/generic/hooks/useInterval.ts';
-import { getInterval, getPrice, getVolume } from '@/src/pages/game/components/exchange/Exchange.utils.ts';
+import { getInterval, getPrice, getVolume } from '@/src/pages/game/components/crypto/Crypto.utils.ts';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component.tsx';
-import { StockSimulator } from '@/src/pages/game/components/exchange/Exchange.type.ts';
-import styles from '@/src/pages/game/components/exchange/Crypto.module.scss';
+import { Crypto } from '@/src/pages/game/components/crypto/Crypto.type.ts';
+import styles from '@/src/pages/game/components/crypto/Crypto.module.scss';
 
-export const CryptoComponent = ({ name, price, volume }: StockSimulator) => {
+export const CryptoComponent = ({ name, price, volume }: Crypto) => {
   //console.log('CryptoComponent');
   const [currentPrice, setCurrentPrice] = useState(price);
   const [previousPrice, setPreviousPrice] = useState(price);

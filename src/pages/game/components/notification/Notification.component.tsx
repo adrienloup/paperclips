@@ -20,12 +20,11 @@ export const NotificationComponent = ({ notification }: { notification: Notifica
       onAnimationEnd={onAnimationEnd}
     >
       <span className={styles.text}>
-        {notification.text}{' '}
         <ButtonComponent
           className={styles.link}
-          to={`/paperclips/explore/${notification.page}`}
+          to={`/paperclips/explore/${notification.path}`}
         >
-          {notification.page}
+          {notification.text}
         </ButtonComponent>
       </span>
       <ButtonComponent

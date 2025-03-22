@@ -30,12 +30,6 @@ export const HeaderComponent = React.memo(() => {
     >
       <div className={styles.inside}>
         <div className={styles.inner}>
-          <NavigationComponent />
-          <ButtonComponent onClick={() => setLanguage('en')}>EN</ButtonComponent>
-          <ButtonComponent onClick={() => setLanguage('fr')}>FR</ButtonComponent>
-          <ButtonComponent onClick={() => setMode('dark')}>dark</ButtonComponent>
-          <ButtonComponent onClick={() => setMode('light')}>light</ButtonComponent>
-          <ButtonComponent onClick={() => setMode('system')}>system</ButtonComponent>
           <ButtonComponent
             className={styles.button}
             aria-label={open ? t('common.menu.close') : t('common.menu.open')}
@@ -43,6 +37,12 @@ export const HeaderComponent = React.memo(() => {
           >
             <IconComponent icon={open ? 'menu_open' : 'menu'} />
           </ButtonComponent>
+          <NavigationComponent />
+          <ButtonComponent onClick={() => setLanguage('en')}>EN</ButtonComponent>
+          <ButtonComponent onClick={() => setLanguage('fr')}>FR</ButtonComponent>
+          <ButtonComponent onClick={() => setMode('dark')}>dark</ButtonComponent>
+          <ButtonComponent onClick={() => setMode('light')}>light</ButtonComponent>
+          <ButtonComponent onClick={() => setMode('system')}>system</ButtonComponent>
         </div>
       </div>
     </header>

@@ -4,10 +4,11 @@ import { useInterval } from '@/src/generic/hooks/useInterval.ts';
 import { DebugComponent } from '@/src/pages/game/components/debug/Debug.component.tsx';
 import { NotificationsComponent } from '@/src/pages/game/components/notification/Notifications.component.tsx';
 import { ClipsComponent } from '@/src/pages/game/components/clips/Clips.component.tsx';
-import { GridComponent } from '@/src/generic/common/components/grid/Grid.component.tsx';
-import { ManufacturingComponent } from '@/src/pages/game/components/manufacturing/Manufacturing.component.tsx';
+import { CardsComponent } from '@/src/generic/common/components/card/Cards.component.tsx';
 import { BusinessComponent } from '@/src/pages/game/components/business/Business.component.tsx';
-import { ResourcesComponent } from '@/src/pages/game/components/resources/Resources.component.tsx';
+import { ManufacturingComponent } from '@/src/pages/game/components/manufacturing/Manufacturing.component.tsx';
+import { ComputationalResourcesComponent } from '@/src/pages/game/components/computational-resources/ComputationalResources.component.tsx';
+import { ProjectsComponent } from '@/src/pages/game/components/projects/Projects.component.tsx';
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
@@ -35,11 +36,12 @@ function DashboardComponent() {
       <DebugComponent />
       <NotificationsComponent />
       <ClipsComponent />
-      <GridComponent>
-        <ManufacturingComponent />
+      <CardsComponent>
         <BusinessComponent />
-        <ResourcesComponent />
-      </GridComponent>
+        <ManufacturingComponent />
+        <ComputationalResourcesComponent />
+        <ProjectsComponent />
+      </CardsComponent>
     </article>
   );
 }

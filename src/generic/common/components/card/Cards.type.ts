@@ -1,6 +1,6 @@
 import { Children } from '@/src/generic/types/Children.type.ts';
 
-export interface Grid {
+export interface Cards {
   children: Children;
   className?: string;
 }

@@ -205,6 +205,45 @@ export const DebugComponent = () => {
               10
             </button>
           </form>
+          <form>
+            Drones{' '}
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_DRONES', value: 1e1 })}
+            >
+              1e1
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_DRONES', value: 5e1 })}
+            >
+              5e1
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_DRONES', value: 1e2 })}
+            >
+              1e2
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_DRONES', value: 5e2 })}
+            >
+              5e2
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_DRONES', value: 1e3 })}
+            >
+              1e3
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_DRONES', value: 2e3 })}
+            >
+              2e3
+            </button>
+          </form>
         </div>
       )}
     </>

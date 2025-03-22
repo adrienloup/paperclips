@@ -11,6 +11,16 @@ export const gameReducer = (state: State, action: Action): State => {
         unsoldInventory,
         funds,
       };
+    case 'PRODUCE_MANUAL':
+      if (state.wireStock <= 0) return state;
+      return {
+        ...state,
+        clips: state.clips + state.produceBonus,
+        unsoldInventory: state.unsoldInventory + state.produceBonus,
+        wireStock: state.wireStock - 1,
+        producePerSecond: state.producePerSecond + state.produceBonus,
+        fundsPerSecond: state.fundsPerSecond + state.produceBonus * state.sellingPrice,
+      };
     case 'BUY_WIRE':
       return {
         ...state,
@@ -32,16 +42,6 @@ export const gameReducer = (state: State, action: Action): State => {
         megaClippersCost: state.megaClippersCost + 11e2,
         funds: state.funds - state.megaClippersCost,
       };
-    case 'PRODUCE_MANUAL':
-      if (state.wireStock <= 0) return state;
-      return {
-        ...state,
-        clips: state.clips + state.produceBonus,
-        unsoldInventory: state.unsoldInventory + state.produceBonus,
-        wireStock: state.wireStock - 1,
-        producePerSecond: state.producePerSecond + state.produceBonus,
-        fundsPerSecond: state.fundsPerSecond + state.produceBonus * state.sellingPrice,
-      };
     case 'BUY_MARKETING':
       const marketing = Math.min(state.marketing + 1, 10);
       return {
@@ -50,6 +50,21 @@ export const gameReducer = (state: State, action: Action): State => {
         marketingCost: state.marketingCost * 2,
         funds: state.funds - state.marketingCost,
         sellingPrice: state.sellingPriceRef * marketing,
+      };
+    case 'BUY_HARVESTER_DRONES':
+      return {
+        ...state,
+        harvesterDrones: state.harvesterDrones + 1,
+      };
+    case 'BUY_WIRE_DRONES':
+      return {
+        ...state,
+        wireDrones: state.wireDrones + 1,
+      };
+    case 'BUY_CLIP_FACTORY':
+      return {
+        ...state,
+        clipFactory: state.clipFactory + 1,
       };
     case 'INCREASE_SELLING_PRICE':
       const increaseSellingPrice = Math.min(state.sellingPriceRef + 0.01, 1);
@@ -68,7 +83,7 @@ export const gameReducer = (state: State, action: Action): State => {
         publicDemand: 0.1 / decreaseSellingPrice,
       };
     case 'UPDATE_PER_SECOND': {
-      const megaClippersPerSecond = state.megaClippers * 500;
+      const megaClippersPerSecond = state.megaClippers * 5e2;
       const clippersPerSecond =
         state.wireStock >= megaClippersPerSecond + state.autoClippers
           ? megaClippersPerSecond + state.autoClippers
@@ -97,6 +112,11 @@ export const gameReducer = (state: State, action: Action): State => {
       return {
         ...state,
         wire: action.value,
+      };
+    case 'UPDATE_DRONES':
+      return {
+        ...state,
+        drones: action.value,
       };
     case 'UPDATE_WIRE_BONUS':
       return {

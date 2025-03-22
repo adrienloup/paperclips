@@ -4,6 +4,9 @@ import { ProducePerSecondComponent } from '@/src/pages/game/components/produce-p
 import { WireComponent } from '@/src/pages/game/components/wire/Wire.component.tsx';
 import { AutoClippersComponent } from '@/src/pages/game/components/autoclippers/AutoClippers.component.tsx';
 import { MegaClippersComponent } from '@/src/pages/game/components/megaclippers/MegaClippers.component.tsx';
+import { HarvesterDronesComponent } from '@/src/pages/game/components/harvester-drones/HarvesterDrones.component.tsx';
+import { WireDronesComponent } from '@/src/pages/game/components/wire-drones/WireDrones.component.tsx';
+import { ClipFactoryComponent } from '@/src/pages/game/components/clip-factory/ClipFactory.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ManufacturingComponent = () => {
@@ -20,6 +23,9 @@ export const ManufacturingComponent = () => {
       <WireComponent />
       <AutoClippersComponent />
       <MegaClippersComponent />
+      <WireDronesComponent />
+      <HarvesterDronesComponent />
+      <ClipFactoryComponent />
     </CardComponent>
   );
 };

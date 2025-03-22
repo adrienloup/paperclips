@@ -1,15 +1,19 @@
 export type Action =
   | { type: 'SELL_CLIPS' }
+  | { type: 'PRODUCE_MANUAL' }
   | { type: 'BUY_WIRE' }
   | { type: 'BUY_AUTOCLIPPERS' }
   | { type: 'BUY_MEGACLIPPERS' }
   | { type: 'BUY_MARKETING' }
-  | { type: 'PRODUCE_MANUAL' }
+  | { type: 'BUY_HARVESTER_DRONES' }
+  | { type: 'BUY_WIRE_DRONES' }
+  | { type: 'BUY_CLIP_FACTORY' }
   | { type: 'INCREASE_SELLING_PRICE' }
   | { type: 'DECREASE_SELLING_PRICE' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_WIRE_COST' }
   | { type: 'UPDATE_WIRE'; value: number }
+  | { type: 'UPDATE_DRONES'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; bonus: number }
   | { type: 'UPDATE_PRODUCE_BONUS'; bonus: number }
   | { type: 'INITIALIZE_STATE'; state: State };
@@ -17,9 +21,14 @@ export type Action =
 export interface State {
   autoClippers: number;
   autoClippersCost: number;
+  clipFactory: number;
+  clipFactoryCost: number;
   clips: number;
+  drones: number;
   funds: number;
   fundsPerSecond: number;
+  harvesterDrones: number;
+  harvesterDronesCost: number;
   marketing: number;
   marketingCost: number;
   megaClippers: number;
@@ -34,5 +43,7 @@ export interface State {
   wire: number;
   wireBonus: number;
   wireCost: number;
+  wireDrones: number;
+  wireDronesCost: number;
   wireStock: number;
 }

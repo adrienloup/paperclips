@@ -4,11 +4,11 @@ export type Action =
   | { type: 'UPDATE_NOTIFICATION'; id: number };
 
 export interface Notification {
-  id: number;
-  text: string;
-  page: string;
-  enable: boolean;
   animate: boolean;
+  enable: boolean;
+  id: number;
+  path: string;
+  text: string;
 }
 
 export type State = Notification[];

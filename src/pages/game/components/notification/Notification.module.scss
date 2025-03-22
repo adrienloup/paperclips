@@ -18,6 +18,10 @@
   font-size: inherit;
   color: inherit;
 
+  &:focus-visible {
+    outline-offset: calc(-1 * var(--outline));
+  }
+
   &:hover {
     background-color: var(--color-solid-7);
   }

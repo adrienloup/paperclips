@@ -14,7 +14,7 @@ export const ClipFactoryComponent = () => {
       <DialComponent
         value={game.clipFactory}
         notation="compact"
-        label="Clip factory"
+        label="Clip factories"
       />
       <DialComponent
         value={game.clipFactoryCost}

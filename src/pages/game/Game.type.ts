@@ -10,6 +10,8 @@ export type Action =
   | { type: 'BUY_CLIP_FACTORY' }
   | { type: 'INCREASE_SELLING_PRICE' }
   | { type: 'DECREASE_SELLING_PRICE' }
+  | { type: 'INCREASE_MEMORY' }
+  | { type: 'INCREASE_PROCESSORS' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_WIRE_COST' }
   | { type: 'UPDATE_WIRE'; value: number }
@@ -33,12 +35,15 @@ export interface State {
   marketingCost: number;
   megaClippers: number;
   megaClippersCost: number;
-  megaClippersRef: number;
+  memory: number;
+  processors: number;
   produceBonus: number;
   producePerSecond: number;
   publicDemand: number;
   sellingPrice: number;
   sellingPriceRef: number;
+  trust: number;
+  trustCost: number;
   unsoldInventory: number;
   wire: number;
   wireBonus: number;

@@ -30,25 +30,23 @@ export const SellingPriceComponent = () => {
       <ButtonComponent
         className={styles.button}
         disabled={game.sellingPriceRef === 1}
-        aria-label="Increase price"
+        aria-label="Increase selling price"
         onClick={() => setGame({ type: 'INCREASE_SELLING_PRICE' })}
       >
         <IconComponent
           className={styles.icon}
-          icon="expand_circle_up"
-          aria-label={t('Raise')}
+          icon="add_circle"
         />
       </ButtonComponent>
       <ButtonComponent
         className={styles.button}
         disabled={game.sellingPriceRef === 0.1}
-        aria-label="Decrease price"
+        aria-label="Decrease selling price"
         onClick={() => setGame({ type: 'DECREASE_SELLING_PRICE' })}
       >
         <IconComponent
           className={styles.icon}
-          icon="expand_circle_down"
-          aria-label={t('Lower')}
+          icon="do_not_disturb_on"
         />
       </ButtonComponent>
     </GroupComponent>

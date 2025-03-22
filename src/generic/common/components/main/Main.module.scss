@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   animation:
-    headerSlide 0.75s var(--ease-quad),
-    headerFade 1s var(--ease-quad);
+    headerSlide 700ms var(--ease-quad),
+    headerFade 900ms var(--ease-quad);
   will-change: transform, opacity;
 }
 

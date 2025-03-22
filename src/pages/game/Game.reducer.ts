@@ -82,6 +82,18 @@ export const gameReducer = (state: State, action: Action): State => {
         sellingPrice: decreaseSellingPrice * state.marketing,
         publicDemand: 0.1 / decreaseSellingPrice,
       };
+    case 'INCREASE_MEMORY':
+      return {
+        ...state,
+        processors: state.processors + 1,
+        trust: state.trust - 1,
+      };
+    case 'INCREASE_PROCESSORS':
+      return {
+        ...state,
+        memory: state.memory + 1,
+        trust: state.trust - 1,
+      };
     case 'UPDATE_PER_SECOND': {
       const megaClippersPerSecond = state.megaClippers * 5e2;
       const clippersPerSecond =

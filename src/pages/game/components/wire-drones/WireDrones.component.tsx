@@ -15,7 +15,7 @@ export const WireDronesComponent = () => {
       <DialComponent
         value={game.wireDrones}
         notation="compact"
-        label="Wire drone"
+        label="Wire drones"
       />
       <DialComponent
         value={game.wireDronesCost}

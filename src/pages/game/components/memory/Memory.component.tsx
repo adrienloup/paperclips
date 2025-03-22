@@ -2,36 +2,30 @@ import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { GroupComponent } from '@/src/generic/common/components/group/Group.component.tsx';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
-import { NumberComponent } from '@/src/generic/common/components/number/Number.component.tsx';
+import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
-export const HarvesterDronesComponent = () => {
-  //console.log('HarvesterDronesComponent');
+export const MemoryComponent = () => {
+  //console.log('MemoryComponent');
   const setGame = useGameDispatch();
   const game = useGame();
 
   return (
     <GroupComponent>
       <DialComponent
-        value={game.harvesterDrones}
+        value={game.memory}
         notation="compact"
-        label="Harvester drones"
-      />
-      <DialComponent
-        value={game.harvesterDronesCost}
-        style="currency"
-        notation="compact"
-        label="Harvester drone cost"
+        label="Memory"
       />
       <ButtonComponent
         className={styles.button}
-        disabled={game.funds < game.harvesterDronesCost}
-        onClick={() => setGame({ type: 'BUY_HARVESTER_DRONES' })}
+        disabled={game.trust <= game.memory + game.processors}
+        aria-label="Increase processors"
+        onClick={() => setGame({ type: 'INCREASE_MEMORY' })}
       >
-        Buy
-        <NumberComponent
-          value={game.drones}
-          notation="compact"
+        <IconComponent
+          className={styles.icon}
+          icon="add_circle"
         />
       </ButtonComponent>
     </GroupComponent>

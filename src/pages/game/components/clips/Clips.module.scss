@@ -10,9 +10,11 @@
   color: transparent;
 
   &.active {
-    padding: var(--spacing-xs);
+    gap: var(--spacing-s);
+    padding: var(--spacing-xs) var(--spacing-s);
     font-size: var(--font-size-m);
-    animation: Appear 350ms var(--ease-expo);
+    backface-visibility: hidden;
+    animation: Appear 400ms var(--ease-expo);
   }
 }
 

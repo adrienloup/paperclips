@@ -10,6 +10,7 @@ import { ManufacturingComponent } from '@/src/pages/game/components/manufacturin
 import { ComputationalResourcesComponent } from '@/src/pages/game/components/computational-resources/ComputationalResources.component.tsx';
 import { ProjectsAvailableComponent } from '@/src/pages/game/components/projects-available/ProjectsAvailable.component.tsx';
 import { StickyComponent } from '@/src/generic/common/components/sticky/Sticky.component.tsx';
+import { InvestmentsComponent } from '@/src/pages/game/components/investments/Investments.component.tsx';
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
@@ -44,6 +45,7 @@ function DashboardComponent() {
         <ManufacturingComponent />
         <ComputationalResourcesComponent />
         <ProjectsAvailableComponent />
+        <InvestmentsComponent />
       </CardsComponent>
     </article>
   );

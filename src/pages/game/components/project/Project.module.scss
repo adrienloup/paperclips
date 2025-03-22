@@ -26,6 +26,10 @@
 
   &:focus-visible {
     outline-offset: calc(-1 * var(--outline));
+
+    .disabled & {
+      outline: 0;
+    }
   }
 
   //&:hover {
@@ -53,7 +57,7 @@
   }
 
   &:active {
-    box-shadow: 0 0 0 var(--shadow) var(--color-solid-5);
+    box-shadow: 0 0 0 var(--shadow) var(--color-solid-3);
   }
 }
 
@@ -66,9 +70,15 @@
   font-size: var(--font-size-m);
 }
 
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: default;
+}
+
 @keyframes Appear {
   0% {
-    background-color: var(--color-solid-2);
+    background-color: var(--color-solid-4);
   }
 }
 
@@ -94,7 +104,7 @@
 //  }
 //
 //  &:active {
-//    box-shadow: 0 0 0 var(--shadow) var(--color-solid-5);
+//    box-shadow: 0 0 0 var(--shadow) var(--color-solid-3);
 //  }
 //}
 //
@@ -118,6 +128,6 @@
 //
 //@keyframes Appear {
 //  0% {
-//    background-color: var(--color-solid-2);
+//    background-color: var(--color-solid-4);
 //  }
 //}

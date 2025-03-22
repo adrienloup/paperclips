@@ -27,6 +27,7 @@ export const ProjectsComponent = () => {
         title="Rev tracker"
         text="Automatically calculates average funds per second (500 Operations)"
         path="rev-tracker"
+        disabled={true}
         animate={false}
         onClick={() => console.log('onClick')}
         onAnimationEnd={() => console.log('onAnimationEnd')}
@@ -35,6 +36,7 @@ export const ProjectsComponent = () => {
         title="Rev tracker"
         text="Automatically calculates average funds per second (500 Operations)"
         path="rev-tracker"
+        disabled={true}
         animate={false}
         onClick={() => console.log('onClick')}
         onAnimationEnd={() => console.log('onAnimationEnd')}
@@ -43,6 +45,7 @@ export const ProjectsComponent = () => {
         title="Rev tracker"
         text="Automatically calculates average revenue per second (500 Operations)"
         path="rev-tracker"
+        disabled={true}
         animate={false}
         onClick={() => console.log('onClick')}
         onAnimationEnd={() => console.log('onAnimationEnd')}

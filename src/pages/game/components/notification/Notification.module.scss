@@ -2,7 +2,7 @@
   overflow: hidden;
   display: flex;
   max-width: 22.5rem;
-  background-color: var(--color-solid-3);
+  background-color: var(--color-solid-6);
   font-size: var(--font-size-s);
   color: var(--color-neutral-2);
 }
@@ -10,7 +10,7 @@
 .link {
   flex: 1;
   align-self: center;
-  padding: var(--spacing-xs);
+  padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-xs);
   letter-spacing: 0.025rem;
   text-transform: uppercase;
   font-family: var(--font-text-bold), sans-serif;
@@ -21,10 +21,6 @@
   &:focus-visible {
     outline-offset: calc(-1 * var(--outline));
   }
-
-  &:hover {
-    background-color: var(--color-solid-7);
-  }
 }
 
 .button {
@@ -32,7 +28,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-xs);
-  background-color: var(--color-solid-7);
+  background-color: var(--color-solid-6);
   font-size: inherit;
   color: inherit;
 
@@ -53,6 +49,6 @@
 
 @keyframes Appear {
   0% {
-    background-color: var(--color-solid-2);
+    background-color: var(--color-solid-4);
   }
 }

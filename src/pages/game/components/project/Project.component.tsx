@@ -4,11 +4,19 @@ import { IconComponent } from '@/src/generic/common/components/icon/Icon.compone
 import { Project } from '@/src/pages/game/components/project/Project.type';
 import styles from '@/src/pages/game/components/project/Project.module.scss';
 
-export const ProjectComponent = ({ title, text, path, animate, onClick, onAnimationEnd }: Project) => {
+export const ProjectComponent = ({
+  title,
+  text,
+  path,
+  disabled,
+  animate,
+  onClick,
+  onAnimationEnd,
+}: Project) => {
   //console.log('ProjectComponent');
   return (
     <div
-      className={classNames([styles.project, animate ? styles.animate : ''])}
+      className={classNames([styles.project, disabled ? styles.disabled : '', animate ? styles.animate : ''])}
       onAnimationEnd={onAnimationEnd!}
     >
       <ButtonComponent
@@ -19,6 +27,7 @@ export const ProjectComponent = ({ title, text, path, animate, onClick, onAnimat
       </ButtonComponent>
       <ButtonComponent
         className={styles.button}
+        disabled={disabled}
         onClick={onClick}
       >
         <IconComponent

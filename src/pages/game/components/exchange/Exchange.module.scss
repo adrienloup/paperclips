@@ -1,0 +1,26 @@
+.exchange {
+  overflow: hidden;
+  background-color: var(--color-3);
+  border: 0.2rem solid var(--color-3);
+  border-radius: 0.5rem;
+
+  table {
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: var(--spacing-s);
+  }
+
+  th {
+    background-color: var(--color-3);
+  }
+
+  tr {
+    td:first-child {
+      text-transform: uppercase;
+    }
+  }
+}

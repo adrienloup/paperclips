@@ -18,5 +18,12 @@ export const fr: Translation = {
     publicDemand: 'Demande du Public',
     marketing: 'Marketing',
     marketingCost: "Coût d'achat",
+    notifications: {
+      firstStage: 'Première étape',
+      machine: 'Machine automatisée',
+      marketing: 'Marketing',
+      trust: 'Confiance',
+      projects: 'Projets disponibles',
+    },
   },
 };

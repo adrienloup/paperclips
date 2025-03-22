@@ -4,16 +4,16 @@ import {
   cloneElement,
   CSSProperties,
   isValidElement,
+  ReactNode,
   useEffect,
   useRef,
   useState,
 } from 'react';
 import { getPosition } from '@/src/generic/utils/getPosition.ts';
 import { classNames } from '@/src/generic/utils/classNames.ts';
-import { Children as tutu } from '@/src/generic/types/Children.type.ts';
 import styles from './Sticky.module.scss';
 
-export const StickyComponent = ({ children }: { children: tutu }) => {
+export const StickyComponent = ({ children }: { children: ReactNode }) => {
   // console.log("StickyComponent");
   const [active, setActive] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -27,7 +27,7 @@ export const StickyComponent = ({ children }: { children: tutu }) => {
 
       const scrollTop = document.documentElement.scrollTop;
       const offsetTop = getPosition<HTMLElement>(sticky.current!, document.documentElement);
-      //const delta = window.innerWidth <= 769 ? 60 : 0;
+      // const delta = window.innerWidth <= 769 ? 60 : 0;
 
       // if (scrollTop >= offsetTop.top + sticky.current!.clientHeight - delta) {
       if (scrollTop >= offsetTop.top + sticky.current!.clientHeight) {
@@ -39,8 +39,8 @@ export const StickyComponent = ({ children }: { children: tutu }) => {
         if (active) setActive(false);
       }
 
-      //if (scrollTop >= document.body.clientHeight - window.innerHeight - 60) {
-      if (scrollTop >= document.body.clientHeight - window.innerHeight) {
+      if (scrollTop >= document.body.clientHeight - window.innerHeight - 1) {
+        // if (scrollTop >= document.body.clientHeight - window.innerHeight) {
         if (!hidden) setHidden(true);
       } else {
         if (hidden) setHidden(false);

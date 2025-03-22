@@ -16,6 +16,13 @@ export const ClipsComponent = ({ active }: { active?: boolean }) => {
         value={game.clips}
         notation={active ? 'compact' : undefined}
       />
+      {active ? (
+        <NumberComponent
+          value={game.funds}
+          style="currency"
+          notation="compact"
+        />
+      ) : undefined}
     </TitleComponent>
   );
 };

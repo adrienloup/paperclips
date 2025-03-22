@@ -85,13 +85,13 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'INCREASE_MEMORY':
       return {
         ...state,
-        processors: state.processors + 1,
+        memory: state.memory + 1,
         trust: state.trust - 1,
       };
     case 'INCREASE_PROCESSORS':
       return {
         ...state,
-        memory: state.memory + 1,
+        processors: state.processors + 1,
         trust: state.trust - 1,
       };
     case 'UPDATE_PER_SECOND': {
@@ -106,13 +106,24 @@ export const gameReducer = (state: State, action: Action): State => {
               : 0;
       const producePerSecond = clippersPerSecond * state.produceBonus;
       const fundsPerSecond = producePerSecond * state.sellingPrice;
+      const operationsLimit = (state.memory * 1e6) / 20;
+      const operations = Math.min(operationsLimit, state.operations + 5 * state.processors);
+      const creativityLimit = operations !== operationsLimit ? state.creativity + 1 : 0;
+      const creativity =
+        operations === operationsLimit && state.creativity < state.creativityLimit
+          ? state.creativity + 1
+          : state.creativity;
       return {
         ...state,
+        producePerSecond,
+        fundsPerSecond,
+        operations,
+        operationsLimit,
+        creativity,
+        creativityLimit,
         clips: state.clips + producePerSecond,
         unsoldInventory: state.unsoldInventory + producePerSecond,
         wireStock: state.wireStock - clippersPerSecond,
-        producePerSecond,
-        fundsPerSecond,
       };
     }
     case 'UPDATE_WIRE_COST':

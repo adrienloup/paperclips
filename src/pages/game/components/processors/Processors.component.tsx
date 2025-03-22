@@ -19,7 +19,7 @@ export const ProcessorsComponent = () => {
       />
       <ButtonComponent
         className={styles.button}
-        disabled={game.trust <= game.memory + game.processors}
+        disabled={game.trust <= game.memory + game.processors || game.processors >= 80}
         aria-label="Increase processors"
         onClick={() => setGame({ type: 'INCREASE_PROCESSORS' })}
       >

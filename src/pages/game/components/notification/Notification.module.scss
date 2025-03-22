@@ -7,7 +7,7 @@
   color: var(--color-neutral-2);
 }
 
-.text {
+.link {
   flex: 1;
   align-self: center;
   padding: var(--spacing-xs);
@@ -16,10 +16,11 @@
   font-family: var(--font-text-bold), sans-serif;
   line-height: 1.25;
   font-size: inherit;
-}
-
-.link {
   color: inherit;
+
+  &:hover {
+    background-color: var(--color-solid-7);
+  }
 }
 
 .button {

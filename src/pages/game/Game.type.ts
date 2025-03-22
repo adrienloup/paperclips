@@ -26,6 +26,8 @@ export interface State {
   clipFactory: number;
   clipFactoryCost: number;
   clips: number;
+  creativity: number;
+  creativityLimit: number;
   drones: number;
   funds: number;
   fundsPerSecond: number;
@@ -36,6 +38,8 @@ export interface State {
   megaClippers: number;
   megaClippersCost: number;
   memory: number;
+  operations: number;
+  operationsLimit: number;
   processors: number;
   produceBonus: number;
   producePerSecond: number;

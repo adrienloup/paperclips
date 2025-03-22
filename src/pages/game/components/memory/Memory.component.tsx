@@ -19,8 +19,8 @@ export const MemoryComponent = () => {
       />
       <ButtonComponent
         className={styles.button}
-        disabled={game.trust <= game.memory + game.processors}
-        aria-label="Increase processors"
+        disabled={game.trust <= game.memory + game.processors || game.memory >= 20}
+        aria-label="Increase memory"
         onClick={() => setGame({ type: 'INCREASE_MEMORY' })}
       >
         <IconComponent

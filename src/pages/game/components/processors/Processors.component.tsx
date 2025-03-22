@@ -16,6 +16,7 @@ export const ProcessorsComponent = () => {
         value={game.processors}
         notation="compact"
         label="Processors"
+        limit={80}
       />
       <ButtonComponent
         className={styles.button}

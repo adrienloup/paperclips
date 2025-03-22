@@ -8,4 +8,16 @@
   font-size: var(--font-size-l);
   -webkit-text-stroke: 0.075rem var(--color-neutral-6);
   color: transparent;
+
+  &.active {
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-m);
+    animation: Appear 350ms var(--ease-expo);
+  }
+}
+
+@keyframes Appear {
+  0% {
+    transform: translateY(-2rem);
+  }
 }

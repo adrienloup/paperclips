@@ -34,7 +34,7 @@
 
   .animate & {
     animation: Appear 800ms var(--ease-expo);
-    will-change: background-color;
+    //will-change: background-color;
   }
 
   &:focus-visible {
@@ -44,7 +44,7 @@
 
 .animate {
   animation: Appear 800ms var(--ease-expo);
-  will-change: background-color;
+  //will-change: background-color;
 }
 
 @keyframes Appear {

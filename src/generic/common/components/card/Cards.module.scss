@@ -4,7 +4,7 @@
   animation:
     mainSlide 900ms var(--ease-quad),
     mainFade 900ms var(--ease-quad);
-  will-change: transform, opacity;
+  //will-change: transform, opacity;
 }
 
 @keyframes mainSlide {

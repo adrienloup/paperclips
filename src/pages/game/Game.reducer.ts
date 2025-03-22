@@ -107,7 +107,7 @@ export const gameReducer = (state: State, action: Action): State => {
       const producePerSecond = clippersPerSecond * state.produceBonus;
       const fundsPerSecond = producePerSecond * state.sellingPrice;
       const operationsLimit = (state.memory * 1e6) / 20;
-      const operations = Math.min(operationsLimit, state.operations + 5 * state.processors);
+      const operations = Math.min(operationsLimit, state.operations + 10 * state.processors);
       const creativityLimit = operations !== operationsLimit ? state.creativity + 1 : 0;
       const creativity =
         operations === operationsLimit && state.creativity < state.creativityLimit

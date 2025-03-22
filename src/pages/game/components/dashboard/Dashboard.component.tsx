@@ -9,6 +9,7 @@ import { BusinessComponent } from '@/src/pages/game/components/business/Business
 import { ManufacturingComponent } from '@/src/pages/game/components/manufacturing/Manufacturing.component.tsx';
 import { ComputationalResourcesComponent } from '@/src/pages/game/components/computational-resources/ComputationalResources.component.tsx';
 import { ProjectsComponent } from '@/src/pages/game/components/projects/Projects.component.tsx';
+import { StickyComponent } from '@/src/generic/common/components/sticky/Sticky.component.tsx';
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
@@ -35,7 +36,9 @@ function DashboardComponent() {
     <article className={styles.dashboard}>
       <DebugComponent />
       <NotificationsComponent />
-      <ClipsComponent />
+      <StickyComponent>
+        <ClipsComponent />
+      </StickyComponent>
       <CardsComponent>
         <BusinessComponent />
         <ManufacturingComponent />

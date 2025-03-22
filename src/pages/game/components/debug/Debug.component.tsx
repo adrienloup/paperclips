@@ -13,6 +13,7 @@ export const DebugComponent = () => {
   const [notification, setNotification] = useState('');
   const [clips, setClips] = useState('');
   const [funds, setFunds] = useState('');
+  const [trust, setTrust] = useState('');
 
   const onNotificationChange = (e: ChangeEvent<HTMLInputElement>) => setNotification(e.target.value);
   const onNotificationSubmit = (e: ChangeEvent<HTMLFormElement>) => {
@@ -48,6 +49,19 @@ export const DebugComponent = () => {
       },
     });
     setFunds('');
+  };
+
+  const onTrustChange = (e: ChangeEvent<HTMLInputElement>) => setTrust(e.target.value);
+  const onTrustSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE_STATE',
+      state: {
+        ...game,
+        trust: Math.min(parseInt(trust), 100),
+      },
+    });
+    setTrust('');
   };
 
   useEffect(() => {
@@ -243,6 +257,17 @@ export const DebugComponent = () => {
             >
               2e3
             </button>
+          </form>
+          <form onSubmit={onTrustSubmit}>
+            <label>
+              Trust
+              <input
+                type="text"
+                value={trust}
+                onChange={onTrustChange}
+              />
+              <button type="submit">Add</button>
+            </label>
           </form>
         </div>
       )}

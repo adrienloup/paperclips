@@ -16,6 +16,7 @@ export const MemoryComponent = () => {
         value={game.memory}
         notation="compact"
         label="Memory"
+        limit={20}
       />
       <ButtonComponent
         className={styles.button}

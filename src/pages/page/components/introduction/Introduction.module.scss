@@ -1,6 +1,6 @@
 .introduction {
   animation: Appear 250ms var(--ease-quad);
-  will-change: opacity;
+  //will-change: opacity;
 }
 
 @keyframes Appear {

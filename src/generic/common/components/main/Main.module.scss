@@ -6,7 +6,7 @@
   animation:
     headerSlide 700ms var(--ease-quad),
     headerFade 900ms var(--ease-quad);
-  will-change: transform, opacity;
+  //will-change: transform, opacity;
 }
 
 @keyframes headerSlide {

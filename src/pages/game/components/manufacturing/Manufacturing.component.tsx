@@ -25,7 +25,7 @@ export const ManufacturingComponent = () => {
       <ProducePerSecondComponent />
       <WireComponent />
       {features.autoClippers && <AutoClippersComponent />}
-      <MegaClippersComponent />
+      {features.megaClippers && <MegaClippersComponent />}
       <ClipFactoryComponent />
       <WireDronesComponent />
       <HarvesterDronesComponent />

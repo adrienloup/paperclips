@@ -49,25 +49,26 @@ export const FeaturesComponent = () => {
   //
 
   const onToggle = useCallback(
-    (limit: number, disable: boolean, feature: string, text: string) => {
-      if (game.clips >= limit && disable) {
+    (key: number, limit: number, disable: boolean, feature: string, text: string) => {
+      if (key >= limit && disable) {
         setFeatures({ type: 'ENABLE', feature });
         setNotifications({ type: 'ADD', id: feature });
         setAlerts({ type: 'ADD', alert: { text } });
-      } else if (game.clips < limit) {
+      } else if (key < limit) {
         setFeatures({ type: 'DISABLE', feature });
         setNotifications({ type: 'REMOVE', id: feature });
       }
     },
-    [game.clips]
+    []
   );
 
   const update = useCallback(() => {
-    onToggle(1e3, !features.marketing, 'marketing', 'Marketing');
-    onToggle(1e3, !features.autoClippers, 'autoClippers', 'autoClippers alert');
-    onToggle(2e3, !features.trust, 'trust', 'Trust alert');
-    onToggle(2e3, !features.projects, 'projects', 'projects alert');
-  }, [onToggle]);
+    onToggle(game.clips, 1e3, !features.marketing, 'marketing', 'Marketing');
+    onToggle(game.clips, 1e3, !features.autoClippers, 'autoClippers', 'autoClippers alert');
+    onToggle(game.clips, 2e3, !features.trust, 'trust', 'Trust alert');
+    onToggle(game.clips, 2e3, !features.projects, 'projects', 'projects alert');
+    onToggle(game.autoClippers, 75, !features.megaClippers, 'megaClippers', 'megaClippers alert');
+  }, [game, onToggle]);
 
   useEffect(() => {
     update();

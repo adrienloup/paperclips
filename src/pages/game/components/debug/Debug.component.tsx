@@ -17,7 +17,8 @@ export const DebugComponent = () => {
   const [funds, setFunds] = useState('');
   const [trust, setTrust] = useState('');
 
-  const onNotificationChange = (e: ChangeEvent<HTMLInputElement>) => setNotification(e.target.value);
+  const onNotificationChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setNotification(e.target.value);
   const onNotificationSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setNotifications({
@@ -66,8 +67,19 @@ export const DebugComponent = () => {
     setTrust('');
   };
 
+  const clearGameState = () => {
+    localStorage.removeItem('_paperclips_3mma_0_game');
+    window.location.reload();
+  };
+
+  const clearAllState = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
   useEffect(() => {
-    const debug = location.search.split('=')[0] === '?debug' ? location.search.split('=').pop() : '';
+    const debug =
+      location.search.split('=')[0] === '?debug' ? location.search.split('=').pop() : '';
     if (debug === '1') {
       window.localStorage.setItem('_paperclips_3mma_0_debug', '1');
     } else if (debug === '0') {
@@ -273,6 +285,23 @@ export const DebugComponent = () => {
                 onClick={() => setAlerts({ type: 'ADD', alert: { text: 'alert1' } })}
               >
                 1
+              </button>
+            </label>
+          </form>
+          <form>
+            <label>
+              Clear{' '}
+              <button
+                type="button"
+                onClick={clearGameState}
+              >
+                Game
+              </button>
+              <button
+                type="button"
+                onClick={clearAllState}
+              >
+                All
               </button>
             </label>
           </form>

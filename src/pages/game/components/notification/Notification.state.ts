@@ -2,13 +2,6 @@ import { State } from '@/src/pages/game/components/notification/Notification.typ
 
 export const initialState: State = [
   {
-    id: 'stage1',
-    text: 'game.notification.stage1',
-    path: 'stage1',
-    enable: true,
-    animate: true,
-  },
-  {
     id: 'autoClippers',
     text: 'game.notification.autoClippers',
     path: 'autoclippers',
@@ -23,9 +16,9 @@ export const initialState: State = [
     animate: false,
   },
   {
-    id: 'trust',
-    text: 'game.notification.trust',
-    path: 'trust',
+    id: 'megaClippers',
+    text: 'game.notification.megaClippers',
+    path: 'megaclippers',
     enable: false,
     animate: false,
   },
@@ -33,6 +26,20 @@ export const initialState: State = [
     id: 'projects',
     text: 'game.notification.projects',
     path: 'projects',
+    enable: false,
+    animate: false,
+  },
+  {
+    id: 'stage1',
+    text: 'game.notification.stage1',
+    path: 'stage1',
+    enable: true,
+    animate: true,
+  },
+  {
+    id: 'trust',
+    text: 'game.notification.trust',
+    path: 'trust',
     enable: false,
     animate: false,
   },

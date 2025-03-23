@@ -1,6 +1,9 @@
 import { useReducer } from 'react';
 import { createPortal } from 'react-dom';
-import { AlertContext, AlertDispatchContext } from '@/src/generic/common/components/alert/Alert.context.ts';
+import {
+  AlertContext,
+  AlertDispatchContext,
+} from '@/src/generic/common/components/alert/Alert.context.ts';
 import { alertReducer } from '@/src/generic/common/components/alert/Alert.reducer.ts';
 import { AlertsComponent } from '@/src/generic/common/components/alert/Alerts.component.tsx';
 import { AlertComponent } from '@/src/generic/common/components/alert/Alert.component.tsx';

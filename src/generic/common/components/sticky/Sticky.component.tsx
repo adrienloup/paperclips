@@ -12,12 +12,13 @@ import {
 import { getPosition } from '@/src/generic/utils/getPosition.ts';
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import styles from './Sticky.module.scss';
+import { createPortal } from 'react-dom';
 
 export const StickyComponent = ({ children }: { children: ReactNode }) => {
   // console.log("StickyComponent");
   const [active, setActive] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const [height, setHeight] = useState(0);
+  const [InnerHeight, setInnerHeight] = useState(0);
+  const [bodyHeight, setBodyHeight] = useState(0);
   const sticky = useRef<HTMLDivElement>(null);
   const inner = useRef<HTMLDivElement>(null);
 
@@ -32,24 +33,24 @@ export const StickyComponent = ({ children }: { children: ReactNode }) => {
       // if (scrollTop >= offsetTop.top + sticky.current!.clientHeight - delta) {
       if (scrollTop >= offsetTop.top + sticky.current!.clientHeight) {
         if (!active) {
-          setHeight(inner.current!.clientHeight);
+          setInnerHeight(inner.current!.clientHeight);
           setActive(true);
         }
       } else {
         if (active) setActive(false);
-      }
-
-      if (scrollTop >= document.body.clientHeight - window.innerHeight - 1) {
-        // if (scrollTop >= document.body.clientHeight - window.innerHeight) {
-        if (!hidden) setHidden(true);
-      } else {
-        if (hidden) setHidden(false);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   });
+
+  useEffect(() => {
+    const onResize = () => setBodyHeight(document.body.offsetHeight);
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   const childrenWithProps = Children.map(children, (child) => {
     if (isValidElement(child)) {
@@ -61,15 +62,29 @@ export const StickyComponent = ({ children }: { children: ReactNode }) => {
   return (
     <div
       ref={sticky}
-      className={classNames([styles.sticky, active ? styles.active : '', hidden ? styles.hidden : ''])}
-      style={{ '--height': `${height}px` } as CSSProperties}
+      className={classNames([styles.sticky, active ? styles.active : ''])}
+      style={{ '--height': `${InnerHeight}px` } as CSSProperties}
     >
-      <div
-        ref={inner}
-        className={styles.inner}
-      >
-        {childrenWithProps}
-      </div>
+      {!active ? (
+        <div
+          ref={inner}
+          className={styles.inner}
+        >
+          {childrenWithProps}
+        </div>
+      ) : (
+        createPortal(
+          <div
+            className={styles.stickyCopy}
+            style={{
+              height: `${bodyHeight}px`,
+            }}
+          >
+            {childrenWithProps}
+          </div>,
+          document.body
+        )
+      )}
     </div>
   );
 };

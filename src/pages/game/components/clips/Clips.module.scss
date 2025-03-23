@@ -15,6 +15,7 @@
     font-size: var(--font-size-m);
     backface-visibility: hidden;
     animation: Appear 400ms var(--ease-expo);
+    pointer-events: initial;
   }
 }
 

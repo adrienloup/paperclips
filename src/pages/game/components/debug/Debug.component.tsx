@@ -270,9 +270,9 @@ export const DebugComponent = () => {
               Alerts{' '}
               <button
                 type="button"
-                onClick={() => setAlerts({ type: 'ADD', alert: { id: 1, text: 'alert1' } })}
+                onClick={() => setAlerts({ type: 'ADD', alert: { text: 'alert1' } })}
               >
-                1e1
+                1
               </button>
             </label>
           </form>

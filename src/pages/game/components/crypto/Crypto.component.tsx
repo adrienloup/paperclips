@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useInterval } from '@/src/generic/hooks/useInterval.ts';
+import { classNames } from '@/src/generic/utils/classNames.ts';
 import { getInterval, getPrice, getVolume } from '@/src/pages/game/components/crypto/Crypto.utils.ts';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component.tsx';
 import { Crypto } from '@/src/pages/game/components/crypto/Crypto.type.ts';
@@ -10,7 +11,7 @@ export const CryptoComponent = ({ name, price, volume }: Crypto) => {
   const [currentPrice, setCurrentPrice] = useState(price);
   const [previousPrice, setPreviousPrice] = useState(price);
   const [currentVolume, setCurrentVolume] = useState(volume);
-  const [duration, setDuration] = useState(getInterval());
+  const [duration, setDuration] = useState(1000);
 
   const update = useCallback(() => {
     setPreviousPrice(currentPrice);
@@ -25,24 +26,23 @@ export const CryptoComponent = ({ name, price, volume }: Crypto) => {
   useInterval(update, duration);
 
   return (
-    <tr className={styles.crypto}>
-      <td>{name}</td>
-      <td>
+    <div className={styles.crypto}>
+      <div className={styles.name}>{name}</div>
+      <div className={styles.number}>
         <NumberComponent
           value={currentPrice}
           notation="compact"
         />
-      </td>
-      <td className={isPositive ? styles.positive : styles.negative}>
+      </div>
+      <div className={classNames([styles.variation, isPositive ? styles.positive : styles.negative])}>
         {isPositive ? '▲' : '▼'} {variationPrice.toFixed(2)}
-      </td>
-      <td>
+      </div>
+      <div className={styles.number}>
         <NumberComponent
           value={currentVolume}
           notation="compact"
         />
-      </td>
-      <td>{duration / 1000}</td>
-    </tr>
+      </div>
+    </div>
   );
 };

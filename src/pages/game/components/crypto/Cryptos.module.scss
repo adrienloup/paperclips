@@ -1,40 +1,8 @@
 .cryptos {
-  overflow: hidden;
-  background-color: var(--color-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  padding: var(--spacing-xs);
   border: 0.2rem solid var(--color-3);
   border-radius: 0.5rem;
-
-  table {
-    max-width: 50rem;
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: collapse;
-  }
-
-  th,
-  td {
-    padding: var(--spacing-s);
-    text-align: left;
-  }
-
-  td {
-    //letter-spacing: 0.1rem;
-    //font-family: var(--font-text-bold), sans-serif;
-    //font-size: var(--font-size-m);
-    //-webkit-text-stroke: 0.075rem var(--color-1);
-    //color: transparent;
-  }
-
-  th {
-    background-color: var(--color-3);
-    //letter-spacing: 0.025rem;
-    //text-transform: uppercase;
-    font-size: var(--font-size-s);
-  }
-
-  tr {
-    td:first-child {
-      text-transform: uppercase;
-    }
-  }
 }

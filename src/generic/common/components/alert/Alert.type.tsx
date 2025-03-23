@@ -1,7 +1,7 @@
 import { Status } from '@/src/generic/types/Status.type.ts';
 
 export interface Alert {
-  id: number;
+  id?: number;
   title?: string;
   text?: string;
   timeout?: number;

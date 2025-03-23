@@ -19,10 +19,9 @@ export const AlertProvider = ({ children }: { children: Children }) => {
                 {alerts.map((alert: Alert) => (
                   <AlertComponent
                     key={alert.id}
-                    id={alert.id}
                     title={alert.title}
                     text={alert.text}
-                    remove={() => setAlerts({ type: 'REMOVE', id: alert.id })}
+                    remove={() => setAlerts({ type: 'REMOVE', id: alert.id! })}
                   />
                 ))}
               </AlertsComponent>,

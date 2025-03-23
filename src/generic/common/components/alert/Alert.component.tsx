@@ -7,9 +7,9 @@ import styles from '@/src/generic/common/components/alert/Alert.module.scss';
 export const AlertComponent = ({
   title,
   text,
-  status = 'info',
+  status = 'warning',
   timeout = 5,
-  close = true,
+  close = false,
   remove,
 }: Alert) => {
   const outTimer = useRef(0);

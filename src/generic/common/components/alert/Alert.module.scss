@@ -1,9 +1,11 @@
 .alert {
   position: relative;
   display: flex;
-  gap: 0.5rem;
-  margin: 1rem 1rem 1rem 0;
-  padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+  gap: var(--spacing-s);
+  min-width: 30rem;
+  margin: var(--spacing-xs);
+  padding: var(--spacing-m);
+  transform-origin: center;
   pointer-events: initial;
 
   & + & {
@@ -11,7 +13,7 @@
   }
 
   &.animate {
-    animation: Appear 500ms var(--ease-quad);
+    animation: Appear 250ms var(--ease-expo);
   }
 }
 
@@ -113,7 +115,7 @@
   color: var(--color-neutral-2);
 
   .progress {
-    background-color: var(--color-solid-6);
+    background-color: var(--color-solid-7);
   }
 }
 
@@ -129,14 +131,14 @@
 .out {
   transition-property: opacity, transform;
   transition-duration: 0.15s;
-  transition-timing-function: var(--ease-quad);
+  transition-timing-function: var(--ease-expo);
   opacity: 0;
-  transform: translateY(-0.5rem);
+  transform: translateX(-10rem);
 }
 
 @keyframes Appear {
   0% {
-    transform: translateY(-1rem);
+    transform: translateY(-10rem);
   }
 }
 

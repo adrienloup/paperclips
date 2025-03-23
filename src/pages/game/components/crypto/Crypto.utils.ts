@@ -8,4 +8,4 @@ export const getVolume = (volume: number) => {
   return Math.max(0, volume + variation);
 };
 
-export const getInterval = () => Math.floor(Math.random() * 2000) + 1000; // Plage 0, 1, 1e3, 3e3
+export const getInterval = () => Math.floor(Math.random() * 3000) + 2000; // Plage 0, 1, 2000, 5000

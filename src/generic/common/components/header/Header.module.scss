@@ -31,20 +31,26 @@
 
 .button {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 100%;
+  width: 2rem;
+  height: 4rem;
+  margin-top: -2rem;
   display: flex;
   flex-direction: column;
-  width: 2rem;
-  height: 2rem;
   align-items: center;
   justify-content: center;
   background-color: var(--color-3);
-  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   font-size: var(--font-size-s);
   color: var(--color-1);
 
   &:focus-visible {
     outline-offset: calc(-1 * var(--outline));
+  }
+
+  &:active {
+    box-shadow: 0 0 0 var(--shadow) var(--color-solid-3);
   }
 }

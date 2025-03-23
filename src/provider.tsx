@@ -7,6 +7,7 @@ import { HeaderProvider } from '@/src/generic/common/components/header/Header.pr
 import { AlertProvider } from '@/src/generic/common/components/alert/Alert.provider.tsx';
 import { GameProvider } from '@/src/pages/game/Game.provider.tsx';
 import { NotificationProvider } from '@/src/pages/game/components/notification/Notification.provider.tsx';
+import { FeaturesProvider } from '@/src/pages/game/components/features/Features.provider.tsx';
 
 type ProvidersType = [ComponentType<{ children: Children }>, ComponentPropsWithoutRef<ElementType>?][];
 
@@ -28,4 +29,5 @@ export const Provider: FunctionComponent<{ children: Children }> = allProviders(
   [AlertProvider],
   [GameProvider],
   [NotificationProvider],
+  [FeaturesProvider],
 ]);

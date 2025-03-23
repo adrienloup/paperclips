@@ -1,19 +1,12 @@
-import { Crypto } from '@/src/pages/game/components/crypto/Crypto.type.ts';
 import { CryptoComponent } from '@/src/pages/game/components/crypto/Crypto.component.tsx';
+import { cryptosState } from '@/src/pages/game/components/crypto/Cryptos.state.ts';
 import styles from '@/src/pages/game/components/crypto/Cryptos.module.scss';
-
-const cryptos: Crypto[] = [
-  { name: 'btc', price: 77579, volume: 13941210739054 },
-  { name: 'eth', price: 1830.5, volume: 7691270039894 },
-  { name: 'bnb', price: 576.17, volume: 1181610139861 },
-  { name: 'usdc', price: 5.92297, volume: 55461913129113 },
-];
 
 export const CryptosComponent = () => {
   //console.log('CryptosComponent');
   return (
     <div className={styles.cryptos}>
-      {cryptos.map((crypto) => (
+      {cryptosState.map((crypto) => (
         <CryptoComponent
           key={crypto.name}
           name={crypto.name}

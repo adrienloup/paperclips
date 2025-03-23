@@ -11,6 +11,7 @@ import { ComputationalResourcesComponent } from '@/src/pages/game/components/com
 import { ProjectsAvailableComponent } from '@/src/pages/game/components/projects-available/ProjectsAvailable.component.tsx';
 import { StickyComponent } from '@/src/generic/common/components/sticky/Sticky.component.tsx';
 import { InvestmentsComponent } from '@/src/pages/game/components/investments/Investments.component.tsx';
+import { FeaturesComponent } from '@/src/pages/game/components/features/Features.component.tsx';
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
 function DashboardComponent() {
@@ -46,6 +47,7 @@ function DashboardComponent() {
         <ComputationalResourcesComponent />
         <ProjectsAvailableComponent />
         <InvestmentsComponent />
+        <FeaturesComponent />
       </CardsComponent>
     </article>
   );

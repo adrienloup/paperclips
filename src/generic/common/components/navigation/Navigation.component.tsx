@@ -9,7 +9,7 @@ export const NavigationComponent = () => {
     >
       <Link to={'/paperclips'}>Game</Link>
       <br />
-      <Link to={'/paperclips/page'}>page</Link>
+      <Link to={'/paperclips/explore'}>Explore</Link>
     </nav>
   );
 };

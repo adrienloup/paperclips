@@ -3,7 +3,7 @@ import { GroupComponent } from '@/src/generic/common/components/group/Group.comp
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
 
 export const TrustComponent = () => {
-  //console.log('TrustComponent');
+  //console.log('FeaturesComponent');
   const game = useGame();
 
   return (

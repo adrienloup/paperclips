@@ -22,6 +22,7 @@ export const AlertProvider = ({ children }: { children: Children }) => {
                     id={alert.id}
                     title={alert.title}
                     text={alert.text}
+                    remove={() => setAlerts({ type: 'REMOVE', id: alert.id })}
                   />
                 ))}
               </AlertsComponent>,

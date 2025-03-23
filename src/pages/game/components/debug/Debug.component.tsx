@@ -270,7 +270,7 @@ export const DebugComponent = () => {
               Alerts{' '}
               <button
                 type="button"
-                onClick={() => setAlerts({ type: 'ADD', alert: { id: 1e1, text: 'alert1' } })}
+                onClick={() => setAlerts({ type: 'ADD', alert: { id: 1, text: 'alert1' } })}
               >
                 1e1
               </button>

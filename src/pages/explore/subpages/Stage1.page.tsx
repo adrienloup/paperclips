@@ -6,13 +6,13 @@ import { LoaderComponent } from '@/src/generic/common/components/loader/Loader.c
 import { LayoutComponent } from '@/src/generic/common/components/layout/Layout.component.tsx';
 
 const IntroductionComponent = lazy(() =>
-  fallback(import('@/src/pages/page/components/introduction/Introduction.component.tsx'), 1e3)
+  fallback(import('@/src/pages/explore/components/introduction/Introduction.component.tsx'), 1e3)
 );
 
-function PagePage() {
+function Stage1Page() {
   const { t } = useTranslation();
 
-  useTitle(t('page.titlePage'));
+  useTitle(t('explore.titlePage'));
 
   return (
     <Suspense
@@ -30,4 +30,4 @@ function PagePage() {
   );
 }
 
-export default PagePage;
+export default Stage1Page;

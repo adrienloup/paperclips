@@ -50,10 +50,10 @@
 
 .progress {
   position: absolute;
-  bottom: -0.35rem;
+  bottom: -0.5rem;
   left: 0;
   z-index: 3;
-  height: 0.35rem;
+  height: 0.5rem;
   animation: Progress var(--timeout) linear;
 }
 

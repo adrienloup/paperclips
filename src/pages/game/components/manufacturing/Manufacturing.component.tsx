@@ -23,9 +23,9 @@ export const ManufacturingComponent = () => {
       <WireComponent />
       <AutoClippersComponent />
       <MegaClippersComponent />
+      <ClipFactoryComponent />
       <WireDronesComponent />
       <HarvesterDronesComponent />
-      <ClipFactoryComponent />
     </CardComponent>
   );
 };

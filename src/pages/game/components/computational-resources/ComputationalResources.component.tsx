@@ -13,18 +13,22 @@ export const ComputationalResourcesComponent = () => {
   const features = useFeatures();
 
   return (
-    <CardComponent>
-      <TitleComponent
-        tag="h2"
-        className={styles.title}
-      >
-        Computational resources
-      </TitleComponent>
-      {features.trust && <TrustComponent />}
-      <MemoryComponent />
-      <ProcessorsComponent />
-      <OperationsComponent />
-      <CreativityComponent />
-    </CardComponent>
+    <>
+      {features.trust && (
+        <CardComponent>
+          <TitleComponent
+            tag="h2"
+            className={styles.title}
+          >
+            Computational resources
+          </TitleComponent>
+          <TrustComponent />
+          <MemoryComponent />
+          <ProcessorsComponent />
+          <OperationsComponent />
+          <CreativityComponent />
+        </CardComponent>
+      )}
+    </>
   );
 };

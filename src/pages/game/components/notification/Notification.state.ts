@@ -9,9 +9,9 @@ export const initialState: State = [
     animate: true,
   },
   {
-    id: 'machine',
-    text: 'game.notification.machine',
-    path: 'machine',
+    id: 'autoClippers',
+    text: 'game.notification.autoClippers',
+    path: 'autoclippers',
     enable: false,
     animate: false,
   },

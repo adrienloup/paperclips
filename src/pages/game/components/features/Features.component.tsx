@@ -52,17 +52,11 @@ export const FeaturesComponent = () => {
     (limit: number, disable: boolean, feature: string, text: string) => {
       if (game.clips >= limit && disable) {
         setFeatures({ type: 'ENABLE', feature });
-        setNotifications({
-          type: 'ADD',
-          id: feature,
-        });
+        setNotifications({ type: 'ADD', id: feature });
         setAlerts({ type: 'ADD', alert: { text } });
       } else if (game.clips < limit) {
         setFeatures({ type: 'DISABLE', feature });
-        setNotifications({
-          type: 'REMOVE',
-          id: feature,
-        });
+        setNotifications({ type: 'REMOVE', id: feature });
       }
     },
     [game.clips]
@@ -70,9 +64,10 @@ export const FeaturesComponent = () => {
 
   const update = useCallback(() => {
     onToggle(1e3, !features.marketing, 'marketing', 'Marketing');
+    onToggle(1e3, !features.autoClippers, 'autoClippers', 'autoClippers alert');
     onToggle(2e3, !features.trust, 'trust', 'Trust alert');
     onToggle(2e3, !features.projects, 'projects', 'projects alert');
-  }, [features, onToggle]);
+  }, [onToggle]);
 
   useEffect(() => {
     update();

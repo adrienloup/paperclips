@@ -20,7 +20,7 @@ export const fr: Translation = {
     marketingCost: "Coût d'achat",
     notification: {
       stage1: 'Étape 1',
-      machine: 'Machine',
+      autoClippers: 'Machine',
       marketing: 'Marketing',
       trust: 'Confiance',
       projects: 'Projets',

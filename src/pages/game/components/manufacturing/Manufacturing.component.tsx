@@ -1,3 +1,4 @@
+import { useFeatures } from '@/src/pages/game/components/features/useFeatures.ts';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import { ProducePerSecondComponent } from '@/src/pages/game/components/produce-per-second/ProducePerSecond.component.tsx';
@@ -11,6 +12,8 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ManufacturingComponent = () => {
   //console.log('ManufacturingComponent');
+  const features = useFeatures();
+
   return (
     <CardComponent>
       <TitleComponent
@@ -21,7 +24,7 @@ export const ManufacturingComponent = () => {
       </TitleComponent>
       <ProducePerSecondComponent />
       <WireComponent />
-      <AutoClippersComponent />
+      {features.autoClippers && <AutoClippersComponent />}
       <MegaClippersComponent />
       <ClipFactoryComponent />
       <WireDronesComponent />

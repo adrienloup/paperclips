@@ -2,6 +2,7 @@ export type Action = { type: 'DISABLE'; feature: string } | { type: 'ENABLE'; fe
 
 export interface State {
   marketing: boolean;
+  autoClippers: boolean;
   trust: boolean;
   projects: boolean;
 }

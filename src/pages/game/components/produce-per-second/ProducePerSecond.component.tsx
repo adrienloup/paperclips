@@ -3,7 +3,6 @@ import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { GroupComponent } from '@/src/generic/common/components/group/Group.component.tsx';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
-import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ProducePerSecondComponent = () => {
@@ -14,7 +13,6 @@ export const ProducePerSecondComponent = () => {
 
   return (
     <GroupComponent>
-      {game.produceBonus > 1 && <BonusComponent value={game.produceBonus} />}
       <DialComponent
         value={game.producePerSecond}
         notation="compact"

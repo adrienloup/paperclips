@@ -1,0 +1,22 @@
+.alert {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 1rem 1rem 0;
+  padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+  pointer-events: initial;
+
+  & + & {
+    margin-top: 0;
+  }
+
+  &.animate {
+    animation: Appear 500ms var(--ease-quad);
+  }
+}
+
+@keyframes Appear {
+  0% {
+    transform: translateY(-1rem);
+  }
+}

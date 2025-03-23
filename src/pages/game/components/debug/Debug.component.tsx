@@ -3,12 +3,14 @@ import { useLocation } from 'react-router-dom';
 import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { useNotificationDispatch } from '@/src/pages/game/components/notification/useNotification.ts';
 import styles from '@/src/pages/game/components/debug/Debug.module.scss';
+import { useAlertDispatch } from '@/src/generic/common/components/alert/useAlert.ts';
 
 export const DebugComponent = () => {
   const location = useLocation();
   const setGame = useGameDispatch();
   const game = useGame();
   const setNotifications = useNotificationDispatch();
+  const setAlerts = useAlertDispatch();
   const [display, setDisplay] = useState(false);
   const [notification, setNotification] = useState('');
   const [clips, setClips] = useState('');
@@ -127,21 +129,9 @@ export const DebugComponent = () => {
             </button>
             <button
               type="button"
-              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 1e3 })}
+              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 2e3 })}
             >
-              1e3
-            </button>
-            <button
-              type="button"
-              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 5e3 })}
-            >
-              5e3
-            </button>
-            <button
-              type="button"
-              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 1e4 })}
-            >
-              1e4
+              2e3
             </button>
             <button
               type="button"
@@ -154,6 +144,12 @@ export const DebugComponent = () => {
               onClick={() => setGame({ type: 'UPDATE_WIRE', value: 1e6 })}
             >
               1e6
+            </button>
+            <button
+              type="button"
+              onClick={() => setGame({ type: 'UPDATE_WIRE', value: 5e6 })}
+            >
+              5e6
             </button>
           </form>
           <form>
@@ -267,6 +263,17 @@ export const DebugComponent = () => {
                 onChange={onTrustChange}
               />
               <button type="submit">Add</button>
+            </label>
+          </form>
+          <form>
+            <label>
+              Alerts{' '}
+              <button
+                type="button"
+                onClick={() => setAlerts({ type: 'ADD', alert: { id: 1e1, text: 'alert1' } })}
+              >
+                1e1
+              </button>
             </label>
           </form>
         </div>

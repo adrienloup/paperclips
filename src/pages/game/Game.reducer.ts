@@ -4,7 +4,10 @@ export const gameReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'SELL_CLIPS':
       if (state.unsoldInventory <= 0) return state;
-      const unsoldInventory = Math.max(0, Math.floor(state.unsoldInventory * (1 - state.publicDemand)));
+      const unsoldInventory = Math.max(
+        0,
+        Math.floor(state.unsoldInventory * (1 - state.publicDemand))
+      );
       const funds = state.funds + (state.unsoldInventory - unsoldInventory) * state.sellingPrice;
       return {
         ...state,
@@ -135,6 +138,13 @@ export const gameReducer = (state: State, action: Action): State => {
       return {
         ...state,
         wire: action.value,
+      };
+    case 'UPDATE_TRUST':
+      if (state.trust >= 100) return state;
+      return {
+        ...state,
+        trust: state.trust + action.value,
+        trustCost: state.trustCost + 2e3,
       };
     case 'UPDATE_DRONES':
       return {

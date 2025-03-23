@@ -1,3 +1,4 @@
+import { useFeatures } from '@/src/pages/game/components/features/useFeatures.ts';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
 import { TrustComponent } from '@/src/pages/game/components/trust/Trust.component.tsx';
@@ -9,6 +10,8 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ComputationalResourcesComponent = () => {
   //console.log('ComputationalResourcesComponent');
+  const features = useFeatures();
+
   return (
     <CardComponent>
       <TitleComponent
@@ -17,7 +20,7 @@ export const ComputationalResourcesComponent = () => {
       >
         Computational resources
       </TitleComponent>
-      <TrustComponent />
+      {features.trust && <TrustComponent />}
       <MemoryComponent />
       <ProcessorsComponent />
       <OperationsComponent />

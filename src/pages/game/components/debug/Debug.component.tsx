@@ -21,8 +21,8 @@ export const DebugComponent = () => {
   const onNotificationSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setNotifications({
-      type: 'ADD_NOTIFICATION',
-      id: parseInt(notification),
+      type: 'ADD',
+      id: notification,
     });
     setNotification('');
   };

@@ -1,14 +1,14 @@
 export type Action =
-  | { type: 'ADD_NOTIFICATION'; id: number }
-  | { type: 'DELETE_NOTIFICATION'; id: number }
-  | { type: 'UPDATE_NOTIFICATION'; id: number };
+  | { type: 'ADD'; id: string }
+  | { type: 'REMOVE'; id: string }
+  | { type: 'UPDATE'; id: string };
 
 export interface Notification {
+  id: string;
+  text: string;
+  path: string;
   animate: boolean;
   enable: boolean;
-  id: number;
-  path: string;
-  text: string;
 }
 
 export type State = Notification[];

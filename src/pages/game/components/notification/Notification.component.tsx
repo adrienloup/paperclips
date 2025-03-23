@@ -10,10 +10,10 @@ export const NotificationComponent = ({ notification }: { notification: Notifica
   const { t } = useTranslation();
   const setNotifications = useNotificationDispatch();
 
-  const onClick = () => setNotifications({ type: 'DELETE_NOTIFICATION', id: notification.id });
+  const onClick = () => setNotifications({ type: 'REMOVE', id: notification.id });
 
   const onAnimationEnd = () => {
-    setNotifications({ type: 'UPDATE_NOTIFICATION', id: notification.id });
+    setNotifications({ type: 'UPDATE', id: notification.id });
   };
 
   return (

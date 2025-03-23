@@ -1,3 +1,4 @@
+import { useFeatures } from '@/src/pages/game/components/features/useFeatures.ts';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import { UnsoldInventoryComponent } from '@/src/pages/game/components/unsold-inventory/UnsoldInventory.component.tsx';
@@ -9,6 +10,8 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const BusinessComponent = () => {
   //console.log('BusinessComponent');
+  const features = useFeatures();
+
   return (
     <CardComponent>
       <TitleComponent
@@ -21,7 +24,7 @@ export const BusinessComponent = () => {
       <FundsAvailableComponent />
       <UnsoldInventoryComponent />
       <SellingPriceComponent />
-      <MarketingComponent />
+      {features.marketing && <MarketingComponent />}
     </CardComponent>
   );
 };

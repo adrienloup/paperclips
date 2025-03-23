@@ -15,6 +15,7 @@ export type Action =
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_WIRE_COST' }
   | { type: 'UPDATE_WIRE'; value: number }
+  | { type: 'UPDATE_TRUST'; value: number }
   | { type: 'UPDATE_DRONES'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; bonus: number }
   | { type: 'UPDATE_PRODUCE_BONUS'; bonus: number }

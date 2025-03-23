@@ -14,12 +14,12 @@ export const ClipFactoryComponent = () => {
       <DialComponent
         value={game.clipFactory}
         notation="compact"
-        label="Clip factories"
+        label="Factories"
       />
       <DialComponent
         value={game.clipFactoryCost}
         notation="compact"
-        label="Clip factory cost"
+        label="Factories cost in clips"
       />
       <ButtonComponent
         className={styles.button}

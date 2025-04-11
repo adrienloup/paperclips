@@ -1,0 +1,25 @@
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.label {
+  font-size: var(--font-size-xl);
+}
+
+.progressbar {
+  width: 10rem;
+  height: 2rem;
+}
+
+.inner {
+  width: 0;
+  height: 100%;
+  background-color: var(--color-solid-2);
+  border-radius: 0.15rem;
+  transition: width var(--duration) var(--ease-quad);
+  will-change: width;
+}

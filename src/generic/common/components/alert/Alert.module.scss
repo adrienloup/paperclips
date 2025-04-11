@@ -1,0 +1,140 @@
+.alert {
+  min-width: 20rem;
+  transform-origin: center;
+  border-radius: 0.15rem;
+  pointer-events: initial;
+
+  &.in {
+    animation: Appear 400ms var(--ease-expo);
+  }
+
+  &.out {
+    transition-property: opacity, transform;
+    transition-duration: 200ms;
+    transition-timing-function: var(--ease-expo);
+    opacity: 0;
+    transform: translateY(-1rem);
+    //will-change: opacity, transform;
+  }
+}
+
+.content {
+  //position: relative;
+  //z-index: 1;
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-transform: uppercase;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+//.text {
+//  &::first-letter {
+//    text-transform: capitalize;
+//  }
+//}
+
+.button {
+  //position: relative;
+  //z-index: 1;
+  grid-column: 2;
+  grid-row: 1;
+  //padding: 0.25rem 0.5rem;
+  //background-color: transparent;
+  //border: 0.2rem solid var(--color-neutral-2);
+  //font-size: 1.5rem;
+  //color: var(--color-neutral-2);
+  pointer-events: initial;
+
+  &:hover {
+    background-color: var(--color-neutral-2);
+
+    .info & {
+      color: var(--color-solid-3);
+    }
+
+    .success & {
+      color: var(--color-solid-2);
+    }
+
+    .warning & {
+      color: var(--color-solid-5);
+    }
+
+    .error & {
+      color: var(--color-solid-7);
+    }
+  }
+
+  //&:focus-visible {
+  //  outline-offset: -0.25rem;
+  //}
+}
+
+.progress {
+  height: 0.25rem;
+  animation: Progress var(--timeout) linear;
+}
+
+.info {
+  background-color: var(--color-solid-3);
+  color: var(--color-neutral-2);
+
+  .progress {
+    //background-color: var(--color-solid-3);
+    background-color: red;
+  }
+}
+
+.success {
+  background-color: var(--color-solid-2);
+  color: var(--color-neutral-2);
+
+  .progress {
+    //background-color: var(--color-solid-3);
+    background-color: red;
+  }
+}
+
+.warning {
+  background-color: var(--color-solid-5);
+  color: var(--color-neutral-2);
+
+  .progress {
+    //background-color: var(--color-solid-3);
+    background-color: red;
+  }
+}
+
+.error {
+  background-color: var(--color-solid-7);
+  color: var(--color-neutral-6);
+
+  .progress {
+    //background-color: var(--color-solid-3);
+    background-color: red;
+  }
+}
+
+@keyframes Appear {
+  0% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes Progress {
+  0% {
+    width: 1px;
+  }
+
+  100% {
+    width: 100%;
+  }
+}

@@ -1,0 +1,38 @@
+.debug {
+  grid-column: 1;
+  grid-row: 1;
+  //display: flex;
+  //flex-flow: row wrap;
+  //gap: var(--spacing-xs);
+  //width: 100%;
+  padding: var(--spacing-xs) calc(2 * var(--spacing-l));
+  background-color: var(--color-neutral-2);
+  //font-size: var(--font-size-xs);
+  color: var(--color-solid-1);
+  //
+  //form {
+  //  padding-left: var(--spacing-xs);
+  //}
+  //
+  //label {
+  //  display: flex;
+  //  align-items: center;
+  //  gap: var(--spacing-xs);
+  //}
+  //
+  //input {
+  //  width: 4rem;
+  //  font-family: var(--font-text-regular), sans-serif;
+  //  font-weight: normal;
+  //  font-size: inherit;
+  //  color: inherit;
+  //}
+  //
+  //button {
+  //  padding: 0 var(--spacing-xs);
+  //  font-family: var(--font-text-regular), sans-serif;
+  //  font-weight: normal;
+  //  font-size: inherit;
+  //  color: inherit;
+  //}
+}

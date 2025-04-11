@@ -1,0 +1,33 @@
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  //min-height: 100vh;
+  animation-name: Slide, Fade;
+  animation-timing-function: var(--ease-quad);
+  animation-duration: 500ms, 600ms;
+}
+
+@keyframes Slide {
+  0% {
+    transform: translateY(75rem);
+  }
+  20% {
+    transform: translateY(7.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes Fade {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

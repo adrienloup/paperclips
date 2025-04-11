@@ -1,0 +1,14 @@
+.notifications {
+  display: flex;
+  flex-flow: row wrap;
+  align-self: stretch;
+  justify-content: flex-end;
+  gap: 0.15rem;
+  background-color: var(--color-2);
+}
+
+.empty {
+  padding: var(--spacing-s);
+  text-align: center;
+  color: var(--color-1);
+}

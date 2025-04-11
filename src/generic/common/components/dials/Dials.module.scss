@@ -1,0 +1,15 @@
+.dials {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  border: 0.2rem solid var(--color-1);
+  border-radius: 0.25rem;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}

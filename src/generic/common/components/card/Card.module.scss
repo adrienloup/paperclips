@@ -1,0 +1,78 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+  animation-name: Slide, Fade;
+  animation-timing-function: var(--ease-quad);
+
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      animation-duration:
+        #{400ms + ($i * 100ms)},
+        600ms;
+    }
+  }
+}
+
+.title {
+  //flex: 0 0 100%;
+  //text-transform: uppercase;
+  font-weight: normal;
+  font-size: var(--font-size-m);
+}
+
+//.button {
+//  flex-direction: column;
+//  justify-content: center;
+//  //gap: var(--spacing-xs);
+//  //position: relative;
+//  //z-index: 1;
+//  padding: var(--spacing-s);
+//  background-color: var(--color-1);
+//  border-radius: 0.05rem;
+//  font-family: var(--font-text-bold), sans-serif;
+//  font-size: var(--font-size-l);
+//  color: var(--color-2);
+//  transition-property: box-shadow;
+//  transition-duration: 200ms;
+//  transition-timing-function: var(--ease-quad);
+//
+//  & + & {
+//    margin-left: var(--spacing-xs);
+//  }
+//
+//  &:focus-visible {
+//    outline-offset: -0.15rem;
+//  }
+//
+//  //&.active,
+//  //&:active {
+//  //  box-shadow: 0 0 0 0.25rem var(--color-solid-3);
+//  //  transition-duration: 100ms;
+//  //}
+//}
+
+@keyframes Slide {
+  0% {
+    transform: translateY(75rem);
+  }
+  20% {
+    transform: translateY(7.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes Fade {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

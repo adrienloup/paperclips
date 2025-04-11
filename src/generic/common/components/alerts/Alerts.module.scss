@@ -1,0 +1,26 @@
+.alerts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.inner {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: var(--spacing-xs);
+  gap: var(--spacing-xs);
+
+  @include desktop {
+    padding: var(--spacing-s);
+    gap: var(--spacing-s);
+  }
+}

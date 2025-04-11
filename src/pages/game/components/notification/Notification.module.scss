@@ -1,0 +1,41 @@
+.notification {
+  overflow: hidden;
+  display: flex;
+  max-width: 20rem;
+
+  &:first-child {
+    margin-left: var(--spacing-xl);
+  }
+
+  &.view {
+    opacity: 0.5;
+  }
+}
+
+.link {
+  flex: 1;
+  display: inline-block;
+  vertical-align: middle;
+  padding: var(--spacing-xs);
+  background-color: var(--color-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-2);
+
+  //&:focus-visible {
+  //  outline-offset: -0.25rem;
+  //}
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  background-color: var(--color-1);
+  font-size: var(--font-size-s);
+  color: var(--color-2);
+
+  //&:focus-visible {
+  //  outline-offset: -0.25rem;
+  //}
+}

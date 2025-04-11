@@ -9,15 +9,13 @@
   @for $i from 1 through 5 {
     &:nth-child(#{$i}) {
       animation-duration:
-        #{400ms + ($i * 100ms)},
-        600ms;
+        #{500ms + ($i * 100ms)},
+        900ms;
     }
   }
 }
 
 .title {
-  //flex: 0 0 100%;
-  //text-transform: uppercase;
   font-weight: normal;
   font-size: var(--font-size-m);
 }
@@ -48,7 +46,7 @@
 //
 //  //&.active,
 //  //&:active {
-//  //  box-shadow: 0 0 0 0.25rem var(--color-solid-3);
+//  //  box-shadow: 0 0 0 0.25rem var(--color-solid-2);
 //  //  transition-duration: 100ms;
 //  //}
 //}

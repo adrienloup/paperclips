@@ -1,27 +1,43 @@
 import { useCallback } from 'react';
 import { useInterval } from '@/src/generic/hooks/useInterval.ts';
-import { TotalComponent } from '@/src/pages/game/components/dashboard/total/Total.component.tsx';
+import { useGameDispatch } from '@/src/pages/game/useGame.ts';
+import { PaperclipsComponent } from '@/src/pages/game/components/dashboard/paperclips/Paperclips.component.tsx';
 import { ManufacturingComponent } from '@/src/pages/game/components/dashboard/manufacturing/Manufacturing.component.tsx';
 import { BusinessComponent } from '@/src/pages/game/components/dashboard/business/Business.component.tsx';
-import { TechnologyComponent } from '@/src/pages/game/components/dashboard/technology/Technology.component.tsx';
+import { ResourcesComponent } from '@/src/pages/game/components/dashboard/resources/ResourcesComponent.tsx';
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
 export const DashboardComponent = () => {
-  const sellClips = useCallback(() => {
-    console.log('sellClips');
+  const setGame = useGameDispatch();
+
+  const sellUnsold = useCallback(() => {
+    // console.log('sellUnsold');
+    setGame({ type: 'SELL_UNSOLD' });
   }, []);
 
-  useInterval(sellClips, 5e2);
+  const updatePerSecond = useCallback(() => {
+    // console.log('updatePerSecond');
+    setGame({ type: 'UPDATE_PER_SECOND' });
+  }, []);
+
+  const updateWireCost = useCallback(() => {
+    // console.log('updateWireCost');
+    setGame({ type: 'UPDATE_WIRE_COST' });
+  }, []);
+
+  useInterval(sellUnsold, 5e2);
+  useInterval(updatePerSecond, 1e3);
+  useInterval(updateWireCost, 1e4);
 
   return (
     <article
       className={styles.dashboard}
       role="article"
     >
-      <TotalComponent />
+      <PaperclipsComponent />
       <ManufacturingComponent />
       <BusinessComponent />
-      <TechnologyComponent />
+      <ResourcesComponent />
     </article>
   );
 };

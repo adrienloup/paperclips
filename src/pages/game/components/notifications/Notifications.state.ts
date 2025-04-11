@@ -8,17 +8,12 @@ const notifications: Notification[] = [
     view: false,
   },
   {
-    id: 'manufacturing',
+    id: 'paperclips',
     enable: true,
     view: false,
   },
   {
-    id: 'business',
-    enable: true,
-    view: false,
-  },
-  {
-    id: 'machine',
+    id: 'machines',
     enable: false,
     view: false,
   },
@@ -28,12 +23,12 @@ const notifications: Notification[] = [
     view: false,
   },
   {
-    id: 'technology',
+    id: 'trust',
     enable: false,
     view: false,
   },
   {
-    id: 'trust',
+    id: 'projects',
     enable: false,
     view: false,
   },
@@ -43,12 +38,12 @@ const notifications: Notification[] = [
     view: false,
   },
   {
-    id: 'processor',
+    id: 'processors',
     enable: false,
     view: false,
   },
   {
-    id: 'operation',
+    id: 'operations',
     enable: false,
     view: false,
   },
@@ -58,23 +53,10 @@ const notifications: Notification[] = [
     view: false,
   },
   {
-    id: 'trust',
-    enable: false,
-    view: false,
-  },
-  {
-    id: 'project',
-    enable: false,
-    view: false,
-  },
-  {
-    id: 'megamachine',
+    id: 'megamachines',
     enable: false,
     view: false,
   },
 ];
 
-export const notificationsState: State = {
-  notifications: notifications,
-  open: false,
-};
+export const notificationsState: State = notifications;

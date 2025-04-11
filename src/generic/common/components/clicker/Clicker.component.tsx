@@ -1,10 +1,17 @@
 import { CSSProperties, MouseEvent, useEffect, useRef, useState } from 'react';
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
+import { NumberComponent } from '@/src/generic/common/components/number/Number.component.tsx';
 import { Clicker, ClickerValue } from '@/src/generic/common/components/clicker/Clicker.type.ts';
 import styles from '@/src/generic/common/components/clicker/Clicker.module.scss';
 
-export const ClickerComponent = ({ children, className, value = 1, onClick }: Clicker) => {
+export const ClickerComponent = ({
+  children,
+  className,
+  disabled,
+  value = 1,
+  onClick,
+}: Clicker) => {
   const [values, setValues] = useState<ClickerValue[]>([]);
   const [isActive, setIsActive] = useState(false);
   const timeouts = useRef<number[]>([]);
@@ -16,8 +23,8 @@ export const ClickerComponent = ({ children, className, value = 1, onClick }: Cl
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const { clientX, clientY, currentTarget } = e;
     const rect = currentTarget.getBoundingClientRect();
-    const safeX = clientX === 0 ? 280 : clientX;
-    const safeY = clientY === 0 ? 100 : clientY;
+    const safeX = clientX === 0 ? rect.left : clientX;
+    const safeY = clientY === 0 ? rect.top : clientY;
 
     setValues((prev) => [
       ...prev,
@@ -38,6 +45,7 @@ export const ClickerComponent = ({ children, className, value = 1, onClick }: Cl
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    console.log(e.currentTarget);
     if (e.key === 'Enter' || e.key === ' ') {
       setIsActive(true);
     }
@@ -59,6 +67,7 @@ export const ClickerComponent = ({ children, className, value = 1, onClick }: Cl
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
       aria-pressed={isActive}
+      disabled={disabled}
     >
       {children}
       {values.map((v) => (
@@ -67,7 +76,11 @@ export const ClickerComponent = ({ children, className, value = 1, onClick }: Cl
           className={styles.value}
           style={getStyle(v.x, v.y)}
         >
-          +{value}
+          +
+          <NumberComponent
+            value={value}
+            notation="compact"
+          />
         </span>
       ))}
     </ButtonComponent>

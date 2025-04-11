@@ -1,0 +1,59 @@
+.paperclips {
+  flex: 0 0 100%;
+  display: flex;
+  animation-name: Slide, Fade;
+  animation-timing-function: var(--ease-quad);
+  animation-duration: 600ms, 900ms;
+}
+
+.inner {
+  display: flex;
+  border: 0.2rem solid var(--color-1);
+  border-radius: 0.25rem;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-xs);
+}
+
+.number {
+  max-width: calc(100vw - 8rem);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: var(--font-size-l);
+
+  @include desktop {
+    max-width: calc(100vw - 10rem);
+  }
+}
+
+.label {
+  font-size: var(--font-size-xs);
+}
+
+@keyframes Slide {
+  0% {
+    transform: translateY(75rem);
+  }
+  20% {
+    transform: translateY(7.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes Fade {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

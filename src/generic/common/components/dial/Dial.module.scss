@@ -3,18 +3,13 @@
   flex-direction: column;
   padding: var(--spacing-xs);
 
-  //& + & {
-  //  border-left: 0.2rem solid var(--color-3);
-  //}
+  & + & {
+    border-left: 0.2rem solid var(--color-1);
+  }
 }
 
 .number {
-  //letter-spacing: 0.1rem;
-  //text-transform: uppercase;
-  //font-family: var(--font-text), sans-serif;
   font-size: var(--font-size-l);
-  //-webkit-text-stroke: 0.075rem var(--color-1);
-  //color: transparent;
 }
 
 .label {

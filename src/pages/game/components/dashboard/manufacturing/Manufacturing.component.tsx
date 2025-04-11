@@ -1,7 +1,8 @@
 import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
-import { ProductionPerSecondComponent } from '@/src/pages/game/components/dashboard/manufacturing/ProductionPerSecond.component.tsx';
+import { PaperclipsPerSecondComponent } from '@/src/pages/game/components/dashboard/manufacturing/PaperclipsPerSecondComponent.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
+import { WireComponent } from '@/src/pages/game/components/dashboard/manufacturing/Wire.component.tsx';
 
 export const ManufacturingComponent = () => {
   return (
@@ -10,9 +11,10 @@ export const ManufacturingComponent = () => {
         tag="h2"
         className={styles.title}
       >
-        manufacturing
+        Manufacturing
       </TitleComponent>
-      <ProductionPerSecondComponent />
+      <PaperclipsPerSecondComponent />
+      <WireComponent />
     </CardComponent>
   );
 };

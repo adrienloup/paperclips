@@ -10,37 +10,37 @@ import styles from '@/src/generic/common/components/menu/Menu.module.scss';
 
 export const MenuComponent = () => {
   const { t } = useTranslation();
-  const [openMenu, setOpenMenu] = useMenu();
+  const [open, setOpen] = useMenu();
 
-  const onMenuClick = () => setOpenMenu(!openMenu);
+  const onMenuClick = () => setOpen(!open);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && openMenu) {
-        setOpenMenu(false);
+      if (e.key === 'Escape' && open) {
+        setOpen(false);
       }
     };
 
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [openMenu]);
+  }, [open]);
 
   return (
     <div
       id="menu"
-      className={classNames([styles.menu, openMenu ? styles.open : ''])}
+      className={classNames([styles.menu, open ? styles.open : ''])}
       role="menu"
       aria-labelledby="menubutton"
     >
       <ButtonComponent
         id="menubutton"
         className={styles.button}
-        aria-label={openMenu ? t('common.menu.close') : t('common.menu.open')}
-        aria-expanded={openMenu}
+        aria-label={open ? t('common.menu.close') : t('common.menu.open')}
+        aria-expanded={open}
         aria-controls="menu"
         onClick={onMenuClick}
       >
-        <IconComponent icon={openMenu ? 'arrow_menu_open' : 'arrow_menu_close'} />
+        <IconComponent icon={open ? 'arrow_menu_open' : 'arrow_menu_close'} />
         menu
       </ButtonComponent>
       <NavigationComponent />

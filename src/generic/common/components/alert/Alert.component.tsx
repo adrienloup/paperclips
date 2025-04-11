@@ -1,15 +1,15 @@
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+// import { CSSProperties, useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { classNames } from '@/src/generic/utils/classNames.ts';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
 import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 import { Alert } from '@/src/generic/common/components/alert/Alert.type.tsx';
 import styles from '@/src/generic/common/components/alert/Alert.module.scss';
-import { classNames } from '@/src/generic/utils/classNames.ts';
 
 export const AlertComponent = ({
-  title,
   text,
   status = 'info',
-  timeout = 3e3,
+  timeout = 5e3,
   close = true,
   remove,
 }: Alert) => {
@@ -17,7 +17,10 @@ export const AlertComponent = ({
   const removeTimer = useRef(0);
   const [out, setOut] = useState(false);
 
-  const getStyle = (timeout: number) => ({ '--timeout': `${timeout}ms` }) as CSSProperties;
+  /*const getStyle = useCallback(
+    (timeout: number) => ({ '--timeout': `${timeout}ms` }) as CSSProperties,
+    []
+  );*/
 
   useEffect(() => {
     if (timeout > 0) {
@@ -26,8 +29,8 @@ export const AlertComponent = ({
       }, timeout) as unknown as number;
 
       removeTimer.current = setTimeout(() => {
-        remove!();
-      }, timeout + 150) as unknown as number;
+        remove?.();
+      }, timeout + 150) as unknown as number; // On retire le composant après l’animation de sortie (150ms après le timeout)
     }
 
     return () => {
@@ -38,32 +41,30 @@ export const AlertComponent = ({
 
   return (
     <div
-      role="alert"
       className={classNames([
         styles.alert,
         styles[status],
         timeout > 0 ? styles.in : '',
         out ? styles.out : '',
       ])}
+      role="alert"
+      aria-live="assertive"
     >
-      <div className={styles.content}>
-        {title && <span className={styles.title}>{title}</span>}
-        <p className={styles.text}>{text}</p>
-      </div>
+      {text && <div className={styles.text}>{text}</div>}
       {close && (
         <ButtonComponent
           className={styles.button}
           onClick={remove}
         >
-          <IconComponent icon="close" />
+          <IconComponent icon="cancel" />
         </ButtonComponent>
       )}
-      {timeout > 0 ? (
+      {/*timeout > 0 && (
         <div
           className={styles.progress}
           style={getStyle(timeout)}
         ></div>
-      ) : null}
+      )*/}
     </div>
   );
 };

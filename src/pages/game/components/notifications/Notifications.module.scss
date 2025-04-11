@@ -5,10 +5,37 @@
   justify-content: flex-end;
   gap: 0.15rem;
   background-color: var(--color-2);
+  animation-name: Slide, Fade;
+  animation-timing-function: var(--ease-quad);
+  animation-duration: 500ms, 900ms;
 }
 
 .empty {
   padding: var(--spacing-s);
   text-align: center;
   color: var(--color-1);
+}
+
+@keyframes Slide {
+  0% {
+    transform: translateY(75rem);
+  }
+  20% {
+    transform: translateY(7.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes Fade {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

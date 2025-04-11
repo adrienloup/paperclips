@@ -4,7 +4,7 @@ import { FooterComponent } from '@/src/generic/common/components/footer/Footer.c
 import { Layout } from '@/src/generic/common/components/layout/Layout.type.ts';
 
 function LayoutComponent({ children }: Layout) {
-  console.log('LayoutComponent');
+  // console.log('LayoutComponent');
   return (
     <>
       <HeaderComponent />

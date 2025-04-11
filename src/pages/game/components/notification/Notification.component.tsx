@@ -15,8 +15,8 @@ export const NotificationComponent = ({
   const { t } = useTranslation();
   const setNotifications = useNotificationsDispatch();
 
-  const onDisableClick = () => setNotifications({ type: 'DISABLE', id: notification.id });
-  const onViewClick = () => setNotifications({ type: 'VIEW', id: notification.id });
+  const disableClick = () => setNotifications({ type: 'DISABLE', id: notification.id });
+  const viewClick = () => setNotifications({ type: 'VIEW', id: notification.id });
 
   return (
     <div
@@ -26,13 +26,13 @@ export const NotificationComponent = ({
       <ButtonComponent
         className={styles.link}
         to={`/paperclips/explore/${notification.id}`}
-        triggerClick={onViewClick}
+        triggerClick={viewClick}
       >
         {t(`game.notification.${notification.id}`)}
       </ButtonComponent>
       <ButtonComponent
         className={styles.button}
-        onClick={onDisableClick}
+        onClick={disableClick}
         aria-label="Supprimer la notification"
       >
         <IconComponent icon="cancel" />

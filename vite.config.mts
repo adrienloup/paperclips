@@ -14,7 +14,7 @@ export default defineConfig({
           'Paperclip is an incremental game (also an idle game, clicker game, or tapper game).',
         start_url: '/paperclips',
         display: 'standalone',
-        theme_color: '#7500ff',
+        theme_color: '#4c00ff',
         background_color: '#252529',
         icons: [
           {

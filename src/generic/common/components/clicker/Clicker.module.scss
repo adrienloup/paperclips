@@ -1,8 +1,6 @@
 .button {
-  flex-direction: column;
   justify-content: center;
   position: relative;
-  overflow: initial;
   padding: var(--spacing-s);
   background-color: var(--color-1);
   border-radius: 0.05rem;
@@ -16,22 +14,18 @@
     margin-left: var(--spacing-xs);
   }
 
-  //&:focus-visible {
-  //  outline-offset: -0.25rem;
-  //}
-
   &.active,
   &:active {
-    box-shadow: 0 0 0 0.5rem var(--color-solid-3);
+    box-shadow: 0 0 0 0.5rem var(--color-solid-2);
     transition-duration: 100ms;
   }
 }
 
 .value {
   position: absolute;
-  animation: Up 500ms var(--ease-out);
+  animation: Up 550ms var(--ease-out);
   font-size: inherit;
-  color: var(--color-solid-3);
+  color: var(--color-solid-2);
   //will-change: transform, opacity;
 }
 

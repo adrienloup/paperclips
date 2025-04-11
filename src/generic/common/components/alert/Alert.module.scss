@@ -1,7 +1,11 @@
 .alert {
-  min-width: 20rem;
-  transform-origin: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  max-width: 20rem;
   border-radius: 0.15rem;
+  color: var(--color-neutral-0);
   pointer-events: initial;
 
   &.in {
@@ -18,109 +22,55 @@
   }
 }
 
-.content {
-  //position: relative;
-  //z-index: 1;
+.text {
   grid-column: 1;
   grid-row: 1;
   display: flex;
-  flex-direction: column;
-}
-
-.title {
-  text-transform: uppercase;
+  align-items: center;
+  padding: var(--spacing-xs);
+  font-size: var(--font-size-xs);
 
   &::first-letter {
-    text-transform: capitalize;
+    text-transform: uppercase;
   }
 }
 
-//.text {
-//  &::first-letter {
-//    text-transform: capitalize;
-//  }
-//}
-
 .button {
-  //position: relative;
-  //z-index: 1;
   grid-column: 2;
   grid-row: 1;
-  //padding: 0.25rem 0.5rem;
-  //background-color: transparent;
-  //border: 0.2rem solid var(--color-neutral-2);
-  //font-size: 1.5rem;
-  //color: var(--color-neutral-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  background-color: inherit;
+  font-size: var(--font-size-s);
+  color: inherit;
   pointer-events: initial;
-
-  &:hover {
-    background-color: var(--color-neutral-2);
-
-    .info & {
-      color: var(--color-solid-3);
-    }
-
-    .success & {
-      color: var(--color-solid-2);
-    }
-
-    .warning & {
-      color: var(--color-solid-5);
-    }
-
-    .error & {
-      color: var(--color-solid-7);
-    }
-  }
-
-  //&:focus-visible {
-  //  outline-offset: -0.25rem;
-  //}
 }
 
 .progress {
+  grid-column: span 2;
+  grid-row: 2;
   height: 0.25rem;
   animation: Progress var(--timeout) linear;
+  background-color: var(--color-neutral-0);
+  opacity: 0.5;
 }
 
 .info {
   background-color: var(--color-solid-3);
-  color: var(--color-neutral-2);
-
-  .progress {
-    //background-color: var(--color-solid-3);
-    background-color: red;
-  }
 }
 
 .success {
-  background-color: var(--color-solid-2);
-  color: var(--color-neutral-2);
-
-  .progress {
-    //background-color: var(--color-solid-3);
-    background-color: red;
-  }
+  background-color: var(--color-solid-1);
 }
 
 .warning {
-  background-color: var(--color-solid-5);
-  color: var(--color-neutral-2);
-
-  .progress {
-    //background-color: var(--color-solid-3);
-    background-color: red;
-  }
+  background-color: var(--color-solid-6);
 }
 
 .error {
-  background-color: var(--color-solid-7);
-  color: var(--color-neutral-6);
-
-  .progress {
-    //background-color: var(--color-solid-3);
-    background-color: red;
-  }
+  background-color: var(--color-solid-8);
 }
 
 @keyframes Appear {

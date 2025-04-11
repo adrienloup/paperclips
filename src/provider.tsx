@@ -1,11 +1,12 @@
 import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent } from 'react';
 
 import { Children } from '@/src/generic/types/Children.type.ts';
+import { AlertsProvider } from '@/src/generic/common/components/alerts/Alerts.provider.tsx';
+import { GameProvider } from '@/src/pages/game/Game.provider.tsx';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
 import { ModeProvider } from '@/src/generic/mode/Mode.provider.tsx';
 import { MenuProvider } from '@/src/generic/common/components/menu/Menu.provider.tsx';
 import { NotificationsProvider } from '@/src/pages/game/components/notifications/Notifications.provider.tsx';
-import { AlertsProvider } from '@/src/generic/common/components/alerts/Alerts.provider.tsx';
 
 type ProvidersType = [
   ComponentType<{ children: Children }>,
@@ -24,9 +25,10 @@ const allProviders = (providers: ProvidersType) =>
   );
 
 export const Provider: FunctionComponent<{ children: Children }> = allProviders([
+  [AlertsProvider],
+  [GameProvider],
   [LanguageProvider],
   [ModeProvider],
   [MenuProvider],
   [NotificationsProvider],
-  [AlertsProvider],
 ]);

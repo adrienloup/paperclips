@@ -9,6 +9,7 @@ export const ClickerComponent = ({
   children,
   className,
   disabled,
+  sign = '+',
   value = 1,
   onClick,
 }: Clicker) => {
@@ -19,6 +20,12 @@ export const ClickerComponent = ({
   useEffect(() => {
     return () => timeouts.current.forEach((id) => clearTimeout(id));
   }, []);
+
+  useEffect(() => {
+    if (disabled) {
+      setIsActive(false);
+    }
+  }, [disabled]);
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const { clientX, clientY, currentTarget } = e;
@@ -37,7 +44,7 @@ export const ClickerComponent = ({
 
     const timeoutId = window.setTimeout(() => {
       setValues((prev) => prev.slice(1));
-    }, 5e2);
+    }, 4e2);
 
     timeouts.current.push(timeoutId);
 
@@ -76,7 +83,7 @@ export const ClickerComponent = ({
           className={styles.value}
           style={getStyle(v.x, v.y)}
         >
-          +
+          {sign}
           <NumberComponent
             value={value}
             notation="compact"

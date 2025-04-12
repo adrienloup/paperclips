@@ -4,7 +4,7 @@
   gap: var(--spacing-s);
   padding: var(--spacing-s);
 
-  @include desktop {
+  @include widescreen {
     gap: var(--spacing-m);
     padding: var(--spacing-m);
   }

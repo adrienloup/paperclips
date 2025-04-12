@@ -6,23 +6,31 @@ import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicke
 import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
-export const WireComponent = () => {
+export const MarketingComponent = () => {
   const { t } = useTranslation();
   const setGame = useGameDispatch();
   const game = useGame();
 
+  const marketingClick = () => setGame({ type: 'BUY_MARKETING' });
+
   return (
     <DialsComponent>
+      {/*<DialComponent
+        value={game.marketingCost}
+        style="currency"
+        label={t('game.marketingCost')}
+        disabled={game.marketing >= 10}
+      />*/}
       <DialComponent
-        value={game.wire}
-        notation="compact"
-        label={t('game.wire')}
+        value={game.marketing}
+        label={t('game.marketing')}
+        limit={10}
       />
       <ClickerComponent
         className={styles.button}
-        disabled={game.funds < game.wireCost}
-        value={game.wireBonus}
-        onClick={() => setGame({ type: 'BUY_WIRE' })}
+        disabled={game.funds < game.marketingCost || game.marketing >= 10}
+        aria-label="Increase marketing"
+        onClick={marketingClick}
       >
         <IconComponent
           className={styles.icon}

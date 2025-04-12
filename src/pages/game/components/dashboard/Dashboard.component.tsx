@@ -5,6 +5,7 @@ import { PaperclipsComponent } from '@/src/pages/game/components/dashboard/paper
 import { ManufacturingComponent } from '@/src/pages/game/components/dashboard/manufacturing/Manufacturing.component.tsx';
 import { BusinessComponent } from '@/src/pages/game/components/dashboard/business/Business.component.tsx';
 import { ResourcesComponent } from '@/src/pages/game/components/dashboard/resources/ResourcesComponent.tsx';
+import { ProjectsComponent } from '@/src/pages/game/components/dashboard/projects/ResourcesComponent.tsx';
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
 export const DashboardComponent = () => {
@@ -38,6 +39,7 @@ export const DashboardComponent = () => {
       <ManufacturingComponent />
       <BusinessComponent />
       <ResourcesComponent />
+      <ProjectsComponent />
     </article>
   );
 };

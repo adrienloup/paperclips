@@ -2,6 +2,7 @@ import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component.tsx';
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
+import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 import styles from '@/src/pages/game/components/dashboard/paperclips/Paperclips.module.scss';
 
 export const PaperclipsComponent = () => {
@@ -29,7 +30,10 @@ export const PaperclipsComponent = () => {
           value={1}
           onClick={paperclipsClick}
         >
-          +1
+          <IconComponent
+            className={styles.icon}
+            icon="add_circle"
+          />
         </ClickerComponent>
       </div>
     </div>

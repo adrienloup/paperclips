@@ -2,16 +2,17 @@ import { CardComponent } from '@/src/generic/common/components/card/Card.compone
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
-export const ResourcesComponent = () => {
+export const ProjectsComponent = () => {
   return (
     <CardComponent>
       <TitleComponent
         tag="h2"
         className={styles.title}
       >
-        Resources
+        Projects
       </TitleComponent>
-      Resources
+      Projects
+      <div style={{ height: '2000px' }}></div>
     </CardComponent>
   );
 };

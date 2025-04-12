@@ -3,6 +3,13 @@ import { Translation } from '@/src/generic/types/Translation.type.ts';
 export const en: Translation = {
   game: {
     titlePage: 'One. Two. Three...',
+    paperclipsCost: 'price',
+    wire: 'wire',
+    wireCost: 'wire cost',
+    machines: 'machines',
+    machinesCost: 'machine cost',
+    megamachines: 'megamachines',
+    megamachinesCost: 'megamachine cost',
     notification: {
       game: 'welcome lorem Ipsum is simply dummy',
       paperclips: 'paperclips lorem Ipsum is simply dummy',

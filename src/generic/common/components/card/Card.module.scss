@@ -3,14 +3,15 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--spacing-xs);
+  opacity: 0;
   animation-name: Slide, Fade;
   animation-timing-function: var(--ease-quad);
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
 
-  @for $i from 1 through 5 {
+  @for $i from 2 through 6 {
     &:nth-child(#{$i}) {
-      animation-duration:
-        #{500ms + ($i * 100ms)},
-        900ms;
+      animation-delay: #{$i * 100ms};
     }
   }
 }
@@ -19,37 +20,6 @@
   font-weight: normal;
   font-size: var(--font-size-m);
 }
-
-//.button {
-//  flex-direction: column;
-//  justify-content: center;
-//  //gap: var(--spacing-xs);
-//  //position: relative;
-//  //z-index: 1;
-//  padding: var(--spacing-s);
-//  background-color: var(--color-1);
-//  border-radius: 0.05rem;
-//  font-family: var(--font-text-bold), sans-serif;
-//  font-size: var(--font-size-l);
-//  color: var(--color-2);
-//  transition-property: box-shadow;
-//  transition-duration: 200ms;
-//  transition-timing-function: var(--ease-quad);
-//
-//  & + & {
-//    margin-left: var(--spacing-xs);
-//  }
-//
-//  &:focus-visible {
-//    outline-offset: -0.15rem;
-//  }
-//
-//  //&.active,
-//  //&:active {
-//  //  box-shadow: 0 0 0 0.25rem var(--color-solid-2);
-//  //  transition-duration: 100ms;
-//  //}
-//}
 
 @keyframes Slide {
   0% {

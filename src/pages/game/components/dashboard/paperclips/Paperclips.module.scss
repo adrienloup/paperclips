@@ -1,9 +1,12 @@
 .paperclips {
   flex: 0 0 100%;
   display: flex;
+  opacity: 0;
   animation-name: Slide, Fade;
   animation-timing-function: var(--ease-quad);
-  animation-duration: 600ms, 900ms;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+  animation-delay: 100ms;
 }
 
 .inner {
@@ -25,7 +28,7 @@
   white-space: nowrap;
   font-size: var(--font-size-l);
 
-  @include desktop {
+  @include widescreen {
     max-width: calc(100vw - 10rem);
   }
 }

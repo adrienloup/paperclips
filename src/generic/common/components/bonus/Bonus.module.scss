@@ -1,0 +1,13 @@
+.bonus {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs);
+  background-color: var(--color-solid-1);
+  border-radius: 0.075rem;
+  font-size: var(--font-size-s);
+  color: var(--color-neutral-0);
+
+  span {
+    transform: rotate(45deg);
+  }
+}

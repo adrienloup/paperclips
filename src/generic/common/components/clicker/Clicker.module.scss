@@ -1,7 +1,7 @@
 .button {
   justify-content: center;
   position: relative;
-  padding: var(--spacing-s);
+  padding: var(--spacing-xs);
   background-color: var(--color-1);
   border-radius: 0.05rem;
   font-size: var(--font-size-l);
@@ -16,14 +16,15 @@
 
   &.active,
   &:active {
-    box-shadow: 0 0 0 0.5rem var(--color-solid-2);
+    box-shadow: 0 0 0 var(--spacing-xs) var(--color-solid-2);
     transition-duration: 100ms;
   }
 }
 
 .value {
   position: absolute;
-  animation: Up 550ms var(--ease-out);
+  z-index: 2;
+  animation: Up 450ms var(--ease-out);
   font-size: inherit;
   color: var(--color-solid-2);
   //will-change: transform, opacity;

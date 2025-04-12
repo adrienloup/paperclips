@@ -6,7 +6,7 @@ import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicke
 import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
-export const WireComponent = () => {
+export const MegamachinesComponent = () => {
   const { t } = useTranslation();
   const setGame = useGameDispatch();
   const game = useGame();
@@ -14,15 +14,14 @@ export const WireComponent = () => {
   return (
     <DialsComponent>
       <DialComponent
-        value={game.wire}
+        value={game.megamachines}
         notation="compact"
-        label={t('game.wire')}
+        label={t('game.megamachines')}
       />
       <ClickerComponent
         className={styles.button}
-        disabled={game.funds < game.wireCost}
-        value={game.wireBonus}
-        onClick={() => setGame({ type: 'BUY_WIRE' })}
+        disabled={game.funds < game.megamachinesCost}
+        onClick={() => setGame({ type: 'BUY_MEGAMACHINES' })}
       >
         <IconComponent
           className={styles.icon}

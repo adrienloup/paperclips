@@ -77,6 +77,12 @@ export const DebugComponent = () => {
     });
   };
 
+  const marketingClick = () => setGame({ type: 'BUY_MARKETING' });
+
+  const updateWire = (bonus: number) => setGame({ type: 'UPDATE_WIRE_BONUS', bonus });
+
+  const updateUnsold = (bonus: number) => setGame({ type: 'UPDATE_UNSOLD_BONUS', bonus });
+
   return display ? (
     <div
       className={styles.debug}
@@ -123,42 +129,102 @@ export const DebugComponent = () => {
         <button type="submit">Add</button>
       </form>
       <form>
+        <label>marketing</label>
+        <button
+          type="button"
+          onClick={marketingClick}
+        >
+          +1
+        </button>
+      </form>
+      <form>
         <label>wirebonus</label>
         <button
           type="button"
-          onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 1e2 })}
+          onClick={() => updateWire(1e2)}
         >
           1e2
         </button>
         <button
           type="button"
-          onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 5e2 })}
+          onClick={() => updateWire(1e3)}
         >
-          5e2
+          1e3
         </button>
         <button
           type="button"
-          onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 2e3 })}
+          onClick={() => updateWire(1e4)}
         >
-          2e3
+          1e4
         </button>
         <button
           type="button"
-          onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 1e5 })}
-        >
-          1e5
-        </button>
-        <button
-          type="button"
-          onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 1e6 })}
+          onClick={() => updateWire(1e6)}
         >
           1e6
         </button>
+      </form>
+      <form>
+        <label>unsoldbonus</label>
         <button
           type="button"
-          onClick={() => setGame({ type: 'UPDATE_WIRE_BONUS', bonus: 5e6 })}
+          onClick={() => updateUnsold(1)}
         >
-          5e6
+          1
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsold(2)}
+        >
+          2
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsold(3)}
+        >
+          3
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsold(4)}
+        >
+          4
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsold(5)}
+        >
+          5
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsold(6)}
+        >
+          6
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsold(7)}
+        >
+          7
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsold(8)}
+        >
+          8
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsold(9)}
+        >
+          9
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsold(10)}
+        >
+          10
         </button>
       </form>
     </div>

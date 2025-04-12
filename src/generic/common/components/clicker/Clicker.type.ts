@@ -2,6 +2,7 @@ import { Button } from '@/src/generic/common/components/button/Button.type.ts';
 
 export interface Clicker extends Button<HTMLButtonElement> {
   value?: number;
+  sign?: string;
   onClick: () => void;
 }
 

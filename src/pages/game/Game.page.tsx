@@ -6,11 +6,12 @@ import { LoaderComponent } from '@/src/generic/common/components/loader/Loader.c
 import { DashboardComponent } from '@/src/pages/game/components/dashboard/Dashboard.component.tsx';
 
 const LayoutComponent = lazy(() =>
-  fallback(import('@/src/generic/common/components/layout/Layout.component.tsx'), 15e2)
+  fallback(import('@/src/generic/common/components/layout/Layout.component.tsx'), 2e3)
 );
 
 function GamePage() {
   const { t } = useTranslation();
+
   useTitle(t('game.titlePage'));
 
   return (

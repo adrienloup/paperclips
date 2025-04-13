@@ -4,15 +4,17 @@
 }
 
 @mixin color {
-  --color-neutral-0: #111;
-  --color-neutral-1: #252529;
-  --color-neutral-2: #ffc8da;
-  --color-neutral-3: #ececec;
-  --color-solid-1: #29ff3c;
-  --color-solid-2: #00d0ff;
-  --color-solid-3: #1692ff;
+  --color-neutral-1: #111;
+  --color-neutral-2: #c4bbc7;
+  --color-neutral-3: #2a2238;
+  --color-neutral-6: #1f192c;
+  --color-neutral-4: #ffc8da;
+  --color-neutral-5: #faefff;
+  --color-solid-1: #00ff15;
+  --color-solid-2: #00ffbb;
+  --color-solid-3: #009dff;
   --color-solid-4: #4c00ff;
-  --color-solid-5: #ff3cb8;
+  --color-solid-5: #f700ff;
   --color-solid-6: #ffeb3b;
   --color-solid-7: #ff8800;
   --color-solid-8: #ff0000;
@@ -21,8 +23,8 @@
 @mixin size {
   --font-size-xl: 6rem; // 96px
   --font-size-l: 2.5rem; // 40px
-  --font-size-m: 1.5rem; // 24px
-  --font-size-s: 1.25rem; // 20px
+  --font-size-m: 2rem; // 32px
+  --font-size-s: 1.5rem; // 24px
   --font-size-xs: 1rem; // 16px
 }
 

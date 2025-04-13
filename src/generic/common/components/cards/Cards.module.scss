@@ -1,32 +1,5 @@
 .cards {
   display: flex;
-  flex-direction: column;
-  animation:
-    mainSlide 900ms var(--ease-quad),
-    mainFade 900ms var(--ease-quad);
-  //will-change: transform, opacity;
-}
-
-@keyframes mainSlide {
-  0% {
-    transform: translateY(1200px);
-  }
-  20% {
-    transform: translateY(120px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes mainFade {
-  0% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  align-items: flex-start;
+  gap: var(--spacing-xs);
 }

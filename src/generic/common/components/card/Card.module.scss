@@ -1,15 +1,27 @@
 .card {
   padding: var(--spacing-xs);
-  background-color: #2a2238;
-  border-radius: 0.5rem;
+  background-color: var(--color-neutral-3);
+  border-radius: 0.25rem;
   text-transform: uppercase;
+  //text-shadow: 0.15rem 0.15rem var(--color-neutral-1);
   font-size: var(--font-size-s);
   color: var(--color-solid-3);
+}
 
-  a {
-    text-decoration: none;
-    color: var(--color-solid-5);
-  }
+.title {
+  font-size: var(--font-size-s);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-solid-5);
+}
+
+.button {
+  padding: var(--spacing-xs);
+  background-color: var(--color-solid-3);
+  border-radius: 0.25rem;
+  font-size: var(--font-size-m);
 }
 
 //.card {

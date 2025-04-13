@@ -20,13 +20,14 @@ body {
   font-family: var(--font-text), sans-serif;
   font-weight: normal;
   font-size: 16px;
-  color: var(--color-1);
+  color: var(--color-2);
 }
 
-#_paperclips_3mma_0 {
+#_paperclip_3mma_0 {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   //background-color: var(--color-2);
-  background-color: #1a1122;
+  background-color: var(--color-1);
+  //background-color: #1a1122;
 }

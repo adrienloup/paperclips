@@ -10,7 +10,7 @@ export const gameReducer = (state: State, action: Action): State => {
       if (state.unsold <= 0) return state;
       // console.log('SELL_UNSOLD');
       const sellUnsold = Math.max(0, Math.floor(state.unsold * (1 - state.publicDemand)));
-      const sellFunds = state.funds + (state.unsold - sellUnsold) * state.paperclipsCost;
+      const sellFunds = state.funds + (state.unsold - sellUnsold) * state.paperclipCost;
       return {
         ...state,
         unsold: sellUnsold,
@@ -35,71 +35,71 @@ export const gameReducer = (state: State, action: Action): State => {
         marketing: updateMarketing,
         marketingCost: updateMarketingCost,
         funds: updateFunds,
-        paperclipsCost: state.paperclipsCostRef * updateMarketing,
+        paperclipCost: state.paperclipCostRef * updateMarketing,
       };
-    case 'BUY_MACHINES':
+    case 'BUY_MACHINE':
       if (state.funds <= 0) return state;
       return {
         ...state,
-        machines: state.machines + 1,
-        machinesCost: state.machinesCost + (Math.random() * (10 - 5) + 5), // entre ≥ 5 et < 10
-        funds: Math.max(0, state.funds - state.machinesCost),
+        machine: state.machine + 1,
+        machineCost: state.machineCost + (Math.random() * (10 - 5) + 5), // entre ≥ 5 et < 10
+        funds: Math.max(0, state.funds - state.machineCost),
       };
-    case 'BUY_MEGAMACHINES':
+    case 'BUY_MEGAMACHINE':
       if (state.funds <= 0) return state;
       return {
         ...state,
-        megamachines: state.megamachines + 1,
-        megamachinesCost: state.megamachinesCost + 11e2,
-        funds: Math.max(0, state.funds - state.megamachinesCost),
+        megamachine: state.megamachine + 1,
+        megamachineCost: state.megamachineCost + 11e2,
+        funds: Math.max(0, state.funds - state.megamachineCost),
       };
-    case 'INCREASE_PAPERCLIPS_COST':
-      const increasePaperclipsCostRef = Math.min(state.paperclipsCostRef + 0.01, 1);
+    case 'INCREASE_PAPERCLIP_COST':
+      const increasePaperclipCostRef = Math.min(state.paperclipCostRef + 0.01, 1);
       return {
         ...state,
-        paperclipsCostRef: increasePaperclipsCostRef,
-        paperclipsCost: increasePaperclipsCostRef * state.marketing,
-        publicDemand: 0.1 / increasePaperclipsCostRef,
+        paperclipCostRef: increasePaperclipCostRef,
+        paperclipCost: increasePaperclipCostRef * state.marketing,
+        publicDemand: 0.1 / increasePaperclipCostRef,
       };
-    case 'DECREASE_PAPERCLIPS_COST':
-      const decreasePaperclipsCost = Math.max(state.paperclipsCostRef - 0.01, 0.1);
+    case 'DECREASE_PAPERCLIP_COST':
+      const decreasePaperclipCost = Math.max(state.paperclipCostRef - 0.01, 0.1);
       return {
         ...state,
-        paperclipsCostRef: decreasePaperclipsCost,
-        paperclipsCost: decreasePaperclipsCost * state.marketing,
-        publicDemand: 0.1 / decreasePaperclipsCost,
+        paperclipCostRef: decreasePaperclipCost,
+        paperclipCost: decreasePaperclipCost * state.marketing,
+        publicDemand: 0.1 / decreasePaperclipCost,
       };
     case 'UPDATE_PER_SECOND': {
       // console.log('UPDATE_PER_SECOND');
-      const megamachinesPerSecond = state.megamachines * 5e2;
-      const machinesPerSecond =
-        state.wire >= megamachinesPerSecond + state.machines
-          ? megamachinesPerSecond + state.machines
-          : state.wire >= megamachinesPerSecond
-            ? megamachinesPerSecond
-            : state.wire >= state.machines
-              ? state.machines
+      const megamachinePerSecond = state.megamachine * 5e2;
+      const machinePerSecond =
+        state.wire >= megamachinePerSecond + state.machine
+          ? megamachinePerSecond + state.machine
+          : state.wire >= megamachinePerSecond
+            ? megamachinePerSecond
+            : state.wire >= state.machine
+              ? state.machine
               : 0;
-      const paperclipsPerSecond = machinesPerSecond * state.unsoldBonus;
-      const fundsPerSecond = paperclipsPerSecond * state.paperclipsCost;
+      const paperclipPerSecond = machinePerSecond * state.unsoldBonus;
+      const fundsPerSecond = paperclipPerSecond * state.paperclipCost;
       return {
         ...state,
-        paperclipsPerSecond: paperclipsPerSecond,
+        paperclipPerSecond: paperclipPerSecond,
         fundsPerSecond: fundsPerSecond,
-        paperclips: state.paperclips + paperclipsPerSecond,
-        unsold: state.unsold + paperclipsPerSecond,
-        wire: state.wire - machinesPerSecond,
+        paperclip: state.paperclip + paperclipPerSecond,
+        unsold: state.unsold + paperclipPerSecond,
+        wire: state.wire - machinePerSecond,
       };
     }
-    case 'UPDATE_PAPERCLIPS':
+    case 'UPDATE_PAPERCLIP':
       if (state.wire <= 0) return state;
       return {
         ...state,
-        paperclips: state.paperclips + state.unsoldBonus,
+        paperclip: state.paperclip + state.unsoldBonus,
         unsold: state.unsold + state.unsoldBonus,
         wire: state.wire - 1,
-        paperclipsPerSecond: state.paperclipsPerSecond + state.unsoldBonus,
-        fundsPerSecond: state.fundsPerSecond + state.unsoldBonus * state.paperclipsCost,
+        paperclipPerSecond: state.paperclipPerSecond + state.unsoldBonus,
+        fundsPerSecond: state.fundsPerSecond + state.unsoldBonus * state.paperclipCost,
       };
     case 'UPDATE_WIRE_COST':
       return {

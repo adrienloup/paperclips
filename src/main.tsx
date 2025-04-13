@@ -5,7 +5,7 @@ import { version } from '@/package.json';
 import App from '@/src/generic/app/App.tsx';
 import '@/src/generic/i18n';
 
-createRoot(document.getElementById('_paperclips_3mma_0')!).render(
+createRoot(document.getElementById('_paperclip_3mma_0')!).render(
   <StrictMode>
     <Providers>
       <App />

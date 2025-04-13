@@ -1,10 +1,8 @@
 import { useCallback } from 'react';
 import { useInterval } from '@/src/generic/hooks/useInterval.ts';
 import { useGameDispatch } from '@/src/pages/game/useGame.ts';
-import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
-import { CounterComponent } from '@/src/pages/game/components/dashboard/counter/Counter.component.tsx';
-import { InfoComponent } from '@/src/pages/game/components/dashboard/info/Info.component.tsx';
-import { ManufacturingComponent } from '@/src/pages/game/components/dashboard/manufacturing/Manufacturing.component.tsx';
+import { BusinessComponent } from '@/src/pages/game/components/dashboard/business/Business.component.tsx';
+import { ProgressbarComponent } from '@/src/generic/common/components/progressbar/Progressbar.component.tsx';
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
 export const DashboardComponent = () => {
@@ -34,10 +32,8 @@ export const DashboardComponent = () => {
       className={styles.dashboard}
       role="article"
     >
-      <TitleComponent className={styles.title}>Easy way to make a paper clip</TitleComponent>
-      <CounterComponent />
-      <InfoComponent />
-      <ManufacturingComponent />
+      <BusinessComponent />
+      <ProgressbarComponent progress={10} />
     </article>
   );
 };

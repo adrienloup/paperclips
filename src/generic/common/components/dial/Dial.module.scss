@@ -1,15 +1,16 @@
 .dial {
   display: flex;
   flex-direction: column;
-  padding: var(--spacing-xs);
+  padding: 0 var(--spacing-xs);
+  color: var(--color-solid-3);
 
-  & + & {
-    border-left: 0.2rem solid var(--color-1);
-  }
+  //& + & {
+  //  border-left: 0.2rem solid var(--color-1);
+  //}
 }
 
 .number {
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-m);
 }
 
 .label {

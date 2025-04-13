@@ -1,0 +1,50 @@
+.manufacturing {
+  display: flex;
+  gap: var(--spacing-xs);
+  max-width: 40rem;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  gap: var(--spacing-xs);
+}
+
+.button {
+  grid-column: span 2;
+  grid-row: 1;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #2a2238;
+  border-radius: 0.5rem;
+  font-size: var(--font-size-s);
+}
+
+.wireCost {
+  grid-column: 1;
+  grid-row: 2;
+  aspect-ratio: 1 / 1;
+  //padding: var(--spacing-xs);
+  background-color: #2a2238;
+  border-radius: 0.5rem;
+  font-size: var(--font-size-s);
+}
+
+.wireStock {
+  grid-column: 2;
+  grid-row: 2;
+  aspect-ratio: 1 / 1;
+  //padding: var(--spacing-xs);
+  background-color: #2a2238;
+  border-radius: 0.5rem;
+  font-size: var(--font-size-s);
+}

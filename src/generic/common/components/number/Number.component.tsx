@@ -16,7 +16,8 @@ export const NumberComponent = ({
     currency: language == 'en' ? 'USD' : 'EUR',
     notation: notation,
     minimumFractionDigits: 0,
-    maximumFractionDigits: style == 'percent' ? 0 : 2,
+    maximumFractionDigits: 2,
+    // maximumFractionDigits: style == 'percent' ? 0 : 2,
     compactDisplay: compactDisplay,
   };
 

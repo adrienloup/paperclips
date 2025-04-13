@@ -3,7 +3,7 @@ import { Translation } from '@/src/generic/types/Translation.type.ts';
 export const en: Translation = {
   game: {
     titlePage: 'One. Two. Three...',
-    paperclipsCost: 'price',
+    paperclipsCost: 'selling price',
     wire: 'wire',
     wireCost: 'wire cost',
     machines: 'machines',

@@ -1,15 +1,15 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Provider } from '@/src/provider.tsx';
+import { Providers } from '@/src/providers.tsx';
 import { version } from '@/package.json';
 import App from '@/src/generic/app/App.tsx';
 import '@/src/generic/i18n';
 
 createRoot(document.getElementById('_paperclips_3mma_0')!).render(
   <StrictMode>
-    <Provider>
+    <Providers>
       <App />
-    </Provider>
+    </Providers>
   </StrictMode>
 );
 

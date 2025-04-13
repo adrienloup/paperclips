@@ -1,8 +1,8 @@
-$widescreen: 1440px;
-$desktop: 1280px;
-$tablet-landscape: 1024px;
-$tablet-portrait: 768px;
-$mobile-landscape: 520px;
+$widescreen: 2048px;
+$desktop: 1920px;
+$tablet-landscape: 1280px;
+$tablet-portrait: 1024px;
+$mobile-landscape: 768px;
 $mobile-portrait: 375px;
 
 @mixin widescreen {

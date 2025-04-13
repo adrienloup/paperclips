@@ -6,7 +6,7 @@
   transition-duration: 200ms;
   transition-timing-function: var(--ease-expo);
   background-color: var(--color-1);
-  //will-change: margin-top;
+  will-change: margin-top;
 
   &.open {
     margin-top: 0;

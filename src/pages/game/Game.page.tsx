@@ -3,8 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { fallback } from '@/src/generic/utils/fallback.ts';
 import { useTitle } from '@/src/generic/hooks/useTitle.ts';
 import { LoaderComponent } from '@/src/generic/common/components/loader/Loader.component.tsx';
-import { DebugComponent } from '@/src/pages/game/components/debug/Debug.component.tsx';
-import { NotificationsComponent } from '@/src/pages/game/components/notifications/Notifications.component.tsx';
 import { DashboardComponent } from '@/src/pages/game/components/dashboard/Dashboard.component.tsx';
 
 const LayoutComponent = lazy(() =>
@@ -18,8 +16,6 @@ function GamePage() {
   return (
     <Suspense fallback={<LoaderComponent aria-label={t('common.loading')} />}>
       <LayoutComponent>
-        <DebugComponent />
-        <NotificationsComponent />
         <DashboardComponent />
       </LayoutComponent>
     </Suspense>

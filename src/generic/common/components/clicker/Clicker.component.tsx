@@ -52,7 +52,6 @@ export const ClickerComponent = ({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    console.log(e.currentTarget);
     if (e.key === 'Enter' || e.key === ' ') {
       setIsActive(true);
     }
@@ -64,8 +63,7 @@ export const ClickerComponent = ({
     }
   };
 
-  const getStyle = (x: number, y: number) =>
-    ({ left: x, top: y, '--random': `${Math.random()}` }) as CSSProperties;
+  const getStyle = (x: number, y: number) => ({ left: x, top: y }) as CSSProperties;
 
   return (
     <ButtonComponent

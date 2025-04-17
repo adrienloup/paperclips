@@ -28,7 +28,7 @@ export const LoaderComponent = ({
     >
       <span className={styles.label}>{progress}%</span>
       <ProgressbarComponent
-        progress={progress}
+        valueNow={progress}
         size={size}
       />
     </div>

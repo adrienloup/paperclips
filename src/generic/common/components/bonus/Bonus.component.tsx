@@ -1,12 +1,16 @@
 import { classNames } from '@/src/generic/utils/classNames.ts';
+import { NumberComponent } from '@/src/generic/common/components/number/Number.component.tsx';
 import { Bonus } from '@/src/generic/common/components/bonus/Bonus.type.ts';
 import styles from '@/src/generic/common/components/bonus/Bonus.module.scss';
 
-export const BonusComponent = ({ className, value }: Bonus) => {
+export const BonusComponent = ({ className, value, sign }: Bonus) => {
   return (
     <div className={classNames([styles.bonus, className])}>
-      <span>+</span>
-      {value}
+      <span className={styles.sign}>{sign}</span>
+      <NumberComponent
+        value={value}
+        notation="compact"
+      />
     </div>
   );
 };

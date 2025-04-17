@@ -1,14 +1,12 @@
-// import { CSSProperties, useCallback, useEffect, useRef, useState } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
-import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 import { Alert } from '@/src/generic/common/components/alert/Alert.type.tsx';
 import styles from '@/src/generic/common/components/alert/Alert.module.scss';
 
 export const AlertComponent = ({
   text,
-  status = 'info',
+  status = 'warning',
   timeout = 5e3,
   close = true,
   remove,
@@ -56,7 +54,7 @@ export const AlertComponent = ({
           className={styles.button}
           onClick={remove}
         >
-          <IconComponent icon="cancel" />
+          x
         </ButtonComponent>
       )}
       {/*timeout > 0 && (

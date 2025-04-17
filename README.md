@@ -1,6 +1,6 @@
 # One. Two. Three...
 
-Paperclip is an incremental game (also an idle game, clicker game, or tapper game) using React.
+Paperclips is an incremental game (also an idle game, clicker game, or tapper game) using React.
 
 ## Requirements
 

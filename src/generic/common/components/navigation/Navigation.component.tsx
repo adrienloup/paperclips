@@ -7,9 +7,9 @@ export const NavigationComponent = () => {
       className={styles.navigation}
       role="navigation"
     >
-      <Link to={'/paperclip'}>Game</Link>
+      <Link to={'/paperclips'}>Game</Link>
       <br />
-      <Link to={'/paperclip/explore'}>Explore</Link>
+      <Link to={'/paperclips/explore'}>Explore</Link>
     </nav>
   );
 };

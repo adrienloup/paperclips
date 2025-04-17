@@ -1,5 +1,4 @@
 export type Action =
-  | { type: 'INITIALIZE'; state: State }
   | { type: 'SELL_UNSOLD' }
   | { type: 'BUY_WIRE' }
   | { type: 'BUY_MARKETING' }
@@ -7,26 +6,38 @@ export type Action =
   | { type: 'BUY_MEGAMACHINE' }
   | { type: 'INCREASE_PAPERCLIP_COST' }
   | { type: 'DECREASE_PAPERCLIP_COST' }
+  | { type: 'INCREASE_MEMORY' }
+  | { type: 'INCREASE_PROCESSOR' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_PAPERCLIP' }
   | { type: 'UPDATE_WIRE_COST' }
+  | { type: 'UPDATE_TRUST'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; bonus: number }
-  | { type: 'UPDATE_UNSOLD_BONUS'; bonus: number };
+  | { type: 'UPDATE_UNSOLD_BONUS'; bonus: number }
+  | { type: 'INITIALIZE'; state: State };
 
 export interface State {
+  creativity: number;
+  creativityMax: number;
   funds: number;
   fundsPerSecond: number;
   machine: number;
   machineCost: number;
   marketing: number;
   marketingCost: number;
-  megamachine: number;
-  megamachineCost: number;
+  megaMachine: number;
+  megaMachineCost: number;
+  memory: number;
+  operation: number;
+  operationMax: number;
   paperclip: number;
   paperclipCost: number;
   paperclipCostRef: number;
   paperclipPerSecond: number;
   publicDemand: number;
+  processor: number;
+  trust: number;
+  trustCost: number;
   unsold: number;
   unsoldBonus: number;
   wire: number;

@@ -20,19 +20,14 @@ export function LanguageProvider({ children }: { children: Children }) {
 
   const changedLanguage = useCallback(
     (newLanguage: Language) => {
-      // if (newLanguage !== language) {
       updateLanguage(newLanguage);
-      // }
     },
     [updateLanguage]
   );
 
   useEffect(() => {
-    // if (i18n.language !== language) {
     updateLanguage(language);
-    // }
   }, [language]);
-  // }, [language, i18n]);
 
   return (
     <LanguageContext.Provider value={[language, changedLanguage]}>

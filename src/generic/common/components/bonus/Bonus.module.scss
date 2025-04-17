@@ -1,13 +1,40 @@
+//.bonus {
+//  display: flex;
+//  align-items: center;
+//  font-size: var(--font-size-l);
+//  color: var(--color-solid-5);
+//}
+
+//.bonus {
+//  display: flex;
+//  align-items: center;
+//  padding: 0 0.25rem;
+//  font-size: var(--font-size-s);
+//  color: var(--color-solid-4);
+//  box-shadow:
+//    0 0.2rem var(--color-solid-4),
+//    0 -0.2rem var(--color-solid-4),
+//    0.2rem 0 var(--color-solid-4),
+//    -0.2rem 0 var(--color-solid-4),
+//    0 0.4rem var(--color-2),
+//    0.2rem 0.2rem var(--color-2),
+//    -0.2rem 0.2rem var(--color-2);
+//}
+
 .bonus {
   display: flex;
   align-items: center;
-  padding: var(--spacing-xs);
-  background-color: var(--color-solid-1);
-  border-radius: 0.075rem;
+  margin: var(--spacing-xs);
+  padding: 0 var(--spacing-xs);
   font-size: var(--font-size-s);
-  color: var(--color-neutral-1);
+  color: var(--color-solid-1);
+  box-shadow:
+    0 0.3rem var(--color-solid-1),
+    0 -0.3rem var(--color-solid-1),
+    0.3rem 0 var(--color-solid-1),
+    -0.3rem 0 var(--color-solid-1);
+}
 
-  span {
-    transform: rotate(45deg);
-  }
+.sign {
+  font-size: var(--font-size-xs);
 }

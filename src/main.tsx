@@ -5,7 +5,7 @@ import { version } from '@/package.json';
 import App from '@/src/generic/app/App.tsx';
 import '@/src/generic/i18n';
 
-createRoot(document.getElementById('_paperclip_3mma_0')!).render(
+createRoot(document.getElementById('_paperclips_3mma_0')!).render(
   <StrictMode>
     <Providers>
       <App />
@@ -15,7 +15,7 @@ createRoot(document.getElementById('_paperclip_3mma_0')!).render(
 
 console.log(
   `%c[App]%c${version}%c@jff`,
-  'padding: 4px 3px 3px; background: #252529; font-weight: bold; color: #4c00ff;',
-  'padding: 4px 3px 3px; background: #4c00ff; font-weight: bold; color: #252529;',
-  'padding: 4px 3px 3px; background: #252529; font-weight: bold; color: #4c00ff;'
+  'padding: 4px 3px 3px; background: #252529; font-weight: bold; color: #5a00ff;',
+  'padding: 4px 3px 3px; background: #5a00ff; font-weight: bold; color: #252529;',
+  'padding: 4px 3px 3px; background: #252529; font-weight: bold; color: #5a00ff;'
 );

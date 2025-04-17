@@ -5,7 +5,7 @@
   transition-property: margin-top;
   transition-duration: 200ms;
   transition-timing-function: var(--ease-expo);
-  background-color: var(--color-1);
+  background-color: var(--color-2);
   will-change: margin-top;
 
   &.open {
@@ -20,8 +20,11 @@
   left: 0;
   z-index: 2;
   padding: var(--spacing-xs);
-  background-color: var(--color-1);
-  border-bottom-right-radius: 0.15rem;
+  background-color: var(--color-2);
+  text-transform: uppercase;
   font-size: var(--font-size-xs);
-  color: var(--color-2);
+  color: var(--color-1);
+  box-shadow:
+    0 0.3rem var(--color-2),
+    0.3rem 0 var(--color-2);
 }

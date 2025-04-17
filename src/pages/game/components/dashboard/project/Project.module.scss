@@ -1,0 +1,11 @@
+.project {
+  padding: var(--spacing-xs);
+  background-color: var(--color-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-1);
+
+  &.lock {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

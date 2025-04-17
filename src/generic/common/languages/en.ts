@@ -2,7 +2,7 @@ import { Translation } from '@/src/generic/types/Translation.type.ts';
 
 export const en: Translation = {
   common: {
-    title: 'Paperclip',
+    title: 'Paperclips',
     loading: 'Loading...',
     menu: {
       open: 'Open Menu',

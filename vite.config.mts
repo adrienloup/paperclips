@@ -8,32 +8,32 @@ export default defineConfig({
     react(),
     VitePWA({
       manifest: {
-        name: 'Paperclip',
-        short_name: 'paperclip',
+        name: 'Paperclips',
+        short_name: 'paperclips',
         description:
-          'Paperclip is an incremental game (also an idle game, clicker game, or tapper game).',
-        start_url: '/paperclip',
+          'Paperclips is an incremental game (also an idle game, clicker game, or tapper game).',
+        start_url: '/paperclips',
         display: 'standalone',
-        theme_color: '#4c00ff',
+        theme_color: '#5a00ff',
         background_color: '#252529',
         icons: [
           {
-            src: '/paperclip/paperclip-192x192.svg',
+            src: '/paperclips/paperclips-192x192.svg',
             type: 'image/svg+xml',
             sizes: '192x192',
           },
           {
-            src: '/paperclip/paperclip-256x256.svg',
+            src: '/paperclips/paperclips-256x256.svg',
             type: 'image/svg+xml',
             sizes: '256x256',
           },
           {
-            src: '/paperclip/paperclip-384x384.svg',
+            src: '/paperclips/paperclips-384x384.svg',
             type: 'image/svg+xml',
             sizes: '384x384',
           },
           {
-            src: '/paperclip/paperclip-512x512.svg',
+            src: '/paperclips/paperclips-512x512.svg',
             type: 'image/svg+xml',
             sizes: '512x512',
           },
@@ -41,7 +41,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: '/paperclip',
+  base: '/paperclips',
   resolve: {
     alias: {
       '@': path.resolve('./'),

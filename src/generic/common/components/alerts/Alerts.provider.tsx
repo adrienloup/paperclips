@@ -22,8 +22,8 @@ export const AlertsProvider = ({ children }: { children: Children }) => {
                 {state.map((alert: Alert) => (
                   <AlertComponent
                     key={alert.id}
-                    title={alert.title}
                     text={alert.text}
+                    status={alert.status}
                     remove={() => dispatch({ type: 'REMOVE', id: alert.id! })}
                   />
                 ))}

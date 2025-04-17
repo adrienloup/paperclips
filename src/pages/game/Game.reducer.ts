@@ -2,10 +2,6 @@ import { Action, State } from '@/src/pages/game/Game.type.ts';
 
 export const gameReducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'INITIALIZE':
-      return {
-        ...action.state,
-      };
     case 'SELL_UNSOLD':
       if (state.unsold <= 0) return state;
       // console.log('SELL_UNSOLD');
@@ -25,16 +21,13 @@ export const gameReducer = (state: State, action: Action): State => {
         funds: state.funds - state.wireCost,
       };
     case 'BUY_MARKETING':
-      // console.log('BUY_MARKETING');
-      if (state.funds <= 0) return state;
+      // if (state.funds <= 0) return state;
       const updateMarketing = Math.max(1, Math.min(state.marketing + 1, 10));
-      const updateFunds = Math.max(0, state.funds - state.marketingCost);
-      const updateMarketingCost = Math.max(100, Math.min(state.marketingCost * 2, 25600));
       return {
         ...state,
         marketing: updateMarketing,
-        marketingCost: updateMarketingCost,
-        funds: updateFunds,
+        marketingCost: Math.max(100, Math.min(state.marketingCost * 2.5, 25600)),
+        funds: Math.max(0, state.funds - state.marketingCost),
         paperclipCost: state.paperclipCostRef * updateMarketing,
       };
     case 'BUY_MACHINE':
@@ -49,9 +42,9 @@ export const gameReducer = (state: State, action: Action): State => {
       if (state.funds <= 0) return state;
       return {
         ...state,
-        megamachine: state.megamachine + 1,
-        megamachineCost: state.megamachineCost + 11e2,
-        funds: Math.max(0, state.funds - state.megamachineCost),
+        megaMachine: state.megaMachine + 1,
+        megaMachineCost: state.megaMachineCost + 11e2,
+        funds: Math.max(0, state.funds - state.megaMachineCost),
       };
     case 'INCREASE_PAPERCLIP_COST':
       const increasePaperclipCostRef = Math.min(state.paperclipCostRef + 0.01, 1);
@@ -69,21 +62,47 @@ export const gameReducer = (state: State, action: Action): State => {
         paperclipCost: decreasePaperclipCost * state.marketing,
         publicDemand: 0.1 / decreasePaperclipCost,
       };
+    case 'INCREASE_MEMORY':
+      return {
+        ...state,
+        memory: Math.min(state.memory + 1, 20),
+        trust: Math.max(2, state.trust - 1),
+      };
+    case 'INCREASE_PROCESSOR':
+      return {
+        ...state,
+        processor: Math.min(state.processor + 1, 80),
+        trust: Math.max(2, state.trust - 1),
+      };
     case 'UPDATE_PER_SECOND': {
-      // console.log('UPDATE_PER_SECOND');
-      const megamachinePerSecond = state.megamachine * 5e2;
+      const megaMachinePerSecond = state.megaMachine * 5e2;
       const machinePerSecond =
-        state.wire >= megamachinePerSecond + state.machine
-          ? megamachinePerSecond + state.machine
-          : state.wire >= megamachinePerSecond
-            ? megamachinePerSecond
+        state.wire >= megaMachinePerSecond + state.machine
+          ? megaMachinePerSecond + state.machine
+          : state.wire >= megaMachinePerSecond
+            ? megaMachinePerSecond
             : state.wire >= state.machine
               ? state.machine
               : 0;
       const paperclipPerSecond = machinePerSecond * state.unsoldBonus;
       const fundsPerSecond = paperclipPerSecond * state.paperclipCost;
+      const operationMaxPerSecond = (state.memory * 1e6) / 20;
+      const operationPerSecond = Math.min(
+        operationMaxPerSecond,
+        state.operation + 10 * state.processor
+      );
+      const creativityMaxPerSecond =
+        operationPerSecond !== operationMaxPerSecond ? state.creativity + 1 : 0;
+      const creativityPerSecond =
+        operationPerSecond === operationMaxPerSecond && state.creativity < state.creativityMax
+          ? state.creativity + 1
+          : state.creativity;
       return {
         ...state,
+        operation: operationPerSecond,
+        operationMax: operationMaxPerSecond,
+        creativity: creativityPerSecond,
+        creativityMax: creativityMaxPerSecond,
         paperclipPerSecond: paperclipPerSecond,
         fundsPerSecond: fundsPerSecond,
         paperclip: state.paperclip + paperclipPerSecond,
@@ -106,6 +125,13 @@ export const gameReducer = (state: State, action: Action): State => {
         ...state,
         wireCost: state.wireCost > 10 ? state.wireCost - 0.22 : Math.random() * (20 - 12) + 12, // entre ≥ 12 et < 20
       };
+    case 'UPDATE_TRUST':
+      // if (state.trust >= 100) return state;
+      return {
+        ...state,
+        trust: Math.max(2, Math.min(action.value, 100)),
+        trustCost: Math.max(3000, Math.min(action.value * 2500, 247000)),
+      };
     case 'UPDATE_WIRE_BONUS':
       return {
         ...state,
@@ -115,6 +141,10 @@ export const gameReducer = (state: State, action: Action): State => {
       return {
         ...state,
         unsoldBonus: action.bonus,
+      };
+    case 'INITIALIZE':
+      return {
+        ...action.state,
       };
     default:
       return state;

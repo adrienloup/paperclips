@@ -7,7 +7,7 @@ export const NumberComponent = ({
   style,
   notation,
   compactDisplay,
-  limit,
+  valueMax,
 }: Number) => {
   const [language] = useLanguage();
 
@@ -17,7 +17,6 @@ export const NumberComponent = ({
     notation: notation,
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
-    // maximumFractionDigits: style == 'percent' ? 0 : 2,
     compactDisplay: compactDisplay,
   };
 
@@ -26,15 +25,15 @@ export const NumberComponent = ({
     options
   ).format(value);
 
-  const formatMax: string = new Intl.NumberFormat(
+  const formatValueMax: string = new Intl.NumberFormat(
     language == 'en' ? 'en-US' : 'fr-FR',
     options
-  ).format(limit!);
+  ).format(valueMax!);
 
   return (
     <span className={className}>
       {formatValue}
-      {limit && '/' + formatMax}
+      {valueMax && '/' + formatValueMax}
     </span>
   );
 };

@@ -1,0 +1,9 @@
+.paperclip {
+  flex: 0 0 100%;
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--spacing-xs);
+  text-transform: uppercase;
+  //text-shadow: 0 0.2rem var(--color-2);
+  font-size: var(--font-size-l);
+}

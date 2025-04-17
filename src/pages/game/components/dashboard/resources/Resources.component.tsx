@@ -8,6 +8,7 @@ import { ProcessorComponent } from '@/src/pages/game/components/dashboard/resour
 import { OperationComponent } from '@/src/pages/game/components/dashboard/resources/Operation.component.tsx';
 import { CreativityComponent } from '@/src/pages/game/components/dashboard/resources/Creativity.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
+import { EmptyComponent } from '@/src/generic/common/components/empty/Empty.component.tsx';
 
 export const ResourcesComponent = () => {
   const feature = useFeatures();
@@ -20,7 +21,7 @@ export const ResourcesComponent = () => {
       >
         Resources
       </TitleComponent>
-      {feature.machine ? (
+      {feature.resources ? (
         <>
           <TrustCostComponent />
           <TrustComponent />
@@ -30,7 +31,7 @@ export const ResourcesComponent = () => {
           <CreativityComponent />
         </>
       ) : (
-        <p>Aucune ressource</p>
+        <EmptyComponent empty="game.empty.resources" />
       )}
     </CardComponent>
   );

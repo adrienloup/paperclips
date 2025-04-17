@@ -1,4 +1,5 @@
 .notifications {
+  //flex: 0 0 100%;
   position: sticky;
   bottom: 0;
   left: 0;
@@ -6,7 +7,6 @@
   display: flex;
   flex-flow: row wrap;
   align-self: stretch;
-  gap: 0.25rem;
   background-color: var(--color-2);
 }
 

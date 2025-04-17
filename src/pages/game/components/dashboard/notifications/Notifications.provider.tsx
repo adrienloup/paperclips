@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useReducer } from 'react';
 import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage.ts';
-import { notificationsReducer } from '@/src/pages/game/components/notifications/Notifications.reducer.ts';
+import { notificationsReducer } from '@/src/pages/game/components/dashboard/notifications/Notifications.reducer.ts';
 import {
   NotificationsContext,
   NotificationsDispatchContext,
-} from '@/src/pages/game/components/notifications/Notifications.context.ts';
-import { notificationsState } from '@/src/pages/game/components/notifications/Notifications.state.ts';
-import { State } from '@/src/pages/game/components/notifications/Notifications.type.ts';
+} from '@/src/pages/game/components/dashboard/notifications/Notifications.context.ts';
+import { notificationsState } from '@/src/pages/game/components/dashboard/notifications/Notifications.state.ts';
+import { State } from '@/src/pages/game/components/dashboard/notifications/Notifications.type.ts';
 import { Children } from '@/src/generic/types/Children.type.ts';
 
 export function NotificationsProvider({ children }: { children: Children }) {

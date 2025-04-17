@@ -7,7 +7,7 @@ import { GameProvider } from '@/src/pages/game/Game.provider.tsx';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
 import { MenuProvider } from '@/src/generic/common/components/menu/Menu.provider.tsx';
 import { ModeProvider } from '@/src/generic/mode/Mode.provider.tsx';
-import { NotificationsProvider } from '@/src/pages/game/components/notifications/Notifications.provider.tsx';
+import { NotificationsProvider } from '@/src/pages/game/components/dashboard/notifications/Notifications.provider.tsx';
 import { ProjectsProvider } from '@/src/pages/game/components/dashboard/projects/Projects.provider.tsx';
 
 type ProvidersType = [

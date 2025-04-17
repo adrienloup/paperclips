@@ -15,11 +15,4 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  //padding: var(--spacing-xs);
-  //gap: var(--spacing-xs);
-
-  @include desktop {
-    padding: var(--spacing-s);
-    gap: var(--spacing-s);
-  }
 }

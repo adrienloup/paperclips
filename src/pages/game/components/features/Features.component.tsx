@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useGame } from '@/src/pages/game/useGame.ts';
-import { useNotificationsDispatch } from '@/src/pages/game/components/notifications/useNotifications.ts';
+import { useNotificationsDispatch } from '@/src/pages/game/components/dashboard/notifications/useNotifications.ts';
 import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAlerts.ts';
 import * as FeatureHooks from '@/src/pages/game/components/features/useFeatures.ts';
 import * as ProjectHooks from '@/src/pages/game/components/dashboard/projects/useProjects.ts';
@@ -17,13 +17,13 @@ export const FeaturesComponent = () => {
   const enableFeature = (id: string, text: string) => {
     setFeatures({ type: 'ENABLE', feature: id });
     setNotifications({ type: 'ENABLE', id: id });
-    setAlerts({ type: 'ADD', alert: { text: text } });
+    setAlerts({ type: 'ADD', alert: { id: 'machine', text: text } });
   };
 
   const enableProject = (id: string, text: string) => {
     setProjects({ type: 'ENABLE', id: id });
     setNotifications({ type: 'ENABLE', id: id });
-    setAlerts({ type: 'ADD', alert: { text: text } });
+    setAlerts({ type: 'ADD', alert: { id: 'revTracker', text: text } });
   };
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export const FeaturesComponent = () => {
     if (enableResources) {
       enableFeature('resources', 'test resources');
     }
-  }, [game.funds, features.machine]);
+  }, [game.paperclip, features.resources]);
 
-  return <div style={{ display: 'none' }}></div>;
+  return <></>;
 };

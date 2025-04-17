@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { useNotificationsDispatch } from '@/src/pages/game/components/notifications/useNotifications.ts';
+import { useNotificationsDispatch } from '@/src/pages/game/components/dashboard/notifications/useNotifications.ts';
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
-import { Notification } from '@/src/pages/game/components/notification/Notification.type.ts';
-import styles from '@/src/pages/game/components/notification/Notification.module.scss';
+import { Notification } from '@/src/pages/game/components/dashboard/notification/Notification.type.ts';
+import styles from '@/src/pages/game/components/dashboard/notification/Notification.module.scss';
 
 export const NotificationComponent = ({
   notification,

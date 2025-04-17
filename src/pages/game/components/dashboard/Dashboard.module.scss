@@ -1,7 +1,6 @@
 .dashboard {
   display: flex;
-  align-items: flex-start;
-  flex-flow: row wrap;
+  flex-direction: column;
   gap: var(--spacing-s);
-  padding: var(--spacing-l) var(--spacing-s) var(--spacing-s);
+  padding-top: var(--spacing-l);
 }

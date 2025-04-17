@@ -3,7 +3,7 @@
 
   &.active,
   &:active {
-    box-shadow: 0 0 0 0.5rem var(--color-solid-5);
+    box-shadow: 0 0 0 0.4rem var(--color-solid-5);
     transition: box-shadow 100ms var(--ease-quad);
   }
 }
@@ -13,17 +13,17 @@
   z-index: 2;
   padding: 0 var(--spacing-xs);
   animation: SlideUp 800ms var(--ease-out);
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-m);
   color: var(--color-solid-5);
   //animation: SlideUp 800ms var(--ease-out);
   //background-color: var(--color-solid-2);
   //font-size: var(--font-size-l);
   //color: var(--color-solid-4);
   box-shadow:
-    0 0.3rem var(--color-solid-5),
-    0 -0.3rem var(--color-solid-5),
-    0.3rem 0 var(--color-solid-5),
-    -0.3rem 0 var(--color-solid-5);
+    0 0.2rem var(--color-solid-5),
+    0 -0.2rem var(--color-solid-5),
+    0.2rem 0 var(--color-solid-5),
+    -0.2rem 0 var(--color-solid-5);
   ////will-change: transform, opacity;
 }
 

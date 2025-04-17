@@ -1,7 +1,7 @@
 import { ChangeEvent, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAlerts.ts';
-import { useNotificationsDispatch } from '@/src/pages/game/components/notifications/useNotifications.ts';
+import { useNotificationsDispatch } from '@/src/pages/game/components/dashboard/notifications/useNotifications.ts';
 import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import styles from '@/src/pages/game/components/debug/Debug.module.scss';
 

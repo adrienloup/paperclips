@@ -26,13 +26,13 @@
   align-items: center;
   margin: var(--spacing-xs);
   padding: 0 var(--spacing-xs);
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
   color: var(--color-solid-1);
   box-shadow:
-    0 0.3rem var(--color-solid-1),
-    0 -0.3rem var(--color-solid-1),
-    0.3rem 0 var(--color-solid-1),
-    -0.3rem 0 var(--color-solid-1);
+    0 0.2rem var(--color-solid-1),
+    0 -0.2rem var(--color-solid-1),
+    0.2rem 0 var(--color-solid-1),
+    -0.2rem 0 var(--color-solid-1);
 }
 
 .sign {

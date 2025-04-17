@@ -2,6 +2,11 @@ import { Translation } from '@/src/generic/types/Translation.type.ts';
 
 export const en: Translation = {
   game: {
+    empty: {
+      notification: 'No notifications',
+      project: 'No projects',
+      resources: 'No resources',
+    },
     fundsAvailable: 'Funds',
     machine: 'Machines',
     machineCost: 'Machine cost',

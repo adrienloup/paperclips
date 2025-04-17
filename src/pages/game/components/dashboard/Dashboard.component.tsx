@@ -1,11 +1,14 @@
 import { useCallback } from 'react';
 import { useInterval } from '@/src/generic/hooks/useInterval.ts';
 import { useGameDispatch } from '@/src/pages/game/useGame.ts';
-import { BusinessComponent } from '@/src/pages/game/components/dashboard/business/Business.component.tsx';
-import { ManufacturingComponent } from '@/src/pages/game/components/dashboard/manufacturing/Manufacturing.component.tsx';
 import { PaperclipComponent } from '@/src/pages/game/components/dashboard/paperclip/Paperclip.component.tsx';
+import { CardsComponent } from '@/src/generic/common/components/cards/Cards.component.tsx';
+import { ManufacturingComponent } from '@/src/pages/game/components/dashboard/manufacturing/Manufacturing.component.tsx';
+import { BusinessComponent } from '@/src/pages/game/components/dashboard/business/Business.component.tsx';
 import { ResourcesComponent } from '@/src/pages/game/components/dashboard/resources/Resources.component.tsx';
 import { ProjectsComponent } from '@/src/pages/game/components/dashboard/projects/Projects.component.tsx';
+import { InvestmentsComponent } from '@/src/pages/game/components/dashboard/investments/Investments.component.tsx';
+import { NotificationsComponent } from '@/src/pages/game/components/dashboard/notifications/Notifications.component.tsx';
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
 export const DashboardComponent = () => {
@@ -36,10 +39,14 @@ export const DashboardComponent = () => {
       role="article"
     >
       <PaperclipComponent />
-      <ManufacturingComponent />
-      <BusinessComponent />
-      <ResourcesComponent />
-      <ProjectsComponent />
+      <CardsComponent>
+        <ManufacturingComponent />
+        <BusinessComponent />
+        <ResourcesComponent />
+        <ProjectsComponent />
+        <InvestmentsComponent />
+      </CardsComponent>
+      <NotificationsComponent />
     </article>
   );
 };

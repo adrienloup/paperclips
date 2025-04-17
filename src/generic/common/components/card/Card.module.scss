@@ -8,12 +8,12 @@
 .title {
   //text-shadow: 0 0.2rem var(--color-2);
   text-transform: uppercase;
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
 }
 
 .buttons {
   display: flex;
-  gap: var(--spacing-s);
+  gap: var(--spacing-xs);
 }
 
 //.button {
@@ -32,24 +32,21 @@
 //}
 
 .button {
-  position: relative;
-  left: 0.25rem;
   width: 2rem;
   height: 2rem;
-  margin-bottom: var(--spacing-xs);
+  margin: 0.25rem 0 var(--spacing-xs) 0.25rem;
   background-color: var(--color-2);
   box-shadow:
-    0 0.3rem var(--color-2),
-    0 -0.3rem var(--color-2),
-    0.3rem 0 var(--color-2),
-    -0.3rem 0 var(--color-2);
-  font-size: var(--font-size-l);
+    0 0.2rem var(--color-2),
+    0 -0.2rem var(--color-2),
+    0.2rem 0 var(--color-2),
+    -0.2rem 0 var(--color-2);
+  font-size: var(--font-size-m);
   color: var(--color-1);
 }
 
 .progressbar {
-  position: relative;
-  left: 0.25rem;
+  margin-left: 0.25rem;
 
   & + .button {
     margin-top: 0.75rem;

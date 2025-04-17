@@ -4,6 +4,7 @@ import { TitleComponent } from '@/src/generic/common/components/title/Title.comp
 import { ProjectComponent } from '@/src/pages/game/components/dashboard/project/Project.component.tsx';
 import { Project } from '@/src/pages/game/components/dashboard/project/Project.type.ts';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
+import { EmptyComponent } from '@/src/generic/common/components/empty/Empty.component.tsx';
 
 export const ProjectsComponent = () => {
   const projects = useProjects();
@@ -27,7 +28,7 @@ export const ProjectsComponent = () => {
           ) : null
         )
       ) : (
-        <p>Aucun projet</p>
+        <EmptyComponent empty="game.empty.project" />
       )}
     </CardComponent>
   );

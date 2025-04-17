@@ -11,8 +11,7 @@
 
 body {
   overflow-x: hidden;
-  //background-color: var(--color-neutral-1);
-  background-color: var(--color-neutral-2);
+  background-color: var(--color-solid-2);
   line-height: 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,7 +20,7 @@ body {
   font-family: var(--font-text), sans-serif;
   font-weight: normal;
   font-size: 16px;
-  //color: var(--color-solid-4);
+  //color: var(--color-solid-10);
   color: var(--color-2);
 }
 
@@ -29,7 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  //background-color: var(--color-solid-4);
+  //background-color: var(--color-solid-10);
   background-color: var(--color-1);
   //background-color: #1a1122;
 }

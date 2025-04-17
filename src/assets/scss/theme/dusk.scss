@@ -1,0 +1,15 @@
+// crépuscule - dusk
+
+@mixin if-dusk {
+  @content;
+}
+
+@mixin dusk {
+  --color-theme: var(--color-solid-10);
+}
+
+:root {
+  @include if-dusk {
+    @include dusk();
+  }
+}

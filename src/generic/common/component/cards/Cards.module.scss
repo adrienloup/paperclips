@@ -1,0 +1,11 @@
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--spacing-s);
+  padding: 0 var(--spacing-s);
+
+  @include desktop {
+    gap: var(--spacing-m);
+    padding: 0 var(--spacing-m);
+  }
+}

@@ -4,20 +4,20 @@
 }
 
 @mixin color {
-  --color-neutral-1: #030009;
-  --color-neutral-2: #110d17;
-  --color-neutral-3: #29008f;
-  --color-neutral-4: #ffc8da;
-  --color-neutral-5: #c8c0cb;
-  --color-neutral-6: #fff;
-  --color-solid-1: #00ff15;
-  --color-solid-2: #00f7ff;
-  --color-solid-3: #009dff;
-  --color-solid-4: #4c00ff;
-  --color-solid-5: #ff00cc;
-  --color-solid-6: #ffdd00;
-  --color-solid-7: #ff8800;
-  --color-solid-8: #ff0000;
+  --color-solid-1: #030009;
+  --color-solid-2: #110d17;
+  --color-solid-4: #ffc8da;
+  --color-solid-5: #c8c0cb;
+  --color-solid-6: #fff;
+  --color-solid-7: #00ff15;
+  --color-solid-8: #00f7ff;
+  --color-solid-9: #009dff;
+  --color-solid-10: #4c00ff;
+  --color-solid-11: #ff00cc;
+  --color-solid-12: #ffdd00;
+  --color-solid-13: #ffb700;
+  --color-solid-14: #ff5722;
+  --color-solid-15: #ff0000;
 }
 
 @mixin size {

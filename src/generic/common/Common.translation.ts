@@ -1,5 +1,5 @@
-import { Translations } from '@/src/generic/types/Translation.type.ts';
-import { en } from '@/src/generic/common/languages/en.ts';
-import { fr } from '@/src/generic/common/languages/fr.ts';
+import { Translations } from '@/src/generic/type/Translation.type.ts';
+import { en } from '@/src/generic/common/language/en.ts';
+import { fr } from '@/src/generic/common/language/fr.ts';
 
 export const CommonTranslation: Translations = { en, fr };

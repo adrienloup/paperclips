@@ -1,0 +1,11 @@
+.footer {
+  display: flex;
+  padding: var(--spacing-xs) var(--spacing-s);
+  align-items: center;
+  justify-content: flex-end;
+  font-size: var(--font-size-xs);
+
+  @include desktop {
+    padding: var(--spacing-s) var(--spacing-m);
+  }
+}

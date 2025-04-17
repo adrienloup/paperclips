@@ -1,0 +1,50 @@
+import { Translation } from '@/src/generic/type/Translation.type.ts';
+
+export const en: Translation = {
+  game: {
+    empty: {
+      investments: 'No investments',
+      notification: 'No notifications',
+      project: 'No projects',
+      resources: 'No resources',
+    },
+    fundsAvailable: 'Funds',
+    machine: 'Machines',
+    machineCost: 'Machine cost',
+    marketing: 'Marketing',
+    marketingCost: 'Marketing cost',
+    megaMachine: 'Megamachines',
+    megaMachineCost: 'Megamachine cost',
+    notification: {
+      algorithmicTrading: 'algorithmicTrading',
+      creativity: 'creativity lorem Ipsum is simply dummy',
+      funds: 'Earn money',
+      investments: 'investments',
+      machine: 'machines lorem Ipsum is simply dummy',
+      marketing: 'marketing lorem Ipsum is simply dummy',
+      megaMachine: 'megamachines lorem Ipsum is simply dummy',
+      memory: 'memory lorem Ipsum is simply dummy',
+      operation: 'operation lorem Ipsum is simply dummy',
+      paperclip: 'Easy to make',
+      paperclipCost: 'Selling price',
+      processor: 'processor lorem Ipsum is simply dummy',
+      project: 'project lorem Ipsum is simply dummy',
+      publicDemand: 'Maximize sales',
+      revTracker: 'Rev Tracker project',
+      trust: 'trust lorem Ipsum is simply dummy',
+      unsold: 'Unsold inventory',
+      wire: 'Inch wire',
+    },
+    paperclipCost: 'Sale price',
+    project: {
+      algorithmicTrading:
+        'Algorithmic Trading (10,000 Ops) Develop an investment engine for generating funds',
+      revTracker: 'Rev Tracker (500 Ops) Automatically calculates average revenue per second',
+    },
+    publicDemand: 'Public demand',
+    titlePage: 'One Paperclip. Two Paperclips. Three Paperclips...',
+    unsold: 'Unsold inventory',
+    wire: 'Wire stock',
+    wireCost: 'Wire cost',
+  },
+};

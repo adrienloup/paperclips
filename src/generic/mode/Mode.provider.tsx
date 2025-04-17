@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
-import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage.ts';
+import { useLocalStorage } from '@/src/generic/hook/useLocalStorage.ts';
 import { ModeContext } from '@/src/generic/mode/Mode.context.ts';
-import { Children } from '@/src/generic/types/Children.type.ts';
+import { Children } from '@/src/generic/type/Children.type.ts';
 import { Mode } from '@/src/generic/mode/Mode.type.ts';
 
 export function ModeProvider({ children }: { children: Children }) {
@@ -19,7 +19,7 @@ export function ModeProvider({ children }: { children: Children }) {
     [setMode]
   );
 
-  const changedMode = useCallback(
+  const changeMode = useCallback(
     (newMode: Mode) => {
       updateMode(newMode);
     },
@@ -46,5 +46,5 @@ export function ModeProvider({ children }: { children: Children }) {
       window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', onChange);
   }, []);
 
-  return <ModeContext.Provider value={[mode, changedMode]}>{children}</ModeContext.Provider>;
+  return <ModeContext.Provider value={[mode, changeMode]}>{children}</ModeContext.Provider>;
 }

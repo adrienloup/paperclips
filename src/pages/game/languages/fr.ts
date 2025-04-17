@@ -3,6 +3,7 @@ import { Translation } from '@/src/generic/types/Translation.type.ts';
 export const fr: Translation = {
   game: {
     empty: {
+      investments: 'Aucun investissement',
       notification: 'Aucune notification',
       project: 'Aucun projet',
       resources: 'Aucune ressource',
@@ -15,8 +16,10 @@ export const fr: Translation = {
     megaMachine: 'Mégamachines',
     megaMachineCost: 'Coût Mégamachine',
     notification: {
+      algorithmicTrading: 'algorithmicTrading',
       creativity: 'creativity lorem Ipsum is simply dummy',
       funds: "Gagner de l'argent",
+      investments: 'Investissements',
       machine: 'machines lorem Ipsum is simply dummy',
       marketing: 'marketing lorem Ipsum is simply dummy',
       megaMachine: 'megamachines lorem Ipsum is simply dummy',
@@ -27,13 +30,16 @@ export const fr: Translation = {
       processor: 'processor lorem Ipsum is simply dummy',
       project: 'project lorem Ipsum is simply dummy',
       publicDemand: 'Maximiser les ventes',
+      revTracker: 'Projet Rev Tracker',
       trust: 'trust lorem Ipsum is simply dummy',
       unsold: 'Inventaire invendu',
       wire: 'Débuter avec du fil de fer',
     },
     paperclipCost: 'Prix de vente',
     project: {
-      revTracker: 'rev tracker lorem Ipsum is simply dummy',
+      algorithmicTrading:
+        "Trading algorithmique (10 000 Ops) Développer un moteur d'investissement pour générer des fonds",
+      revTracker: 'Rev tracker (500 Ops) Calcule automatiquement le revenu moyen par seconde',
     },
     publicDemand: 'Demande du public',
     titlePage: 'Un trombone. Deux trombones. Trois trombones...',

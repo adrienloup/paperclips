@@ -7,8 +7,8 @@ import { MemoryComponent } from '@/src/pages/game/components/dashboard/resources
 import { ProcessorComponent } from '@/src/pages/game/components/dashboard/resources/Processor.component.tsx';
 import { OperationComponent } from '@/src/pages/game/components/dashboard/resources/Operation.component.tsx';
 import { CreativityComponent } from '@/src/pages/game/components/dashboard/resources/Creativity.component.tsx';
-import styles from '@/src/generic/common/components/card/Card.module.scss';
 import { EmptyComponent } from '@/src/generic/common/components/empty/Empty.component.tsx';
+import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ResourcesComponent = () => {
   const feature = useFeatures();

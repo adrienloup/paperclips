@@ -74,7 +74,7 @@ export const ClickerComponent = ({
       aria-pressed={isActive}
       disabled={disabled}
     >
-      {children}
+      <span className={styles.inner}>{children}</span>
       {values.map((v) => (
         <span
           key={v.id}

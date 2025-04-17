@@ -5,7 +5,7 @@ import { classNames } from '@/src/generic/utils/classNames.ts';
 import { NavigationComponent } from '@/src/generic/common/components/navigation/Navigation.component.tsx';
 import { SettingsComponent } from '@/src/generic/common/components/settings/Settings.component.tsx';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
-import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
+// import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 import styles from '@/src/generic/common/components/menu/Menu.module.scss';
 
 export const MenuComponent = () => {
@@ -41,7 +41,7 @@ export const MenuComponent = () => {
         onClick={onMenuClick}
       >
         {/*<IconComponent icon={open ? 'arrow_menu_open' : 'arrow_menu_close'} />*/}
-        menu
+        <span className={styles.inner}>menu</span>
       </ButtonComponent>
       <NavigationComponent />
       <SettingsComponent />

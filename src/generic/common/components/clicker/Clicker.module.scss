@@ -1,11 +1,28 @@
 .button {
   position: relative;
+  padding: 0.2rem;
+  background-color: transparent;
+  font-size: var(--font-size-m);
+  color: var(--color-1);
 
   &.active,
   &:active {
-    box-shadow: 0 0 0 0.4rem var(--color-solid-5);
-    transition: box-shadow 100ms var(--ease-quad);
+    .inner {
+      box-shadow: 0 0 0 0.4rem var(--color-solid-5);
+      transition: box-shadow 100ms var(--ease-quad);
+    }
   }
+}
+
+.inner {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--color-2);
+  box-shadow:
+    0 0.2rem var(--color-2),
+    0 -0.2rem var(--color-2),
+    0.2rem 0 var(--color-2),
+    -0.2rem 0 var(--color-2);
 }
 
 .value {
@@ -29,7 +46,7 @@
 
 @keyframes SlideUp {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, -1rem, 0);
     opacity: 1;
   }
   50% {

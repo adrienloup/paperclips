@@ -1,3 +1,4 @@
+import { useFeatures } from '@/src/pages/game/components/features/useFeatures.ts';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import { FundsPerSecondComponent } from '@/src/pages/game/components/dashboard/business/FundsPerSecond.component.tsx';
@@ -10,6 +11,8 @@ import { MarketingComponent } from '@/src/pages/game/components/dashboard/busine
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const BusinessComponent = () => {
+  const feature = useFeatures();
+
   return (
     <CardComponent>
       <TitleComponent
@@ -23,8 +26,12 @@ export const BusinessComponent = () => {
       <UnsoldComponent />
       <PaperclipCostComponent />
       <PublicDemandComponent />
-      <MarketingCostComponent />
-      <MarketingComponent />
+      {feature.marketing && (
+        <>
+          <MarketingCostComponent />
+          <MarketingComponent />
+        </>
+      )}
     </CardComponent>
   );
 };

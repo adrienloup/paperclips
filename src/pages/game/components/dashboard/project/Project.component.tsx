@@ -9,14 +9,13 @@ export const ProjectComponent = ({ project }: { project: Project }) => {
   const { t } = useTranslation();
   const setProjects = useProjectsDispatch();
 
-  const disableClick = () => setProjects({ type: 'DISABLE', id: project.id });
+  const onClick = (id: string) => setProjects({ type: 'DISABLE', id });
 
   return (
     <ButtonComponent
-      className={classNames([styles.project, project.lock ? styles.lock : ''])}
-      tabIndex={project.lock ? -1 : 0}
-      to={`/paperclips/explore/${project.id}`}
-      triggerClick={disableClick}
+      className={classNames([styles.project, !project.unlock ? styles.lock : ''])}
+      tabIndex={!project.unlock ? -1 : 0}
+      onClick={() => onClick(project.id)}
     >
       {t(`game.project.${project.id}`)}
     </ButtonComponent>

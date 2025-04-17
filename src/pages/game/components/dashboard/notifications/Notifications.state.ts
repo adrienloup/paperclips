@@ -3,32 +3,17 @@ import { Notification } from '@/src/pages/game/components/dashboard/notification
 
 const notifications: Notification[] = [
   {
-    id: 'paperclip',
-    enable: true,
+    id: 'algorithmicTrading',
+    enable: false,
     view: false,
   },
   {
-    id: 'wire',
-    enable: true,
+    id: 'creativity',
+    enable: false,
     view: false,
   },
   {
     id: 'funds',
-    enable: true,
-    view: false,
-  },
-  {
-    id: 'unsold',
-    enable: true,
-    view: false,
-  },
-  {
-    id: 'paperclipCost',
-    enable: true,
-    view: false,
-  },
-  {
-    id: 'publicDemand',
     enable: true,
     view: false,
   },
@@ -43,12 +28,7 @@ const notifications: Notification[] = [
     view: false,
   },
   {
-    id: 'trust',
-    enable: false,
-    view: false,
-  },
-  {
-    id: 'project',
+    id: 'megaMachine',
     enable: false,
     view: false,
   },
@@ -58,23 +38,48 @@ const notifications: Notification[] = [
     view: false,
   },
   {
-    id: 'processor',
-    enable: false,
-    view: false,
-  },
-  {
     id: 'operation',
     enable: false,
     view: false,
   },
   {
-    id: 'creativity',
+    id: 'paperclip',
+    enable: true,
+    view: false,
+  },
+  {
+    id: 'paperclipCost',
+    enable: true,
+    view: false,
+  },
+  {
+    id: 'processor',
     enable: false,
     view: false,
   },
   {
-    id: 'megaMachine',
+    id: 'project',
     enable: false,
+    view: false,
+  },
+  {
+    id: 'publicDemand',
+    enable: true,
+    view: false,
+  },
+  {
+    id: 'trust',
+    enable: false,
+    view: false,
+  },
+  {
+    id: 'unsold',
+    enable: true,
+    view: false,
+  },
+  {
+    id: 'wire',
+    enable: true,
     view: false,
   },
 ];

@@ -2,6 +2,7 @@ import { useFeatures } from '@/src/pages/game/components/features/useFeatures.ts
 import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import { PaperclipPerSecondComponent } from '@/src/pages/game/components/dashboard/manufacturing/PaperclipPerSecond.component.tsx';
+import { ByHandComponent } from '@/src/pages/game/components/dashboard/manufacturing/ByHand.component.tsx';
 import { WireCostComponent } from '@/src/pages/game/components/dashboard/manufacturing/WireCost.component.tsx';
 import { WireComponent } from '@/src/pages/game/components/dashboard/manufacturing/Wire.component.tsx';
 import { MachineCostComponent } from '@/src/pages/game/components/dashboard/manufacturing/MachineCost.component.tsx';
@@ -21,7 +22,8 @@ export const ManufacturingComponent = () => {
       >
         Manufacturing
       </TitleComponent>
-      <PaperclipPerSecondComponent />
+      {feature.paperclipPerSecond && <PaperclipPerSecondComponent />}
+      <ByHandComponent />
       <WireCostComponent />
       <WireComponent />
       {feature.machine && (
@@ -30,8 +32,12 @@ export const ManufacturingComponent = () => {
           <MachineComponent />
         </>
       )}
-      <MegaMachineCostComponent />
-      <MegaMachineComponent />
+      {feature.megaMachine && (
+        <>
+          <MegaMachineCostComponent />
+          <MegaMachineComponent />
+        </>
+      )}
     </CardComponent>
   );
 };

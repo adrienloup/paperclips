@@ -1,0 +1,23 @@
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-s);
+  justify-content: center;
+  height: 100vh;
+}
+
+.label {
+  font-size: var(--font-size-xl);
+
+  :global(._classic_3mma_0) & {
+    text-shadow:
+      0 0.4rem var(--color-theme-3),
+      0 -0.4rem var(--color-theme-3),
+      0.4rem 0 var(--color-theme-3),
+      -0.4rem 0 var(--color-theme-3),
+      0 0.8rem var(--color-theme-4),
+      0.4rem 0.4rem var(--color-theme-4),
+      -0.4rem 0.4rem var(--color-theme-4);
+  }
+}

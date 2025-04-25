@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from 'react';
-import { useLocalStorage } from '@/src/generic/hook/useLocalStorage.ts';
+import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage.ts';
 import { ThemeContext } from '@/src/generic/theme/Theme.context.ts';
-import { Children } from '@/src/generic/type/Children.type.ts';
+import { Children } from '@/src/generic/types/Children.type.ts';
 import { Theme } from '@/src/generic/theme/Theme.type.ts';
 
 export function ThemeProvider({ children }: { children: Children }) {
-  const [theme, setTheme] = useLocalStorage<Theme>('_theme_3mma_0', 'dusk');
+  const [theme, setTheme] = useLocalStorage<Theme>('_theme_3mma_0', 'classic');
 
   const updateTheme = useCallback(
     (newTheme: Theme) => {

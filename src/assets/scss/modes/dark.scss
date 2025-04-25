@@ -1,0 +1,21 @@
+// Mode 1. Light (Léger), Mode 2. Dark (Sombre)
+
+@mixin if-dark {
+  ._dark_3mma_0 {
+    @content;
+  }
+}
+
+@mixin dark {
+  --color-mode-1: var(--color-1);
+  --color-mode-2: var(--color-15);
+  --color-mode-3: var(--color-10);
+  --color-mode-4: var(--color-16);
+  --color-mode-5: var(--color-1);
+}
+
+:root {
+  @include if-dark {
+    @include dark();
+  }
+}

@@ -1,0 +1,18 @@
+.notices {
+  //flex: 0 0 100%;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: row wrap;
+  align-self: stretch;
+  margin-top: auto;
+  background-color: var(--color-2);
+}
+
+.empty {
+  padding: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  color: var(--color-1);
+}

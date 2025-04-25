@@ -1,5 +1,5 @@
 import { Resource, ResourceKey, ResourceLanguage } from 'i18next';
-import { Translations } from '@/src/generic/type/Translation.type.ts';
+import { Translations } from '@/src/generic/types/Translation.type.ts';
 
 const languages = ([key, value]: [string, ResourceKey]): [string, ResourceLanguage] => [
   key,

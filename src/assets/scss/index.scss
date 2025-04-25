@@ -1,8 +1,10 @@
 @forward 'base/fonts';
 @forward 'base/variables';
-@forward 'base/layout';
-@forward 'theme/dusk';
-@forward 'theme/tumult';
-@forward 'theme/cataclysm';
-@forward 'mode/light';
-@forward 'mode/dark';
+@forward 'base/base';
+@forward 'modes/light';
+@forward 'modes/dark';
+@forward 'themes/classic';
+@forward 'themes/clubbed-to-death';
+@forward 'stages/dusk';
+@forward 'stages/tumult';
+@forward 'stages/cataclysm';

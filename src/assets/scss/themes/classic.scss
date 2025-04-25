@@ -1,0 +1,20 @@
+// Theme 1. Classic (Classique), Theme 2. Clubbed to Death (Matraqué à mort)
+
+@mixin if-classic {
+  ._classic_3mma_0 {
+    @content;
+  }
+}
+
+@mixin classic {
+  --color-theme-1: var(--color-mode-1);
+  --color-theme-2: var(--color-mode-2);
+  --color-theme-3: var(--color-mode-3);
+  --color-theme-4: var(--color-mode-4);
+}
+
+:root {
+  @include if-classic {
+    @include classic();
+  }
+}

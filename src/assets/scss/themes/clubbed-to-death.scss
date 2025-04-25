@@ -1,0 +1,20 @@
+// Stage 1. Dusk (Crépuscule), Stage 2. Tumult (Tumulte), Stage 3. Cataclysm (Cataclysme)
+
+@mixin if-clubbed-to-death {
+  ._clubbed-to-death_3mma_0 {
+    @content;
+  }
+}
+
+@mixin clubbed-to-death {
+  --color-theme-1: var(--color-mode-5);
+  --color-theme-2: var(--color-mode-3);
+  --color-theme-3: var(--color-mode-3);
+  --color-theme-4: var(--color-mode-4);
+}
+
+:root {
+  @include if-clubbed-to-death {
+    @include clubbed-to-death();
+  }
+}

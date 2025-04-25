@@ -1,1 +1,1 @@
-export type Theme = 'dusk' | 'tumult' | 'cataclysm';
+export type Theme = 'classic' | 'clubbed-to-death';

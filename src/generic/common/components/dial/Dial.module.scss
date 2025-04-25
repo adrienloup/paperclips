@@ -1,0 +1,29 @@
+.dial {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+}
+
+.number {
+  //text-shadow:
+  //  0.05em -0.05em 0 var(--color-1),
+  //  0.05em 0.005em 0 var(--color-1),
+  //  0 0.05em 0 var(--color-1),
+  //  0.05em 0.05em 0 var(--color-1),
+  //  0 -0.05em 0 var(--color-1),
+  //  -0.05em -0.05em 0 var(--color-1),
+  //  -0.05em 0.05em 0 var(--color-1),
+  //  -0.05em 0 0 var(--color-1);
+  font-size: var(--font-size-m);
+}
+
+.label {
+  text-transform: uppercase;
+  font-size: var(--font-size-s);
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}

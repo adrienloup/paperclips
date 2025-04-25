@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
-import { useLocalStorage } from '@/src/generic/hook/useLocalStorage.ts';
+import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage.ts';
 import { ModeContext } from '@/src/generic/mode/Mode.context.ts';
-import { Children } from '@/src/generic/type/Children.type.ts';
+import { Children } from '@/src/generic/types/Children.type.ts';
 import { Mode } from '@/src/generic/mode/Mode.type.ts';
 
 export function ModeProvider({ children }: { children: Children }) {
@@ -10,9 +10,11 @@ export function ModeProvider({ children }: { children: Children }) {
   const updateMode = useCallback(
     (newMode: Mode) => {
       if (newMode === 'dark' || newMode === 'system') {
+        document.body.classList.remove('_light_3mma_0');
         document.body.classList.add('_dark_3mma_0');
       } else {
         document.body.classList.remove('_dark_3mma_0');
+        document.body.classList.add('_light_3mma_0');
       }
       setMode(newMode);
     },

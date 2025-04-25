@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--color-3);
+  line-height: 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: style;
+  font-family: var(--font-text), sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  color: var(--color-theme-2);
+}
+
+#_paperclips_3mma_0 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-theme-1);
+}

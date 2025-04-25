@@ -1,0 +1,121 @@
+.alert {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  max-width: 20rem;
+  color: var(--color-1);
+  pointer-events: initial;
+
+  &.in {
+    animation: Appear 400ms var(--ease-expo);
+    //will-change: opacity, transform;
+  }
+
+  &.out {
+    transition: opacity 200ms var(--ease-expo);
+    opacity: 0;
+    //will-change: opacity;
+  }
+}
+
+.text {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.button {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  background-color: var(--color-1);
+  font-size: var(--font-size-xs);
+  pointer-events: initial;
+
+  .info & {
+    color: var(--color-9);
+    box-shadow:
+      inset 0 0.2rem var(--color-9),
+      inset 0 -0.2rem var(--color-9),
+      inset 0.2rem 0 var(--color-9),
+      inset -0.2rem 0 var(--color-9);
+  }
+
+  .success & {
+    color: var(--color-7);
+    box-shadow:
+      inset 0 0.2rem var(--color-7),
+      inset 0 -0.2rem var(--color-7),
+      inset 0.2rem 0 var(--color-7),
+      inset -0.2rem 0 var(--color-7);
+  }
+
+  .warning & {
+    color: var(--color-12);
+    box-shadow:
+      inset 0 0.2rem var(--color-12),
+      inset 0 -0.2rem var(--color-12),
+      inset 0.2rem 0 var(--color-12),
+      inset -0.2rem 0 var(--color-12);
+  }
+
+  .error & {
+    color: var(--color-15);
+    box-shadow:
+      inset 0 0.2rem var(--color-15),
+      inset 0 -0.2rem var(--color-15),
+      inset 0.2rem 0 var(--color-15),
+      inset -0.2rem 0 var(--color-15);
+  }
+}
+
+.progress {
+  grid-column: span 2;
+  grid-row: 2;
+  height: 0.5rem;
+  animation: Progress var(--timeout) linear;
+  background-color: var(--color-1);
+  opacity: 0.5;
+}
+
+.info {
+  background-color: var(--colo-9);
+}
+
+.success {
+  background-color: var(--colo-7);
+}
+
+.warning {
+  background-color: var(--colo-12);
+}
+
+.error {
+  background-color: var(--color-15);
+}
+
+@keyframes Appear {
+  0% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes Progress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

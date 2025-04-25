@@ -7,15 +7,17 @@
 
 .name {
   text-transform: uppercase;
+  font-size: inherit;
 }
 
 .number {
-  //font-size: var(--font-size-xs);
+  font-size: inherit;
 }
 
 .variation {
   display: flex;
   align-items: center;
+  font-size: inherit;
 }
 
 .positive {
@@ -23,5 +25,5 @@
 }
 
 .negative {
-  color: var(--color-16);
+  color: var(--color-17);
 }

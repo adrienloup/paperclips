@@ -1,5 +1,5 @@
 export interface Notice {
   id: string;
-  enable: boolean;
-  view: boolean;
+  enabled: boolean;
+  viewed: boolean;
 }

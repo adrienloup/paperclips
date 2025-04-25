@@ -1,5 +1,5 @@
 export interface Bonus {
   className?: string;
-  sign?: string;
+  prefix?: string;
   value: number;
 }

@@ -3,10 +3,10 @@ import { NumberComponent } from '@/src/generic/common/components/number/Number.c
 import { Bonus } from '@/src/generic/common/components/bonus/Bonus.type.ts';
 import styles from '@/src/generic/common/components/bonus/Bonus.module.scss';
 
-export const BonusComponent = ({ className, value, sign }: Bonus) => {
+export const BonusComponent = ({ className, value, prefix }: Bonus) => {
   return (
     <div className={classNames([styles.bonus, className])}>
-      {sign}
+      {prefix}
       <NumberComponent
         value={value}
         notation="compact"

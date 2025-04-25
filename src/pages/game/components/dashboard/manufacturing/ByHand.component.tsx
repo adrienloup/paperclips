@@ -11,11 +11,11 @@ export const ByHandComponent = () => {
     <DialsComponent>
       <ClickerComponent
         className={styles.button}
-        disabled={game.wire <= 0}
         aria-label="Make paperclips"
         value={1}
         prefix="+"
         suffix="paperclip"
+        disabled={game.wire <= 0}
         onClick={() => setGame({ type: 'UPDATE_PAPERCLIP' })}
       >
         +

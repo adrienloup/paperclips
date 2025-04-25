@@ -17,12 +17,19 @@ export const WireComponent = () => {
         value={game.wire}
         notation="compact"
         label={t('game.wire')}
-        bonus={<BonusComponent value={game.wireBonus} />}
+        bonus={
+          <BonusComponent
+            value={game.wireBonus}
+            prefix="+"
+          />
+        }
       />
       <ClickerComponent
         className={styles.button}
-        disabled={game.funds < game.wireCost}
         value={game.wireBonus}
+        prefix="+"
+        suffix={t('game.wire')}
+        disabled={game.funds < game.wireCost}
         onClick={() => setGame({ type: 'BUY_WIRE' })}
       >
         +

@@ -9,24 +9,24 @@ export const NoticeComponent = ({ notice, ...props }: { notice: Notice }) => {
   const { t } = useTranslation();
   const setNotices = useNoticesDispatch();
 
-  const disableClick = () => setNotices({ type: 'DISABLE', id: notice.id });
-  const viewClick = () => setNotices({ type: 'VIEW', id: notice.id });
+  const disabledClick = () => setNotices({ type: 'DISABLED', id: notice.id });
+  const viewedClick = () => setNotices({ type: 'VIEWED', id: notice.id });
 
   return (
     <div
-      className={classNames([styles.notice, notice.view ? styles.view : ''])}
+      className={classNames([styles.notice, notice.viewed ? styles.viewed : ''])}
       {...props}
     >
       <ButtonComponent
         className={styles.link}
         to={`/paperclips/explore/${notice.id}`}
-        triggerClick={viewClick}
+        triggerClick={viewedClick}
       >
         {t(`game.notice.${notice.id}`)}
       </ButtonComponent>
       <ButtonComponent
         className={styles.button}
-        onClick={disableClick}
+        onClick={disabledClick}
         aria-label="Supprimer la notification"
       >
         x

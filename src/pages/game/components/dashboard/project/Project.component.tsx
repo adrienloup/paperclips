@@ -9,12 +9,12 @@ export const ProjectComponent = ({ project }: { project: Project }) => {
   const { t } = useTranslation();
   const setProjects = useProjectsDispatch();
 
-  const onClick = (id: string) => setProjects({ type: 'DISABLE', id });
+  const onClick = (id: string) => setProjects({ type: 'DISABLED', id });
 
   return (
     <ButtonComponent
-      className={classNames([styles.project, !project.unlock ? styles.lock : ''])}
-      tabIndex={!project.unlock ? -1 : 0}
+      className={classNames([styles.project, !project.unlocked ? styles.locked : ''])}
+      tabIndex={!project.unlocked ? -1 : 0}
       onClick={() => onClick(project.id)}
     >
       {t(`game.project.${project.id}`)}

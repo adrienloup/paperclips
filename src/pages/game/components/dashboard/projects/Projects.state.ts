@@ -4,13 +4,13 @@ import { Project } from '@/src/pages/game/components/dashboard/project/Project.t
 const projects: Project[] = [
   {
     id: 'algorithmicTrading',
-    enable: false,
-    unlock: false,
+    enabled: false,
+    unlocked: false,
   },
   {
     id: 'revTracker',
-    enable: false,
-    unlock: false,
+    enabled: false,
+    unlocked: false,
   },
 ];
 

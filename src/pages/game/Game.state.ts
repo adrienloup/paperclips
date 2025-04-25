@@ -2,7 +2,6 @@ import { State } from '@/src/pages/game/Game.type.ts';
 
 export const gameState: State = {
   creativity: 0,
-  creativityMax: 0,
   funds: 0,
   fundsPerSecond: 0,
   machine: 0,
@@ -13,7 +12,7 @@ export const gameState: State = {
   megaMachineCost: 5e2,
   memory: 1,
   operation: 0,
-  operationMax: 0,
+  operationMax: 5e4,
   paperclip: 0,
   paperclipCost: 0.2,
   paperclipCostRef: 0.2,

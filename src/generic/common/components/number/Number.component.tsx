@@ -20,20 +20,13 @@ export const NumberComponent = ({
     compactDisplay: compactDisplay,
   };
 
-  const formatValue: string = new Intl.NumberFormat(
-    language == 'en' ? 'en-US' : 'fr-FR',
-    options
-  ).format(value);
-
-  const formatValueMax: string = new Intl.NumberFormat(
-    language == 'en' ? 'en-US' : 'fr-FR',
-    options
-  ).format(valueMax!);
+  const format = (valueTutu: number) =>
+    new Intl.NumberFormat(language == 'en' ? 'en-US' : 'fr-FR', options).format(valueTutu);
 
   return (
     <span className={className}>
-      {formatValue}
-      {valueMax && '/' + formatValueMax}
+      {format(value)}
+      {valueMax && '/' + format(valueMax)}
     </span>
   );
 };

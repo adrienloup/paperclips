@@ -3,6 +3,6 @@ import { Project } from '@/src/pages/game/components/dashboard/project/Project.t
 export type State = Project[];
 
 export type Action =
-  | { type: 'ENABLE'; id: string }
-  | { type: 'DISABLE'; id: string }
-  | { type: 'UNLOCK'; id: string };
+  | { type: 'ENABLED'; id: string }
+  | { type: 'DISABLED'; id: string }
+  | { type: 'UNLOCKED'; id: string };

@@ -4,7 +4,7 @@ export const en: Translation = {
   game: {
     empty: {
       investments: 'No investments at all',
-      notice: 'No notifications at all',
+      notice: 'No notifications',
       project: 'No projects at all',
       resources: 'No resources at all',
     },

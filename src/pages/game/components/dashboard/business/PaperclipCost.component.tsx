@@ -22,7 +22,7 @@ export const PaperclipCostComponent = () => {
           game.marketing > 1 ? (
             <BonusComponent
               value={game.marketing}
-              sign="x"
+              prefix="x"
             />
           ) : null
         }
@@ -30,22 +30,24 @@ export const PaperclipCostComponent = () => {
       <div className={styles.buttons}>
         <ClickerComponent
           className={styles.button}
-          disabled={game.paperclipCostRef === 0.1}
           aria-label="Decrease paperclip price"
           value={0.01 * game.marketing}
           prefix="-"
+          suffix="price"
           currency
+          disabled={game.paperclipCostRef === 0.1}
           onClick={() => setGame({ type: 'DECREASE_PAPERCLIP_COST' })}
         >
           -
         </ClickerComponent>
         <ClickerComponent
           className={styles.button}
-          disabled={game.paperclipCostRef === 1}
           aria-label="Increase paperclip price"
           value={0.01 * game.marketing}
           prefix="+"
+          suffix="price"
           currency
+          disabled={game.paperclipCostRef === 1}
           onClick={() => setGame({ type: 'INCREASE_PAPERCLIP_COST' })}
         >
           +

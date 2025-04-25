@@ -21,6 +21,8 @@ export const DebugComponent = () => {
   const [funds, setFunds] = useState('0');
   const [wire, setWire] = useState('0');
   const [trust, setTrust] = useState('0');
+  const [operation, setOperation] = useState('0');
+  const [creativity, setCreativity] = useState('0');
   const display = useMemo(() => {
     const isDebug = location.search == '?debug';
     if (isDebug) {
@@ -40,13 +42,14 @@ export const DebugComponent = () => {
   const alertsChange = (e: ChangeEvent<HTMLInputElement>) => setAlertsText(e.target.value);
   const alertsSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setAlerts({ type: 'ADD', alert: { text: alertsText } });
+    const alertsId = alertsText.replace(/\s/g, '');
+    setAlerts({ type: 'ADD', alert: { id: alertsId, text: alertsText } });
   };
 
   const noticesChange = (e: ChangeEvent<HTMLInputElement>) => setNoticesId(e.target.value);
   const noticesSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setNotices({ type: 'ENABLE', id: noticesId });
+    setNotices({ type: 'ENABLED', id: noticesId });
   };
 
   const paperclipChange = (e: ChangeEvent<HTMLInputElement>) => setPaperclip(e.target.value);
@@ -99,6 +102,30 @@ export const DebugComponent = () => {
   const memoryClick = () => setGame({ type: 'INCREASE_MEMORY' });
 
   const processorClick = () => setGame({ type: 'INCREASE_PROCESSOR' });
+
+  const operationChange = (e: ChangeEvent<HTMLInputElement>) => setOperation(e.target.value);
+  const operationSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE',
+      state: {
+        ...game,
+        operation: parseInt(operation),
+      },
+    });
+  };
+
+  const creativityChange = (e: ChangeEvent<HTMLInputElement>) => setCreativity(e.target.value);
+  const creativitySubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE',
+      state: {
+        ...game,
+        creativity: parseInt(creativity),
+      },
+    });
+  };
 
   const updateWire = (bonus: number) => setGame({ type: 'UPDATE_WIRE_BONUS', bonus });
 
@@ -191,6 +218,22 @@ export const DebugComponent = () => {
         >
           +1
         </button>
+      </form>
+      <form onSubmit={operationSubmit}>
+        <label>operations</label>
+        <input
+          value={operation}
+          onChange={operationChange}
+        />
+        <button type="submit">Add</button>
+      </form>
+      <form onSubmit={creativitySubmit}>
+        <label>creativity</label>
+        <input
+          value={creativity}
+          onChange={creativityChange}
+        />
+        <button type="submit">Add</button>
       </form>
       <form>
         <label>wirebonus</label>

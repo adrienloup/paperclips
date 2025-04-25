@@ -18,7 +18,7 @@ export const UnsoldComponent = () => {
           game.unsoldBonus > 1 ? (
             <BonusComponent
               value={game.unsoldBonus}
-              sign="x"
+              prefix="x"
             />
           ) : null
         }

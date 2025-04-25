@@ -3,8 +3,8 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: var(--spacing-xs);
-  max-width: 27.33rem;
+  gap: var(--spacing-s);
+  max-width: 26rem;
 }
 
 .title {
@@ -14,13 +14,17 @@
 
 .buttons {
   display: flex;
-  gap: var(--spacing-s);
+  gap: var(--spacing-xs);
+}
+
+.button {
+  margin-left: var(--spacing-xs);
 }
 
 .progressbar {
-  margin-left: 0.25rem;
+  margin-left: var(--spacing-xs);
 
   & + .button {
-    margin-top: 0.5rem;
+    margin-top: var(--spacing-xs);
   }
 }

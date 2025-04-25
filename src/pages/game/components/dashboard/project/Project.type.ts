@@ -1,5 +1,5 @@
 export interface Project {
   id: string;
-  enable: boolean;
-  unlock: boolean;
+  enabled: boolean;
+  unlocked: boolean;
 }

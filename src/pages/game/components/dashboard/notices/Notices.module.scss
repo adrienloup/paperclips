@@ -8,11 +8,11 @@
   flex-flow: row wrap;
   align-self: stretch;
   margin-top: auto;
-  background-color: var(--color-2);
+  background-color: var(--color-theme-2);
 }
 
 .empty {
   padding: var(--spacing-xs);
   font-size: var(--font-size-xs);
-  color: var(--color-1);
+  color: var(--color-theme-1);
 }

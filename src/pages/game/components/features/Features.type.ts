@@ -1,4 +1,4 @@
-export type Action = { type: 'DISABLE'; feature: string } | { type: 'ENABLE'; feature: string };
+export type Action = { type: 'DISABLED'; feature: string } | { type: 'ENABLED'; feature: string };
 
 export interface State {
   investments: boolean;

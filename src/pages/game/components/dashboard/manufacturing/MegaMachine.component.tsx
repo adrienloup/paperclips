@@ -19,6 +19,8 @@ export const MegaMachineComponent = () => {
       />
       <ClickerComponent
         className={styles.button}
+        prefix="+"
+        suffix={t('game.megaMachine')}
         disabled={game.funds < game.megaMachineCost}
         onClick={() => setGame({ type: 'BUY_MEGAMACHINE' })}
       >

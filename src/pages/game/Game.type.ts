@@ -18,7 +18,6 @@ export type Action =
 
 export interface State {
   creativity: number;
-  creativityMax: number;
   funds: number;
   fundsPerSecond: number;
   machine: number;

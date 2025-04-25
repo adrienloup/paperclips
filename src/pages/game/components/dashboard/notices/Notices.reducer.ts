@@ -2,18 +2,20 @@ import { Action, State } from '@/src/pages/game/components/dashboard/notices/Not
 
 export const noticesReducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'ENABLE':
+    case 'ENABLED':
       return state.map((notice) =>
-        notice.id === action.id && !notice.enable
-          ? { ...notice, enable: true, view: false }
+        notice.id === action.id && !notice.enabled
+          ? { ...notice, enabled: true, viewed: false }
           : notice
       );
-    case 'DISABLE':
+    case 'DISABLED':
       return state.map((notice) =>
-        notice.id === action.id ? { ...notice, enable: false } : notice
+        notice.id === action.id ? { ...notice, enabled: false } : notice
       );
-    case 'VIEW':
-      return state.map((notice) => (notice.id === action.id ? { ...notice, view: true } : notice));
+    case 'VIEWED':
+      return state.map((notice) =>
+        notice.id === action.id ? { ...notice, viewed: true } : notice
+      );
     default:
       return state;
   }

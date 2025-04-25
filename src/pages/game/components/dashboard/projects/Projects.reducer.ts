@@ -2,17 +2,17 @@ import { Action, State } from '@/src/pages/game/components/dashboard/projects/Pr
 
 export const projectsReducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'ENABLE':
+    case 'ENABLED':
       return state.map((project) =>
-        project.id === action.id && !project.enable ? { ...project, enable: true } : project
+        project.id === action.id && !project.enabled ? { ...project, enabled: true } : project
       );
-    case 'DISABLE':
+    case 'DISABLED':
       return state.map((project) =>
-        project.id === action.id ? { ...project, enable: false } : project
+        project.id === action.id ? { ...project, enabled: false } : project
       );
-    case 'UNLOCK':
+    case 'UNLOCKED':
       return state.map((project) =>
-        project.id === action.id ? { ...project, unlock: true } : project
+        project.id === action.id ? { ...project, unlocked: true } : project
       );
     default:
       return state;

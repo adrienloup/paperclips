@@ -14,99 +14,101 @@ export const FeaturesComponent = () => {
   const setProjects = ProjectHooks.useProjectsDispatch();
   const projects = ProjectHooks.useProjects();
 
-  const enableFeature = (id: string, text: string) => {
-    setFeatures({ type: 'ENABLE', feature: id });
-    setNotices({ type: 'ENABLE', id });
+  const enabledFeature = (id: string, text: string) => {
+    setFeatures({ type: 'ENABLED', feature: id });
+    setNotices({ type: 'ENABLED', id });
     setAlerts({ type: 'ADD', alert: { id, text } });
   };
 
-  const enableProject = (id: string, text: string) => {
-    setProjects({ type: 'ENABLE', id });
-    setNotices({ type: 'ENABLE', id });
+  const enabledProject = (id: string, text: string) => {
+    setProjects({ type: 'ENABLED', id });
+    setNotices({ type: 'ENABLED', id });
     setAlerts({ type: 'ADD', alert: { id, text } });
   };
 
-  const unlockProject = (id: string) => {
-    setProjects({ type: 'UNLOCK', id });
+  const unlockedProject = (id: string) => {
+    setProjects({ type: 'UNLOCKED', id });
   };
 
   useEffect(() => {
-    const enableMachine = game.funds >= 5 && !features.machine;
-    if (enableMachine) {
-      enableFeature('machine', 'test machine');
+    const enabledMachine = game.funds >= 5 && !features.machine;
+    if (enabledMachine) {
+      enabledFeature('machine', 'test machine');
     }
   }, [game.funds, features.machine]);
 
   useEffect(() => {
-    const enableMarketing = game.funds >= 200 && !features.marketing;
-    if (enableMarketing) {
-      enableFeature('marketing', 'test marketing');
+    const enabledMarketing = game.funds >= 200 && !features.marketing;
+    if (enabledMarketing) {
+      enabledFeature('marketing', 'test marketing');
     }
   }, [game.funds, features.marketing]);
 
   useEffect(() => {
-    const enableResources = game.paperclip >= 2e3 && !features.resources;
-    if (enableResources) {
-      enableFeature('resources', 'test resources');
+    const enabledResources = game.paperclip >= 2e3 && !features.resources;
+    if (enabledResources) {
+      enabledFeature('resources', 'test resources');
     }
   }, [game.paperclip, features.resources]);
 
   useEffect(() => {
     const revTracker = projects.find((p) => p.id === 'revTracker');
-    const enableRevTracker = game.paperclip >= 2e3 && !revTracker?.unlock && !revTracker?.enable;
-    if (enableRevTracker) {
-      enableProject('revTracker', 'test revTracker');
+    const enabledRevTracker =
+      game.paperclip >= 2e3 && !revTracker?.unlocked && !revTracker?.enabled;
+    if (enabledRevTracker) {
+      enabledProject('revTracker', 'test revTracker');
     }
   }, [game.paperclip, projects]);
 
   useEffect(() => {
     const revTracker = projects.find((p) => p.id === 'revTracker');
-    const unlockRevTracker = game.operation >= 500 && !revTracker?.unlock && revTracker?.enable;
-    if (unlockRevTracker) {
-      unlockProject('revTracker');
+    const unlockedRevTracker =
+      game.operation >= 500 && !revTracker?.unlocked && revTracker?.enabled;
+    if (unlockedRevTracker) {
+      unlockedProject('revTracker');
     }
   }, [game.operation, projects]);
 
   useEffect(() => {
     const revTracker = projects.find((p) => p.id === 'revTracker');
-    const enablePaperclipPerSecond =
-      revTracker?.unlock && !revTracker?.enable && !features.paperclipPerSecond;
-    if (enablePaperclipPerSecond) {
-      enableFeature('paperclipPerSecond', 'test paperclipPerSecond');
+    const enabledPaperclipPerSecond =
+      revTracker?.unlocked && !revTracker?.enabled && !features.paperclipPerSecond;
+    if (enabledPaperclipPerSecond) {
+      enabledFeature('paperclipPerSecond', 'test paperclipPerSecond');
     }
   }, [projects, features.megaMachine]);
 
   useEffect(() => {
-    const enableMegaMachine = game.machine >= 75 && !features.megaMachine;
-    if (enableMegaMachine) {
-      enableFeature('megaMachine', 'test megaMachine');
+    const enabledMegaMachine = game.machine >= 75 && !features.megaMachine;
+    if (enabledMegaMachine) {
+      enabledFeature('megaMachine', 'test megaMachine');
     }
   }, [game.machine, features.megaMachine]);
 
   useEffect(() => {
     const algorithmicTrading = projects.find((p) => p.id === 'algorithmicTrading');
-    const enableAlgorithmicTrading =
-      game.trust >= 8 && !algorithmicTrading?.unlock && !algorithmicTrading?.enable;
-    if (enableAlgorithmicTrading) {
-      enableProject('algorithmicTrading', 'test algorithmicTrading');
+    const enabledAlgorithmicTrading =
+      game.trust >= 8 && !algorithmicTrading?.unlocked && !algorithmicTrading?.enabled;
+    if (enabledAlgorithmicTrading) {
+      enabledProject('algorithmicTrading', 'test algorithmicTrading');
     }
   }, [game.trust, projects]);
 
   useEffect(() => {
     const algorithmicTrading = projects.find((p) => p.id === 'algorithmicTrading');
-    const unlockAlgorithmicTrading =
-      game.operation >= 1e4 && !algorithmicTrading?.unlock && algorithmicTrading?.enable;
-    if (unlockAlgorithmicTrading) {
-      unlockProject('algorithmicTrading');
+    const unlockedAlgorithmicTrading =
+      game.operation >= 1e4 && !algorithmicTrading?.unlocked && algorithmicTrading?.enabled;
+    if (unlockedAlgorithmicTrading) {
+      unlockedProject('algorithmicTrading');
     }
   }, [game.operation, projects]);
 
   useEffect(() => {
     const algorithmicTrading = projects.find((p) => p.id === 'algorithmicTrading');
-    const enableInvestments =
-      algorithmicTrading?.unlock && !algorithmicTrading?.enable && !features.investments;
-    if (enableInvestments) {
-      enableFeature('investments', 'test investments');
+    const enabledInvestments =
+      algorithmicTrading?.unlocked && !algorithmicTrading?.enabled && !features.investments;
+    if (enabledInvestments) {
+      enabledFeature('investments', 'test investments');
     }
   }, [projects, features.investments]);
 

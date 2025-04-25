@@ -87,22 +87,19 @@ export const gameReducer = (state: State, action: Action): State => {
       const paperclipPerSecond = machinePerSecond * state.unsoldBonus;
       const fundsPerSecond = paperclipPerSecond * state.paperclipCost;
       const operationMaxPerSecond = (state.memory * 1e6) / 20;
-      const operationPerSecond = Math.min(
-        operationMaxPerSecond,
-        state.operation + 10 * state.processor
+      const operationPerSecond =
+        state.paperclip >= 2e3
+          ? Math.min(operationMaxPerSecond, state.operation + 10 * state.processor)
+          : state.operation;
+      const creativityPerSecond = Math.min(
+        20,
+        operationPerSecond === operationMaxPerSecond ? state.memory : state.creativity
       );
-      const creativityMaxPerSecond =
-        operationPerSecond !== operationMaxPerSecond ? state.creativity + 1 : 0;
-      const creativityPerSecond =
-        operationPerSecond === operationMaxPerSecond && state.creativity < state.creativityMax
-          ? state.creativity + 1
-          : state.creativity;
       return {
         ...state,
         operation: operationPerSecond,
         operationMax: operationMaxPerSecond,
         creativity: creativityPerSecond,
-        creativityMax: creativityMaxPerSecond,
         paperclipPerSecond: paperclipPerSecond,
         fundsPerSecond: fundsPerSecond,
         paperclip: state.paperclip + paperclipPerSecond,

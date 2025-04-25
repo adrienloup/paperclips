@@ -2,12 +2,12 @@ import { Action, State } from '@/src/pages/game/components/features/Features.typ
 
 export const featuresReducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'DISABLE':
+    case 'DISABLED':
       return {
         ...state,
         [action.feature]: false,
       };
-    case 'ENABLE':
+    case 'ENABLED':
       return {
         ...state,
         [action.feature]: true,

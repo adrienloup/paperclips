@@ -6,7 +6,7 @@ import styles from '@/src/pages/game/components/dashboard/notices/Notices.module
 
 export const NoticesComponent = () => {
   const notices = useNotices();
-  const noticeEnables = notices.filter((notice) => notice.enable).length;
+  const noticeEnables = notices.filter((notice) => notice.enabled).length;
 
   return (
     <div
@@ -15,7 +15,7 @@ export const NoticesComponent = () => {
     >
       {noticeEnables > 0 ? (
         notices.map((notice: Notice) =>
-          notice.enable ? (
+          notice.enabled ? (
             <NoticeComponent
               key={notice.id}
               notice={notice}

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { Button } from '@/src/generic/common/components/button/Button.type.ts';
 import styles from '@/src/generic/common/components/button/Button.module.scss';
+import { useEffect, useState } from 'react';
 
 export const ButtonComponent = ({
   children,
@@ -14,6 +15,26 @@ export const ButtonComponent = ({
   triggerClick,
   ...props
 }: Button<HTMLButtonElement & HTMLAnchorElement>) => {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (disabled) {
+      setIsActive(false);
+    }
+  }, [disabled]);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      setIsActive(true);
+    }
+  };
+
+  const handleKeyUp = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      setIsActive(false);
+    }
+  };
+
   const link = (
     <Link
       to={to!}
@@ -41,9 +62,12 @@ export const ButtonComponent = ({
     <button
       type="button"
       ref={innerRef}
+      aria-pressed={isActive}
       disabled={disabled}
+      onKeyDown={handleKeyDown}
+      onKeyUp={handleKeyUp}
       onClick={onClick}
-      className={classNames([styles.button, className])}
+      className={classNames([styles.button, isActive ? styles.active : '', className])}
       {...props}
     >
       {children}

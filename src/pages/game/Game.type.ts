@@ -6,6 +6,8 @@ export type Action =
   | { type: 'BUY_MEGAMACHINE' }
   | { type: 'INCREASE_PAPERCLIP_COST' }
   | { type: 'DECREASE_PAPERCLIP_COST' }
+  | { type: 'INCREASE_CASH' }
+  | { type: 'DECREASE_CASH' }
   | { type: 'INCREASE_MEMORY' }
   | { type: 'INCREASE_PROCESSOR' }
   | { type: 'UPDATE_PER_SECOND' }
@@ -17,6 +19,11 @@ export type Action =
   | { type: 'INITIALIZE'; state: State };
 
 export interface State {
+  coins: {
+    name: string;
+    quantity: number;
+  }[];
+  cash: number;
   creativity: number;
   funds: number;
   fundsPerSecond: number;

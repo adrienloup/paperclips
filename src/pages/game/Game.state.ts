@@ -1,6 +1,8 @@
 import { State } from '@/src/pages/game/Game.type.ts';
 
 export const gameState: State = {
+  coins: [],
+  cash: 0,
   creativity: 0,
   funds: 0,
   fundsPerSecond: 0,

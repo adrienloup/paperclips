@@ -15,7 +15,7 @@ export const DebugComponent = () => {
   const game = useGame();
   const [stage, setStage] = useStage();
   const [stageValue, setStageValue] = useState<Stage>(stage);
-  const [alertsText, setAlertsText] = useState('Lorem Ipsum');
+  const [alertsText, setAlertsText] = useState('Alert1');
   const [noticesId, setNoticesId] = useState('game');
   const [paperclip, setPaperclip] = useState('0');
   const [funds, setFunds] = useState('0');
@@ -23,6 +23,7 @@ export const DebugComponent = () => {
   const [trust, setTrust] = useState('0');
   const [operation, setOperation] = useState('0');
   const [creativity, setCreativity] = useState('0');
+
   const display = useMemo(() => {
     const isDebug = location.search == '?debug';
     if (isDebug) {

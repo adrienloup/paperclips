@@ -14,20 +14,14 @@ export const ClickerComponent = ({
   suffix,
   value = 1,
   onClick,
+  ...props
 }: Clicker) => {
   const [values, setValues] = useState<ClickerValue[]>([]);
-  const [isActive, setIsActive] = useState(false);
   const timeouts = useRef<number[]>([]);
 
   useEffect(() => {
     return () => timeouts.current.forEach((id) => clearTimeout(id));
   }, []);
-
-  useEffect(() => {
-    if (disabled) {
-      setIsActive(false);
-    }
-  }, [disabled]);
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const { clientX, clientY, currentTarget } = e;
@@ -53,30 +47,16 @@ export const ClickerComponent = ({
     onClick();
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      setIsActive(true);
-    }
-  };
-
-  const handleKeyUp = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      setIsActive(false);
-    }
-  };
-
   const getStyle = (x: number, y: number) => ({ left: x, top: y }) as CSSProperties;
 
   return (
     <ButtonComponent
-      className={classNames([styles.button, isActive ? styles.active : '', className])}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      onKeyUp={handleKeyUp}
-      aria-pressed={isActive}
+      className={classNames([styles.button, className])}
       disabled={disabled}
+      onClick={handleClick}
+      {...props}
     >
-      <span className={styles.inner}>{children}</span>
+      {children}
       {values.map((v) => (
         <span
           key={v.id}

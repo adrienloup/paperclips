@@ -31,9 +31,7 @@ export function ModeProvider({ children }: { children: Children }) {
   useEffect(() => {
     if (mode === 'system') {
       updateMode(
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light'
+        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
       );
     } else {
       updateMode(mode);
@@ -44,8 +42,7 @@ export function ModeProvider({ children }: { children: Children }) {
     };
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', onChange);
-    return () =>
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', onChange);
+    return () => window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', onChange);
   }, []);
 
   return <ModeContext.Provider value={[mode, changeMode]}>{children}</ModeContext.Provider>;

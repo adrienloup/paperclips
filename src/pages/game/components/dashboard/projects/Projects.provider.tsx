@@ -20,9 +20,7 @@ export function ProjectsProvider({ children }: { children: Children }) {
 
   return (
     <ProjectsContext.Provider value={state}>
-      <ProjectsDispatchContext.Provider value={dispatch}>
-        {children}
-      </ProjectsDispatchContext.Provider>
+      <ProjectsDispatchContext.Provider value={dispatch}>{children}</ProjectsDispatchContext.Provider>
     </ProjectsContext.Provider>
   );
 }

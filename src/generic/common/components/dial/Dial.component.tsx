@@ -3,15 +3,7 @@ import { NumberComponent } from '@/src/generic/common/components/number/Number.c
 import { Dial } from '@/src/generic/common/components/dial/Dial.type.ts';
 import styles from '@/src/generic/common/components/dial/Dial.module.scss';
 
-export const DialComponent = ({
-  disabled,
-  label,
-  value,
-  valueMax,
-  notation,
-  style,
-  bonus,
-}: Dial) => {
+export const DialComponent = ({ disabled, label, value, valueMax, notation, style, bonus }: Dial) => {
   return (
     <div className={classNames([styles.dial, disabled ? styles.disabled : ''])}>
       <NumberComponent

@@ -53,8 +53,7 @@ export const FeaturesComponent = () => {
 
   useEffect(() => {
     const revTracker = projects.find((p) => p.id === 'revTracker');
-    const enabledRevTracker =
-      game.paperclip >= 2e3 && !revTracker?.unlocked && !revTracker?.enabled;
+    const enabledRevTracker = game.paperclip >= 2e3 && !revTracker?.unlocked && !revTracker?.enabled;
     if (enabledRevTracker) {
       enabledProject('revTracker', 'test revTracker');
     }
@@ -62,8 +61,7 @@ export const FeaturesComponent = () => {
 
   useEffect(() => {
     const revTracker = projects.find((p) => p.id === 'revTracker');
-    const unlockedRevTracker =
-      game.operation >= 500 && !revTracker?.unlocked && revTracker?.enabled;
+    const unlockedRevTracker = game.operation >= 500 && !revTracker?.unlocked && revTracker?.enabled;
     if (unlockedRevTracker) {
       unlockedProject('revTracker');
     }

@@ -29,9 +29,5 @@ export function LanguageProvider({ children }: { children: Children }) {
     updateLanguage(language);
   }, [language]);
 
-  return (
-    <LanguageContext.Provider value={[language, changedLanguage]}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={[language, changedLanguage]}>{children}</LanguageContext.Provider>;
 }

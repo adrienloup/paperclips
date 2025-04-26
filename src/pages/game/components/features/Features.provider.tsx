@@ -20,9 +20,7 @@ export function FeaturesProvider({ children }: { children: Children }) {
 
   return (
     <FeaturesContext.Provider value={state}>
-      <FeaturesDispatchContext.Provider value={dispatch}>
-        {children}
-      </FeaturesDispatchContext.Provider>
+      <FeaturesDispatchContext.Provider value={dispatch}>{children}</FeaturesDispatchContext.Provider>
     </FeaturesContext.Provider>
   );
 }

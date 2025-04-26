@@ -2,6 +2,7 @@ import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent
 
 import { Children } from '@/src/generic/types/Children.type.ts';
 import { AlertsProvider } from '@/src/generic/common/components/alerts/Alerts.provider.tsx';
+import { CoinProvider } from '@/src/pages/game/components/dashboard/investments/coin/Coin.provider.tsx';
 import { FeaturesProvider } from '@/src/pages/game/components/features/Features.provider.tsx';
 import { GameProvider } from '@/src/pages/game/Game.provider.tsx';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
@@ -12,10 +13,7 @@ import { ProjectsProvider } from '@/src/pages/game/components/dashboard/projects
 import { StageProvider } from '@/src/generic/stage/Stage.provider.tsx';
 import { ThemeProvider } from '@/src/generic/theme/Theme.provider.tsx';
 
-type ProvidersType = [
-  ComponentType<{ children: Children }>,
-  ComponentPropsWithoutRef<ElementType>?,
-][];
+type ProvidersType = [ComponentType<{ children: Children }>, ComponentPropsWithoutRef<ElementType>?][];
 
 const allProviders = (providers: ProvidersType) =>
   providers.reduce(
@@ -30,6 +28,7 @@ const allProviders = (providers: ProvidersType) =>
 
 export const Providers: FunctionComponent<{ children: Children }> = allProviders([
   [AlertsProvider],
+  [CoinProvider],
   [FeaturesProvider],
   [GameProvider],
   [LanguageProvider],

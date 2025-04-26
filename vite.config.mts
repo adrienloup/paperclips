@@ -10,8 +10,7 @@ export default defineConfig({
       manifest: {
         name: 'Paperclips',
         short_name: 'paperclips',
-        description:
-          'Paperclips is an incremental game (also an idle game, clicker game, or tapper game).',
+        description: 'Paperclips is an incremental game (also an idle game, clicker game, or tapper game).',
         start_url: '/paperclips',
         display: 'standalone',
         theme_color: '#4c00ff',

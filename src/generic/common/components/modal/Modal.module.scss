@@ -1,0 +1,89 @@
+.modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.inner {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-s);
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  max-width: 24rem;
+  width: 100%;
+  padding: var(--spacing-s) var(--spacing-l) var(--spacing-s) var(--spacing-s);
+  background-color: var(--color-theme-1);
+  pointer-events: initial;
+  animation: SlideUp 400ms var(--ease-expo);
+}
+
+.button {
+  position: absolute;
+  top: var(--spacing-s);
+  right: var(--spacing-s);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  background-color: var(--color-theme-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-theme-1);
+  box-shadow:
+    inset 0 0.2rem var(--color-theme-1),
+    inset 0 -0.2rem var(--color-theme-1),
+    inset 0.2rem 0 var(--color-theme-1),
+    inset -0.2rem 0 var(--color-theme-1);
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: var(--color-3);
+  opacity: 0.5;
+  cursor: pointer;
+  pointer-events: initial;
+  animation: Appear 400ms var(--ease-expo);
+  //will-change: opacity;
+}
+
+@keyframes Appear {
+  0% {
+    opacity: 0;
+  }
+}
+
+@keyframes SlideUp {
+  0% {
+    transform: translateY(-100%);
+  }
+}
+//
+//@keyframes FadeIn {
+//  0% {
+//    opacity: 0;
+//  }
+//  40% {
+//    opacity: 0;
+//  }
+//  100% {
+//    opacity: 1;
+//  }
+//}

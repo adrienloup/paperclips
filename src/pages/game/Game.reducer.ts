@@ -62,6 +62,10 @@ export const gameReducer = (state: State, action: Action): State => {
         paperclipCost: decreasePaperclipCost * state.marketing,
         publicDemand: 0.1 / decreasePaperclipCost,
       };
+    case 'INCREASE_CASH':
+      return state.funds >= 10 ? { ...state, cash: state.cash + 10, funds: state.funds - 10 } : state;
+    case 'DECREASE_CASH':
+      return state.cash >= 10 ? { ...state, cash: state.cash - 10, funds: state.funds + 10 } : state;
     case 'INCREASE_MEMORY':
       return {
         ...state,

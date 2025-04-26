@@ -28,7 +28,10 @@ export const ProjectsComponent = () => {
           ) : null
         )
       ) : (
-        <EmptyComponent empty="game.empty.project" />
+        <EmptyComponent
+          className={styles.empty}
+          empty="game.empty.project"
+        />
       )}
     </CardComponent>
   );

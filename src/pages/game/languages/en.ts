@@ -37,9 +37,14 @@ export const en: Translation = {
     },
     paperclipCost: 'Sale price',
     project: {
-      algorithmicTrading:
-        'Algorithmic Trading (10,000 Ops) Develop an investment engine for generating funds',
-      revTracker: 'Rev Tracker (500 Ops) Automatically calculates average revenue per second',
+      algorithmicTrading: {
+        text: 'Algorithmic Trading (<value /> Operations) Develop an investment engine for generating funds',
+        value: '10000',
+      },
+      revTracker: {
+        text: 'Rev Tracker (<value /> Operations) Automatically calculates average revenue per second',
+        value: '500',
+      },
     },
     publicDemand: 'Public demand',
     titlePage: 'One Paperclip. Two Paperclips. Three Paperclips...',

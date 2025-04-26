@@ -37,9 +37,14 @@ export const fr: Translation = {
     },
     paperclipCost: 'Prix de vente',
     project: {
-      algorithmicTrading:
-        "Trading algorithmique (10 000 Ops) Développer un moteur d'investissement pour générer des fonds",
-      revTracker: 'Rev tracker (500 Ops) Calcule automatiquement le revenu moyen par seconde',
+      algorithmicTrading: {
+        text: 'Algorithmic Trading (<value /> Operations) Develop an investment engine for generating funds',
+        value: '10000',
+      },
+      revTracker: {
+        text: 'Rev Tracker (<value /> Operations) Automatically calculates average revenue per second',
+        value: '500',
+      },
     },
     publicDemand: 'Demande du public',
     titlePage: 'Un trombone. Deux trombones. Trois trombones...',

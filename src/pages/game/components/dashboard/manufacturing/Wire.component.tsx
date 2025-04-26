@@ -28,7 +28,7 @@ export const WireComponent = () => {
         className={styles.button}
         value={game.wireBonus}
         prefix="+"
-        suffix={t('game.wire')}
+        suffix="wire"
         disabled={game.funds < game.wireCost}
         onClick={() => setGame({ type: 'BUY_WIRE' })}
       >

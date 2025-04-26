@@ -10,6 +10,17 @@
   padding: var(--spacing-xs);
   font-size: var(--font-size-xs);
   color: var(--color-theme-1);
+
+  :global(._clubbed-to-death_3mma_0) & {
+    text-shadow:
+      0 0.09rem var(--color-theme-3),
+      0 -0.09rem var(--color-theme-3),
+      0.09rem 0 var(--color-theme-3),
+      -0.09rem 0 var(--color-theme-3),
+      0 0.2rem var(--color-theme-4),
+      0.09rem 0.09rem var(--color-theme-4),
+      -0.09rem 0.09rem var(--color-theme-4);
+  }
 }
 
 .button {

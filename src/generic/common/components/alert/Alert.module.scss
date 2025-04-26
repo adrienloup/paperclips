@@ -43,7 +43,7 @@
   padding: var(--spacing-xs);
   line-height: 1.2;
   font-size: var(--font-size-xs);
-  color: var(--color-theme-2);
+  color: var(--color-1);
 
   &::first-letter {
     text-transform: uppercase;
@@ -57,7 +57,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-xs);
-  background-color: var(--color-theme-2);
+  background-color: var(--color-1);
   font-size: var(--font-size-xs);
   pointer-events: initial;
 

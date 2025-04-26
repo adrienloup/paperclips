@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useNoticesDispatch } from '@/src/pages/game/components/dashboard/notices/useNotices.ts';
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
+// import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
 import { Notice } from '@/src/pages/game/components/dashboard/notice/Notice.type.ts';
 import styles from '@/src/pages/game/components/dashboard/notice/Notice.module.scss';
 
@@ -29,7 +30,7 @@ export const NoticeComponent = ({ notice, ...props }: { notice: Notice }) => {
         onClick={disabledClick}
         aria-label="Supprimer la notification"
       >
-        x
+        {/*<IconComponent icon="close" />*/}x
       </ButtonComponent>
     </div>
   );

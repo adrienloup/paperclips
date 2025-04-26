@@ -4,12 +4,23 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: var(--spacing-s);
-  max-width: 20rem;
+  width: 20rem;
 }
 
 .title {
   text-transform: uppercase;
   font-size: var(--font-size-s);
+
+  :global(._clubbed-to-death_3mma_0) & {
+    text-shadow:
+      0 0.125rem var(--color-theme-3),
+      0 -0.125rem var(--color-theme-3),
+      0.125rem 0 var(--color-theme-3),
+      -0.125rem 0 var(--color-theme-3),
+      0 0.25rem var(--color-theme-4),
+      0.125rem 0.125rem var(--color-theme-4),
+      -0.125rem 0.125rem var(--color-theme-4);
+  }
 }
 
 .buttons {

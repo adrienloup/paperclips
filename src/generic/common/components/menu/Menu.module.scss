@@ -1,7 +1,7 @@
 .menu {
   position: relative;
-  height: 6rem;
-  margin-top: -6rem;
+  height: 8rem;
+  margin-top: -8rem;
   transition-property: margin-top;
   transition-duration: 200ms;
   transition-timing-function: var(--ease-expo);
@@ -33,5 +33,5 @@
   background-color: transparent;
   text-transform: uppercase;
   font-size: var(--font-size-xs);
-  color: var(--color-theme-1);
+  color: var(--color-theme-5);
 }

@@ -1,12 +1,4 @@
-.project {
-  display: block;
-  padding: var(--spacing-xs);
-  background-color: var(--color-theme-2);
-  line-height: 1.2;
-  text-align: left;
-  font-size: var(--font-size-xs);
-  color: var(--color-theme-1);
-
+.empty {
   :global(._clubbed-to-death_3mma_0) & {
     text-shadow:
       0 0.09rem var(--color-theme-3),
@@ -16,11 +8,5 @@
       0 0.2rem var(--color-theme-4),
       0.09rem 0.09rem var(--color-theme-4),
       -0.09rem 0.09rem var(--color-theme-4);
-  }
-
-  &.locked {
-    opacity: 0.5;
-    cursor: not-allowed;
-    pointer-events: none;
   }
 }

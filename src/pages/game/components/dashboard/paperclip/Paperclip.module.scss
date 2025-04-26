@@ -8,6 +8,17 @@
   //text-shadow: 0 0.2rem var(--color-2);
   //-webkit-text-stroke: 0.05em var(--color-2);
 
+  :global(._clubbed-to-death_3mma_0) & {
+    text-shadow:
+      0 0.2rem var(--color-theme-3),
+      0 -0.2rem var(--color-theme-3),
+      0.2rem 0 var(--color-theme-3),
+      -0.2rem 0 var(--color-theme-3),
+      0 0.4rem var(--color-theme-4),
+      0.2rem 0.2rem var(--color-theme-4),
+      -0.2rem 0.2rem var(--color-theme-4);
+  }
+
   @include desktop {
     padding: 0 var(--spacing-m);
   }

@@ -2,7 +2,11 @@
   position: relative;
   background-color: var(--color-theme-2);
   font-size: var(--font-size-m);
-  color: var(--color-theme-1);
+  color: var(--color-theme-6);
+
+  &:focus-visible {
+    outline-offset: -0.05rem;
+  }
 
   &.active,
   &:active {
@@ -24,6 +28,17 @@
     0 -0.2rem var(--color-theme-2),
     0.2rem 0 var(--color-theme-2),
     -0.2rem 0 var(--color-theme-2);
+
+  :global(._clubbed-to-death_3mma_0) & {
+    box-shadow:
+      0 0.2rem var(--color-theme-3),
+      0 -0.2rem var(--color-theme-3),
+      0.2rem 0 var(--color-theme-3),
+      -0.2rem 0 var(--color-theme-3),
+      0 0.4rem var(--color-theme-4),
+      0.2rem 0.2rem var(--color-theme-4),
+      -0.2rem 0.2rem var(--color-theme-4);
+  }
 }
 
 .value {
@@ -32,6 +47,7 @@
   white-space: nowrap;
   padding: var(--spacing-xs);
   animation: SlideUp 900ms var(--ease-out);
+  text-transform: uppercase;
   font-size: var(--font-size-m);
   color: var(--color-9);
 }

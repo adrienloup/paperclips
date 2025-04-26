@@ -1,97 +1,96 @@
 import { useState } from 'react';
 import { useGame } from '@/src/pages/game/useGame.ts';
+import { useCoin } from '@/src/pages/game/components/dashboard/investments/coin/useCoin.ts';
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
 import { ModalComponent } from '@/src/generic/common/components/modal/Modal.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
-// import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
-import { EmptyComponent } from '@/src/generic/common/components/empty/Empty.component.tsx';
+import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const WalletComponent = () => {
   const game = useGame();
-  const [trade, setTrade] = useState(false);
+  const [cointutus] = useCoin();
+  const [purchases, setPurchases] = useState(false);
+
+  const ownedcointutusprice = (name: string) => cointutus.find((g) => g.name === name)?.price;
+  const ownedcointutusvolmue = (name: string) => cointutus.find((g) => g.name === name)?.volume;
 
   return (
     <DialsComponent>
       <DialComponent
-        value={game.coins.length}
+        value={game.wallet.length}
         notation="compact"
-        label="Actives"
+        label="active"
       />
       <ButtonComponent
         className={classNames([styles.button, styles.label])}
-        aria-label="Trade"
-        onClick={() => setTrade(!trade)}
+        onClick={() => setPurchases(!purchases)}
       >
-        Trade
+        Purchases
       </ButtonComponent>
-      {game.coins.length ? (
-        game.coins.map((coin) => (
-          <DialComponent
-            key={coin.name}
-            value={coin.quantity}
-            label={coin.name}
-            notation="compact"
-          />
-        ))
-      ) : (
-        <EmptyComponent empty="No actives at all" />
-      )}
+      {game.wallet.map((coin) => (
+        <>
+          {coin.quantity > 0 ? (
+            <DialComponent
+              key={coin.name}
+              value={coin.quantity}
+              label={coin.name}
+              notation="compact"
+            />
+          ) : null}
+        </>
+      ))}
       <ModalComponent
-        labelledby="modal-trade"
-        modal={trade}
-        onClick={() => setTrade(false)}
+        labelledby="modal-purchases"
+        modal={purchases}
+        onClick={() => setPurchases(false)}
       >
         <TitleComponent
           tag="h2"
-          id="modal-trade"
+          id="modal-purchases"
           className={styles.subtitle}
         >
-          trade
+          purchases
         </TitleComponent>
-        <DialsComponent>
-          <DialComponent
-            value={10}
-            style="currency"
-            notation="compact"
-            label="tutu"
-          />
-          {/*<DialComponent*/}
-          {/*  value={game.cash}*/}
-          {/*  style="currency"*/}
-          {/*  notation="compact"*/}
-          {/*  label="Cash"*/}
-          {/*/>*/}
-          {/*<div className={styles.buttons}>*/}
-          {/*  <ClickerComponent*/}
-          {/*    className={styles.button}*/}
-          {/*    aria-label="Decrease cash"*/}
-          {/*    value={10}*/}
-          {/*    prefix="-"*/}
-          {/*    suffix="cash"*/}
-          {/*    currency*/}
-          {/*    disabled={game.cash <= 0}*/}
-          {/*    onClick={() => setGame({ type: 'DECREASE_CASH' })}*/}
-          {/*  >*/}
-          {/*    -*/}
-          {/*  </ClickerComponent>*/}
-          {/*  <ClickerComponent*/}
-          {/*    className={styles.button}*/}
-          {/*    aria-label="Increase cash"*/}
-          {/*    value={10}*/}
-          {/*    prefix="+"*/}
-          {/*    suffix="cash"*/}
-          {/*    currency*/}
-          {/*    disabled={game.funds < 10}*/}
-          {/*    onClick={() => setGame({ type: 'INCREASE_CASH' })}*/}
-          {/*  >*/}
-          {/*    +*/}
-          {/*  </ClickerComponent>*/}
-          {/*</div>*/}
-        </DialsComponent>
+        {game.wallet.map((coin) => (
+          <>
+            <DialComponent
+              key={coin.name}
+              value={coin.quantity}
+              label={`${coin.name} active`}
+              notation="compact"
+            />
+            <div className={styles.buttons}>
+              <ClickerComponent
+                className={styles.button}
+                aria-label="Decrease"
+                value={0.1}
+                prefix="-"
+                suffix={coin.name}
+                currency
+                disabled={coin.quantity <= 0}
+                onClick={() => console.log('ok')}
+              >
+                -
+              </ClickerComponent>
+              <ClickerComponent
+                className={styles.button}
+                aria-label="Increase"
+                value={0.1}
+                prefix="+"
+                suffix={coin.name}
+                currency
+                disabled={game.cash <= ownedcointutusprice(coin.name)! || ownedcointutusvolmue(coin.name)! <= 0}
+                onClick={() => console.log('ok')}
+              >
+                +
+              </ClickerComponent>
+            </div>
+          </>
+        ))}
       </ModalComponent>
     </DialsComponent>
   );

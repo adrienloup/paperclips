@@ -1,7 +1,6 @@
 import { State } from '@/src/pages/game/Game.type.ts';
 
 export const gameState: State = {
-  coins: [],
   cash: 0,
   creativity: 0,
   funds: 0,
@@ -25,6 +24,11 @@ export const gameState: State = {
   trustCost: 3e3,
   unsold: 0,
   unsoldBonus: 1,
+  wallet: [
+    { name: 'btc', quantity: 1 },
+    { name: 'eth', quantity: 2 },
+    { name: 'bnb', quantity: 0 },
+  ],
   wire: 100,
   wireBonus: 100,
   wireCost: 20,

@@ -19,10 +19,6 @@ export type Action =
   | { type: 'INITIALIZE'; state: State };
 
 export interface State {
-  coins: {
-    name: string;
-    quantity: number;
-  }[];
   cash: number;
   creativity: number;
   funds: number;
@@ -46,6 +42,10 @@ export interface State {
   trustCost: number;
   unsold: number;
   unsoldBonus: number;
+  wallet: {
+    name: string;
+    quantity: number;
+  }[];
   wire: number;
   wireBonus: number;
   wireCost: number;

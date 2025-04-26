@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);
-  max-width: 24rem;
+  max-width: 22rem;
   width: 100%;
   padding: var(--spacing-s) var(--spacing-l) var(--spacing-s) var(--spacing-s);
   background-color: var(--color-theme-1);
@@ -57,7 +57,7 @@
   right: 0;
   z-index: 1;
   background-color: var(--color-3);
-  opacity: 0.5;
+  opacity: 0.8;
   cursor: pointer;
   pointer-events: initial;
   animation: Appear 400ms var(--ease-expo);

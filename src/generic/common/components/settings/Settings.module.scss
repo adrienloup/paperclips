@@ -1,8 +1,23 @@
 .settings {
   display: flex;
+  gap: var(--spacing-s);
+  padding: 0 var(--spacing-s) var(--spacing-s);
+}
+
+.option {
+  display: flex;
+  align-items: center;
   gap: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  color: var(--color-theme-1);
+
+  @include tablet-portrait {
+    font-size: 0;
+  }
 }
 
 .button {
-  background-color: red;
+  padding: var(--spacing-xs);
+  background-color: var(--color-theme-1);
+  color: var(--color-theme-2);
 }

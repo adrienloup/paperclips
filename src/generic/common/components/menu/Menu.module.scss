@@ -14,6 +14,16 @@
   }
 }
 
+.inner {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs);
+  background-color: var(--color-theme-3);
+  box-shadow:
+    0 0.2rem var(--color-theme-3),
+    0.2rem 0 var(--color-theme-3);
+}
+
 .button {
   position: absolute;
   top: 100%;
@@ -24,12 +34,4 @@
   text-transform: uppercase;
   font-size: var(--font-size-xs);
   color: var(--color-theme-1);
-}
-
-.inner {
-  padding: var(--spacing-xs);
-  background-color: var(--color-theme-3);
-  box-shadow:
-    0 0.2rem var(--color-theme-3),
-    0.2rem 0 var(--color-theme-3);
 }

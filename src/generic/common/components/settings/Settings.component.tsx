@@ -11,7 +11,7 @@ export const SettingsComponent = () => {
 
   return (
     <div className={styles.settings}>
-      <div>
+      <div className={styles.option}>
         Language
         <ButtonComponent
           className={styles.button}
@@ -26,8 +26,8 @@ export const SettingsComponent = () => {
           FR
         </ButtonComponent>
       </div>
-      <div>
-        Themes
+      <div className={styles.option}>
+        Theme
         <ButtonComponent
           className={styles.button}
           onClick={() => setTheme('classic')}
@@ -38,30 +38,30 @@ export const SettingsComponent = () => {
           className={styles.button}
           onClick={() => setTheme('clubbed-to-death')}
         >
-          clubbed-to-death
+          Clubbed to Death
         </ButtonComponent>
       </div>
-      <div>
-        Modes
+      <div className={styles.option}>
+        Mode
         <ButtonComponent
           className={styles.button}
           onClick={() => setMode('dark')}
         >
-          dark
+          Dark
         </ButtonComponent>
         <ButtonComponent
           className={styles.button}
           onClick={() => setMode('light')}
         >
-          light
+          Light
+        </ButtonComponent>
+        <ButtonComponent
+          className={styles.button}
+          onClick={() => setMode('system')}
+        >
+          System
         </ButtonComponent>
       </div>
-      <ButtonComponent
-        className={styles.button}
-        onClick={() => setMode('system')}
-      >
-        system
-      </ButtonComponent>
     </div>
   );
 };

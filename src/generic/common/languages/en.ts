@@ -8,6 +8,10 @@ export const en: Translation = {
       open: 'Open Menu',
       close: 'Close Menu',
     },
+    navigation: {
+      game: 'Play',
+      explore: 'Explore',
+    },
     notice: {
       open: 'Open notifications',
       close: 'Close notifications',

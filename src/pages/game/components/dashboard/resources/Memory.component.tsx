@@ -24,9 +24,11 @@ export const MemoryComponent = () => {
       />
       <ClickerComponent
         className={styles.button}
-        disabled={game.trust <= game.memory + game.processor || game.memory >= 20}
         aria-label="Increase memory"
         value={1}
+        prefix="+"
+        suffix="memory"
+        disabled={game.trust <= game.memory + game.processor || game.memory >= 20}
         onClick={() => setGame({ type: 'INCREASE_MEMORY' })}
       >
         +

@@ -66,13 +66,11 @@ export const gameReducer = (state: State, action: Action): State => {
       return {
         ...state,
         memory: Math.min(state.memory + 1, 20),
-        trust: Math.max(2, state.trust - 1),
       };
     case 'INCREASE_PROCESSOR':
       return {
         ...state,
         processor: Math.min(state.processor + 1, 80),
-        trust: Math.max(2, state.trust - 1),
       };
     case 'UPDATE_PER_SECOND': {
       const megaMachinePerSecond = state.megaMachine * 5e2;
@@ -120,7 +118,7 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'UPDATE_WIRE_COST':
       return {
         ...state,
-        wireCost: state.wireCost > 10 ? state.wireCost - 0.22 : Math.random() * (20 - 12) + 12, // entre ≥ 12 et < 20
+        wireCost: state.wireCost > 8 ? state.wireCost - 0.25 : Math.random() * (20 - 12) + 12, // entre 0 et 1, entre 0 et 8, entre ≥ 12 et < 20
       };
     case 'UPDATE_TRUST':
       // if (state.trust >= 100) return state;

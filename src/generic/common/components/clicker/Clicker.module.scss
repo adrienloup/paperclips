@@ -7,7 +7,7 @@
   &.active,
   &:active {
     .inner {
-      box-shadow: 0 0 0 0.4rem var(--color-11);
+      box-shadow: 0 0 0 0.4rem var(--color-9);
       transition: box-shadow 100ms var(--ease-quad);
     }
   }
@@ -31,14 +31,14 @@
   z-index: 2;
   white-space: nowrap;
   padding: var(--spacing-xs);
-  animation: SlideUp 800ms var(--ease-out);
+  animation: SlideUp 900ms var(--ease-out);
   font-size: var(--font-size-m);
-  color: var(--color-11);
+  color: var(--color-9);
 }
 
 @keyframes SlideUp {
   0% {
-    transform: translate3d(0, -1rem, 0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
   50% {

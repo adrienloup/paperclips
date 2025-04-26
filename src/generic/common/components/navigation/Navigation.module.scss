@@ -1,3 +1,20 @@
 .navigation {
-  display: block;
+  padding: var(--spacing-s);
+}
+
+.list {
+  display: flex;
+  gap: var(--spacing-s);
+  list-style-type: none;
+}
+
+.link {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: var(--font-size-s);
+  color: var(--color-theme-1);
+
+  &:focus-visible {
+    outline: 0.25rem solid var(--color-9);
+  }
 }

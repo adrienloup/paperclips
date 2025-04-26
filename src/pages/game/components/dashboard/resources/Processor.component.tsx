@@ -24,9 +24,11 @@ export const ProcessorComponent = () => {
       />
       <ClickerComponent
         className={styles.button}
-        disabled={game.trust <= game.memory + game.processor || game.processor >= 80}
         aria-label="Increase processor"
         value={1}
+        prefix="+"
+        suffix="processor"
+        disabled={game.trust <= game.memory + game.processor || game.processor >= 80}
         onClick={() => setGame({ type: 'INCREASE_PROCESSOR' })}
       >
         +

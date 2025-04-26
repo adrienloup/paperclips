@@ -8,26 +8,22 @@
   --color-2: #00000038;
   --color-3: #252529;
   --color-4: #ffc8da;
-  --color-5: #c8c0cb;
-  --color-6: #fff;
-  --color-7: #00ff15;
-  --color-8: #00f7ff;
-  --color-9: #009dff;
-  --color-10: #4c00ff;
-  --color-11: #ff00cc;
-  --color-12: #ffdd00;
-  --color-13: #ffb700;
-  --color-14: #ff5722;
-  --color-15: #220081;
-  --color-16: #1a006a;
-  --color-17: #ff002f;
+  --color-5: #fff;
+  --color-6: #00ff15;
+  --color-7: #009dff;
+  --color-8: #4c00ff;
+  --color-9: #ff00cc;
+  --color-10: #ffdd00;
+  --color-11: #220081;
+  --color-12: #1a006a;
+  --color-13: #ff3c00;
 }
 
 @mixin size {
   --font-size-xl: 6rem;
-  --font-size-l: 4rem;
-  --font-size-m: 3rem;
-  --font-size-s: 2rem;
+  --font-size-l: 3rem;
+  --font-size-m: 2.5rem;
+  --font-size-s: 1.5rem;
   --font-size-xs: 1rem;
 }
 

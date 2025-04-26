@@ -40,8 +40,10 @@ export const MenuComponent = () => {
         aria-controls="menu"
         onClick={onMenuClick}
       >
-        {/*<IconComponent icon={open ? 'arrow_menu_open' : 'arrow_menu_close'} />*/}
-        <span className={styles.inner}>menu</span>
+        <span className={styles.inner}>
+          {/*<IconComponent icon={open ? 'arrow_menu_open' : 'arrow_menu_close'} />*/}
+          menu
+        </span>
       </ButtonComponent>
       <NavigationComponent />
       <SettingsComponent />

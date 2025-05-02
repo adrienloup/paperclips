@@ -1,12 +1,21 @@
 .menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
   position: relative;
-  height: 8rem;
-  margin-top: -8rem;
+  height: 7rem;
+  margin-top: -7rem;
+  padding: var(--spacing-s);
   transition-property: margin-top;
   transition-duration: 200ms;
   transition-timing-function: var(--ease-expo);
   background-color: var(--color-theme-3);
   will-change: margin-top;
+
+  @include tablet-portrait {
+    height: 8rem;
+    margin-top: -8rem;
+  }
 
   &.open {
     margin-top: 0;

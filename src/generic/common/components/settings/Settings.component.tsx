@@ -12,55 +12,61 @@ export const SettingsComponent = () => {
   return (
     <div className={styles.settings}>
       <div className={styles.option}>
-        Language
-        <ButtonComponent
-          className={styles.button}
-          onClick={() => setLanguage('en')}
-        >
-          EN
-        </ButtonComponent>
-        <ButtonComponent
-          className={styles.button}
-          onClick={() => setLanguage('fr')}
-        >
-          FR
-        </ButtonComponent>
+        <span className={styles.label}>Language</span>
+        <div className={styles.buttons}>
+          <ButtonComponent
+            className={styles.button}
+            onClick={() => setLanguage('en')}
+          >
+            EN
+          </ButtonComponent>
+          <ButtonComponent
+            className={styles.button}
+            onClick={() => setLanguage('fr')}
+          >
+            FR
+          </ButtonComponent>
+        </div>
       </div>
       <div className={styles.option}>
-        Theme
-        <ButtonComponent
-          className={styles.button}
-          onClick={() => setTheme('classic')}
-        >
-          classic
-        </ButtonComponent>
-        <ButtonComponent
-          className={styles.button}
-          onClick={() => setTheme('clubbed-to-death')}
-        >
-          Clubbed to Death
-        </ButtonComponent>
+        <span className={styles.label}>Theme</span>
+        <div className={styles.buttons}>
+          <ButtonComponent
+            className={styles.button}
+            onClick={() => setTheme('classic')}
+          >
+            classic
+          </ButtonComponent>
+          <ButtonComponent
+            className={styles.button}
+            onClick={() => setTheme('clubbed-to-death')}
+          >
+            Clubbed to Death
+          </ButtonComponent>
+        </div>
       </div>
       <div className={styles.option}>
-        Mode
-        <ButtonComponent
-          className={styles.button}
-          onClick={() => setMode('dark')}
-        >
-          Dark
-        </ButtonComponent>
-        <ButtonComponent
-          className={styles.button}
-          onClick={() => setMode('light')}
-        >
-          Light
-        </ButtonComponent>
-        <ButtonComponent
-          className={styles.button}
-          onClick={() => setMode('system')}
-        >
-          System
-        </ButtonComponent>
+        <span className={styles.label}>Mode</span>
+        <div className={styles.buttons}>
+          <ButtonComponent
+            className={styles.button}
+            onClick={() => setMode('dark')}
+          >
+            Dark
+          </ButtonComponent>
+          <ButtonComponent
+            className={styles.button}
+            onClick={() => setMode('light')}
+          >
+            Light
+          </ButtonComponent>
+          <ButtonComponent
+            className={styles.button}
+            onClick={() => setMode('system')}
+          >
+            System
+          </ButtonComponent>
+        </div>
       </div>
     </div>
   );

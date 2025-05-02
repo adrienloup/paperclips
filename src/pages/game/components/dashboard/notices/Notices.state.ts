@@ -3,83 +3,83 @@ import { Notice } from '@/src/pages/game/components/dashboard/notice/Notice.type
 
 const notices: Notice[] = [
   {
-    id: 'algorithmicTrading',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'creativity',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'funds',
+    id: 'paperclip', // 1
     enabled: true,
     viewed: false,
   },
   {
-    id: 'machine',
+    id: 'wire', // 2
+    enabled: true,
+    viewed: false,
+  },
+  {
+    id: 'funds', // 3
+    enabled: true,
+    viewed: false,
+  },
+  {
+    id: 'unsold', // 4
+    enabled: true,
+    viewed: false,
+  },
+  {
+    id: 'publicDemand', // 5
+    enabled: true,
+    viewed: false,
+  },
+  {
+    id: 'machine', // 6
     enabled: false,
     viewed: false,
   },
   {
-    id: 'marketing',
+    id: 'marketing', // 7
+    enabled: false,
+    viewed: false,
+  },
+  {
+    id: 'trust', // 8
+    enabled: false,
+    viewed: false,
+  },
+  {
+    id: 'memory', // 9
+    enabled: false,
+    viewed: false,
+  },
+  {
+    id: 'processor', // 10
+    enabled: false,
+    viewed: false,
+  },
+  {
+    id: 'operation', // 11
+    enabled: false,
+    viewed: false,
+  },
+  {
+    id: 'creativity', // 12
+    enabled: false,
+    viewed: false,
+  },
+  // {
+  //   id: 'project', // 13 ?
+  //   enabled: false,
+  //   viewed: false,
+  // },
+  {
+    id: 'revTracker', // 13
+    enabled: false,
+    viewed: false,
+  },
+  {
+    id: 'algorithmicTrading',
     enabled: false,
     viewed: false,
   },
   {
     id: 'megaMachine',
     enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'memory',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'operation',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'paperclip',
-    enabled: true,
-    viewed: false,
-  },
-  {
-    id: 'paperclipCost',
-    enabled: true,
-    viewed: false,
-  },
-  {
-    id: 'processor',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'project',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'publicDemand',
-    enabled: true,
-    viewed: false,
-  },
-  {
-    id: 'trust',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'unsold',
-    enabled: true,
-    viewed: false,
-  },
-  {
-    id: 'wire',
-    enabled: true,
     viewed: false,
   },
 ];

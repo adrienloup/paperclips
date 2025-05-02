@@ -49,4 +49,6 @@ export interface State {
   wire: number;
   wireBonus: number;
   wireCost: number;
+  wireDrone: number;
+  wireDroneCost: number;
 }

@@ -1,4 +1,4 @@
-import { Action, State } from '@/src/pages/game/components/features/Features.type.ts';
+import { Action, State } from '@/src/pages/game/components/dashboard/features/Features.type.ts';
 
 export const featuresReducer = (state: State, action: Action): State => {
   switch (action.type) {

@@ -75,12 +75,12 @@
 .progress {
   width: 0;
   height: 100%;
-  background: var(--color-6);
+  background: var(--color-7);
   transition: width 0ms linear;
 
   :global(._clubbed-to-death_3mma_0) & {
-    background: -webkit-linear-gradient(90deg, var(--color-10) 0%, var(--color-6) 100%);
-    background: -moz-linear-gradient(90deg, var(--color-10) 0%, var(--color-6) 100%);
-    background: linear-gradient(90deg, var(--color-10) 0%, var(--color-6) 100%);
+    background: -webkit-linear-gradient(90deg, var(--color-11) 0%, var(--color-7) 100%);
+    background: -moz-linear-gradient(90deg, var(--color-11) 0%, var(--color-7) 100%);
+    background: linear-gradient(90deg, var(--color-11) 0%, var(--color-7) 100%);
   }
 }

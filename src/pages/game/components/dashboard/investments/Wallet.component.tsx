@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { useGame } from '@/src/pages/game/useGame.ts';
 import { useCoin } from '@/src/pages/game/components/dashboard/investments/coin/useCoin.ts';
 import { classNames } from '@/src/generic/utils/classNames.ts';
@@ -12,11 +12,11 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const WalletComponent = () => {
   const game = useGame();
-  const [cointutus] = useCoin();
+  const [coins] = useCoin();
   const [purchases, setPurchases] = useState(false);
 
-  const ownedcointutusprice = (name: string) => cointutus.find((g) => g.name === name)?.price;
-  const ownedcointutusvolmue = (name: string) => cointutus.find((g) => g.name === name)?.volume;
+  const getCoinPrice = (name: string) => coins.find((coin) => coin.name === name)?.price;
+  const getCoinVolume = (name: string) => coins.find((coin) => coin.name === name)?.volume;
 
   return (
     <DialsComponent>
@@ -32,16 +32,15 @@ export const WalletComponent = () => {
         Purchases
       </ButtonComponent>
       {game.wallet.map((coin) => (
-        <>
+        <Fragment key={coin.name}>
           {coin.quantity > 0 ? (
             <DialComponent
-              key={coin.name}
               value={coin.quantity}
               label={coin.name}
               notation="compact"
             />
           ) : null}
-        </>
+        </Fragment>
       ))}
       <ModalComponent
         labelledby="modal-purchases"
@@ -56,9 +55,8 @@ export const WalletComponent = () => {
           purchases
         </TitleComponent>
         {game.wallet.map((coin) => (
-          <>
+          <Fragment key={coin.name}>
             <DialComponent
-              key={coin.name}
               value={coin.quantity}
               label={`${coin.name} active`}
               notation="compact"
@@ -83,13 +81,13 @@ export const WalletComponent = () => {
                 prefix="+"
                 suffix={coin.name}
                 currency
-                disabled={game.cash <= ownedcointutusprice(coin.name)! || ownedcointutusvolmue(coin.name)! <= 0}
+                disabled={game.cash <= getCoinPrice(coin.name)! || getCoinVolume(coin.name)! <= 0}
                 onClick={() => console.log('ok')}
               >
                 +
               </ClickerComponent>
             </div>
-          </>
+          </Fragment>
         ))}
       </ModalComponent>
     </DialsComponent>

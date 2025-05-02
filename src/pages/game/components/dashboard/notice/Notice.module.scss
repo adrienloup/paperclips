@@ -9,6 +9,7 @@
 
   .viewed & {
     background-color: var(--color-3);
+    color: var(--color-4);
   }
 
   &:active {
@@ -41,6 +42,7 @@
   color: var(--color-theme-2);
 
   .viewed & {
+    background-color: var(--color-4);
     color: var(--color-3);
   }
 

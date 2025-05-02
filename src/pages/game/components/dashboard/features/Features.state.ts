@@ -1,4 +1,4 @@
-import { State } from '@/src/pages/game/components/features/Features.type.ts';
+import { State } from '@/src/pages/game/components/dashboard/features/Features.type.ts';
 
 export const featuresState: State = {
   investments: false,

@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent
 import { Children } from '@/src/generic/types/Children.type.ts';
 import { AlertsProvider } from '@/src/generic/common/components/alerts/Alerts.provider.tsx';
 import { CoinProvider } from '@/src/pages/game/components/dashboard/investments/coin/Coin.provider.tsx';
-import { FeaturesProvider } from '@/src/pages/game/components/features/Features.provider.tsx';
+import { FeaturesProvider } from '@/src/pages/game/components/dashboard/features/Features.provider.tsx';
 import { GameProvider } from '@/src/pages/game/Game.provider.tsx';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
 import { MenuProvider } from '@/src/generic/common/components/menu/Menu.provider.tsx';

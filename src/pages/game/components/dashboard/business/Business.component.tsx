@@ -1,4 +1,4 @@
-import { useFeatures } from '@/src/pages/game/components/features/useFeatures.ts';
+import { useFeatures } from '@/src/pages/game/components/dashboard/features/useFeatures.ts';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import { FundsPerSecondComponent } from '@/src/pages/game/components/dashboard/business/FundsPerSecond.component.tsx';

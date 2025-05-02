@@ -32,4 +32,6 @@ export const gameState: State = {
   wire: 100,
   wireBonus: 100,
   wireCost: 20,
+  wireDrone: 0,
+  wireDroneCost: 1e4,
 };

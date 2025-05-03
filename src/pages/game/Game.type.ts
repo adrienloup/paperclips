@@ -34,6 +34,7 @@ export interface State {
     marketing: boolean;
     megaMachine: boolean;
     paperclipPerSecond: boolean;
+    resources: boolean;
     wire: boolean;
   };
   funds: number;
@@ -54,7 +55,6 @@ export interface State {
   publicDemand: number;
   processor: number;
   trust: number;
-  trustCost: number;
   unsoldInventory: number;
   unsoldInventoryBonus: number;
   wallet: {

@@ -5,8 +5,8 @@ import { PaperclipComponent } from '@/src/pages/game/components/dashboard/paperc
 import { CardsComponent } from '@/src/generic/common/components/cards/Cards.component.tsx';
 import { ManufacturingComponent } from '@/src/pages/game/components/dashboard/manufacturing/Manufacturing.component.tsx';
 import { BusinessComponent } from '@/src/pages/game/components/dashboard/business/Business.component.tsx';
-// import { ResourcesComponent } from '@/src/pages/game/components/dashboard/resources/Resources.component.tsx';
-// import { ProjectsComponent } from '@/src/pages/game/components/dashboard/projects/Projects.component.tsx';
+import { ResourcesComponent } from '@/src/pages/game/components/dashboard/resources/Resources.component.tsx';
+import { ProjectsComponent } from '@/src/pages/game/components/dashboard/projects/Projects.component.tsx';
 // import { InvestmentsComponent } from '@/src/pages/game/components/dashboard/investments/Investments.component.tsx';
 // import { ProductionComponent } from '@/src/pages/game/components/dashboard/production/Production.component.tsx';
 import { NoticesComponent } from '@/src/pages/game/components/dashboard/notices/Notices.component.tsx';
@@ -15,21 +15,11 @@ import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss'
 export const DashboardComponent = () => {
   const setGame = useGameDispatch();
 
-  const sellUnsoldInventory = useCallback(() => {
-    setGame({ type: 'SELL_UNSOLD_INVENTORY' });
-  }, []);
-
   const updatePerSecond = useCallback(() => {
     setGame({ type: 'UPDATE_PER_SECOND' });
   }, []);
 
-  // const updateWireCost = useCallback(() => {
-  //   setGame({ type: 'UPDATE_WIRE_COST' });
-  // }, []);
-
-  useInterval(sellUnsoldInventory, 5e2);
   useInterval(updatePerSecond, 1e3);
-  // useInterval(updateWireCost, 1e4);
 
   return (
     <article
@@ -40,8 +30,8 @@ export const DashboardComponent = () => {
       <CardsComponent>
         <ManufacturingComponent />
         <BusinessComponent />
-        {/*<ResourcesComponent />*/}
-        {/*<ProjectsComponent />*/}
+        <ResourcesComponent />
+        <ProjectsComponent />
         {/*<InvestmentsComponent />*/}
         {/*<ProductionComponent />*/}
       </CardsComponent>

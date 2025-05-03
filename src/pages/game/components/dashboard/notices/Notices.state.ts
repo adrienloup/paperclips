@@ -4,29 +4,44 @@ import { Notice } from '@/src/pages/game/components/dashboard/notice/Notice.type
 const notices: Notice[] = [
   {
     id: 'paperclip',
-    enabled: false,
+    enabled: true,
     viewed: false,
   },
   {
-    id: 'wire',
-    enabled: false,
+    id: 'manufacturing',
+    enabled: true,
     viewed: false,
   },
   {
-    id: 'funds',
-    enabled: false,
+    id: 'business',
+    enabled: true,
     viewed: false,
   },
   {
-    id: 'unsoldInventory',
-    enabled: false,
+    id: 'resources',
+    enabled: true,
     viewed: false,
   },
-  {
-    id: 'publicDemand',
-    enabled: false,
-    viewed: false,
-  },
+  // {
+  //   id: 'wire',
+  //   enabled: false,
+  //   viewed: false,
+  // },
+  // {
+  //   id: 'funds',
+  //   enabled: false,
+  //   viewed: false,
+  // },
+  // {
+  //   id: 'unsoldInventory',
+  //   enabled: false,
+  //   viewed: false,
+  // },
+  // {
+  //   id: 'publicDemand',
+  //   enabled: false,
+  //   viewed: false,
+  // },
   {
     id: 'machine',
     enabled: false,
@@ -37,31 +52,31 @@ const notices: Notice[] = [
     enabled: false,
     viewed: false,
   },
-  {
-    id: 'trust',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'memory',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'processor',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'operation',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'creativity',
-    enabled: false,
-    viewed: false,
-  },
+  // {
+  //   id: 'trust',
+  //   enabled: false,
+  //   viewed: false,
+  // },
+  // {
+  //   id: 'memory',
+  //   enabled: false,
+  //   viewed: false,
+  // },
+  // {
+  //   id: 'processor',
+  //   enabled: false,
+  //   viewed: false,
+  // },
+  // {
+  //   id: 'operation',
+  //   enabled: false,
+  //   viewed: false,
+  // },
+  // {
+  //   id: 'creativity',
+  //   enabled: false,
+  //   viewed: false,
+  // },
   {
     id: 'projects',
     enabled: false,
@@ -79,6 +94,11 @@ const notices: Notice[] = [
   },
   {
     id: 'investments',
+    enabled: false,
+    viewed: false,
+  },
+  {
+    id: 'megaMachine',
     enabled: false,
     viewed: false,
   },

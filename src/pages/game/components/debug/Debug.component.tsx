@@ -1,5 +1,5 @@
 import { ChangeEvent, useMemo, useState } from 'react';
-// import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
+import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { useLocation } from 'react-router-dom';
 import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAlerts.ts';
 // import { useNoticesDispatch } from '@/src/pages/game/components/dashboard/notices/useNotices.ts';
@@ -8,19 +8,19 @@ import { Stage } from '@/src/generic/stage/Stage.type.ts';
 import styles from '@/src/pages/game/components/debug/Debug.module.scss';
 
 export const DebugComponent = () => {
-  // const game = useGame();
+  const game = useGame();
+  const setGame = useGameDispatch();
   const location = useLocation();
   const setAlerts = useAlertsDispatch();
   // const setNotices = useNoticesDispatch();
-  // const setGame = useGameDispatch();
   const [stage, setStage] = useStage();
   const [stageValue, setStageValue] = useState<Stage>(stage);
   const [alertsText, setAlertsText] = useState('Alert1');
   // const [noticesId, setNoticesId] = useState('game');
-  // const [paperclip, setPaperclip] = useState('0');
-  // const [funds, setFunds] = useState('0');
-  // const [wire, setWire] = useState('0');
-  // const [trust, setTrust] = useState('0');
+  const [paperclip, setPaperclip] = useState('0');
+  const [funds, setFunds] = useState('0');
+  const [wire, setWire] = useState('0');
+  const [trust, setTrust] = useState('0');
   // const [operation, setOperation] = useState('0');
   // const [creativity, setCreativity] = useState('0');
 
@@ -52,53 +52,53 @@ export const DebugComponent = () => {
   //   e.preventDefault();
   //   setNotices({ type: 'ENABLED', id: noticesId });
   // };
-  //
-  // const paperclipChange = (e: ChangeEvent<HTMLInputElement>) => setPaperclip(e.target.value);
-  // const paperclipSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setGame({
-  //     type: 'INITIALIZE',
-  //     state: {
-  //       ...game,
-  //       paperclip: parseInt(paperclip),
-  //     },
-  //   });
-  // };
-  //
-  // const fundsChange = (e: ChangeEvent<HTMLInputElement>) => setFunds(e.target.value);
-  // const fundsSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setGame({
-  //     type: 'INITIALIZE',
-  //     state: {
-  //       ...game,
-  //       funds: parseInt(funds),
-  //     },
-  //   });
-  // };
-  //
-  // const wireChange = (e: ChangeEvent<HTMLInputElement>) => setWire(e.target.value);
-  // const wireSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setGame({
-  //     type: 'INITIALIZE',
-  //     state: {
-  //       ...game,
-  //       wire: parseInt(wire),
-  //     },
-  //   });
-  // };
+
+  const paperclipChange = (e: ChangeEvent<HTMLInputElement>) => setPaperclip(e.target.value);
+  const paperclipSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE',
+      state: {
+        ...game,
+        paperclip: parseInt(paperclip),
+      },
+    });
+  };
+
+  const fundsChange = (e: ChangeEvent<HTMLInputElement>) => setFunds(e.target.value);
+  const fundsSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE',
+      state: {
+        ...game,
+        funds: parseInt(funds),
+      },
+    });
+  };
+
+  const wireChange = (e: ChangeEvent<HTMLInputElement>) => setWire(e.target.value);
+  const wireSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE',
+      state: {
+        ...game,
+        wire: parseInt(wire),
+      },
+    });
+  };
   //
   // const marketingClick = () => setGame({ type: 'BUY_MARKETING' });
   //
-  // const trustChange = (e: ChangeEvent<HTMLInputElement>) => setTrust(e.target.value);
-  // const trustSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setGame({
-  //     type: 'UPDATE_TRUST',
-  //     value: parseInt(trust),
-  //   });
-  // };
+  const trustChange = (e: ChangeEvent<HTMLInputElement>) => setTrust(e.target.value);
+  const trustSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'UPDATE_TRUST',
+      value: parseInt(trust),
+    });
+  };
   //
   // const memoryClick = () => setGame({ type: 'INCREASE_MEMORY' });
   //
@@ -160,30 +160,30 @@ export const DebugComponent = () => {
       {/*  />*/}
       {/*  <button type="submit">Add</button>*/}
       {/*</form>*/}
-      {/*<form onSubmit={paperclipSubmit}>*/}
-      {/*  <label>paperclips</label>*/}
-      {/*  <input*/}
-      {/*    value={paperclip}*/}
-      {/*    onChange={paperclipChange}*/}
-      {/*  />*/}
-      {/*  <button type="submit">Add</button>*/}
-      {/*</form>*/}
-      {/*<form onSubmit={fundsSubmit}>*/}
-      {/*  <label>funds</label>*/}
-      {/*  <input*/}
-      {/*    value={funds}*/}
-      {/*    onChange={fundsChange}*/}
-      {/*  />*/}
-      {/*  <button type="submit">Add</button>*/}
-      {/*</form>*/}
-      {/*<form onSubmit={wireSubmit}>*/}
-      {/*  <label>wire</label>*/}
-      {/*  <input*/}
-      {/*    value={wire}*/}
-      {/*    onChange={wireChange}*/}
-      {/*  />*/}
-      {/*  <button type="submit">Add</button>*/}
-      {/*</form>*/}
+      <form onSubmit={paperclipSubmit}>
+        <label>paperclips</label>
+        <input
+          value={paperclip}
+          onChange={paperclipChange}
+        />
+        <button type="submit">Add</button>
+      </form>
+      <form onSubmit={fundsSubmit}>
+        <label>funds</label>
+        <input
+          value={funds}
+          onChange={fundsChange}
+        />
+        <button type="submit">Add</button>
+      </form>
+      <form onSubmit={wireSubmit}>
+        <label>wire</label>
+        <input
+          value={wire}
+          onChange={wireChange}
+        />
+        <button type="submit">Add</button>
+      </form>
       {/*<form>*/}
       {/*  <label>marketing</label>*/}
       {/*  <button*/}
@@ -193,14 +193,14 @@ export const DebugComponent = () => {
       {/*    +1*/}
       {/*  </button>*/}
       {/*</form>*/}
-      {/*<form onSubmit={trustSubmit}>*/}
-      {/*  <label>trust</label>*/}
-      {/*  <input*/}
-      {/*    value={trust}*/}
-      {/*    onChange={trustChange}*/}
-      {/*  />*/}
-      {/*  <button type="submit">Add</button>*/}
-      {/*</form>*/}
+      <form onSubmit={trustSubmit}>
+        <label>trust</label>
+        <input
+          value={trust}
+          onChange={trustChange}
+        />
+        <button type="submit">Add</button>
+      </form>
       {/*<form>*/}
       {/*  <label>memory</label>*/}
       {/*  <button*/}

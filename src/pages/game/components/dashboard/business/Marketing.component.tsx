@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { useNoticesDispatch } from '@/src/pages/game/components/dashboard/notices/useNotices.ts';
@@ -16,13 +16,17 @@ export const MarketingComponent = () => {
   const setNotices = useNoticesDispatch();
   const setAlerts = useAlertsDispatch();
 
-  useEffect(() => {
+  const update = useCallback(() => {
     if (game.funds >= 200 && !game.feature.marketing) {
       setGame({ type: 'UPDATE_FEATURE', feature: 'marketing', value: true });
       setNotices({ type: 'ENABLE_NOTICE', id: 'marketing' });
       setAlerts({ type: 'ADD_ALERT', alert: { id: 'marketing', text: 'marketing alert' } });
     }
   }, [game.funds, game.feature.marketing]);
+
+  useEffect(() => {
+    update();
+  }, [update]);
 
   if (!game.feature.marketing) return null;
 

@@ -11,6 +11,7 @@ export const gameState: State = {
     marketing: false,
     megaMachine: false,
     paperclipPerSecond: false,
+    resources: false,
     wire: true,
   },
   funds: 0,
@@ -31,7 +32,6 @@ export const gameState: State = {
   publicDemand: 0.5,
   processor: 1,
   trust: 2,
-  trustCost: 3e3,
   unsoldInventory: 0,
   unsoldInventoryBonus: 1,
   wallet: [

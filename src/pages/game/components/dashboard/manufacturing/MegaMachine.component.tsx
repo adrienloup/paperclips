@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { useNoticesDispatch } from '@/src/pages/game/components/dashboard/notices/useNotices.ts';
@@ -20,13 +20,17 @@ export const MegaMachineComponent = () => {
     setGame({ type: 'BUY_MEGAMACHINE', cost });
   };
 
-  useEffect(() => {
+  const update = useCallback(() => {
     if (game.machine >= 75 && !game.feature.megaMachine) {
       setGame({ type: 'UPDATE_FEATURE', feature: 'megaMachine', value: true });
       setNotices({ type: 'ENABLE_NOTICE', id: 'megaMachine' });
       setAlerts({ type: 'ADD_ALERT', alert: { id: 'megaMachine', text: 'megaMachine alert' } });
     }
   }, [game.machine, game.feature.megaMachine]);
+
+  useEffect(() => {
+    update();
+  }, [update]);
 
   if (!game.feature.megaMachine) return null;
 

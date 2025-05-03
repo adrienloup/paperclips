@@ -13,8 +13,7 @@ export const NumberComponent = ({ className, value, style, notation, compactDisp
     compactDisplay: compactDisplay,
   };
 
-  const format = (valueTutu: number) =>
-    new Intl.NumberFormat(language == 'en' ? 'en-US' : 'fr-FR', options).format(valueTutu);
+  const format = (value: number) => new Intl.NumberFormat(language == 'en' ? 'en-US' : 'fr-FR', options).format(value);
 
   return (
     <span className={className}>

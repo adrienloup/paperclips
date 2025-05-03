@@ -1,9 +1,11 @@
 export type Action =
+  | { type: 'BUY_WIRE'; cost: number }
+  | { type: 'BUY_MACHINE'; cost: number }
+  | { type: 'BUY_MEGAMACHINE'; cost: number }
+  | { type: 'UPDATE_FEATURE'; feature: string; value: boolean }
+  | { type: 'UPDATE_WIRE_COST'; cost: number }
   | { type: 'SELL_UNSOLD' }
-  | { type: 'BUY_WIRE' }
   | { type: 'BUY_MARKETING' }
-  | { type: 'BUY_MACHINE' }
-  | { type: 'BUY_MEGAMACHINE' }
   | { type: 'INCREASE_PAPERCLIP_COST' }
   | { type: 'DECREASE_PAPERCLIP_COST' }
   | { type: 'INCREASE_CASH' }
@@ -14,7 +16,6 @@ export type Action =
   | { type: 'INCREASE_PROCESSOR' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_PAPERCLIP' }
-  | { type: 'UPDATE_WIRE_COST' }
   | { type: 'UPDATE_TRUST'; value: number }
   | { type: 'UPDATE_OPERATION'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; value: number }
@@ -24,6 +25,10 @@ export type Action =
 export interface State {
   cash: number;
   creativity: number;
+  feature: {
+    machine: boolean;
+    megaMachine: boolean;
+  };
   funds: number;
   fundsPerSecond: number;
   machine: number;

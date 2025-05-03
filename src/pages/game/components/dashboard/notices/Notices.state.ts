@@ -4,27 +4,27 @@ import { Notice } from '@/src/pages/game/components/dashboard/notice/Notice.type
 const notices: Notice[] = [
   {
     id: 'paperclip',
-    enabled: true,
+    enabled: false,
     viewed: false,
   },
   {
     id: 'wire',
-    enabled: true,
+    enabled: false,
     viewed: false,
   },
   {
     id: 'funds',
-    enabled: true,
+    enabled: false,
     viewed: false,
   },
   {
     id: 'unsold',
-    enabled: true,
+    enabled: false,
     viewed: false,
   },
   {
     id: 'publicDemand',
-    enabled: true,
+    enabled: false,
     viewed: false,
   },
   {

@@ -3,6 +3,6 @@ import { Notice } from '@/src/pages/game/components/dashboard/notice/Notice.type
 export type State = Notice[];
 
 export type Action =
-  | { type: 'ENABLED'; id: string }
-  | { type: 'DISABLED'; id: string }
-  | { type: 'VIEWED'; id: string };
+  | { type: 'ENABLE_NOTICE'; id: string }
+  | { type: 'DISABLE_NOTICE'; id: string }
+  | { type: 'VIEW_NOTICE'; id: string };

@@ -3,12 +3,13 @@ import { DialsComponent } from '@/src/generic/common/components/dials/Dials.comp
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
-export const ByHandComponent = () => {
-  const setGame = useGameDispatch();
+export const ManualComponent = () => {
   const game = useGame();
+  const setGame = useGameDispatch();
 
   return (
     <DialsComponent>
+      <div className={styles.text}>Make paperclip</div>
       <ClickerComponent
         className={styles.button}
         aria-label="Make paperclips"

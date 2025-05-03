@@ -2,6 +2,41 @@ import { Action, State } from '@/src/pages/game/Game.type.ts';
 
 export const gameReducer = (state: State, action: Action): State => {
   switch (action.type) {
+    case 'BUY_WIRE':
+      if (state.funds < state.wireCost) return state;
+      return {
+        ...state,
+        wire: state.wire + state.wireBonus,
+        wireCost: action.cost,
+        funds: state.funds - state.wireCost,
+      };
+    case 'BUY_MACHINE':
+      if (state.funds < state.machineCost) return state;
+      return {
+        ...state,
+        machine: state.machine + 1,
+        machineCost: action.cost,
+        funds: Math.max(0, state.funds - state.machineCost),
+      };
+    case 'BUY_MEGAMACHINE':
+      if (state.funds < state.megaMachineCost) return state;
+      return {
+        ...state,
+        megaMachine: state.megaMachine + 1,
+        megaMachineCost: action.cost,
+        funds: Math.max(0, state.funds - state.megaMachineCost),
+      };
+    case 'UPDATE_FEATURE':
+      return {
+        ...state,
+        feature: { ...state.feature, [action.feature]: action.value },
+      };
+    case 'UPDATE_WIRE_COST':
+      return {
+        ...state,
+        wireCost: action.cost,
+      };
+
     case 'SELL_UNSOLD':
       if (state.unsold <= 0) return state;
       // console.log('SELL_UNSOLD');
@@ -12,14 +47,6 @@ export const gameReducer = (state: State, action: Action): State => {
         unsold: sellUnsold,
         funds: sellFunds,
       };
-    case 'BUY_WIRE':
-      if (state.funds <= 0) return state;
-      return {
-        ...state,
-        wire: state.wire + state.wireBonus,
-        wireCost: state.wireCost + (Math.random() * (1.25 - 0.25) + 0.25), // entre ≥ 0.25 et < 1.25
-        funds: state.funds - state.wireCost,
-      };
     case 'BUY_MARKETING':
       // if (state.funds <= 0) return state;
       const updateMarketing = Math.max(1, Math.min(state.marketing + 1, 10));
@@ -29,22 +56,6 @@ export const gameReducer = (state: State, action: Action): State => {
         marketingCost: Math.max(100, Math.min(state.marketingCost * 2.5, 25600)),
         funds: Math.max(0, state.funds - state.marketingCost),
         paperclipCost: state.paperclipCostRef * updateMarketing,
-      };
-    case 'BUY_MACHINE':
-      if (state.funds <= 0) return state;
-      return {
-        ...state,
-        machine: state.machine + 1,
-        machineCost: state.machineCost + (Math.random() * (10 - 5) + 5), // entre ≥ 5 et < 10
-        funds: Math.max(0, state.funds - state.machineCost),
-      };
-    case 'BUY_MEGAMACHINE':
-      if (state.funds <= 0) return state;
-      return {
-        ...state,
-        megaMachine: state.megaMachine + 1,
-        megaMachineCost: state.megaMachineCost + 11e2,
-        funds: Math.max(0, state.funds - state.megaMachineCost),
       };
     case 'INCREASE_PAPERCLIP_COST':
       const increasePaperclipCostRef = Math.min(state.paperclipCostRef + 0.01, 1);
@@ -129,11 +140,6 @@ export const gameReducer = (state: State, action: Action): State => {
         wire: state.wire - 1,
         paperclipPerSecond: state.paperclipPerSecond + state.unsoldBonus,
         fundsPerSecond: state.fundsPerSecond + state.unsoldBonus * state.paperclipCost,
-      };
-    case 'UPDATE_WIRE_COST':
-      return {
-        ...state,
-        wireCost: state.wireCost > 8 ? state.wireCost - 0.25 : Math.random() * (20 - 12) + 12, // entre 0 et 1, entre 0 et 8, entre ≥ 12 et < 20
       };
     case 'UPDATE_TRUST':
       // if (state.trust >= 100) return state;

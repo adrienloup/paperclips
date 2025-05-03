@@ -5,7 +5,7 @@ import { useTitle } from '@/src/generic/hooks/useTitle.ts';
 import { LoaderComponent } from '@/src/generic/common/components/loader/Loader.component.tsx';
 import { DebugComponent } from '@/src/pages/game/components/debug/Debug.component.tsx';
 import { DashboardComponent } from '@/src/pages/game/components/dashboard/Dashboard.component.tsx';
-import { FeaturesComponent } from '@/src/pages/game/components/dashboard/features/Features.component.tsx';
+// import { FeaturesComponent } from '@/src/pages/game/components/dashboard/features/Features.component.tsx';
 
 const LayoutComponent = lazy(() =>
   fallback(import('@/src/generic/common/components/layout/Layout.component.tsx'), 15e2)
@@ -21,7 +21,7 @@ function GamePage() {
       <LayoutComponent>
         <DebugComponent />
         <DashboardComponent />
-        <FeaturesComponent />
+        {/*<FeaturesComponent />*/}
       </LayoutComponent>
     </Suspense>
   );

@@ -23,7 +23,7 @@ export const en: Translation = {
       funds: 'Earn money',
       unsold: 'Unsold inventory',
       publicDemand: 'Maximize sales',
-      machine: 'machines lorem Ipsum is simply dummy',
+      machine: 'machine notice',
       marketing: 'marketing lorem Ipsum is simply dummy',
       trust: 'trust lorem Ipsum is simply dummy',
       memory: 'memory lorem Ipsum is simply dummy',

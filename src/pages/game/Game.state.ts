@@ -3,6 +3,10 @@ import { State } from '@/src/pages/game/Game.type.ts';
 export const gameState: State = {
   cash: 0,
   creativity: 0,
+  feature: {
+    machine: false,
+    megaMachine: false,
+  },
   funds: 0,
   fundsPerSecond: 0,
   machine: 0,

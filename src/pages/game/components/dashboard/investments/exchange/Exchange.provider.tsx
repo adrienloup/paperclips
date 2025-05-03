@@ -3,23 +3,23 @@ import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage.ts';
 import { ExchangeContext } from '@/src/pages/game/components/dashboard/investments/exchange/Exchange.context.ts';
 import { initialExchangeState } from '@/src/pages/game/components/dashboard/investments/exchange/Exchange.state.ts';
 import { Children } from '@/src/generic/types/Children.type.ts';
-import { CryptoName } from '@/src/pages/game/components/dashboard/investments/crypto/Crypto.type.ts';
+import { CryptoSymbol } from '@/src/pages/game/components/dashboard/investments/crypto/Crypto.type.ts';
 
 import { Crypto } from '@/src/pages/game/components/dashboard/investments/crypto/Crypto.type.ts';
 
 export function ExchangeProvider({ children }: { children: Children }) {
-  const [storedState, setStoredState] = useLocalStorage<Record<CryptoName, Crypto>>(
+  const [storedState, setStoredState] = useLocalStorage<Record<CryptoSymbol, Crypto>>(
     '_exchange_3mma_0',
     initialExchangeState
   );
-  const [cryptos, setCryptos] = useState<Record<CryptoName, Crypto>>(storedState);
+  const [cryptos, setCryptos] = useState<Record<CryptoSymbol, Crypto>>(storedState);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCryptos((prev) => {
         const updated = { ...prev };
 
-        for (const crypto of Object.keys(prev) as CryptoName[]) {
+        for (const crypto of Object.keys(prev) as CryptoSymbol[]) {
           const data = prev[crypto];
           const variation = +(Math.random() * 100 - 50).toFixed(2); // variation entre -50 et 50
           const newPrice = +Math.max(0, data.price + variation).toFixed(2);

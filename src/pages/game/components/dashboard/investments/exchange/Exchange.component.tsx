@@ -9,7 +9,8 @@ export const ExchangeComponent = () => {
     <DialsComponent>
       {Object.values(cryptos).map((c) => (
         <CryptoComponent
-          key={c.name}
+          key={c.symbol}
+          symbol={c.symbol}
           name={c.name}
           price={c.price}
           volume={c.volume}

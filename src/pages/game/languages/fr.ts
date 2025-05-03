@@ -8,7 +8,9 @@ export const fr: Translation = {
       project: 'Pas de projet du tout',
       resources: 'Pas de ressource du tout',
     },
-    fundsAvailable: 'Fonds',
+    fundsAvailable: 'Fonds disponibles',
+    HarvesterDroneCost: 'Harvester drone cost',
+    HarvesterDrone: 'Harvester drones',
     machine: 'Machines',
     machineCost: 'Coût machine',
     marketing: 'Marketing',
@@ -60,5 +62,7 @@ export const fr: Translation = {
     unsold: 'Inventaire invendu',
     wire: 'Stock fil de fer',
     wireCost: 'Coût fil de fer',
+    WireDrone: 'WIre drones',
+    wireDroneCost: 'Wire drone cost',
   },
 };

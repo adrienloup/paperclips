@@ -69,12 +69,12 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'INCREASE_WALLET':
       if (state.cash <= action.price) return state;
       const increaseWallet = state.wallet.map((crypto) =>
-        crypto.name === action.crypto ? { ...crypto, quantity: crypto.quantity + 0.1 } : crypto
+        crypto.symbol === action.symbol ? { ...crypto, quantity: crypto.quantity + 0.1 } : crypto
       );
       return { ...state, wallet: increaseWallet, cash: state.cash - action.price };
     case 'DECREASE_WALLET':
       const decreaseWallet = state.wallet.map((crypto) =>
-        crypto.name === action.crypto ? { ...crypto, quantity: Math.max(0, crypto.quantity - 0.1) } : crypto
+        crypto.symbol === action.symbol ? { ...crypto, quantity: Math.max(0, crypto.quantity - 0.1) } : crypto
       );
       return { ...state, wallet: decreaseWallet, cash: state.cash + action.price };
     case 'INCREASE_MEMORY':

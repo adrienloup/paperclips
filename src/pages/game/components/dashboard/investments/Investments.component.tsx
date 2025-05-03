@@ -11,7 +11,7 @@ export const InvestmentsComponent = () => {
   const features = useFeatures();
 
   return (
-    <CardComponent style={{ width: '40rem' }}>
+    <CardComponent style={{ width: '42rem' }}>
       <TitleComponent
         tag="h2"
         className={styles.title}

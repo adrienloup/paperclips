@@ -8,8 +8,8 @@ export type Action =
   | { type: 'DECREASE_PAPERCLIP_COST' }
   | { type: 'INCREASE_CASH' }
   | { type: 'DECREASE_CASH' }
-  | { type: 'INCREASE_WALLET'; crypto: string; price: number }
-  | { type: 'DECREASE_WALLET'; crypto: string; price: number }
+  | { type: 'INCREASE_WALLET'; symbol: string; price: number }
+  | { type: 'DECREASE_WALLET'; symbol: string; price: number }
   | { type: 'INCREASE_MEMORY' }
   | { type: 'INCREASE_PROCESSOR' }
   | { type: 'UPDATE_PER_SECOND' }
@@ -46,7 +46,7 @@ export interface State {
   unsold: number;
   unsoldBonus: number;
   wallet: {
-    name: string;
+    symbol: string;
     quantity: number;
   }[];
   wire: number;

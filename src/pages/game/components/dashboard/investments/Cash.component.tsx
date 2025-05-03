@@ -14,7 +14,7 @@ export const CashComponent = () => {
         value={game.cash}
         style="currency"
         notation="compact"
-        label="Cash"
+        label="Cash wallet"
       />
       <div className={styles.buttons}>
         <ClickerComponent

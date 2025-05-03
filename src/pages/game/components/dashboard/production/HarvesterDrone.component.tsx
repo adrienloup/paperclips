@@ -6,7 +6,7 @@ import { DialComponent } from '@/src/generic/common/components/dial/Dial.compone
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
-export const WireDroneCostComponent = () => {
+export const HarvesterDroneComponent = () => {
   const { t } = useTranslation();
   // const setGame = useGameDispatch();
   const game = useGame();
@@ -14,15 +14,15 @@ export const WireDroneCostComponent = () => {
   return (
     <DialsComponent>
       <DialComponent
-        value={game.wireDrone}
+        value={0}
         notation="compact"
-        label={t('game.wireDrone')}
+        label={t('game.HarvesterDrone')}
       />
       <ClickerComponent
         className={styles.button}
         prefix="+"
-        suffix="wireDrone"
-        disabled={game.funds < game.wireDroneCost}
+        suffix="Drone"
+        disabled={game.funds < 0}
         onClick={() => console.log('clicked')}
       >
         +

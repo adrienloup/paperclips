@@ -6,7 +6,6 @@ import styles from '@/src/pages/game/components/dashboard/investments/crypto/Cry
 export const CryptoComponent = ({ name, price, volume, change }: Crypto) => {
   return (
     <div className={styles.crypto}>
-      <div className={styles.name}>{name}</div>
       <div className={styles.number}>
         <NumberComponent
           value={price}
@@ -15,7 +14,7 @@ export const CryptoComponent = ({ name, price, volume, change }: Crypto) => {
         />
       </div>
       <div className={classNames([styles.variation, change >= 0 ? styles.positive : styles.negative])}>
-        {change > 0 ? '▲' : '▼'}
+        <span className={styles.icon}>{change > 0 ? '▲' : '▼'}</span>
         <NumberComponent
           value={Math.abs(change)}
           notation="compact"
@@ -27,6 +26,7 @@ export const CryptoComponent = ({ name, price, volume, change }: Crypto) => {
           notation="compact"
         />
       </div>
+      <div className={styles.name}>{name}</div>
     </div>
   );
 };

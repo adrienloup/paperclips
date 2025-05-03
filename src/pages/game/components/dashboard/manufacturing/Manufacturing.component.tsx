@@ -9,7 +9,6 @@ import { MachineCostComponent } from '@/src/pages/game/components/dashboard/manu
 import { MachineComponent } from '@/src/pages/game/components/dashboard/manufacturing/Machine.component.tsx';
 import { MegaMachineComponent } from '@/src/pages/game/components/dashboard/manufacturing/MegaMachine.component.tsx';
 import { MegaMachineCostComponent } from '@/src/pages/game/components/dashboard/manufacturing/MegaMachineCost.component.tsx';
-import { WireDroneCostComponent } from '@/src/pages/game/components/dashboard/manufacturing/WireDroneCost.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ManufacturingComponent = () => {
@@ -39,7 +38,6 @@ export const ManufacturingComponent = () => {
           <MegaMachineComponent />
         </>
       )}
-      <WireDroneCostComponent />
     </CardComponent>
   );
 };

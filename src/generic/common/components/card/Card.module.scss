@@ -1,8 +1,6 @@
 .card {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
   gap: var(--spacing-s);
   width: 20rem;
 }
@@ -10,6 +8,7 @@
 .title {
   text-transform: uppercase;
   font-size: var(--font-size-s);
+  box-shadow: 0 0.2rem var(--color-theme-2);
 
   :global(._clubbed-to-death_3mma_0) & {
     text-shadow:

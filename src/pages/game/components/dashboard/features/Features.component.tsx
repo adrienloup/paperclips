@@ -185,7 +185,7 @@ export const FeaturesComponent = () => {
   // wire bonus
   useEffect(() => {
     const begForMoreWire = projects.find((p) => p.id === 'begForMoreWire');
-    const enabledWirebonus = begForMoreWire?.unlocked && !begForMoreWire?.enabled && !features.investments;
+    const enabledWirebonus = begForMoreWire?.unlocked && !begForMoreWire?.enabled;
     if (enabledWirebonus) {
       setGame({ type: 'UPDATE_WIRE_BONUS', value: 1e3 });
     }

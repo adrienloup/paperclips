@@ -1,23 +1,24 @@
 .crypto {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--spacing-s);
-  font-size: var(--font-size-s);
+  gap: var(--spacing-xs);
 }
 
 .name {
+  flex: 0 0 100%;
   text-transform: uppercase;
-  font-size: inherit;
+  font-size: var(--font-size-s);
 }
 
 .number {
-  font-size: inherit;
+  font-size: var(--font-size-m);
 }
 
 .variation {
   display: flex;
   align-items: center;
-  font-size: inherit;
+  font-size: var(--font-size-m);
 }
 
 .positive {
@@ -26,4 +27,8 @@
 
 .negative {
   color: var(--color-14);
+}
+
+.icon {
+  font-size: var(--font-size-s);
 }

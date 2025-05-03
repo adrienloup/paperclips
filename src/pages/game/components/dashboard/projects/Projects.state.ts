@@ -3,14 +3,22 @@ import { Project } from '@/src/pages/game/components/dashboard/project/Project.t
 
 const projects: Project[] = [
   {
-    id: 'algorithmicTrading',
-    enabled: false,
-    unlocked: false,
-  },
-  {
     id: 'revTracker',
     enabled: false,
     unlocked: false,
+    cost: 500,
+  },
+  {
+    id: 'begForMoreWire',
+    enabled: false,
+    unlocked: false,
+    cost: 250,
+  },
+  {
+    id: 'algorithmicTrading',
+    enabled: false,
+    unlocked: false,
+    cost: 1e4,
   },
 ];
 

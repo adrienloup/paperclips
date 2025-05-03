@@ -8,14 +8,17 @@ export type Action =
   | { type: 'DECREASE_PAPERCLIP_COST' }
   | { type: 'INCREASE_CASH' }
   | { type: 'DECREASE_CASH' }
+  | { type: 'INCREASE_WALLET'; crypto: string; price: number }
+  | { type: 'DECREASE_WALLET'; crypto: string; price: number }
   | { type: 'INCREASE_MEMORY' }
   | { type: 'INCREASE_PROCESSOR' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_PAPERCLIP' }
   | { type: 'UPDATE_WIRE_COST' }
   | { type: 'UPDATE_TRUST'; value: number }
-  | { type: 'UPDATE_WIRE_BONUS'; bonus: number }
-  | { type: 'UPDATE_UNSOLD_BONUS'; bonus: number }
+  | { type: 'UPDATE_OPERATION'; value: number }
+  | { type: 'UPDATE_WIRE_BONUS'; value: number }
+  | { type: 'UPDATE_UNSOLD_BONUS'; value: number }
   | { type: 'INITIALIZE'; state: State };
 
 export interface State {

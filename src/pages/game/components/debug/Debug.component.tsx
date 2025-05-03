@@ -128,9 +128,8 @@ export const DebugComponent = () => {
     });
   };
 
-  const updateWire = (bonus: number) => setGame({ type: 'UPDATE_WIRE_BONUS', bonus });
-
-  const updateUnsold = (bonus: number) => setGame({ type: 'UPDATE_UNSOLD_BONUS', bonus });
+  const updateWire = (value: number) => setGame({ type: 'UPDATE_WIRE_BONUS', value });
+  const updateUnsold = (value: number) => setGame({ type: 'UPDATE_UNSOLD_BONUS', value });
 
   return display ? (
     <div

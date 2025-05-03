@@ -1,7 +1,7 @@
 import { useFeatures } from '@/src/pages/game/components/dashboard/features/useFeatures.ts';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
-import { ExchangeComponent } from '@/src/pages/game/components/dashboard/investments/ExchangeComponent.tsx';
+import { ExchangeComponent } from '@/src/pages/game/components/dashboard/investments/exchange/Exchange.component.tsx';
 import { CashComponent } from '@/src/pages/game/components/dashboard/investments/Cash.component.tsx';
 import { WalletComponent } from '@/src/pages/game/components/dashboard/investments/Wallet.component.tsx';
 import { EmptyComponent } from '@/src/generic/common/components/empty/Empty.component.tsx';
@@ -11,7 +11,7 @@ export const InvestmentsComponent = () => {
   const features = useFeatures();
 
   return (
-    <CardComponent>
+    <CardComponent style={{ width: '40rem' }}>
       <TitleComponent
         tag="h2"
         className={styles.title}

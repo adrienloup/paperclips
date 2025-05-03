@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef, ComponentType, ElementType, FunctionComponent
 
 import { Children } from '@/src/generic/types/Children.type.ts';
 import { AlertsProvider } from '@/src/generic/common/components/alerts/Alerts.provider.tsx';
-import { CoinProvider } from '@/src/pages/game/components/dashboard/investments/coin/Coin.provider.tsx';
+import { ExchangeProvider } from '@/src/pages/game/components/dashboard/investments/exchange/Exchange.provider.tsx';
 import { FeaturesProvider } from '@/src/pages/game/components/dashboard/features/Features.provider.tsx';
 import { GameProvider } from '@/src/pages/game/Game.provider.tsx';
 import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
@@ -28,7 +28,7 @@ const allProviders = (providers: ProvidersType) =>
 
 export const Providers: FunctionComponent<{ children: Children }> = allProviders([
   [AlertsProvider],
-  [CoinProvider],
+  [ExchangeProvider],
   [FeaturesProvider],
   [GameProvider],
   [LanguageProvider],

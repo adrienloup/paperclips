@@ -1,95 +1,66 @@
-import { Fragment, useState } from 'react';
-import { useGame } from '@/src/pages/game/useGame.ts';
-import { useCoin } from '@/src/pages/game/components/dashboard/investments/coin/useCoin.ts';
-import { classNames } from '@/src/generic/utils/classNames.ts';
+// import { Fragment } from 'react';
+import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
+import { useExchange } from '@/src/pages/game/components/dashboard/investments/exchange/useExchange.ts';
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
-import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
-import { ModalComponent } from '@/src/generic/common/components/modal/Modal.component.tsx';
-import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
+import { CryptoName } from '@/src/pages/game/components/dashboard/investments/crypto/Crypto.type.ts';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const WalletComponent = () => {
+  const setGame = useGameDispatch();
   const game = useGame();
-  const [coins] = useCoin();
-  const [purchases, setPurchases] = useState(false);
+  const { cryptos } = useExchange();
 
-  const getCoinPrice = (name: string) => coins.find((coin) => coin.name === name)?.price;
-  const getCoinVolume = (name: string) => coins.find((coin) => coin.name === name)?.volume;
+  // const cryptoEnables = game.wallet.filter((crypto) => crypto.quantity > 0).length;
+
+  const decreaseWallet = (crypto: string, price: number) => setGame({ type: 'DECREASE_WALLET', crypto, price });
+  const increaseWallet = (crypto: string, price: number) => setGame({ type: 'INCREASE_WALLET', crypto, price });
+
+  const getPrice = (crypto: string) => cryptos[crypto as CryptoName].price * 0.1;
+  const getVolume = (crypto: string) => cryptos[crypto as CryptoName].volume;
 
   return (
-    <DialsComponent>
-      <DialComponent
-        value={game.wallet.length}
-        notation="compact"
-        label="active"
-      />
-      <ButtonComponent
-        className={classNames([styles.button, styles.label])}
-        onClick={() => setPurchases(!purchases)}
-      >
-        Purchases
-      </ButtonComponent>
-      {game.wallet.map((coin) => (
-        <Fragment key={coin.name}>
-          {coin.quantity > 0 ? (
-            <DialComponent
-              value={coin.quantity}
-              label={coin.name}
-              notation="compact"
-            />
-          ) : null}
-        </Fragment>
+    <>
+      {game.wallet.map((crypto) => (
+        <DialsComponent key={crypto.name}>
+          <DialComponent
+            value={crypto.quantity}
+            label={`${crypto.name}`}
+            notation="compact"
+          />
+          <div className={styles.buttons}>
+            <ClickerComponent
+              className={styles.button}
+              aria-label="Decrease"
+              value={0.1}
+              prefix="-"
+              suffix={crypto.name}
+              disabled={crypto.quantity <= 0}
+              onClick={() => decreaseWallet(crypto.name, getPrice(crypto.name))}
+              // onClick={() => decreaseWallet(crypto.name, cryptos[crypto.name as CryptoName].price * 0.1)}
+            >
+              -
+            </ClickerComponent>
+            <ClickerComponent
+              className={styles.button}
+              aria-label="Increase"
+              value={0.1}
+              prefix="+"
+              suffix={crypto.name}
+              disabled={
+                // game.cash <= cryptos[crypto.name as CryptoName].price * 0.1 ||
+                game.cash <= getPrice(crypto.name) || getVolume(crypto.name) <= 0
+                // cryptos[crypto.name as CryptoName].volume <= 0
+              }
+              onClick={() => increaseWallet(crypto.name, getPrice(crypto.name))}
+              // onClick={() => increaseWallet(crypto.name, cryptos[crypto.name as CryptoName].price * 0.1)}
+            >
+              +
+            </ClickerComponent>
+          </div>
+        </DialsComponent>
       ))}
-      <ModalComponent
-        labelledby="modal-purchases"
-        modal={purchases}
-        onClick={() => setPurchases(false)}
-      >
-        <TitleComponent
-          tag="h2"
-          id="modal-purchases"
-          className={styles.subtitle}
-        >
-          purchases
-        </TitleComponent>
-        {game.wallet.map((coin) => (
-          <Fragment key={coin.name}>
-            <DialComponent
-              value={coin.quantity}
-              label={`${coin.name} active`}
-              notation="compact"
-            />
-            <div className={styles.buttons}>
-              <ClickerComponent
-                className={styles.button}
-                aria-label="Decrease"
-                value={0.1}
-                prefix="-"
-                suffix={coin.name}
-                currency
-                disabled={coin.quantity <= 0}
-                onClick={() => console.log('ok')}
-              >
-                -
-              </ClickerComponent>
-              <ClickerComponent
-                className={styles.button}
-                aria-label="Increase"
-                value={0.1}
-                prefix="+"
-                suffix={coin.name}
-                currency
-                disabled={game.cash <= getCoinPrice(coin.name)! || getCoinVolume(coin.name)! <= 0}
-                onClick={() => console.log('ok')}
-              >
-                +
-              </ClickerComponent>
-            </div>
-          </Fragment>
-        ))}
-      </ModalComponent>
-    </DialsComponent>
+    </>
   );
 };

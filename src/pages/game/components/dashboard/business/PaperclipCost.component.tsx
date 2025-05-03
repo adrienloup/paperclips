@@ -34,7 +34,6 @@ export const PaperclipCostComponent = () => {
           value={0.01 * game.marketing}
           prefix="-"
           suffix="price"
-          currency
           disabled={game.paperclipCostRef === 0.1}
           onClick={() => setGame({ type: 'DECREASE_PAPERCLIP_COST' })}
         >
@@ -46,7 +45,6 @@ export const PaperclipCostComponent = () => {
           value={0.01 * game.marketing}
           prefix="+"
           suffix="price"
-          currency
           disabled={game.paperclipCostRef === 1}
           onClick={() => setGame({ type: 'INCREASE_PAPERCLIP_COST' })}
         >

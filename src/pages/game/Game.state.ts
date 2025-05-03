@@ -25,9 +25,9 @@ export const gameState: State = {
   unsold: 0,
   unsoldBonus: 1,
   wallet: [
-    { name: 'btc', quantity: 1 },
-    { name: 'eth', quantity: 2 },
-    { name: 'bnb', quantity: 0 },
+    { name: 'BTC', quantity: 0 },
+    { name: 'ETH', quantity: 0 },
+    { name: 'BNB', quantity: 0 },
   ],
   wire: 100,
   wireBonus: 100,

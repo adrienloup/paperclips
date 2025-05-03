@@ -3,72 +3,72 @@ import { Notice } from '@/src/pages/game/components/dashboard/notice/Notice.type
 
 const notices: Notice[] = [
   {
-    id: 'paperclip', // 1
+    id: 'paperclip',
     enabled: true,
     viewed: false,
   },
   {
-    id: 'wire', // 2
+    id: 'wire',
     enabled: true,
     viewed: false,
   },
   {
-    id: 'funds', // 3
+    id: 'funds',
     enabled: true,
     viewed: false,
   },
   {
-    id: 'unsold', // 4
+    id: 'unsold',
     enabled: true,
     viewed: false,
   },
   {
-    id: 'publicDemand', // 5
+    id: 'publicDemand',
     enabled: true,
     viewed: false,
   },
   {
-    id: 'machine', // 6
+    id: 'machine',
     enabled: false,
     viewed: false,
   },
   {
-    id: 'marketing', // 7
+    id: 'marketing',
     enabled: false,
     viewed: false,
   },
   {
-    id: 'trust', // 8
+    id: 'trust',
     enabled: false,
     viewed: false,
   },
   {
-    id: 'memory', // 9
+    id: 'memory',
     enabled: false,
     viewed: false,
   },
   {
-    id: 'processor', // 10
+    id: 'processor',
     enabled: false,
     viewed: false,
   },
   {
-    id: 'operation', // 11
+    id: 'operation',
     enabled: false,
     viewed: false,
   },
   {
-    id: 'creativity', // 12
+    id: 'creativity',
     enabled: false,
     viewed: false,
   },
-  // {
-  //   id: 'project', // 13 ?
-  //   enabled: false,
-  //   viewed: false,
-  // },
   {
-    id: 'revTracker', // 13
+    id: 'projects',
+    enabled: false,
+    viewed: false,
+  },
+  {
+    id: 'revTracker',
     enabled: false,
     viewed: false,
   },
@@ -78,7 +78,12 @@ const notices: Notice[] = [
     viewed: false,
   },
   {
-    id: 'megaMachine',
+    id: 'investments',
+    enabled: false,
+    viewed: false,
+  },
+  {
+    id: 'begForMoreWire',
     enabled: false,
     viewed: false,
   },

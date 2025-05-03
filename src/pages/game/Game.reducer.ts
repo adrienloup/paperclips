@@ -63,9 +63,20 @@ export const gameReducer = (state: State, action: Action): State => {
         publicDemand: 0.1 / decreasePaperclipCost,
       };
     case 'INCREASE_CASH':
-      return state.funds >= 10 ? { ...state, cash: state.cash + 10, funds: state.funds - 10 } : state;
+      return state.funds >= 1 ? { ...state, cash: state.cash + 1, funds: state.funds - 1 } : state;
     case 'DECREASE_CASH':
-      return state.cash >= 10 ? { ...state, cash: state.cash - 10, funds: state.funds + 10 } : state;
+      return state.cash >= 1 ? { ...state, cash: state.cash - 1, funds: state.funds + 1 } : state;
+    case 'INCREASE_WALLET':
+      if (state.cash <= action.price) return state;
+      const increaseWallet = state.wallet.map((crypto) =>
+        crypto.name === action.crypto ? { ...crypto, quantity: crypto.quantity + 0.1 } : crypto
+      );
+      return { ...state, wallet: increaseWallet, cash: state.cash - action.price };
+    case 'DECREASE_WALLET':
+      const decreaseWallet = state.wallet.map((crypto) =>
+        crypto.name === action.crypto ? { ...crypto, quantity: Math.max(0, crypto.quantity - 0.1) } : crypto
+      );
+      return { ...state, wallet: decreaseWallet, cash: state.cash + action.price };
     case 'INCREASE_MEMORY':
       return {
         ...state,
@@ -131,15 +142,21 @@ export const gameReducer = (state: State, action: Action): State => {
         trust: Math.max(2, Math.min(action.value, 100)),
         trustCost: Math.max(3000, Math.min(action.value * 2500, 247000)),
       };
+    case 'UPDATE_OPERATION':
+      if (state.operation < action.value) return state;
+      return {
+        ...state,
+        operation: Math.max(0, state.operation - action.value),
+      };
     case 'UPDATE_WIRE_BONUS':
       return {
         ...state,
-        wireBonus: action.bonus,
+        wireBonus: action.value,
       };
     case 'UPDATE_UNSOLD_BONUS':
       return {
         ...state,
-        unsoldBonus: action.bonus,
+        unsoldBonus: action.value,
       };
     case 'INITIALIZE':
       return {

@@ -28,7 +28,7 @@ export const en: Translation = {
       processor: 'processor lorem Ipsum is simply dummy',
       operation: 'operation lorem Ipsum is simply dummy',
       creativity: 'creativity lorem Ipsum is simply dummy',
-      project: 'project lorem Ipsum is simply dummy',
+      projects: 'project lorem Ipsum is simply dummy',
       revTracker: 'Rev Tracker project',
       investments: 'investments',
       algorithmicTrading: 'algorithmicTrading',
@@ -36,13 +36,23 @@ export const en: Translation = {
     },
     paperclipCost: 'Sale price',
     project: {
-      algorithmicTrading: {
-        text: 'Algorithmic Trading (<value /> Operations) Develop an investment engine for generating funds',
-        value: '10000',
-      },
       revTracker: {
-        text: 'Rev Tracker (<value /> Operations) Automatically calculates average revenue per second',
-        value: '500',
+        title: 'Rev Tracker',
+        text: 'Automatically calculates average revenue per second',
+        cost: '(<value1 /> Operations)',
+        value1: '500',
+      },
+      begForMoreWire: {
+        title: 'Beg for More Wire ',
+        text: 'Increase the purchase of wire',
+        cost: '(<value1 /> Operations)',
+        value1: '250',
+      },
+      algorithmicTrading: {
+        title: 'Algorithmic Trading',
+        text: 'Develop an investment engine for generating funds',
+        cost: '(<value1 /> Operations)',
+        value1: '10000',
       },
     },
     publicDemand: 'Public demand',

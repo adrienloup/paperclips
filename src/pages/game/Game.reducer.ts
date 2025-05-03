@@ -11,7 +11,7 @@ export const gameReducer = (state: State, action: Action): State => {
         funds: state.funds - state.wireCost,
       };
     case 'BUY_MACHINE':
-      if (state.funds < state.machineCost) return state;
+      if (state.funds < state.machineCost || state.wire <= 0) return state;
       return {
         ...state,
         machine: state.machine + 1,
@@ -19,7 +19,7 @@ export const gameReducer = (state: State, action: Action): State => {
         funds: Math.max(0, state.funds - state.machineCost),
       };
     case 'BUY_MEGAMACHINE':
-      if (state.funds < state.megaMachineCost) return state;
+      if (state.funds < state.megaMachineCost || state.wire <= 0) return state;
       return {
         ...state,
         megaMachine: state.megaMachine + 1,
@@ -101,9 +101,9 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'UPDATE_PER_SECOND': {
       const megaMachinePerSecond = state.megaMachine * 5e2;
       const machinePerSecond =
-        state.wire >= megaMachinePerSecond + state.machine
+        state.wire >= state.megaMachine + state.machine
           ? megaMachinePerSecond + state.machine
-          : state.wire >= megaMachinePerSecond
+          : state.wire >= state.megaMachine
             ? megaMachinePerSecond
             : state.wire >= state.machine
               ? state.machine

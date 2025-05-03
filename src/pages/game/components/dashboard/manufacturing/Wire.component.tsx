@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useInterval } from '@/src/generic/hooks/useInterval.ts';
 import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
@@ -17,12 +18,14 @@ export const WireComponent = () => {
     setGame({ type: 'BUY_WIRE', cost });
   };
 
-  const updateWireCost = () => {
+  const updateWireCost = useCallback(() => {
     const cost = game.wireCost > 8 ? game.wireCost - 0.25 : Math.random() * 8 + 12; // 0 et 1, 0 et 8, 12 et 20
     setGame({ type: 'UPDATE_WIRE_COST', cost });
-  };
+  }, [game.wireCost]);
 
   useInterval(updateWireCost, 1e4);
+
+  if (!game.feature.wire) return null;
 
   return (
     <DialsComponent>

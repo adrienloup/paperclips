@@ -6,6 +6,8 @@ export const gameState: State = {
   feature: {
     machine: false,
     megaMachine: false,
+    paperclipPerSecond: false,
+    wire: true,
   },
   funds: 0,
   fundsPerSecond: 0,

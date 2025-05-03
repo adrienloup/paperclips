@@ -47,7 +47,7 @@ export const MegaMachineComponent = () => {
         className={styles.button}
         prefix="+"
         suffix="megamachine"
-        disabled={game.funds < game.megaMachineCost}
+        disabled={game.funds < game.megaMachineCost || game.wire <= 0}
         onClick={buyMegaMachine}
       >
         +

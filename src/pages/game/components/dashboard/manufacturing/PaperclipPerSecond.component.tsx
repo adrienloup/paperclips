@@ -5,6 +5,8 @@ import { DialComponent } from '@/src/generic/common/components/dial/Dial.compone
 export const PaperclipPerSecondComponent = () => {
   const game = useGame();
 
+  if (!game.feature.paperclipPerSecond) return null;
+
   return (
     <DialsComponent>
       <DialComponent

@@ -3,7 +3,7 @@ import { DialsComponent } from '@/src/generic/common/components/dials/Dials.comp
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
-export const ManualComponent = () => {
+export const ProduceManuallyComponent = () => {
   const game = useGame();
   const setGame = useGameDispatch();
 

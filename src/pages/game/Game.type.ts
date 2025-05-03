@@ -28,6 +28,8 @@ export interface State {
   feature: {
     machine: boolean;
     megaMachine: boolean;
+    paperclipPerSecond: boolean;
+    wire: boolean;
   };
   funds: number;
   fundsPerSecond: number;

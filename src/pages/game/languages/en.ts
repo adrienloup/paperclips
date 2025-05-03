@@ -61,7 +61,7 @@ export const en: Translation = {
     titlePage: 'One Paperclip. Two Paperclips. Three Paperclips...',
     unsold: 'Unsold inventory',
     wire: 'Wire stock',
-    wireCost: 'Wire cost',
+    wireCost: 'Inch wire cost',
     WireDrone: 'Wire drones',
     wireDroneCost: 'Wire drone cost',
   },

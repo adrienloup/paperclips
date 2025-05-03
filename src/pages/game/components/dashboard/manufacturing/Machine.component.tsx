@@ -47,7 +47,7 @@ export const MachineComponent = () => {
         className={styles.button}
         prefix="+"
         suffix="machine"
-        disabled={game.funds < game.machineCost}
+        disabled={game.funds < game.machineCost || game.wire <= 0}
         onClick={buyMachine}
       >
         +

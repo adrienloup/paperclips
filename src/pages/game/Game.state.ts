@@ -8,6 +8,7 @@ export const gameState: State = {
   feature: {
     factory: false,
     machine: false,
+    marketing: false,
     megaMachine: false,
     paperclipPerSecond: false,
     wire: true,
@@ -24,8 +25,8 @@ export const gameState: State = {
   operation: 0,
   operationMax: 5e4,
   paperclip: 0,
-  paperclipCost: 0.2,
-  paperclipCostRef: 0.2,
+  paperclipPrice: 0.2,
+  paperclipPriceRef: 0.2,
   paperclipPerSecond: 0,
   publicDemand: 0.5,
   processor: 1,

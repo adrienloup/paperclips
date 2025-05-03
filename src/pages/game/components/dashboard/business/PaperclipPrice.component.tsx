@@ -6,18 +6,18 @@ import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicke
 import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
-export const PaperclipCostComponent = () => {
+export const PaperclipPriceComponent = () => {
   const { t } = useTranslation();
   const setGame = useGameDispatch();
   const game = useGame();
 
   return (
     <DialsComponent>
-      {/*{game.paperclipCostRef.toFixed(2)}*/}
+      {/*{game.paperclipPriceRef.toFixed(2)}*/}
       <DialComponent
-        value={game.paperclipCost}
+        value={game.paperclipPrice}
         style="currency"
-        label={t('game.paperclipCost')}
+        label={t('game.paperclipPrice')}
         bonus={
           game.marketing > 1 ? (
             <BonusComponent
@@ -34,7 +34,7 @@ export const PaperclipCostComponent = () => {
           value={0.01 * game.marketing}
           prefix="-"
           suffix="price"
-          disabled={game.paperclipCostRef === 0.1}
+          disabled={game.paperclipPriceRef === 0.1}
           onClick={() => setGame({ type: 'DECREASE_PAPERCLIP_COST' })}
         >
           -
@@ -45,7 +45,7 @@ export const PaperclipCostComponent = () => {
           value={0.01 * game.marketing}
           prefix="+"
           suffix="price"
-          disabled={game.paperclipCostRef === 1}
+          disabled={game.paperclipPriceRef === 1}
           onClick={() => setGame({ type: 'INCREASE_PAPERCLIP_COST' })}
         >
           +

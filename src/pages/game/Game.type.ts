@@ -31,6 +31,7 @@ export interface State {
   feature: {
     factory: boolean;
     machine: boolean;
+    marketing: boolean;
     megaMachine: boolean;
     paperclipPerSecond: boolean;
     wire: boolean;
@@ -47,8 +48,8 @@ export interface State {
   operation: number;
   operationMax: number;
   paperclip: number;
-  paperclipCost: number;
-  paperclipCostRef: number;
+  paperclipPrice: number;
+  paperclipPriceRef: number;
   paperclipPerSecond: number;
   publicDemand: number;
   processor: number;

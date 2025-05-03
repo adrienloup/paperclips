@@ -38,7 +38,7 @@ export const fr: Translation = {
       algorithmicTrading: 'algorithmicTrading',
       megaMachine: 'megamachines lorem Ipsum is simply dummy',
     },
-    paperclipCost: 'Prix de vente',
+    paperclipPrice: 'Prix de vente',
     project: {
       revTracker: {
         title: 'Rev Tracker',

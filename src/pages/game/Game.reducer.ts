@@ -48,7 +48,7 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'SELL_UNSOLD_INVENTORY':
       if (state.unsoldInventory <= 0) return state;
       const sellUnsoldInventory = Math.max(0, Math.floor(state.unsoldInventory * (1 - state.publicDemand)));
-      const sellFunds = state.funds + (state.unsoldInventory - sellUnsoldInventory) * state.paperclipCost;
+      const sellFunds = state.funds + (state.unsoldInventory - sellUnsoldInventory) * state.paperclipPrice;
       return {
         ...state,
         unsoldInventory: sellUnsoldInventory,
@@ -62,23 +62,23 @@ export const gameReducer = (state: State, action: Action): State => {
         marketing: updateMarketing,
         marketingCost: Math.max(100, Math.min(state.marketingCost * 2.5, 25600)),
         funds: Math.max(0, state.funds - state.marketingCost),
-        paperclipCost: state.paperclipCostRef * updateMarketing,
+        paperclipPrice: state.paperclipPriceRef * updateMarketing,
       };
     case 'INCREASE_PAPERCLIP_COST':
-      const increasePaperclipCostRef = Math.min(state.paperclipCostRef + 0.01, 1);
+      const increasePaperclipPriceRef = Math.min(state.paperclipPriceRef + 0.01, 1);
       return {
         ...state,
-        paperclipCostRef: increasePaperclipCostRef,
-        paperclipCost: increasePaperclipCostRef * state.marketing,
-        publicDemand: 0.1 / increasePaperclipCostRef,
+        paperclipPriceRef: increasePaperclipPriceRef,
+        paperclipPrice: increasePaperclipPriceRef * state.marketing,
+        publicDemand: 0.1 / increasePaperclipPriceRef,
       };
     case 'DECREASE_PAPERCLIP_COST':
-      const decreasePaperclipCost = Math.max(state.paperclipCostRef - 0.01, 0.1);
+      const decreasePaperclipPrice = Math.max(state.paperclipPriceRef - 0.01, 0.1);
       return {
         ...state,
-        paperclipCostRef: decreasePaperclipCost,
-        paperclipCost: decreasePaperclipCost * state.marketing,
-        publicDemand: 0.1 / decreasePaperclipCost,
+        paperclipPriceRef: decreasePaperclipPrice,
+        paperclipPrice: decreasePaperclipPrice * state.marketing,
+        publicDemand: 0.1 / decreasePaperclipPrice,
       };
     case 'INCREASE_CASH':
       return state.funds >= 1 ? { ...state, cash: state.cash + 1, funds: state.funds - 1 } : state;
@@ -116,7 +116,7 @@ export const gameReducer = (state: State, action: Action): State => {
               ? state.machine
               : 0;
       const paperclipPerSecond = machinePerSecond * state.unsoldInventoryBonus;
-      const fundsPerSecond = paperclipPerSecond * state.paperclipCost;
+      const fundsPerSecond = paperclipPerSecond * state.paperclipPrice;
       const operationMaxPerSecond = (state.memory * 1e6) / 20;
       const operationPerSecond =
         state.paperclip >= 2e3
@@ -146,7 +146,7 @@ export const gameReducer = (state: State, action: Action): State => {
         unsoldInventory: state.unsoldInventory + state.unsoldInventoryBonus,
         wire: state.wire - 1,
         paperclipPerSecond: state.paperclipPerSecond + state.unsoldInventoryBonus,
-        fundsPerSecond: state.fundsPerSecond + state.unsoldInventoryBonus * state.paperclipCost,
+        fundsPerSecond: state.fundsPerSecond + state.unsoldInventoryBonus * state.paperclipPrice,
       };
     case 'UPDATE_TRUST':
       // if (state.trust >= 100) return state;

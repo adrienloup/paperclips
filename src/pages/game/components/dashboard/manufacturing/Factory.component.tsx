@@ -8,48 +8,49 @@ import { DialComponent } from '@/src/generic/common/components/dial/Dial.compone
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
-export const MegaMachineComponent = () => {
+export const FactoryComponent = () => {
   const { t } = useTranslation();
   const game = useGame();
   const setGame = useGameDispatch();
   const setNotices = useNoticesDispatch();
   const setAlerts = useAlertsDispatch();
 
-  const buyMegaMachine = () => {
-    const cost = game.megaMachineCost + 11e2;
-    setGame({ type: 'BUY_MEGAMACHINE', cost });
+  const buyFactory = () => {
+    const cost = game.factoryCost + (Math.random() * 5e5 + 5e5); // 5e5 et 1e6
+    setGame({ type: 'BUY_FACTORY', cost });
   };
 
   useEffect(() => {
-    if (game.machine >= 75 && !game.feature.megaMachine) {
-      setGame({ type: 'UPDATE_FEATURE', feature: 'megaMachine', value: true });
-      setNotices({ type: 'ENABLE_NOTICE', id: 'megaMachine' });
-      setAlerts({ type: 'ADD_ALERT', alert: { id: 'megaMachine', text: 'megaMachine alert' } });
+    if (game.operation >= 35e3 && !game.feature.factory) {
+      setGame({ type: 'UPDATE_FEATURE', feature: 'machine', value: false });
+      setGame({ type: 'UPDATE_FEATURE', feature: 'megaMachine', value: false });
+      setGame({ type: 'UPDATE_FEATURE', feature: 'factory', value: true });
+      setNotices({ type: 'ENABLE_NOTICE', id: 'factory' });
+      setAlerts({ type: 'ADD_ALERT', alert: { id: 'factory', text: 'factory alert' } });
     }
-  }, [game.machine, game.feature.megaMachine]);
+  }, [game.operation, game.feature.factory]);
 
-  if (!game.feature.megaMachine) return null;
+  if (!game.feature.factory) return null;
 
   return (
     <DialsComponent>
       <DialComponent
-        value={game.megaMachineCost}
-        style="currency"
+        value={game.factoryCost}
         notation="compact"
-        label={t('game.megaMachineCost')}
+        label={t('game.factoryCost')}
       />
       <DialComponent
-        value={game.megaMachine}
+        value={game.factory}
         notation="compact"
-        label={t('game.megaMachine')}
+        label={t('game.factory')}
       />
       <ClickerComponent
         className={styles.button}
         value={1}
         prefix="+"
-        suffix="megamachine"
-        disabled={game.funds < game.megaMachineCost || game.wire <= 0}
-        onClick={buyMegaMachine}
+        suffix="factory"
+        disabled={game.paperclip < game.factoryCost}
+        onClick={buyFactory}
       >
         +
       </ClickerComponent>

@@ -4,20 +4,20 @@ import { DialsComponent } from '@/src/generic/common/components/dials/Dials.comp
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
 import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.component.tsx';
 
-export const UnsoldComponent = () => {
+export const UnsoldInventoryComponent = () => {
   const { t } = useTranslation();
   const game = useGame();
 
   return (
     <DialsComponent>
       <DialComponent
-        value={game.unsold}
+        value={game.unsoldInventory}
         notation="compact"
-        label={t('game.unsold')}
+        label={t('game.unsoldInventory')}
         bonus={
-          game.unsoldBonus > 1 ? (
+          game.unsoldInventoryBonus > 1 ? (
             <BonusComponent
-              value={game.unsoldBonus}
+              value={game.unsoldInventoryBonus}
               prefix="x"
             />
           ) : null

@@ -129,7 +129,7 @@ export const DebugComponent = () => {
   // };
   //
   // const updateWire = (value: number) => setGame({ type: 'UPDATE_WIRE_BONUS', value });
-  // const updateUnsold = (value: number) => setGame({ type: 'UPDATE_UNSOLD_BONUS', value });
+  // const updateUnsoldInventory = (value: number) => setGame({ type: 'UPDATE_UNSOLD_INVENTORY_BONUS', value });
 
   return display ? (
     <div
@@ -263,64 +263,64 @@ export const DebugComponent = () => {
       {/*  </button>*/}
       {/*</form>*/}
       {/*<form>*/}
-      {/*  <label>unsoldbonus</label>*/}
+      {/*  <label>unsoldInventorybonus</label>*/}
       {/*  <button*/}
       {/*    type="button"*/}
-      {/*    onClick={() => updateUnsold(1)}*/}
+      {/*    onClick={() => updateUnsoldInventory(1)}*/}
       {/*  >*/}
       {/*    1*/}
       {/*  </button>*/}
       {/*  <button*/}
       {/*    type="button"*/}
-      {/*    onClick={() => updateUnsold(2)}*/}
+      {/*    onClick={() => updateUnsoldInventory(2)}*/}
       {/*  >*/}
       {/*    2*/}
       {/*  </button>*/}
       {/*  <button*/}
       {/*    type="button"*/}
-      {/*    onClick={() => updateUnsold(3)}*/}
+      {/*    onClick={() => updateUnsoldInventory(3)}*/}
       {/*  >*/}
       {/*    3*/}
       {/*  </button>*/}
       {/*  <button*/}
       {/*    type="button"*/}
-      {/*    onClick={() => updateUnsold(4)}*/}
+      {/*    onClick={() => updateUnsoldInventory(4)}*/}
       {/*  >*/}
       {/*    4*/}
       {/*  </button>*/}
       {/*  <button*/}
       {/*    type="button"*/}
-      {/*    onClick={() => updateUnsold(5)}*/}
+      {/*    onClick={() => updateUnsoldInventory(5)}*/}
       {/*  >*/}
       {/*    5*/}
       {/*  </button>*/}
       {/*  <button*/}
       {/*    type="button"*/}
-      {/*    onClick={() => updateUnsold(6)}*/}
+      {/*    onClick={() => updateUnsoldInventory(6)}*/}
       {/*  >*/}
       {/*    6*/}
       {/*  </button>*/}
       {/*  <button*/}
       {/*    type="button"*/}
-      {/*    onClick={() => updateUnsold(7)}*/}
+      {/*    onClick={() => updateUnsoldInventory(7)}*/}
       {/*  >*/}
       {/*    7*/}
       {/*  </button>*/}
       {/*  <button*/}
       {/*    type="button"*/}
-      {/*    onClick={() => updateUnsold(8)}*/}
+      {/*    onClick={() => updateUnsoldInventory(8)}*/}
       {/*  >*/}
       {/*    8*/}
       {/*  </button>*/}
       {/*  <button*/}
       {/*    type="button"*/}
-      {/*    onClick={() => updateUnsold(9)}*/}
+      {/*    onClick={() => updateUnsoldInventory(9)}*/}
       {/*  >*/}
       {/*    9*/}
       {/*  </button>*/}
       {/*  <button*/}
       {/*    type="button"*/}
-      {/*    onClick={() => updateUnsold(10)}*/}
+      {/*    onClick={() => updateUnsoldInventory(10)}*/}
       {/*  >*/}
       {/*    10*/}
       {/*  </button>*/}

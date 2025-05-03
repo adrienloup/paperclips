@@ -32,6 +32,7 @@ export const WireComponent = () => {
       <DialComponent
         value={game.wireCost}
         style="currency"
+        notation="compact"
         label={t('game.wireCost')}
       />
       <DialComponent

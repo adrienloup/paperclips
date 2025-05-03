@@ -4,7 +4,7 @@ import { useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { PaperclipComponent } from '@/src/pages/game/components/dashboard/paperclip/Paperclip.component.tsx';
 import { CardsComponent } from '@/src/generic/common/components/cards/Cards.component.tsx';
 import { ManufacturingComponent } from '@/src/pages/game/components/dashboard/manufacturing/Manufacturing.component.tsx';
-// import { BusinessComponent } from '@/src/pages/game/components/dashboard/business/Business.component.tsx';
+import { BusinessComponent } from '@/src/pages/game/components/dashboard/business/Business.component.tsx';
 // import { ResourcesComponent } from '@/src/pages/game/components/dashboard/resources/Resources.component.tsx';
 // import { ProjectsComponent } from '@/src/pages/game/components/dashboard/projects/Projects.component.tsx';
 // import { InvestmentsComponent } from '@/src/pages/game/components/dashboard/investments/Investments.component.tsx';
@@ -15,8 +15,8 @@ import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss'
 export const DashboardComponent = () => {
   const setGame = useGameDispatch();
 
-  const sellUnsold = useCallback(() => {
-    setGame({ type: 'SELL_UNSOLD' });
+  const sellUnsoldInventory = useCallback(() => {
+    setGame({ type: 'SELL_UNSOLD_INVENTORY' });
   }, []);
 
   const updatePerSecond = useCallback(() => {
@@ -27,7 +27,7 @@ export const DashboardComponent = () => {
   //   setGame({ type: 'UPDATE_WIRE_COST' });
   // }, []);
 
-  useInterval(sellUnsold, 5e2);
+  useInterval(sellUnsoldInventory, 5e2);
   useInterval(updatePerSecond, 1e3);
   // useInterval(updateWireCost, 1e4);
 
@@ -39,7 +39,7 @@ export const DashboardComponent = () => {
       <PaperclipComponent />
       <CardsComponent>
         <ManufacturingComponent />
-        {/*<BusinessComponent />*/}
+        <BusinessComponent />
         {/*<ResourcesComponent />*/}
         {/*<ProjectsComponent />*/}
         {/*<InvestmentsComponent />*/}

@@ -14,7 +14,7 @@ import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAle
  * + paperclipPerSecond
  * Business
  * + funds
- * + unsold
+ * + unsoldInventory
  * + publicDemand
  * + marketing
  * Resources
@@ -29,11 +29,11 @@ import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAle
  * + Improved Extrusion Wire: Exigence 3K PA / Coût 1700 OP / Effet wire 10K
  * + Optimized Wireframe Extrusion: Exigence 1500 wire / Coût 3500 OP / Effet wire 1M
  * + WireBuyer: Exigence 10 TRUSTS / Coût 7000 OP / Effet achats automatiquement de wire lorsque stock 0
- * + New Slogan: Exigence 3K PAP / Coût 25 CREA 500 OP / Effet unsold x2
- * + Attractive Jingle: Exigence 3500 PAP / Coût 45 CREA 500 OP / Effet unsold x4
- * + Hypno Harmonics: Exigence 4K PAP / Coût 7500 OP / Effet unsold x6
- * + Hostile Takeover: Exigence 5K PAP / Coût 1M $ / Effet unsold x8
- * + The complete Monopoly: Exigence 6K PAP / Coût 10M $ / Effet unsold x10
+ * + New Slogan: Exigence 3K PAP / Coût 25 CREA 500 OP / Effet unsoldInventory x2
+ * + Attractive Jingle: Exigence 3500 PAP / Coût 45 CREA 500 OP / Effet unsoldInventory x4
+ * + Hypno Harmonics: Exigence 4K PAP / Coût 7500 OP / Effet unsoldInventory x6
+ * + Hostile Takeover: Exigence 5K PAP / Coût 1M $ / Effet unsoldInventory x8
+ * + The complete Monopoly: Exigence 6K PAP / Coût 10M $ / Effet unsoldInventory x10
  * + AdReset
  * */
 
@@ -64,7 +64,7 @@ export const FeaturesComponent = () => {
   //   setProjects({ type: 'UNLOCKED', id });
   // };
   //
-  // // paperclip, wire, funds, unsold, publicDemand
+  // // paperclip, wire, funds, unsoldInventory, publicDemand
   //
   // // machine
   // useEffect(() => {

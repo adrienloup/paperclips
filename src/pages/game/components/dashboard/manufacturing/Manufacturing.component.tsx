@@ -5,6 +5,7 @@ import { ProduceManuallyComponent } from '@/src/pages/game/components/dashboard/
 import { WireComponent } from '@/src/pages/game/components/dashboard/manufacturing/Wire.component.tsx';
 import { MachineComponent } from '@/src/pages/game/components/dashboard/manufacturing/Machine.component.tsx';
 import { MegaMachineComponent } from '@/src/pages/game/components/dashboard/manufacturing/MegaMachine.component.tsx';
+import { FactoryComponent } from '@/src/pages/game/components/dashboard/manufacturing/Factory.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ManufacturingComponent = () => {
@@ -21,6 +22,7 @@ export const ManufacturingComponent = () => {
       <WireComponent />
       <MachineComponent />
       <MegaMachineComponent />
+      <FactoryComponent />
     </CardComponent>
   );
 };

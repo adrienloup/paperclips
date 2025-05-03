@@ -45,6 +45,7 @@ export const MachineComponent = () => {
       />
       <ClickerComponent
         className={styles.button}
+        value={1}
         prefix="+"
         suffix="machine"
         disabled={game.funds < game.machineCost || game.wire <= 0}

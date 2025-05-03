@@ -18,7 +18,7 @@ const notices: Notice[] = [
     viewed: false,
   },
   {
-    id: 'unsold',
+    id: 'unsoldInventory',
     enabled: false,
     viewed: false,
   },

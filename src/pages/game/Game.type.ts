@@ -2,9 +2,10 @@ export type Action =
   | { type: 'BUY_WIRE'; cost: number }
   | { type: 'BUY_MACHINE'; cost: number }
   | { type: 'BUY_MEGAMACHINE'; cost: number }
+  | { type: 'BUY_FACTORY'; cost: number }
   | { type: 'UPDATE_FEATURE'; feature: string; value: boolean }
   | { type: 'UPDATE_WIRE_COST'; cost: number }
-  | { type: 'SELL_UNSOLD' }
+  | { type: 'SELL_UNSOLD_INVENTORY' }
   | { type: 'BUY_MARKETING' }
   | { type: 'INCREASE_PAPERCLIP_COST' }
   | { type: 'DECREASE_PAPERCLIP_COST' }
@@ -19,13 +20,16 @@ export type Action =
   | { type: 'UPDATE_TRUST'; value: number }
   | { type: 'UPDATE_OPERATION'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; value: number }
-  | { type: 'UPDATE_UNSOLD_BONUS'; value: number }
+  | { type: 'UPDATE_UNSOLD_INVENTORY_BONUS'; value: number }
   | { type: 'INITIALIZE'; state: State };
 
 export interface State {
   cash: number;
   creativity: number;
+  factory: number;
+  factoryCost: number;
   feature: {
+    factory: boolean;
     machine: boolean;
     megaMachine: boolean;
     paperclipPerSecond: boolean;
@@ -50,8 +54,8 @@ export interface State {
   processor: number;
   trust: number;
   trustCost: number;
-  unsold: number;
-  unsoldBonus: number;
+  unsoldInventory: number;
+  unsoldInventoryBonus: number;
   wallet: {
     symbol: string;
     quantity: number;

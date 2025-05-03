@@ -3,7 +3,10 @@ import { State } from '@/src/pages/game/Game.type.ts';
 export const gameState: State = {
   cash: 0,
   creativity: 0,
+  factory: 0,
+  factoryCost: 1e6,
   feature: {
+    factory: false,
     machine: false,
     megaMachine: false,
     paperclipPerSecond: false,
@@ -28,8 +31,8 @@ export const gameState: State = {
   processor: 1,
   trust: 2,
   trustCost: 3e3,
-  unsold: 0,
-  unsoldBonus: 1,
+  unsoldInventory: 0,
+  unsoldInventoryBonus: 1,
   wallet: [
     { symbol: 'BTC', quantity: 0 },
     { symbol: 'ETH', quantity: 0 },

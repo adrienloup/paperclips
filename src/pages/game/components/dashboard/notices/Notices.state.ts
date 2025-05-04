@@ -22,26 +22,6 @@ const notices: Notice[] = [
     enabled: true,
     viewed: false,
   },
-  // {
-  //   id: 'wire',
-  //   enabled: false,
-  //   viewed: false,
-  // },
-  // {
-  //   id: 'funds',
-  //   enabled: false,
-  //   viewed: false,
-  // },
-  // {
-  //   id: 'unsoldInventory',
-  //   enabled: false,
-  //   viewed: false,
-  // },
-  // {
-  //   id: 'publicDemand',
-  //   enabled: false,
-  //   viewed: false,
-  // },
   {
     id: 'machine',
     enabled: false,
@@ -52,43 +32,8 @@ const notices: Notice[] = [
     enabled: false,
     viewed: false,
   },
-  // {
-  //   id: 'trust',
-  //   enabled: false,
-  //   viewed: false,
-  // },
-  // {
-  //   id: 'memory',
-  //   enabled: false,
-  //   viewed: false,
-  // },
-  // {
-  //   id: 'processor',
-  //   enabled: false,
-  //   viewed: false,
-  // },
-  // {
-  //   id: 'operation',
-  //   enabled: false,
-  //   viewed: false,
-  // },
-  // {
-  //   id: 'creativity',
-  //   enabled: false,
-  //   viewed: false,
-  // },
   {
     id: 'projects',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'revTracker',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'algorithmicTrading',
     enabled: false,
     viewed: false,
   },
@@ -99,11 +44,6 @@ const notices: Notice[] = [
   },
   {
     id: 'megaMachine',
-    enabled: false,
-    viewed: false,
-  },
-  {
-    id: 'begForMoreWire',
     enabled: false,
     viewed: false,
   },

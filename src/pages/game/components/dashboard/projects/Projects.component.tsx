@@ -21,7 +21,8 @@ export const ProjectsComponent = () => {
     const revTracker = game.projects.find((project) => project.id === 'revTracker');
     if (game.paperclip >= 2e3 && !revTracker?.unlocked && !revTracker?.enabled) {
       setGame({ type: 'ENABLE_PROJECT', id: 'revTracker' });
-      setNotices({ type: 'ENABLE_NOTICE', id: 'revTracker' });
+      setNotices({ type: 'ENABLE_NOTICE', id: 'projects' });
+      setAlerts({ type: 'ADD_ALERT', alert: { id: 'projects', text: 'projects alert' } });
       setAlerts({ type: 'ADD_ALERT', alert: { id: 'revTracker', text: 'revTracker alert' } });
     }
   }, [game.projects, game.paperclip]);

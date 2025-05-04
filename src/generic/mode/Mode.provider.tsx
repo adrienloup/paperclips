@@ -29,18 +29,10 @@ export function ModeProvider({ children }: { children: Children }) {
   );
 
   useEffect(() => {
-    if (mode === 'system') {
-      updateMode(
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-      );
-    } else {
-      updateMode(mode);
-    }
-
+    updateMode(mode);
     const onChange = (event: { matches: boolean }) => {
       updateMode(event.matches ? 'dark' : 'light');
     };
-
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', onChange);
     return () => window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', onChange);
   }, []);

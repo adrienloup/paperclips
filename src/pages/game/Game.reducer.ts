@@ -85,15 +85,20 @@ export const gameReducer = (state: State, action: Action): State => {
       return state.cash >= 1 ? { ...state, cash: state.cash - 1, funds: state.funds + 1 } : state;
     case 'INCREASE_WALLET':
       if (state.cash <= action.price) return state;
-      const increaseWallet = state.wallet.map((token) =>
-        token.symbol === action.symbol ? { ...token, quantity: token.quantity + 0.1 } : token
-      );
-      return { ...state, wallet: increaseWallet, cash: state.cash - action.price };
+      return {
+        ...state,
+        wallet: { ...state.wallet, [action.symbol]: { quantity: state.wallet[action.symbol].quantity + 0.1 } },
+        cash: Math.max(0, state.cash - action.price),
+      };
     case 'DECREASE_WALLET':
-      const decreaseWallet = state.wallet.map((token) =>
-        token.symbol === action.symbol ? { ...token, quantity: Math.max(0, token.quantity - 0.1) } : token
-      );
-      return { ...state, wallet: decreaseWallet, cash: state.cash + action.price };
+      return {
+        ...state,
+        wallet: {
+          ...state.wallet,
+          [action.symbol]: { quantity: Math.max(0, state.wallet[action.symbol].quantity - 0.1) },
+        },
+        cash: state.cash + action.price,
+      };
     case 'INCREASE_MEMORY':
       return {
         ...state,

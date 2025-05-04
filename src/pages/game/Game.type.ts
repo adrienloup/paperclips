@@ -54,13 +54,11 @@ export interface State {
   paperclipPerSecond: number;
   publicDemand: number;
   processor: number;
+  swarmGifts: number;
   trust: number;
   unsoldInventory: number;
   unsoldInventoryBonus: number;
-  wallet: {
-    symbol: string;
-    quantity: number;
-  }[];
+  wallet: Record<string, { quantity: number }>;
   wire: number;
   wireBonus: number;
   wireCost: number;

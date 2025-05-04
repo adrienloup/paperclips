@@ -85,24 +85,24 @@ export const gameReducer = (state: State, action: Action): State => {
       return state.cash >= 1 ? { ...state, cash: state.cash - 1, funds: state.funds + 1 } : state;
     case 'INCREASE_WALLET':
       if (state.cash <= action.price) return state;
-      const increaseWallet = state.wallet.map((crypto) =>
-        crypto.symbol === action.symbol ? { ...crypto, quantity: crypto.quantity + 0.1 } : crypto
+      const increaseWallet = state.wallet.map((token) =>
+        token.symbol === action.symbol ? { ...token, quantity: token.quantity + 0.1 } : token
       );
       return { ...state, wallet: increaseWallet, cash: state.cash - action.price };
     case 'DECREASE_WALLET':
-      const decreaseWallet = state.wallet.map((crypto) =>
-        crypto.symbol === action.symbol ? { ...crypto, quantity: Math.max(0, crypto.quantity - 0.1) } : crypto
+      const decreaseWallet = state.wallet.map((token) =>
+        token.symbol === action.symbol ? { ...token, quantity: Math.max(0, token.quantity - 0.1) } : token
       );
       return { ...state, wallet: decreaseWallet, cash: state.cash + action.price };
     case 'INCREASE_MEMORY':
       return {
         ...state,
-        memory: Math.min(state.memory + 1, 20),
+        memory: Math.min(state.memory + 1, 100),
       };
     case 'INCREASE_PROCESSOR':
       return {
         ...state,
-        processor: Math.min(state.processor + 1, 80),
+        processor: Math.min(state.processor + 1, 100),
       };
     case 'UPDATE_PER_SECOND': {
       const megaMachinePerSecond = state.megaMachine * 5e2;
@@ -116,7 +116,7 @@ export const gameReducer = (state: State, action: Action): State => {
               : 0;
       const paperclipPerSecond = machinePerSecond * state.unsoldInventoryBonus;
       const fundsPerSecond = paperclipPerSecond * state.paperclipPrice;
-      const operationMaxPerSecond = (state.memory * 1e6) / 20;
+      const operationMaxPerSecond = (state.memory * 1e6) / 100;
       const operationPerSecond =
         state.paperclip >= 2e3
           ? Math.min(operationMaxPerSecond, state.operation + 10 * state.processor)
@@ -153,7 +153,7 @@ export const gameReducer = (state: State, action: Action): State => {
         ...state,
         trust: Math.max(2, Math.min(action.value, 100)),
       };
-    case 'UPDATE_OPERATION':
+    case 'UPDATE_OPERATION': // @TODO: decrease
       if (state.operation < action.value) return state;
       return {
         ...state,

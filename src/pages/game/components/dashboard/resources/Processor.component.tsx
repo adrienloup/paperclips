@@ -6,21 +6,21 @@ import { ProgressbarComponent } from '@/src/generic/common/components/progressba
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const ProcessorComponent = () => {
-  const setGame = useGameDispatch();
   const game = useGame();
+  const setGame = useGameDispatch();
 
   return (
     <DialsComponent>
       <DialComponent
         value={game.processor}
-        valueMax={80}
+        valueMax={100}
         notation="compact"
         label="Processors"
       />
       <ProgressbarComponent
         className={styles.progressbar}
         valueNow={game.processor}
-        valueMax={80}
+        valueMax={100}
       />
       <ClickerComponent
         className={styles.button}
@@ -28,7 +28,11 @@ export const ProcessorComponent = () => {
         value={1}
         prefix="+"
         suffix="processor"
-        disabled={game.trust <= game.memory + game.processor || game.processor >= 80}
+        disabled={
+          game.trust <= game.memory + game.processor ||
+          game.swarmGifts <= game.memory + game.processor ||
+          game.processor >= 100
+        }
         onClick={() => setGame({ type: 'INCREASE_PROCESSOR' })}
       >
         +

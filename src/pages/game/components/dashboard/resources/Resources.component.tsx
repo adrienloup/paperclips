@@ -5,6 +5,7 @@ import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAle
 import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import { TrustComponent } from '@/src/pages/game/components/dashboard/resources/Trust.component.tsx';
+import { SwarmGiftsComponent } from '@/src/pages/game/components/dashboard/resources/SwarmGifts.component.tsx';
 import { MemoryComponent } from '@/src/pages/game/components/dashboard/resources/Memory.component.tsx';
 import { ProcessorComponent } from '@/src/pages/game/components/dashboard/resources/Processor.component.tsx';
 import { OperationComponent } from '@/src/pages/game/components/dashboard/resources/Operation.component.tsx';
@@ -41,6 +42,7 @@ export const ResourcesComponent = () => {
       {game.feature.resources ? (
         <>
           <TrustComponent />
+          <SwarmGiftsComponent />
           <MemoryComponent />
           <ProcessorComponent />
           <OperationComponent />

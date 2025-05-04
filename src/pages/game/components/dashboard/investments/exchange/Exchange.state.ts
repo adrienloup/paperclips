@@ -1,7 +1,7 @@
-import { Crypto, CryptoSymbol } from '@/src/pages/game/components/dashboard/investments/crypto/Crypto.type.ts';
+import { Token, TokenSymbol } from '@/src/pages/game/components/dashboard/investments/token/Token.type.ts';
 
-export const initialExchangeState: Record<CryptoSymbol, Crypto> = {
-  BTC: { symbol: 'BTC', name: 'Bitcoin', price: 30000, volume: 500000, change: 0 },
-  ETH: { symbol: 'ETH', name: 'Ethereum', price: 2000, volume: 1000000, change: 0 },
-  BNB: { symbol: 'BNB', name: 'Binance Coin', price: 300, volume: 700000, change: 0 },
+export const initialExchangeState: Record<TokenSymbol, Token> = {
+  BTC: { name: 'Bitcoin', price: 3e4, volume: 6e6, change: 0 },
+  ETH: { name: 'Ethereum', price: 2e3, volume: 1e7, change: 0 },
+  BNB: { name: 'Binance Coin', price: 3e3, volume: 7e6, change: 0 },
 };

@@ -1,12 +1,12 @@
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component.tsx';
-import { Crypto } from '@/src/pages/game/components/dashboard/investments/crypto/Crypto.type.ts';
-import styles from '@/src/pages/game/components/dashboard/investments/crypto/Crypto.module.scss';
+import { Token } from '@/src/pages/game/components/dashboard/investments/token/Token.type.ts';
+import styles from '@/src/pages/game/components/dashboard/investments/token/Token.module.scss';
 
-export const CryptoComponent = ({ name, price, volume, change }: Crypto) => {
+export const TokenComponent = ({ name, price, volume, change }: Token) => {
   return (
-    <div className={styles.crypto}>
-      <div className={styles.number}>
+    <div className={styles.token}>
+      <div className={styles.price}>
         <NumberComponent
           value={price}
           style="currency"
@@ -14,13 +14,13 @@ export const CryptoComponent = ({ name, price, volume, change }: Crypto) => {
         />
       </div>
       <div className={classNames([styles.variation, change >= 0 ? styles.positive : styles.negative])}>
-        <span className={styles.icon}>{change > 0 ? '▲' : '▼'}</span>
+        {change > 0 ? '+' : '-'}
         <NumberComponent
           value={Math.abs(change)}
           notation="compact"
         />
       </div>
-      <div className={styles.number}>
+      <div className={styles.volume}>
         <NumberComponent
           value={volume}
           notation="compact"

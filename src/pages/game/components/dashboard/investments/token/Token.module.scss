@@ -1,4 +1,4 @@
-.crypto {
+.token {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -6,12 +6,12 @@
 }
 
 .name {
-  flex: 0 0 100%;
+  //flex: 0 0 100%;
   text-transform: uppercase;
   font-size: var(--font-size-s);
 }
 
-.number {
+.price {
   font-size: var(--font-size-m);
 }
 
@@ -29,6 +29,6 @@
   color: var(--color-14);
 }
 
-.icon {
-  font-size: var(--font-size-s);
+.volume {
+  font-size: var(--font-size-m);
 }

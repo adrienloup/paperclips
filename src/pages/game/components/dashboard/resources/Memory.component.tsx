@@ -6,21 +6,21 @@ import { ProgressbarComponent } from '@/src/generic/common/components/progressba
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const MemoryComponent = () => {
-  const setGame = useGameDispatch();
   const game = useGame();
+  const setGame = useGameDispatch();
 
   return (
     <DialsComponent>
       <DialComponent
         value={game.memory}
-        valueMax={20}
+        valueMax={100}
         notation="compact"
         label="Memory"
       />
       <ProgressbarComponent
         className={styles.progressbar}
         valueNow={game.memory}
-        valueMax={20}
+        valueMax={100}
       />
       <ClickerComponent
         className={styles.button}
@@ -28,7 +28,11 @@ export const MemoryComponent = () => {
         value={1}
         prefix="+"
         suffix="memory"
-        disabled={game.trust <= game.memory + game.processor || game.memory >= 20}
+        disabled={
+          game.trust <= game.memory + game.processor ||
+          game.swarmGifts <= game.memory + game.processor ||
+          game.memory >= 100
+        }
         onClick={() => setGame({ type: 'INCREASE_MEMORY' })}
       >
         +

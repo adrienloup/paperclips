@@ -9,7 +9,6 @@ import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
 import { MenuProvider } from '@/src/generic/common/components/menu/Menu.provider.tsx';
 import { ModeProvider } from '@/src/generic/mode/Mode.provider.tsx';
 import { NoticesProvider } from '@/src/pages/game/components/dashboard/notices/Notices.provider.tsx';
-import { ProjectsProvider } from '@/src/pages/game/components/dashboard/projects/Projects.provider.tsx';
 import { StageProvider } from '@/src/generic/stage/Stage.provider.tsx';
 import { ThemeProvider } from '@/src/generic/theme/Theme.provider.tsx';
 
@@ -35,7 +34,6 @@ export const Providers: FunctionComponent<{ children: Children }> = allProviders
   [MenuProvider],
   [ModeProvider],
   [NoticesProvider],
-  [ProjectsProvider],
   [StageProvider],
   [ThemeProvider],
 ]);

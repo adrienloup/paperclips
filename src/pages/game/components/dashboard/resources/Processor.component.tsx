@@ -30,7 +30,7 @@ export const ProcessorComponent = () => {
         suffix="processor"
         disabled={
           game.trust <= game.memory + game.processor ||
-          game.swarmGifts <= game.memory + game.processor ||
+          // game.swarmGifts <= game.memory + game.processor ||
           game.processor >= 100
         }
         onClick={() => setGame({ type: 'INCREASE_PROCESSOR' })}

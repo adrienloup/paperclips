@@ -1,3 +1,6 @@
+import { Projects } from '@/src/pages/game/components/dashboard/projects/Projects.type.ts';
+import { Wallet } from '@/src/pages/game/components/dashboard/investments/Wallet.type.ts';
+
 export type Action =
   | { type: 'BUY_WIRE'; cost: number }
   | { type: 'BUY_MACHINE'; cost: number }
@@ -5,6 +8,9 @@ export type Action =
   | { type: 'BUY_FACTORY'; cost: number }
   | { type: 'UPDATE_FEATURE'; feature: string; value: boolean }
   | { type: 'UPDATE_WIRE_COST'; cost: number }
+  | { type: 'ENABLE_PROJECT'; id: string }
+  | { type: 'UNLOCK_PROJECT'; id: string }
+  | { type: 'DISABLE_PROJECT'; id: string; cost: number }
   | { type: 'SELL_UNSOLD_INVENTORY' }
   | { type: 'BUY_MARKETING' }
   | { type: 'INCREASE_PAPERCLIP_COST' }
@@ -18,7 +24,6 @@ export type Action =
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_PAPERCLIP' }
   | { type: 'UPDATE_TRUST'; value: number }
-  | { type: 'UPDATE_OPERATION'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; value: number }
   | { type: 'UPDATE_UNSOLD_INVENTORY_BONUS'; value: number }
   | { type: 'INITIALIZE'; state: State };
@@ -30,6 +35,7 @@ export interface State {
   factoryCost: number;
   feature: {
     factory: boolean;
+    investments: boolean;
     machine: boolean;
     marketing: boolean;
     megaMachine: boolean;
@@ -52,13 +58,14 @@ export interface State {
   paperclipPrice: number;
   paperclipPriceRef: number;
   paperclipPerSecond: number;
-  publicDemand: number;
   processor: number;
+  projects: Projects;
+  publicDemand: number;
   swarmGifts: number;
   trust: number;
   unsoldInventory: number;
   unsoldInventoryBonus: number;
-  wallet: Record<string, { quantity: number }>;
+  wallet: Wallet;
   wire: number;
   wireBonus: number;
   wireCost: number;

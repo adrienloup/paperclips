@@ -30,7 +30,7 @@ export const MemoryComponent = () => {
         suffix="memory"
         disabled={
           game.trust <= game.memory + game.processor ||
-          game.swarmGifts <= game.memory + game.processor ||
+          // game.swarmGifts <= game.memory + game.processor ||
           game.memory >= 100
         }
         onClick={() => setGame({ type: 'INCREASE_MEMORY' })}

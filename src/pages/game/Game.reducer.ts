@@ -44,6 +44,28 @@ export const gameReducer = (state: State, action: Action): State => {
         ...state,
         wireCost: action.cost,
       };
+    case 'ENABLE_PROJECT':
+      return {
+        ...state,
+        projects: state.projects.map((project) =>
+          project.id === action.id && !project.enabled ? { ...project, enabled: true } : project
+        ),
+      };
+    case 'UNLOCK_PROJECT':
+      return {
+        ...state,
+        projects: state.projects.map((project) =>
+          project.id === action.id ? { ...project, unlocked: true } : project
+        ),
+      };
+    case 'DISABLE_PROJECT':
+      return {
+        ...state,
+        projects: state.projects.map((project) =>
+          project.id === action.id ? { ...project, enabled: false } : project
+        ),
+        operation: Math.max(0, state.operation - action.cost),
+      };
     case 'SELL_UNSOLD_INVENTORY':
       if (state.unsoldInventory <= 0) return state;
       const sellUnsoldInventory = Math.max(0, Math.floor(state.unsoldInventory * (1 - state.publicDemand)));
@@ -157,12 +179,6 @@ export const gameReducer = (state: State, action: Action): State => {
       return {
         ...state,
         trust: Math.max(2, Math.min(action.value, 100)),
-      };
-    case 'UPDATE_OPERATION': // @TODO: decrease
-      if (state.operation < action.value) return state;
-      return {
-        ...state,
-        operation: Math.max(0, state.operation - action.value),
       };
     case 'UPDATE_WIRE_BONUS':
       return {

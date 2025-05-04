@@ -1,5 +1,4 @@
 import { Trans, useTranslation } from 'react-i18next';
-import { useProjectsDispatch } from '@/src/pages/game/components/dashboard/projects/useProjects.ts';
 import { useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
@@ -9,19 +8,17 @@ import styles from '@/src/pages/game/components/dashboard/project/Project.module
 
 export const ProjectComponent = ({ project }: { project: Project }) => {
   const { t } = useTranslation();
-  const setProjects = useProjectsDispatch();
   const setGame = useGameDispatch();
 
-  const onClick = (project: Project) => {
-    setProjects({ type: 'DISABLED', id: project.id });
-    setGame({ type: 'UPDATE_OPERATION', value: project.cost });
+  const onClick = (id: string, cost: number) => {
+    setGame({ type: 'DISABLE_PROJECT', id, cost });
   };
 
   return (
     <ButtonComponent
       className={classNames([styles.project, !project.unlocked ? styles.locked : ''])}
       tabIndex={!project.unlocked ? -1 : 0}
-      onClick={() => onClick(project)}
+      onClick={() => onClick(project.id, project.cost)}
     >
       <span className={styles.title}>{t(`game.project.${project.id}.title`)}</span>
       <span className={styles.value}>

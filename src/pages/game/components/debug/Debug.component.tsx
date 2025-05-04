@@ -21,7 +21,7 @@ export const DebugComponent = () => {
   const [funds, setFunds] = useState('0');
   const [wire, setWire] = useState('0');
   const [trust, setTrust] = useState('0');
-  // const [operation, setOperation] = useState('0');
+  const [operation, setOperation] = useState('0');
   // const [creativity, setCreativity] = useState('0');
 
   const display = useMemo(() => {
@@ -99,22 +99,22 @@ export const DebugComponent = () => {
       value: parseInt(trust),
     });
   };
-  //
+
   // const memoryClick = () => setGame({ type: 'INCREASE_MEMORY' });
   //
   // const processorClick = () => setGame({ type: 'INCREASE_PROCESSOR' });
   //
-  // const operationChange = (e: ChangeEvent<HTMLInputElement>) => setOperation(e.target.value);
-  // const operationSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setGame({
-  //     type: 'INITIALIZE',
-  //     state: {
-  //       ...game,
-  //       operation: parseInt(operation),
-  //     },
-  //   });
-  // };
+  const operationChange = (e: ChangeEvent<HTMLInputElement>) => setOperation(e.target.value);
+  const operationSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE',
+      state: {
+        ...game,
+        operation: parseInt(operation),
+      },
+    });
+  };
   //
   // const creativityChange = (e: ChangeEvent<HTMLInputElement>) => setCreativity(e.target.value);
   // const creativitySubmit = (e: ChangeEvent<HTMLFormElement>) => {
@@ -219,14 +219,14 @@ export const DebugComponent = () => {
       {/*    +1*/}
       {/*  </button>*/}
       {/*</form>*/}
-      {/*<form onSubmit={operationSubmit}>*/}
-      {/*  <label>operations</label>*/}
-      {/*  <input*/}
-      {/*    value={operation}*/}
-      {/*    onChange={operationChange}*/}
-      {/*  />*/}
-      {/*  <button type="submit">Add</button>*/}
-      {/*</form>*/}
+      <form onSubmit={operationSubmit}>
+        <label>operations</label>
+        <input
+          value={operation}
+          onChange={operationChange}
+        />
+        <button type="submit">Add</button>
+      </form>
       {/*<form onSubmit={creativitySubmit}>*/}
       {/*  <label>creativity</label>*/}
       {/*  <input*/}

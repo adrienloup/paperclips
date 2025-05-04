@@ -7,6 +7,7 @@ export const gameState: State = {
   factoryCost: 1e6,
   feature: {
     factory: false,
+    investments: false,
     machine: false,
     marketing: false,
     megaMachine: false,
@@ -29,8 +30,28 @@ export const gameState: State = {
   paperclipPrice: 0.2,
   paperclipPriceRef: 0.2,
   paperclipPerSecond: 0,
-  publicDemand: 0.5,
   processor: 1,
+  projects: [
+    {
+      id: 'revTracker',
+      enabled: false,
+      unlocked: false,
+      cost: 500,
+    },
+    {
+      id: 'begForMoreWire',
+      enabled: false,
+      unlocked: false,
+      cost: 250,
+    },
+    {
+      id: 'algorithmicTrading',
+      enabled: false,
+      unlocked: false,
+      cost: 1e4,
+    },
+  ],
+  publicDemand: 0.5,
   swarmGifts: 0,
   trust: 2,
   unsoldInventory: 0,

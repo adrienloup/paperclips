@@ -175,7 +175,7 @@ export const gameReducer = (state: State, action: Action): State => {
         fundsPerSecond: state.fundsPerSecond + state.unsoldInventoryBonus * state.paperclipPrice,
       };
     case 'UPDATE_TRUST':
-      if (state.trust >= 100) return state;
+      // if (state.trust >= 100) return state;
       return {
         ...state,
         trust: Math.max(2, Math.min(action.value, 100)),

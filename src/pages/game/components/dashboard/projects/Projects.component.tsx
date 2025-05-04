@@ -17,6 +17,38 @@ export const ProjectsComponent = () => {
 
   const projectEnables = game.projects.filter((project) => project.enabled).length;
 
+  const enableRevTracker = useCallback(() => {
+    const revTracker = game.projects.find((project) => project.id === 'revTracker');
+    if (game.paperclip >= 2e3 && !revTracker?.unlocked && !revTracker?.enabled) {
+      setGame({ type: 'ENABLE_PROJECT', id: 'revTracker' });
+      setNotices({ type: 'ENABLE_NOTICE', id: 'revTracker' });
+      setAlerts({ type: 'ADD_ALERT', alert: { id: 'revTracker', text: 'revTracker alert' } });
+    }
+  }, [game.projects, game.paperclip]);
+
+  const unlockRevTracker = useCallback(() => {
+    const revTracker = game.projects.find((project) => project.id === 'revTracker');
+    if (game.operation >= 500 && !revTracker?.unlocked && revTracker?.enabled) {
+      setGame({ type: 'UNLOCK_PROJECT', id: 'revTracker' });
+    }
+  }, [game.projects, game.operation]);
+
+  const enableBegForMoreWire = useCallback(() => {
+    const begForMoreWire = game.projects.find((project) => project.id === 'begForMoreWire');
+    if (game.trust >= 3 && !begForMoreWire?.unlocked && !begForMoreWire?.enabled) {
+      setGame({ type: 'ENABLE_PROJECT', id: 'begForMoreWire' });
+      setNotices({ type: 'ENABLE_NOTICE', id: 'begForMoreWire' });
+      setAlerts({ type: 'ADD_ALERT', alert: { id: 'begForMoreWire', text: 'begForMoreWire alert' } });
+    }
+  }, [game.projects, game.trust]);
+
+  const unlockBegForMoreWire = useCallback(() => {
+    const begForMoreWire = game.projects.find((project) => project.id === 'begForMoreWire');
+    if (game.operation >= 5e2 && !begForMoreWire?.unlocked && begForMoreWire?.enabled) {
+      setGame({ type: 'UNLOCK_PROJECT', id: 'begForMoreWire' });
+    }
+  }, [game.projects, game.operation]);
+
   const enableAlgorithmicTrading = useCallback(() => {
     const algorithmicTrading = game.projects.find((project) => project.id === 'algorithmicTrading');
     if (game.trust >= 8 && !algorithmicTrading?.unlocked && !algorithmicTrading?.enabled) {
@@ -26,7 +58,7 @@ export const ProjectsComponent = () => {
     }
   }, [game.projects, game.trust]);
 
-  const UnlockAlgorithmicTrading = useCallback(() => {
+  const unlockAlgorithmicTrading = useCallback(() => {
     const algorithmicTrading = game.projects.find((project) => project.id === 'algorithmicTrading');
     if (game.operation >= 1e4 && !algorithmicTrading?.unlocked && algorithmicTrading?.enabled) {
       setGame({ type: 'UNLOCK_PROJECT', id: 'algorithmicTrading' });
@@ -34,15 +66,31 @@ export const ProjectsComponent = () => {
   }, [game.projects, game.operation]);
 
   useEffect(() => {
+    enableRevTracker();
+  }, [enableRevTracker]);
+
+  useEffect(() => {
+    unlockRevTracker();
+  }, [unlockRevTracker]);
+
+  useEffect(() => {
+    enableBegForMoreWire();
+  }, [enableBegForMoreWire]);
+
+  useEffect(() => {
+    unlockBegForMoreWire();
+  }, [unlockBegForMoreWire]);
+
+  useEffect(() => {
     enableAlgorithmicTrading();
   }, [enableAlgorithmicTrading]);
 
   useEffect(() => {
-    UnlockAlgorithmicTrading();
-  }, [UnlockAlgorithmicTrading]);
+    unlockAlgorithmicTrading();
+  }, [unlockAlgorithmicTrading]);
 
   return (
-    <CardComponent>
+    <CardComponent className={styles.projects}>
       <TitleComponent
         tag="h2"
         className={styles.title}

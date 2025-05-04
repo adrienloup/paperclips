@@ -7,6 +7,8 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 export const TrustComponent = () => {
   const game = useGame();
 
+  if (!game.feature.trust) return null;
+
   return (
     <DialsComponent>
       <DialComponent

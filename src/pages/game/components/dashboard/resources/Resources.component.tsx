@@ -32,7 +32,7 @@ export const ResourcesComponent = () => {
   }, [update]);
 
   return (
-    <CardComponent>
+    <CardComponent className={styles.resources}>
       <TitleComponent
         tag="h2"
         className={styles.title}

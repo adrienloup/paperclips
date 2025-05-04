@@ -8,7 +8,7 @@ import { BusinessComponent } from '@/src/pages/game/components/dashboard/busines
 import { ResourcesComponent } from '@/src/pages/game/components/dashboard/resources/Resources.component.tsx';
 import { ProjectsComponent } from '@/src/pages/game/components/dashboard/projects/Projects.component.tsx';
 import { InvestmentsComponent } from '@/src/pages/game/components/dashboard/investments/Investments.component.tsx';
-// import { ProductionComponent } from '@/src/pages/game/components/dashboard/production/Production.component.tsx';
+import { ProductionComponent } from '@/src/pages/game/components/dashboard/production/Production.component.tsx';
 import { NoticesComponent } from '@/src/pages/game/components/dashboard/notices/Notices.component.tsx';
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
@@ -33,7 +33,7 @@ export const DashboardComponent = () => {
         <ResourcesComponent />
         <ProjectsComponent />
         <InvestmentsComponent />
-        {/*<ProductionComponent />*/}
+        <ProductionComponent />
       </CardsComponent>
       <NoticesComponent />
     </article>

@@ -20,7 +20,7 @@ export const MegaMachineComponent = () => {
     setGame({ type: 'BUY_MEGAMACHINE', cost });
   };
 
-  const update = useCallback(() => {
+  const enableMegaMachine = useCallback(() => {
     if (game.machine >= 75 && !game.feature.megaMachine) {
       setGame({ type: 'UPDATE_FEATURE', feature: 'megaMachine', value: true });
       setNotices({ type: 'ENABLE_NOTICE', id: 'megaMachine' });
@@ -29,8 +29,8 @@ export const MegaMachineComponent = () => {
   }, [game.machine, game.feature.megaMachine]);
 
   useEffect(() => {
-    update();
-  }, [update]);
+    enableMegaMachine();
+  }, [enableMegaMachine]);
 
   if (!game.feature.megaMachine) return null;
 

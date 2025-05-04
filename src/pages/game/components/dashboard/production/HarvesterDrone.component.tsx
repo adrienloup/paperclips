@@ -14,15 +14,22 @@ export const HarvesterDroneComponent = () => {
   return (
     <DialsComponent>
       <DialComponent
-        value={0}
+        value={game.harvesterDroneCost}
+        style="currency"
         notation="compact"
-        label={t('game.HarvesterDrone')}
+        label={t('game.harvesterDroneCost')}
+      />
+      <DialComponent
+        value={game.harvesterDrone}
+        notation="compact"
+        label={t('game.harvesterDrone')}
       />
       <ClickerComponent
         className={styles.button}
+        value={1}
         prefix="+"
         suffix="Drone"
-        disabled={game.funds < 0}
+        disabled={game.funds < game.harvesterDroneCost}
         onClick={() => console.log('clicked')}
       >
         +

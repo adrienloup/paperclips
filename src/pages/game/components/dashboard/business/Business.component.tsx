@@ -10,7 +10,7 @@ import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const BusinessComponent = () => {
   return (
-    <CardComponent>
+    <CardComponent className={styles.business}>
       <TitleComponent
         tag="h2"
         className={styles.title}

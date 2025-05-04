@@ -41,10 +41,13 @@ export interface State {
     megaMachine: boolean;
     paperclipPerSecond: boolean;
     resources: boolean;
+    trust: boolean;
     wire: boolean;
   };
   funds: number;
   fundsPerSecond: number;
+  harvesterDrone: number;
+  harvesterDroneCost: number;
   machine: number;
   machineCost: number;
   marketing: number;

@@ -30,7 +30,7 @@ export const InvestmentsComponent = () => {
   }, [update]);
 
   return (
-    <CardComponent style={{ width: '42rem' }}>
+    <CardComponent className={styles.investments}>
       <TitleComponent
         tag="h2"
         className={styles.title}

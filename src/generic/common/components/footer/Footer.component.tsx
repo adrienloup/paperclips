@@ -7,7 +7,7 @@ export const FooterComponent = () => {
       className={styles.footer}
       role="contentinfo"
     >
-      &copy; {version}
+      Addicting Idle game &copy; {version}
     </footer>
   );
 };

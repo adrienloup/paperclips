@@ -6,10 +6,10 @@
   position: absolute;
   z-index: 2;
   white-space: nowrap;
-  padding: var(--spacing-xs);
+  padding: 0 0.25rem;
   animation: SlideUp 900ms var(--ease-out);
   text-transform: uppercase;
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-l);
   color: var(--color-10);
 }
 

@@ -1,6 +1,6 @@
 import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
-// import { FundsPerSecondComponent } from '@/src/pages/game/components/dashboard/business/FundsPerSecond.component.tsx';
+import { FundsPerSecondComponent } from '@/src/pages/game/components/dashboard/business/FundsPerSecond.component.tsx';
 import { FundsComponent } from '@/src/pages/game/components/dashboard/business/Funds.component.tsx';
 import { UnsoldInventoryComponent } from '@/src/pages/game/components/dashboard/business/UnsoldInventory.component.tsx';
 import { PaperclipPriceComponent } from '@/src/pages/game/components/dashboard/business/PaperclipPrice.component.tsx';
@@ -17,7 +17,7 @@ export const BusinessComponent = () => {
       >
         Business
       </TitleComponent>
-      {/*<FundsPerSecondComponent />*/}
+      <FundsPerSecondComponent />
       <FundsComponent />
       <UnsoldInventoryComponent />
       <PaperclipPriceComponent />

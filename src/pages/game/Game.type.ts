@@ -25,6 +25,7 @@ export type Action =
   | { type: 'UPDATE_PAPERCLIP' }
   | { type: 'UPDATE_TRUST'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; value: number }
+  | { type: 'UPDATE_MACHINE_BONUS'; value: number }
   | { type: 'UPDATE_UNSOLD_INVENTORY_BONUS'; value: number }
   | { type: 'INITIALIZE'; state: State };
 
@@ -35,11 +36,11 @@ export interface State {
   factoryCost: number;
   feature: {
     factory: boolean;
+    fundsPerSecond: boolean;
     investments: boolean;
     machine: boolean;
     marketing: boolean;
     megaMachine: boolean;
-    paperclipPerSecond: boolean;
     production: boolean;
     resources: boolean;
     trust: boolean;
@@ -50,7 +51,9 @@ export interface State {
   harvesterDrone: number;
   harvesterDroneCost: number;
   machine: number;
+  machineBonus: number;
   machineCost: number;
+  machineRef: number;
   marketing: number;
   marketingCost: number;
   megaMachine: number;

@@ -6,7 +6,7 @@ import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAle
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
-import { ProgressbarComponent } from '@/src/generic/common/components/progressbar/Progressbar.component.tsx';
+// import { ProgressbarComponent } from '@/src/generic/common/components/progressbar/Progressbar.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const MarketingComponent = () => {
@@ -42,12 +42,13 @@ export const MarketingComponent = () => {
         value={game.marketing}
         valueMax={10}
         label={t('game.marketing')}
+        disabled={game.marketing >= 10}
       />
-      <ProgressbarComponent
+      {/*<ProgressbarComponent
         className={styles.progressbar}
         valueNow={game.marketing}
         valueMax={10}
-      />
+      />*/}
       <ClickerComponent
         className={styles.button}
         aria-label="Increase marketing"

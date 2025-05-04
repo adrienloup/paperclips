@@ -11,15 +11,16 @@ export const gameReducer = (state: State, action: Action): State => {
         funds: state.funds - state.wireCost,
       };
     case 'BUY_MACHINE':
-      if (state.funds < state.machineCost || state.wire <= 0) return state;
+      if (state.funds < state.machineCost) return state;
       return {
         ...state,
-        machine: state.machine + 1,
+        machine: state.machine + state.machineBonus,
+        machineRef: state.machineRef + 1,
         machineCost: action.cost,
         funds: Math.max(0, state.funds - state.machineCost),
       };
     case 'BUY_MEGAMACHINE':
-      if (state.funds < state.megaMachineCost || state.wire <= 0) return state;
+      if (state.funds < state.megaMachineCost) return state;
       return {
         ...state,
         megaMachine: state.megaMachine + 1,
@@ -67,7 +68,7 @@ export const gameReducer = (state: State, action: Action): State => {
         operation: Math.max(0, state.operation - action.cost),
       };
     case 'SELL_UNSOLD_INVENTORY':
-      if (state.unsoldInventory <= 0) return state;
+      if (state.unsoldInventory < 0) return state;
       const sellUnsoldInventory = Math.max(0, Math.floor(state.unsoldInventory * (1 - state.publicDemand)));
       const sellFunds = state.funds + (state.unsoldInventory - sellUnsoldInventory) * state.paperclipPrice;
       return {
@@ -125,47 +126,43 @@ export const gameReducer = (state: State, action: Action): State => {
       return {
         ...state,
         memory: Math.min(state.memory + 1, 100),
+        trust: Math.max(0, state.trust - 1),
       };
     case 'INCREASE_PROCESSOR':
       return {
         ...state,
         processor: Math.min(state.processor + 1, 100),
+        trust: Math.max(0, state.trust - 1),
       };
     case 'UPDATE_PER_SECOND': {
-      const megaMachinePerSecond = state.megaMachine * 5e2;
-      const machinePerSecond =
+      const megaMachinePS = state.megaMachine * 5e2;
+      const allMachinePS =
         state.wire >= state.megaMachine + state.machine
-          ? megaMachinePerSecond + state.machine
+          ? megaMachinePS + state.machine
           : state.wire >= state.megaMachine
-            ? megaMachinePerSecond
+            ? megaMachinePS
             : state.wire >= state.machine
               ? state.machine
               : 0;
-      const paperclipPerSecond = machinePerSecond * state.unsoldInventoryBonus;
-      const fundsPerSecond = paperclipPerSecond * state.paperclipPrice;
-      const operationMaxPerSecond = (state.memory * 1e6) / 100;
-      const operationPerSecond =
-        state.paperclip >= 2e3
-          ? Math.min(operationMaxPerSecond, state.operation + 10 * state.processor)
-          : state.operation;
-      const creativityPerSecond = Math.min(
-        20,
-        operationPerSecond === operationMaxPerSecond ? state.memory : state.creativity
-      );
+      const paperclipPS = allMachinePS * state.unsoldInventoryBonus;
+      const fundsPS = paperclipPS * state.paperclipPrice;
+      const operationMaxPS = (state.memory * 1e6) / 100;
+      const operationPS = Math.min(operationMaxPS, state.operation + 10 * state.processor);
+      const creativityPS = Math.min(100, operationPS === operationMaxPS ? state.memory : state.creativity);
       return {
         ...state,
-        operation: operationPerSecond,
-        operationMax: operationMaxPerSecond,
-        creativity: creativityPerSecond,
-        paperclipPerSecond: paperclipPerSecond,
-        fundsPerSecond: fundsPerSecond,
-        paperclip: state.paperclip + paperclipPerSecond,
-        unsoldInventory: state.unsoldInventory + paperclipPerSecond,
-        wire: state.wire - machinePerSecond,
+        operation: operationPS,
+        operationMax: operationMaxPS,
+        creativity: creativityPS,
+        paperclipPerSecond: paperclipPS,
+        fundsPerSecond: fundsPS,
+        paperclip: state.paperclip + paperclipPS,
+        unsoldInventory: state.unsoldInventory + paperclipPS,
+        wire: state.wire - allMachinePS,
       };
     }
     case 'UPDATE_PAPERCLIP':
-      if (state.wire <= 0) return state;
+      if (state.wire < 0) return state;
       return {
         ...state,
         paperclip: state.paperclip + state.unsoldInventoryBonus,
@@ -175,6 +172,7 @@ export const gameReducer = (state: State, action: Action): State => {
         fundsPerSecond: state.fundsPerSecond + state.unsoldInventoryBonus * state.paperclipPrice,
       };
     case 'UPDATE_TRUST':
+      if (state.trust > 100) return state;
       return {
         ...state,
         trust: Math.max(2, Math.min(action.value, 100)),
@@ -183,6 +181,12 @@ export const gameReducer = (state: State, action: Action): State => {
       return {
         ...state,
         wireBonus: action.value,
+      };
+    case 'UPDATE_MACHINE_BONUS':
+      return {
+        ...state,
+        machineBonus: action.value,
+        machine: state.machineRef * action.value,
       };
     case 'UPDATE_UNSOLD_INVENTORY_BONUS':
       return {

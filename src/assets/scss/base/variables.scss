@@ -12,8 +12,8 @@
   --color-6: #fff;
   --color-7: #00ff15;
   --color-8: #009dff;
-  --color-9: #4c3ef3;
-  --color-10: #ff00c3;
+  --color-9: #5400ff;
+  --color-10: #ff00ae;
   --color-11: #ffdd00;
   --color-12: #220081;
   --color-13: #1a006a;
@@ -23,10 +23,10 @@
 }
 
 @mixin size {
-  --font-size-xl: 6rem;
-  --font-size-l: 3rem;
-  --font-size-m: 2.5rem;
-  --font-size-s: 1.5rem;
+  --font-size-xl: 5rem;
+  --font-size-l: 2.25rem;
+  --font-size-m: 2rem;
+  --font-size-s: 1.25rem;
   --font-size-xs: 1rem;
 }
 

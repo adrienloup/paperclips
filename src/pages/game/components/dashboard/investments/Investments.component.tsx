@@ -40,8 +40,8 @@ export const InvestmentsComponent = () => {
       {game.feature.investments ? (
         <>
           <ExchangeComponent />
-          <CashComponent />
           <WalletComponent />
+          <CashComponent />
         </>
       ) : (
         <EmptyComponent empty="game.empty.investments" />

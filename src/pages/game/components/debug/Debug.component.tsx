@@ -119,6 +119,9 @@ export const DebugComponent = () => {
   // };
 
   const updateWire = (value: number) => setGame({ type: 'UPDATE_WIRE_BONUS', value });
+
+  const updateMachineBonus = (value: number) => setGame({ type: 'UPDATE_MACHINE_BONUS', value });
+
   const updateUnsoldInventory = (value: number) => setGame({ type: 'UPDATE_UNSOLD_INVENTORY_BONUS', value });
 
   return display ? (
@@ -239,13 +242,76 @@ export const DebugComponent = () => {
         </button>
         <button
           type="button"
-          onClick={() => updateWire(1e6)}
+          onClick={() => updateWire(1e5)}
         >
-          1e6
+          1e5
         </button>
       </form>
       <form>
-        <label>unsoldInventorybonus</label>
+        <label>machineBonus</label>
+        <button
+          type="button"
+          onClick={() => updateMachineBonus(1)}
+        >
+          1
+        </button>
+        <button
+          type="button"
+          onClick={() => updateMachineBonus(2)}
+        >
+          2
+        </button>
+        <button
+          type="button"
+          onClick={() => updateMachineBonus(3)}
+        >
+          3
+        </button>
+        <button
+          type="button"
+          onClick={() => updateMachineBonus(4)}
+        >
+          4
+        </button>
+        <button
+          type="button"
+          onClick={() => updateMachineBonus(5)}
+        >
+          5
+        </button>
+        <button
+          type="button"
+          onClick={() => updateMachineBonus(6)}
+        >
+          6
+        </button>
+        <button
+          type="button"
+          onClick={() => updateMachineBonus(7)}
+        >
+          7
+        </button>
+        <button
+          type="button"
+          onClick={() => updateMachineBonus(8)}
+        >
+          8
+        </button>
+        <button
+          type="button"
+          onClick={() => updateMachineBonus(9)}
+        >
+          9
+        </button>
+        <button
+          type="button"
+          onClick={() => updateMachineBonus(10)}
+        >
+          10
+        </button>
+      </form>
+      <form>
+        <label>unsoldInventoryBonus</label>
         <button
           type="button"
           onClick={() => updateUnsoldInventory(1)}

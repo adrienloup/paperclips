@@ -2,75 +2,95 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);
+}
 
-  &.manufacturing {
-    grid-column: 1;
-    grid-row: 1;
-  }
+.manufacturing {
+  grid-column: 1;
+  grid-row: 1;
 
-  &.business {
-    grid-column: 2;
-    grid-row: 1;
-  }
+  //@include tablet-portrait {
+  //  grid-column: 1;
+  //  grid-row: 1;
+  //}
+}
 
-  &.resources {
+.business {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.resources {
+  grid-column: 1;
+  grid-row: 2;
+
+  @include tablet-landscape {
     grid-column: 1;
     grid-row: 2;
-
-    @include tablet-landscape {
-      grid-column: 3;
-      grid-row: 1;
-    }
   }
 
-  &.projects {
+  @include desktop {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+.projects {
+  grid-column: 2;
+  grid-row: 2 / span 3;
+
+  @include tablet-landscape {
+    grid-column: 3;
+    grid-row: 1 / span 3;
+  }
+
+  @include desktop {
+    grid-column: 4;
+    grid-row: 1 / span 3;
+  }
+}
+
+.investments {
+  grid-column: 1;
+  grid-row: 3;
+
+  @include tablet-landscape {
     grid-column: 2;
     grid-row: 2;
-
-    @include tablet-landscape {
-      grid-column: 1;
-      grid-row: 2;
-    }
-
-    @include desktop {
-      grid-column: 4;
-      grid-row: 1 / span 2;
-    }
   }
 
-  &.investments {
+  @include desktop {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  }
+}
+
+.production {
+  grid-column: 1;
+  grid-row: 4;
+
+  @include tablet-landscape {
     grid-column: 1;
     grid-row: 3;
-
-    @include tablet-landscape {
-      grid-column: 2;
-      grid-row: 2;
-    }
-
-    @include desktop {
-      grid-column: 1 / span 2;
-      grid-row: 2;
-    }
   }
 
-  &.production {
+  @include desktop {
+    grid-column: 3;
+    grid-row: 2;
+  }
+}
+
+.power {
+  grid-column: 2;
+  grid-row: 4;
+
+  @include tablet-landscape {
     grid-column: 2;
     grid-row: 3;
-
-    @include tablet-landscape {
-      grid-column: 3;
-      grid-row: 2;
-    }
   }
 
-  &.power {
+  @include desktop {
     grid-column: 1;
-    grid-row: 4;
-
-    @include tablet-landscape {
-      grid-column: 1;
-      grid-row: 3;
-    }
+    grid-row: 3;
   }
 }
 
@@ -92,11 +112,6 @@
 }
 
 .subtitle {
-  text-transform: uppercase;
-  font-size: var(--font-size-s);
-}
-
-.text {
   text-transform: uppercase;
   font-size: var(--font-size-s);
 }

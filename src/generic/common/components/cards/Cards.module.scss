@@ -1,9 +1,14 @@
 .cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto auto;
+  display: flex;
+  flex-direction: column;
   gap: var(--spacing-s);
   padding: 0 var(--spacing-s);
+
+  @include mobile-landscape {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
 
   @include tablet-landscape {
     grid-template-columns: 1fr 1fr 1fr;

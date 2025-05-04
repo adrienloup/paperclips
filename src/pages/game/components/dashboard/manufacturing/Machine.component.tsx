@@ -6,6 +6,7 @@ import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAle
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
+import { BonusComponent } from '@/src/generic/common/components/bonus/Bonus.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const MachineComponent = () => {
@@ -16,7 +17,7 @@ export const MachineComponent = () => {
   const setAlerts = useAlertsDispatch();
 
   const buyMachine = () => {
-    const cost = game.machineCost + (Math.random() * 5 + 10); // 10 et 15
+    const cost = game.machineCost + (Math.random() * 10 + 10); // 10 et 20
     setGame({ type: 'BUY_MACHINE', cost });
   };
 
@@ -46,6 +47,14 @@ export const MachineComponent = () => {
         value={game.machine}
         notation="compact"
         label={t('game.machine')}
+        bonus={
+          game.machineBonus > 1 ? (
+            <BonusComponent
+              value={game.machineBonus}
+              prefix="x"
+            />
+          ) : null
+        }
       />
       <ClickerComponent
         className={styles.button}

@@ -7,11 +7,11 @@ export const gameState: State = {
   factoryCost: 1e6,
   feature: {
     factory: false,
+    fundsPerSecond: false,
     investments: false,
     machine: false,
     marketing: false,
     megaMachine: false,
-    paperclipPerSecond: false,
     production: false,
     resources: false,
     trust: true,
@@ -22,7 +22,9 @@ export const gameState: State = {
   harvesterDrone: 0,
   harvesterDroneCost: 1e4,
   machine: 0,
+  machineBonus: 1,
   machineCost: 5,
+  machineRef: 0,
   marketing: 1,
   marketingCost: 100,
   megaMachine: 0,
@@ -38,58 +40,68 @@ export const gameState: State = {
   projects: [
     {
       id: 'revTracker',
-      enabled: false,
-      unlocked: false,
+      enabled: true,
+      unlocked: true,
     },
     {
       id: 'begForMoreWire',
-      enabled: false,
-      unlocked: false,
+      enabled: true,
+      unlocked: true,
     },
     {
       id: 'improvedWireExtrusion',
-      enabled: false,
-      unlocked: false,
+      enabled: true,
+      unlocked: true,
     },
     {
       id: 'optimizedWireframe',
-      enabled: false,
-      unlocked: false,
+      enabled: true,
+      unlocked: true,
     },
     {
       id: 'wireBuyer',
-      enabled: false,
-      unlocked: false,
+      enabled: true,
+      unlocked: true,
     },
     {
       id: 'algorithmicTrading',
-      enabled: false,
-      unlocked: false,
+      enabled: true,
+      unlocked: true,
     },
     {
       id: 'newSlogan',
-      enabled: false,
-      unlocked: false,
+      enabled: true,
+      unlocked: true,
     },
     {
       id: 'attractiveJingle',
-      enabled: false,
-      unlocked: false,
+      enabled: true,
+      unlocked: true,
     },
     {
       id: 'hypnoHarmonics',
-      enabled: false,
-      unlocked: false,
+      enabled: true,
+      unlocked: true,
     },
     {
       id: 'hostileTakeover',
-      enabled: false,
-      unlocked: false,
+      enabled: true,
+      unlocked: true,
     },
     {
       id: 'fullMonopoly',
-      enabled: false,
-      unlocked: false,
+      enabled: true,
+      unlocked: true,
+    },
+    {
+      id: 'machinesImprovement',
+      enabled: true,
+      unlocked: true,
+    },
+    {
+      id: 'evenBetterMachines',
+      enabled: true,
+      unlocked: true,
     },
   ],
   publicDemand: 0.5,
@@ -108,34 +120,3 @@ export const gameState: State = {
   wireDrone: 0,
   wireDroneCost: 1e4,
 };
-
-/*
- * Manufacturing
- * + paperclip
- * + wire
- * + machine / Effet megaMachine
- * + megaMachine: Exigence 75 machines
- * + paperclipPerSecond
- * Business
- * + funds
- * + unsold
- * + publicDemand
- * + marketing
- * Resources
- * + trust
- * + memory
- * + processor
- * + operation
- * + creativity
- * Projects
- * + revTracker / Effet paperclipPerSecond
- * + Beg for More Wire: Exigence 3 TRUSTS / Coût 250 OP / Effet wire 1K
- * + Improved Extrusion Wire: Exigence 3K PA / Coût 1700 OP / Effet wire 10K
- * + Optimized Wireframe Extrusion: Exigence 1500 wire / Coût 3500 OP / Effet wire 1M
- * + WireBuyer: Exigence 10 TRUSTS / Coût 7000 OP / Effet achats automatiquement de wire lorsque stock 0
- * + New Slogan: Exigence 3K PAP / Coût 25 CREA 500 OP / Effet unsold x2
- * + Attractive Jingle: Exigence 3500 PAP / Coût 45 CREA 500 OP / Effet unsold x3
- * + Hypno Harmonics: Exigence 4K PAP / Coût 7500 OP / Effet unsold x4
- * + Hostile Takeover: Exigence 5K PAP / Coût 1M $ / Effet unsold x5
- * + Full Monopoly: Exigence 6K PAP / Coût 10M $ / Effet unsold x6
- * */

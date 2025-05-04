@@ -2,7 +2,7 @@ import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
 import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
-import { ProgressbarComponent } from '@/src/generic/common/components/progressbar/Progressbar.component.tsx';
+// import { ProgressbarComponent } from '@/src/generic/common/components/progressbar/Progressbar.component.tsx';
 import styles from '@/src/generic/common/components/card/Card.module.scss';
 
 export const MemoryComponent = () => {
@@ -17,11 +17,11 @@ export const MemoryComponent = () => {
         notation="compact"
         label="Memory"
       />
-      <ProgressbarComponent
+      {/*<ProgressbarComponent
         className={styles.progressbar}
         valueNow={game.memory}
         valueMax={100}
-      />
+      />*/}
       <ClickerComponent
         className={styles.button}
         aria-label="Increase memory"
@@ -29,7 +29,8 @@ export const MemoryComponent = () => {
         prefix="+"
         suffix="memory"
         disabled={
-          game.trust <= game.memory + game.processor ||
+          game.trust < game.memory ||
+          game.trust < game.processor ||
           // game.swarmGifts <= game.memory + game.processor ||
           game.memory >= 100
         }

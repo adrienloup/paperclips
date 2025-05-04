@@ -39,11 +39,11 @@ export const en: Translation = {
       revTracker: {
         name: 'Rev Tracker',
         cost: '(<valueCost />\u00a0ops)',
-        effect: 'Automatically calculates average per second',
+        effect: 'Automatically calculates average funds per second',
         valueCost: 500,
       },
       begForMoreWire: {
-        name: 'Beg for More Wire ',
+        name: 'Beg for More Wire',
         cost: '(<valueCost />\u00a0ops)',
         effect: 'Increase the purchase of wire by <valueEffect />',
         valueCost: 250,
@@ -61,7 +61,7 @@ export const en: Translation = {
         cost: '(<valueCost />\u00a0ops)',
         effect: 'Increase the purchase of wire by <valueEffect />',
         valueCost: 3500,
-        valueEffect: 1000000,
+        valueEffect: 100000,
       },
       wireBuyer: {
         name: 'Wire Buyer',
@@ -78,7 +78,7 @@ export const en: Translation = {
       newSlogan: {
         name: 'New Slogan',
         cost: '(<valueCost />\u00a0crea)',
-        effect: 'Double inventory effectiveness',
+        effect: 'Double inventory effectiveness x2',
         valueCost: 25,
       },
       attractiveJingle: {
@@ -90,7 +90,7 @@ export const en: Translation = {
       hypnoHarmonics: {
         name: 'Hypno Harmonics',
         cost: '(<valueCost />\u00a0ops)',
-        effect: 'Inventory x4 to influence consumer',
+        effect: '+1 Trust, and inventory x4 to influence consumer',
         valueCost: 7500,
       },
       hostileTakeover: {
@@ -102,8 +102,20 @@ export const en: Translation = {
       fullMonopoly: {
         name: 'Full Monopoly',
         cost: '(<valueCost />\u00a0money)',
-        effect: '+1 Trust, and increases inventory x6',
+        effect: '+2 Trust, and increases inventory x6',
         valueCost: 10000000,
+      },
+      machinesImprovement: {
+        name: 'Machines Improvement',
+        cost: '(<valueCost />\u00a0ops)',
+        effect: '+2 Trust, increases machine performance x2',
+        valueCost: 750,
+      },
+      evenBetterMachines: {
+        name: 'Even Better Machines',
+        cost: '(<valueCost />\u00a0ops)',
+        effect: '+2 Trust, increases machine performance x3',
+        valueCost: 2500,
       },
     },
     publicDemand: 'Public demand',

@@ -1,13 +1,10 @@
-import { useLanguage } from '@/src/generic/i18n/useLanguage.ts';
-import { useTheme } from '@/src/generic/theme/useTheme.ts';
-import { useMode } from '@/src/generic/mode/useMode.ts';
+import { useSettings, useSettingsDispatch } from '@/src/generic/common/components/settings/useSettings.ts';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
 import styles from '@/src/generic/common/components/settings/Settings.module.scss';
 
-export const SettingsComponent = () => {
-  const [, setLanguage] = useLanguage();
-  const [, setTheme] = useTheme();
-  const [, setMode] = useMode();
+export const SettingsComponent = ({ open }: { open: boolean }) => {
+  const settings = useSettings();
+  const setSettings = useSettingsDispatch();
 
   return (
     <div className={styles.settings}>
@@ -16,13 +13,15 @@ export const SettingsComponent = () => {
         <div className={styles.buttons}>
           <ButtonComponent
             className={styles.button}
-            onClick={() => setLanguage('en')}
+            tabIndex={!open ? -1 : 0}
+            onClick={() => setSettings({ ...settings, language: 'en' })}
           >
             EN
           </ButtonComponent>
           <ButtonComponent
             className={styles.button}
-            onClick={() => setLanguage('fr')}
+            tabIndex={!open ? -1 : 0}
+            onClick={() => setSettings({ ...settings, language: 'fr' })}
           >
             FR
           </ButtonComponent>
@@ -33,13 +32,15 @@ export const SettingsComponent = () => {
         <div className={styles.buttons}>
           <ButtonComponent
             className={styles.button}
-            onClick={() => setTheme('classic')}
+            tabIndex={!open ? -1 : 0}
+            onClick={() => setSettings({ ...settings, theme: 'classic' })}
           >
             classic
           </ButtonComponent>
           <ButtonComponent
             className={styles.button}
-            onClick={() => setTheme('clubbed-to-death')}
+            tabIndex={!open ? -1 : 0}
+            onClick={() => setSettings({ ...settings, theme: 'clubbed-to-death' })}
           >
             Clubbed to Death
           </ButtonComponent>
@@ -50,19 +51,22 @@ export const SettingsComponent = () => {
         <div className={styles.buttons}>
           <ButtonComponent
             className={styles.button}
-            onClick={() => setMode('dark')}
+            tabIndex={!open ? -1 : 0}
+            onClick={() => setSettings({ ...settings, mode: 'dark' })}
           >
             Dark
           </ButtonComponent>
           <ButtonComponent
             className={styles.button}
-            onClick={() => setMode('light')}
+            tabIndex={!open ? -1 : 0}
+            onClick={() => setSettings({ ...settings, mode: 'light' })}
           >
             Light
           </ButtonComponent>
           <ButtonComponent
             className={styles.button}
-            onClick={() => setMode('system')}
+            tabIndex={!open ? -1 : 0}
+            onClick={() => setSettings({ ...settings, mode: 'system' })}
           >
             System
           </ButtonComponent>

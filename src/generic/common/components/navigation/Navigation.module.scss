@@ -14,7 +14,12 @@
   font-size: var(--font-size-s);
   color: var(--color-theme-5);
 
+  &:active {
+    box-shadow: 0 0 0 0.4rem var(--color-10);
+  }
+
   &:focus-visible {
-    outline: 0.25rem solid var(--color-9);
+    outline: 0.25rem solid var(--color-10);
+    outline-offset: -0.15rem;
   }
 }

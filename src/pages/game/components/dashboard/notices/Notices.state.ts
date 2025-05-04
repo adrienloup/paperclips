@@ -3,11 +3,6 @@ import { Notice } from '@/src/pages/game/components/dashboard/notice/Notice.type
 
 const notices: Notice[] = [
   {
-    id: 'paperclip',
-    enabled: true,
-    viewed: false,
-  },
-  {
     id: 'manufacturing',
     enabled: true,
     viewed: false,

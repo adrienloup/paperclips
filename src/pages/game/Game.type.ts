@@ -1,5 +1,5 @@
 import { Projects } from '@/src/pages/game/components/dashboard/projects/Projects.type.ts';
-import { Wallet } from '@/src/pages/game/components/dashboard/investments/Wallet.type.ts';
+import { Wallet } from '@/src/pages/game/components/dashboard/investments/wallet/Wallet.type.ts';
 
 export type Action =
   | { type: 'BUY_WIRE'; cost: number }

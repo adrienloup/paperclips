@@ -1,19 +1,20 @@
-import { useLanguage } from '@/src/generic/i18n/useLanguage.ts';
+import { useSettings } from '@/src/generic/common/components/settings/useSettings.ts';
 import { Number } from '@/src/generic/common/components/number/Number.type.ts';
 
 export const NumberComponent = ({ className, value, style, notation, compactDisplay, valueMax }: Number) => {
-  const [language] = useLanguage();
+  const settings = useSettings();
 
   const options = {
     style: style,
-    currency: language == 'en' ? 'USD' : 'EUR',
+    currency: settings.language == 'en' ? 'USD' : 'EUR',
     notation: notation,
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
     compactDisplay: compactDisplay,
   };
 
-  const format = (value: number) => new Intl.NumberFormat(language == 'en' ? 'en-US' : 'fr-FR', options).format(value);
+  const format = (value: number) =>
+    new Intl.NumberFormat(settings.language == 'en' ? 'en-US' : 'fr-FR', options).format(value);
 
   return (
     <span className={className}>

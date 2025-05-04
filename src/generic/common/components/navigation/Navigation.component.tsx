@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import styles from '@/src/generic/common/components/navigation/Navigation.module.scss';
 
-export const NavigationComponent = () => {
+export const NavigationComponent = ({ open }: { open: boolean }) => {
   const { t } = useTranslation();
 
   return (
@@ -13,16 +13,18 @@ export const NavigationComponent = () => {
       <ul className={styles.list}>
         <li>
           <Link
-            to={'/paperclips'}
             className={styles.link}
+            tabIndex={!open ? -1 : 0}
+            to={'/paperclips'}
           >
             {t('common.navigation.game')}
           </Link>
         </li>
         <li>
           <Link
-            to={'/paperclips/explore'}
             className={styles.link}
+            tabIndex={!open ? -1 : 0}
+            to={'/paperclips/explore'}
           >
             {t('common.navigation.explore')}
           </Link>

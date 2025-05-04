@@ -18,29 +18,31 @@ export const ProjectComponent = ({ project }: { project: Project }) => {
     <ButtonComponent
       className={classNames([styles.project, !project.unlocked ? styles.locked : ''])}
       tabIndex={!project.unlocked ? -1 : 0}
-      onClick={() => onClick(project.id, project.cost)}
+      onClick={() => onClick(project.id, parseInt(t(`game.project.${project.id}.cost`)))}
     >
-      <span className={styles.title}>{t(`game.project.${project.id}.title`)}</span>
-      <span className={styles.value}>
-        <Trans
-          i18nKey={`game.project.${project.id}.cost`}
-          components={{
-            value1: (
-              <NumberComponent
-                value={parseInt(t(`game.project.${project.id}.value1`))}
-                notation="compact"
-              />
-            ),
-            value2: (
-              <NumberComponent
-                value={parseInt(t(`game.project.${project.id}.value2`))}
-                notation="compact"
-              />
-            ),
-          }}
-        />
-      </span>
-      <span className={styles.text}>{t(`game.project.${project.id}.text`)}</span>
+      {t(`game.project.${project.id}.name`)}{' '}
+      <Trans
+        i18nKey={`game.project.${project.id}.cost`}
+        components={{
+          valueCost: (
+            <NumberComponent
+              value={parseInt(t(`game.project.${project.id}.valueCost`))}
+              notation="compact"
+            />
+          ),
+        }}
+      />{' '}
+      <Trans
+        i18nKey={`game.project.${project.id}.effect`}
+        components={{
+          valueEffect: (
+            <NumberComponent
+              value={parseInt(t(`game.project.${project.id}.valueEffect`))}
+              notation="compact"
+            />
+          ),
+        }}
+      />
     </ButtonComponent>
   );
 };

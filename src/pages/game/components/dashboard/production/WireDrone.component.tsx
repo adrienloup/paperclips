@@ -22,7 +22,7 @@ export const WireDroneComponent = () => {
       <DialComponent
         value={game.wireDrone}
         notation="compact"
-        label={t('game.WireDrone')}
+        label={t('game.wireDrone')}
       />
       <ClickerComponent
         className={styles.button}

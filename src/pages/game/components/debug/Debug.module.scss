@@ -4,7 +4,7 @@
   display: flex;
   flex-flow: row wrap;
   gap: var(--spacing-xs);
-  padding: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-xl) var(--spacing-xs) var(--spacing-xs);
   background-color: var(--color-5);
   font-size: var(--font-size-xs);
   color: var(--color-10);
@@ -12,10 +12,6 @@
   form {
     display: flex;
     align-items: center;
-
-    &:first-child {
-      margin-left: 5rem;
-    }
   }
 
   label {

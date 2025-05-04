@@ -4,12 +4,9 @@ import { Children } from '@/src/generic/types/Children.type.ts';
 import { AlertsProvider } from '@/src/generic/common/components/alerts/Alerts.provider.tsx';
 import { ExchangeProvider } from '@/src/pages/game/components/dashboard/investments/exchange/Exchange.provider.tsx';
 import { GameProvider } from '@/src/pages/game/Game.provider.tsx';
-import { LanguageProvider } from '@/src/generic/i18n/Language.provider.tsx';
 import { MenuProvider } from '@/src/generic/common/components/menu/Menu.provider.tsx';
-import { ModeProvider } from '@/src/generic/mode/Mode.provider.tsx';
 import { NoticesProvider } from '@/src/pages/game/components/dashboard/notices/Notices.provider.tsx';
-import { StageProvider } from '@/src/generic/stage/Stage.provider.tsx';
-import { ThemeProvider } from '@/src/generic/theme/Theme.provider.tsx';
+import { SettingsProvider } from '@/src/generic/common/components/settings/Settings.provider.tsx';
 
 type ProvidersType = [ComponentType<{ children: Children }>, ComponentPropsWithoutRef<ElementType>?][];
 
@@ -28,10 +25,7 @@ export const Providers: FunctionComponent<{ children: Children }> = allProviders
   [AlertsProvider],
   [ExchangeProvider],
   [GameProvider],
-  [LanguageProvider],
   [MenuProvider],
-  [ModeProvider],
   [NoticesProvider],
-  [StageProvider],
-  [ThemeProvider],
+  [SettingsProvider],
 ]);

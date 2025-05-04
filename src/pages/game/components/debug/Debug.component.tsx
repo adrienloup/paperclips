@@ -3,8 +3,6 @@ import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { useLocation } from 'react-router-dom';
 import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAlerts.ts';
 // import { useNoticesDispatch } from '@/src/pages/game/components/dashboard/notices/useNotices.ts';
-import { useStage } from '@/src/generic/stage/useStage.ts';
-import { Stage } from '@/src/generic/stage/Stage.type.ts';
 import styles from '@/src/pages/game/components/debug/Debug.module.scss';
 
 export const DebugComponent = () => {
@@ -13,8 +11,6 @@ export const DebugComponent = () => {
   const location = useLocation();
   const setAlerts = useAlertsDispatch();
   // const setNotices = useNoticesDispatch();
-  const [stage, setStage] = useStage();
-  const [stageValue, setStageValue] = useState<Stage>(stage);
   const [alertsText, setAlertsText] = useState('Alert1');
   // const [noticesId, setNoticesId] = useState('game');
   const [paperclip, setPaperclip] = useState('0');
@@ -33,12 +29,6 @@ export const DebugComponent = () => {
     }
     return isDebug;
   }, [location.search]);
-
-  const stageChange = (e: ChangeEvent<HTMLInputElement>) => setStageValue(e.target.value as Stage);
-  const stageSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStage(stageValue);
-  };
 
   const alertsChange = (e: ChangeEvent<HTMLInputElement>) => setAlertsText(e.target.value);
   const alertsSubmit = (e: ChangeEvent<HTMLFormElement>) => {
@@ -127,23 +117,15 @@ export const DebugComponent = () => {
   //     },
   //   });
   // };
-  //
-  // const updateWire = (value: number) => setGame({ type: 'UPDATE_WIRE_BONUS', value });
-  // const updateUnsoldInventory = (value: number) => setGame({ type: 'UPDATE_UNSOLD_INVENTORY_BONUS', value });
+
+  const updateWire = (value: number) => setGame({ type: 'UPDATE_WIRE_BONUS', value });
+  const updateUnsoldInventory = (value: number) => setGame({ type: 'UPDATE_UNSOLD_INVENTORY_BONUS', value });
 
   return display ? (
     <div
       className={styles.debug}
       role="complementary"
     >
-      <form onSubmit={stageSubmit}>
-        <label>stage</label>
-        <input
-          value={stageValue}
-          onChange={stageChange}
-        />
-        <button type="submit">Add</button>
-      </form>
       <form onSubmit={alertsSubmit}>
         <label>alerts</label>
         <input
@@ -235,96 +217,96 @@ export const DebugComponent = () => {
       {/*  />*/}
       {/*  <button type="submit">Add</button>*/}
       {/*</form>*/}
-      {/*<form>*/}
-      {/*  <label>wirebonus</label>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateWire(1e2)}*/}
-      {/*  >*/}
-      {/*    1e2*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateWire(1e3)}*/}
-      {/*  >*/}
-      {/*    1e3*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateWire(1e4)}*/}
-      {/*  >*/}
-      {/*    1e4*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateWire(1e6)}*/}
-      {/*  >*/}
-      {/*    1e6*/}
-      {/*  </button>*/}
-      {/*</form>*/}
-      {/*<form>*/}
-      {/*  <label>unsoldInventorybonus</label>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateUnsoldInventory(1)}*/}
-      {/*  >*/}
-      {/*    1*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateUnsoldInventory(2)}*/}
-      {/*  >*/}
-      {/*    2*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateUnsoldInventory(3)}*/}
-      {/*  >*/}
-      {/*    3*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateUnsoldInventory(4)}*/}
-      {/*  >*/}
-      {/*    4*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateUnsoldInventory(5)}*/}
-      {/*  >*/}
-      {/*    5*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateUnsoldInventory(6)}*/}
-      {/*  >*/}
-      {/*    6*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateUnsoldInventory(7)}*/}
-      {/*  >*/}
-      {/*    7*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateUnsoldInventory(8)}*/}
-      {/*  >*/}
-      {/*    8*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateUnsoldInventory(9)}*/}
-      {/*  >*/}
-      {/*    9*/}
-      {/*  </button>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={() => updateUnsoldInventory(10)}*/}
-      {/*  >*/}
-      {/*    10*/}
-      {/*  </button>*/}
-      {/*</form>*/}
+      <form>
+        <label>wirebonus</label>
+        <button
+          type="button"
+          onClick={() => updateWire(1e2)}
+        >
+          1e2
+        </button>
+        <button
+          type="button"
+          onClick={() => updateWire(1e3)}
+        >
+          1e3
+        </button>
+        <button
+          type="button"
+          onClick={() => updateWire(1e4)}
+        >
+          1e4
+        </button>
+        <button
+          type="button"
+          onClick={() => updateWire(1e6)}
+        >
+          1e6
+        </button>
+      </form>
+      <form>
+        <label>unsoldInventorybonus</label>
+        <button
+          type="button"
+          onClick={() => updateUnsoldInventory(1)}
+        >
+          1
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsoldInventory(2)}
+        >
+          2
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsoldInventory(3)}
+        >
+          3
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsoldInventory(4)}
+        >
+          4
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsoldInventory(5)}
+        >
+          5
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsoldInventory(6)}
+        >
+          6
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsoldInventory(7)}
+        >
+          7
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsoldInventory(8)}
+        >
+          8
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsoldInventory(9)}
+        >
+          9
+        </button>
+        <button
+          type="button"
+          onClick={() => updateUnsoldInventory(10)}
+        >
+          10
+        </button>
+      </form>
     </div>
   ) : null;
 };

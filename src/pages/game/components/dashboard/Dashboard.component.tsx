@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useInterval } from '@/src/generic/hooks/useInterval.ts';
 import { useGameDispatch } from '@/src/pages/game/useGame.ts';
+import { TimeComponent } from '@/src/pages/game/components/dashboard/time/Time.component.tsx';
 import { PaperclipComponent } from '@/src/pages/game/components/dashboard/paperclip/Paperclip.component.tsx';
 import { CardsComponent } from '@/src/generic/common/components/cards/Cards.component.tsx';
 import { ManufacturingComponent } from '@/src/pages/game/components/dashboard/manufacturing/Manufacturing.component.tsx';
@@ -26,6 +27,7 @@ export const DashboardComponent = () => {
       className={styles.dashboard}
       role="article"
     >
+      <TimeComponent />
       <PaperclipComponent />
       <CardsComponent>
         <ManufacturingComponent />

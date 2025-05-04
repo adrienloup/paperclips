@@ -7,6 +7,7 @@ import { GameProvider } from '@/src/pages/game/Game.provider.tsx';
 import { MenuProvider } from '@/src/generic/common/components/menu/Menu.provider.tsx';
 import { NoticesProvider } from '@/src/pages/game/components/dashboard/notices/Notices.provider.tsx';
 import { SettingsProvider } from '@/src/generic/common/components/settings/Settings.provider.tsx';
+import { TimeProvider } from '@/src/pages/game/components/dashboard/time/Time.provider.tsx';
 
 type ProvidersType = [ComponentType<{ children: Children }>, ComponentPropsWithoutRef<ElementType>?][];
 
@@ -28,4 +29,5 @@ export const Providers: FunctionComponent<{ children: Children }> = allProviders
   [MenuProvider],
   [NoticesProvider],
   [SettingsProvider],
+  [TimeProvider],
 ]);

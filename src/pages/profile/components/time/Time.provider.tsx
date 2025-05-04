@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocalStorage } from '@/src/generic/hooks/useLocalStorage.ts';
-import { TimeContext } from '@/src/pages/game/components/dashboard/time/Time.context.ts';
+import { TimeContext } from '@/src/pages/profile/components/time/Time.context.ts';
 // import { timeState } from '@/src/pages/game/components/dashboard/time/Time.state.ts';
 // import { Time } from '@/src/pages/game/components/dashboard/time/Time.type.ts';
 import { Children } from '@/src/generic/types/Children.type.ts';

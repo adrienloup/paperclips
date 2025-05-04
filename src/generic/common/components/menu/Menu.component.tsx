@@ -12,15 +12,12 @@ export const MenuComponent = () => {
   const { t } = useTranslation();
   const [open, setOpen] = useMenu();
 
-  const handleMenu = () => setOpen(!open);
-
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && open) {
         setOpen(false);
       }
     };
-
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [open]);
@@ -38,10 +35,10 @@ export const MenuComponent = () => {
         aria-label={open ? t('common.menu.close') : t('common.menu.open')}
         aria-expanded={open}
         aria-controls="menu"
-        onClick={handleMenu}
+        onClick={() => setOpen(!open)}
       >
-        {/*<IconComponent icon={open ? 'arrow_menu_open' : 'arrow_menu_close'} />*/}
         menu
+        {/*<IconComponent icon={open ? 'menu_open' : 'menu'} />*/}
       </ButtonComponent>
       <NavigationComponent open={open} />
       <SettingsComponent open={open} />

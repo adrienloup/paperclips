@@ -26,7 +26,7 @@ export const WireComponent = () => {
   }, [game.projects]);
 
   const updateWireCost = useCallback(() => {
-    const cost = game.wireCost > 8 ? game.wireCost - 0.25 : Math.random() * 8 + 12; // 0 et 1, 0 et 8, 12 et 20
+    const cost = game.wireCost > 8 ? game.wireCost - 0.26 : Math.random() * 8 + 12; // 0 et 1, 0 et 8, 12 et 20
     setGame({ type: 'UPDATE_WIRE_COST', cost });
   }, [game.wireCost]);
 
@@ -50,12 +50,7 @@ export const WireComponent = () => {
         value={game.wire}
         notation="compact"
         label={t('game.wire')}
-        bonus={
-          <BonusComponent
-            value={game.wireBonus}
-            prefix="+"
-          />
-        }
+        bonus={<BonusComponent value={game.wireBonus} />}
       />
       <ClickerComponent
         className={styles.button}

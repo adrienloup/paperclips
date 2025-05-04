@@ -17,8 +17,11 @@ export function SettingsProvider({ children }: { children: Children }) {
   }, []);
 
   const changeClasses = useCallback((newSettings: Settings) => {
-    document.body.classList.remove(`_${settingsRef.current.universe}_3mma_0`, `_${settingsRef.current.theme}_3mma_0`);
-    document.body.classList.add(`_${newSettings.universe}_3mma_0`, `_${newSettings.theme}_3mma_0`);
+    document.body.classList.toggle('_dusk_3mma_0', newSettings.universe === 'dusk');
+    document.body.classList.toggle('_tumult_3mma_0', newSettings.universe === 'tumult');
+    document.body.classList.toggle('_cataclysm_3mma_0', newSettings.universe === 'cataclysm');
+    document.body.classList.toggle('_classic_3mma_0', newSettings.theme === 'classic');
+    document.body.classList.toggle('_clubbed-to-death_3mma_0', newSettings.theme === 'clubbed-to-death');
     document.body.classList.toggle('_dark_3mma_0', newSettings.mode === 'dark' || newSettings.mode === 'system');
     document.body.classList.toggle('_light_3mma_0', newSettings.mode === 'light');
   }, []);

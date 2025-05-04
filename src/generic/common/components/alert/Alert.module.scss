@@ -36,7 +36,7 @@
 }
 
 .text {
-  grid-column: 2;
+  grid-column: 1;
   grid-row: 1;
   display: flex;
   align-items: center;
@@ -51,7 +51,7 @@
 }
 
 .button {
-  grid-column: 1;
+  grid-column: 2;
   grid-row: 1;
   display: flex;
   align-items: center;
@@ -97,7 +97,7 @@
 
 @keyframes Appear {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
 }
 

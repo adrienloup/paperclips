@@ -7,6 +7,8 @@ export const fr: Translation = {
       notice: 'Pas de notification',
       project: 'Pas de projet du tout',
       resources: 'Pas de ressource du tout',
+      production: 'No production at all',
+      power: 'No power at all',
     },
     factory: 'Factories',
     factoryCost: 'Factory cost in paperclips',

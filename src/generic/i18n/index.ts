@@ -3,10 +3,11 @@ import { translation } from '@/src/generic/utils/translation.ts';
 import { CommonTranslation } from '@/src/generic/common/Common.translation.ts';
 import { GameTranslation } from '@/src/pages/game/Game.translation.ts';
 import { ExploreTranslation } from '@/src/pages/explore/Explore.translation.ts';
+import { ProfileTranslation } from '@/src/pages/profile/Profile.translation.ts';
 import i18n from 'i18next';
 
 i18n.use(initReactI18next).init({
-  resources: translation(CommonTranslation, GameTranslation, ExploreTranslation),
+  resources: translation(CommonTranslation, GameTranslation, ExploreTranslation, ProfileTranslation),
   fallbackLng: 'en',
   interpolation: {
     escapeValue: false,

@@ -19,18 +19,18 @@ export const NoticeComponent = ({ notice, ...props }: { notice: Notice }) => {
       {...props}
     >
       <ButtonComponent
-        className={styles.button}
-        onClick={handleDisable}
-        aria-label="Supprimer la notification"
-      >
-        {/*<IconComponent icon="close" />*/}x
-      </ButtonComponent>
-      <ButtonComponent
         className={styles.link}
         to={`/paperclips/explore/${notice.id}`}
         triggerClick={handleView}
       >
         {t(`game.notice.${notice.id}`)}
+      </ButtonComponent>
+      <ButtonComponent
+        className={styles.button}
+        onClick={handleDisable}
+        aria-label="Supprimer la notification"
+      >
+        {/*<IconComponent icon="close" />*/}x
       </ButtonComponent>
     </div>
   );

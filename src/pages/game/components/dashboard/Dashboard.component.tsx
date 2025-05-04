@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { useInterval } from '@/src/generic/hooks/useInterval.ts';
 import { useGameDispatch } from '@/src/pages/game/useGame.ts';
-import { TimeComponent } from '@/src/pages/game/components/dashboard/time/Time.component.tsx';
 import { PaperclipComponent } from '@/src/pages/game/components/dashboard/paperclip/Paperclip.component.tsx';
 import { CardsComponent } from '@/src/generic/common/components/cards/Cards.component.tsx';
 import { ManufacturingComponent } from '@/src/pages/game/components/dashboard/manufacturing/Manufacturing.component.tsx';
@@ -10,7 +9,8 @@ import { ResourcesComponent } from '@/src/pages/game/components/dashboard/resour
 import { ProjectsComponent } from '@/src/pages/game/components/dashboard/projects/Projects.component.tsx';
 import { InvestmentsComponent } from '@/src/pages/game/components/dashboard/investments/Investments.component.tsx';
 import { ProductionComponent } from '@/src/pages/game/components/dashboard/production/Production.component.tsx';
-import { NoticesComponent } from '@/src/pages/game/components/dashboard/notices/Notices.component.tsx';
+// import { NoticesComponent } from '@/src/pages/game/components/dashboard/notices/Notices.component.tsx';
+import { PowerComponent } from '@/src/pages/game/components/dashboard/power/Power.component.tsx';
 import styles from '@/src/pages/game/components/dashboard/Dashboard.module.scss';
 
 export const DashboardComponent = () => {
@@ -27,7 +27,6 @@ export const DashboardComponent = () => {
       className={styles.dashboard}
       role="article"
     >
-      <TimeComponent />
       <PaperclipComponent />
       <CardsComponent>
         <ManufacturingComponent />
@@ -36,8 +35,9 @@ export const DashboardComponent = () => {
         <ProjectsComponent />
         <InvestmentsComponent />
         <ProductionComponent />
+        <PowerComponent />
       </CardsComponent>
-      <NoticesComponent />
+      {/*<NoticesComponent />*/}
     </article>
   );
 };

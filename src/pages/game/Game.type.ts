@@ -40,6 +40,7 @@ export interface State {
     marketing: boolean;
     megaMachine: boolean;
     paperclipPerSecond: boolean;
+    production: boolean;
     resources: boolean;
     trust: boolean;
     wire: boolean;

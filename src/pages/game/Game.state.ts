@@ -12,6 +12,7 @@ export const gameState: State = {
     marketing: false,
     megaMachine: false,
     paperclipPerSecond: false,
+    production: false,
     resources: false,
     trust: true,
     wire: true,

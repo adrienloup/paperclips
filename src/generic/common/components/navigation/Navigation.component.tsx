@@ -29,6 +29,15 @@ export const NavigationComponent = ({ open }: { open: boolean }) => {
             {t('common.navigation.explore')}
           </Link>
         </li>
+        <li>
+          <Link
+            className={styles.link}
+            tabIndex={!open ? -1 : 0}
+            to={'/paperclips/profile'}
+          >
+            {t('common.navigation.profile')}
+          </Link>
+        </li>
       </ul>
     </nav>
   );

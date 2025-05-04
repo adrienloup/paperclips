@@ -1,4 +1,4 @@
-import { Time } from '@/src/pages/game/components/dashboard/time/Time.type.ts';
+import { Time } from '@/src/pages/profile/components/time/Time.type.ts';
 
 export const timeState: Time = {
   years: 0,

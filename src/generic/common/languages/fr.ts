@@ -11,6 +11,7 @@ export const fr: Translation = {
     navigation: {
       game: 'Jouer',
       explore: 'Explorer',
+      profile: 'Profil',
     },
     notice: {
       open: 'Ouvrir les notifications',

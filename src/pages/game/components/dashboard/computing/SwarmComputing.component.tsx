@@ -10,7 +10,7 @@ export const SwarmComputingComponent = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const think = Number(e.target.value);
     const work = 10 - think;
-    setGame({ type: 'UPDATE_THINKING', think, work });
+    setGame({ type: 'UPDATE_SWARM_STATUS', think, work });
     setValue(think);
   };
 

@@ -172,7 +172,7 @@ export const gameReducer = (state: State, action: Action): State => {
         paperclipPerSecond: state.paperclipPerSecond + state.unsoldInventoryBonus,
         fundsPerSecond: state.fundsPerSecond + state.unsoldInventoryBonus * state.paperclipPrice,
       };
-    case 'UPDATE_THINKING':
+    case 'UPDATE_SWARM_STATUS':
       return {
         ...state,
         think: action.think,

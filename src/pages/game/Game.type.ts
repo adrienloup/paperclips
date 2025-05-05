@@ -23,7 +23,7 @@ export type Action =
   | { type: 'SELL_UNSOLD_INVENTORY' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_PAPERCLIP' }
-  | { type: 'UPDATE_THINKING'; think: number; work: number }
+  | { type: 'UPDATE_SWARM_STATUS'; think: number; work: number }
   | { type: 'UPDATE_TRUST'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; value: number }
   | { type: 'UPDATE_MACHINE_BONUS'; value: number }

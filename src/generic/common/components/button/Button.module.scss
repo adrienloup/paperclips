@@ -11,18 +11,19 @@
 
   &.active,
   &:active {
-    box-shadow: 0 0 0 0.4rem var(--color-10);
+    box-shadow: 0 0 0 0.4rem var(--color-11);
     transition: box-shadow 50ms var(--ease-quad);
   }
 
   &:focus-visible {
-    outline: 0.25rem solid var(--color-10);
+    outline: 0.25rem solid var(--color-11);
     outline-offset: -0.25rem;
   }
 
   &:disabled {
-    background-color: var(--color-3);
+    //background-color: var(--color-3);
     pointer-events: none;
     cursor: default;
+    opacity: 0.4;
   }
 }

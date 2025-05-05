@@ -1,13 +1,10 @@
 import { useReducer } from 'react';
 import { createPortal } from 'react-dom';
-import {
-  AlertsContext,
-  AlertsDispatchContext,
-} from '@/src/generic/common/components/alerts/Alerts.context.ts';
+import { AlertsContext, AlertsDispatchContext } from '@/src/generic/common/components/alerts/Alerts.context.ts';
 import { alertsReducer } from '@/src/generic/common/components/alerts/Alerts.reducer.ts';
 import { AlertsComponent } from '@/src/generic/common/components/alerts/Alerts.component.tsx';
-import { AlertComponent } from '@/src/generic/common/components/alert/Alert.component.tsx';
-import { Alert } from '@/src/generic/common/components/alert/Alert.type.tsx';
+import { AlertComponent } from '@/src/generic/common/components/alerts/alert/Alert.component.tsx';
+import { Alert } from '@/src/generic/common/components/alerts/alert/Alert.type.tsx';
 import { Children } from '@/src/generic/types/Children.type.ts';
 
 export const AlertsProvider = ({ children }: { children: Children }) => {

@@ -4,9 +4,9 @@ import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { useNoticesDispatch } from '@/src/pages/game/components/dashboard/notices/useNotices.ts';
 import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAlerts.ts';
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
-import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
+import { DialComponent } from '@/src/generic/common/components/dials/dial/Dial.component.tsx';
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
-import styles from '@/src/generic/common/components/card/Card.module.scss';
+import styles from '@/src/generic/common/components/cards/card/Card.module.scss';
 
 export const FactoryComponent = () => {
   const { t } = useTranslation();
@@ -36,6 +36,7 @@ export const FactoryComponent = () => {
     <DialsComponent>
       <DialComponent
         value={game.factoryCost}
+        style="currency"
         notation="compact"
         label={t('game.factoryCost')}
       />

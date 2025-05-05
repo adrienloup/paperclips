@@ -1,9 +1,8 @@
 import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
-import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
+import { DialComponent } from '@/src/generic/common/components/dials/dial/Dial.component.tsx';
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
-// import { ProgressbarComponent } from '@/src/generic/common/components/progressbar/Progressbar.component.tsx';
-import styles from '@/src/generic/common/components/card/Card.module.scss';
+import styles from '@/src/generic/common/components/cards/card/Card.module.scss';
 
 export const ProcessorComponent = () => {
   const game = useGame();
@@ -17,23 +16,13 @@ export const ProcessorComponent = () => {
         notation="compact"
         label="Processors"
       />
-      {/*<ProgressbarComponent
-        className={styles.progressbar}
-        valueNow={game.processor}
-        valueMax={100}
-      />*/}
       <ClickerComponent
         className={styles.button}
         aria-label="Increase processor"
         value={1}
         prefix="+"
         suffix="processor"
-        disabled={
-          game.trust < game.memory ||
-          game.trust < game.processor ||
-          // game.swarmGifts <= game.memory + game.processor ||
-          game.processor >= 100
-        }
+        disabled={game.trust <= 0 || (game.trust >= 100 && game.gifts <= 0) || game.processor >= 100}
         onClick={() => setGame({ type: 'INCREASE_PROCESSOR' })}
       >
         +

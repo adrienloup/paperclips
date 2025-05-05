@@ -37,7 +37,8 @@
 }
 
 .disabled {
-  color: var(--color-3);
+  //color: var(--color-3);
   pointer-events: none;
   cursor: default;
+  opacity: 0.4;
 }

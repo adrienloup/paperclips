@@ -3,12 +3,12 @@ import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { useNoticesDispatch } from '@/src/pages/game/components/dashboard/notices/useNotices.ts';
 import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAlerts.ts';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
-import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
+import { CardComponent } from '@/src/generic/common/components/cards/card/Card.component.tsx';
 import { ExchangeComponent } from '@/src/pages/game/components/dashboard/investments/exchange/Exchange.component.tsx';
 import { CashComponent } from '@/src/pages/game/components/dashboard/investments/Cash.component.tsx';
 import { WalletComponent } from '@/src/pages/game/components/dashboard/investments/wallet/Wallet.component.tsx';
 import { EmptyComponent } from '@/src/generic/common/components/empty/Empty.component.tsx';
-import styles from '@/src/generic/common/components/card/Card.module.scss';
+import styles from '@/src/generic/common/components/cards/card/Card.module.scss';
 
 export const InvestmentsComponent = () => {
   const game = useGame();

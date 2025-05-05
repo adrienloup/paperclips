@@ -1,7 +1,7 @@
 import { useNotices } from '@/src/pages/game/components/dashboard/notices/useNotices.ts';
-import { NoticeComponent } from '@/src/pages/game/components/dashboard/notice/Notice.component.tsx';
+import { NoticeComponent } from '@/src/pages/game/components/dashboard/notices/notice/Notice.component.tsx';
 import { EmptyComponent } from '@/src/generic/common/components/empty/Empty.component.tsx';
-import { Notice } from '@/src/pages/game/components/dashboard/notice/Notice.type.ts';
+import { Notice } from '@/src/pages/game/components/dashboard/notices/notice/Notice.type.ts';
 import styles from '@/src/pages/game/components/dashboard/notices/Notices.module.scss';
 
 export const NoticesComponent = () => {

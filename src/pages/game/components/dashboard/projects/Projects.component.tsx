@@ -2,12 +2,12 @@ import { useCallback, useEffect } from 'react';
 import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { useNoticesDispatch } from '@/src/pages/game/components/dashboard/notices/useNotices.ts';
 import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAlerts.ts';
-import { CardComponent } from '@/src/generic/common/components/card/Card.component.tsx';
+import { CardComponent } from '@/src/generic/common/components/cards/card/Card.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
-import { ProjectComponent } from '@/src/pages/game/components/dashboard/project/Project.component.tsx';
+import { ProjectComponent } from '@/src/pages/game/components/dashboard/projects/project/Project.component.tsx';
 import { EmptyComponent } from '@/src/generic/common/components/empty/Empty.component.tsx';
-import { Project } from '@/src/pages/game/components/dashboard/project/Project.type.ts';
-import styles from '@/src/generic/common/components/card/Card.module.scss';
+import { Project } from '@/src/pages/game/components/dashboard/projects/project/Project.type.ts';
+import styles from '@/src/generic/common/components/cards/card/Card.module.scss';
 
 export const ProjectsComponent = () => {
   const game = useGame();

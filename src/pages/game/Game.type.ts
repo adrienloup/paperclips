@@ -23,6 +23,7 @@ export type Action =
   | { type: 'INCREASE_PROCESSOR' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_PAPERCLIP' }
+  | { type: 'UPDATE_THINKING'; value: number }
   | { type: 'UPDATE_TRUST'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; value: number }
   | { type: 'UPDATE_MACHINE_BONUS'; value: number }
@@ -68,7 +69,8 @@ export interface State {
   processor: number;
   projects: Projects;
   publicDemand: number;
-  swarmGifts: number;
+  gifts: number;
+  thinking: number;
   trust: number;
   unsoldInventory: number;
   unsoldInventoryBonus: number;

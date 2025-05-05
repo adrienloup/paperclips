@@ -127,6 +127,7 @@ export const gameReducer = (state: State, action: Action): State => {
         ...state,
         memory: Math.min(state.memory + 1, 100),
         trust: Math.max(0, state.trust - 1),
+        operationMax: (state.memory * 1e6) / 100,
       };
     case 'INCREASE_PROCESSOR':
       return {
@@ -146,13 +147,13 @@ export const gameReducer = (state: State, action: Action): State => {
               : 0;
       const paperclipPS = allMachinePS * state.unsoldInventoryBonus;
       const fundsPS = paperclipPS * state.paperclipPrice;
-      const operationMaxPS = (state.memory * 1e6) / 100;
-      const operationPS = Math.min(operationMaxPS, state.operation + 10 * state.processor);
-      const creativityPS = Math.min(100, operationPS === operationMaxPS ? state.memory : state.creativity);
+      // const operationMaxPS = (state.memory * 1e6) / 100;
+      const operationPS = Math.min(state.operationMax, state.operation + 10 * state.processor);
+      const creativityPS = Math.min(100, operationPS === state.operationMax ? state.memory : state.creativity);
       return {
         ...state,
         operation: operationPS,
-        operationMax: operationMaxPS,
+        // operationMax: operationMaxPS,
         creativity: creativityPS,
         paperclipPerSecond: paperclipPS,
         fundsPerSecond: fundsPS,
@@ -171,11 +172,16 @@ export const gameReducer = (state: State, action: Action): State => {
         paperclipPerSecond: state.paperclipPerSecond + state.unsoldInventoryBonus,
         fundsPerSecond: state.fundsPerSecond + state.unsoldInventoryBonus * state.paperclipPrice,
       };
+    case 'UPDATE_THINKING':
+      return {
+        ...state,
+        thinking: action.value,
+      };
     case 'UPDATE_TRUST':
       if (state.trust > 100) return state;
       return {
         ...state,
-        trust: Math.max(2, Math.min(action.value, 100)),
+        trust: Math.max(0, Math.min(action.value, 100)),
       };
     case 'UPDATE_WIRE_BONUS':
       return {

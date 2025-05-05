@@ -1,6 +1,11 @@
 import { createContext } from 'react';
-// import { timeState } from '@/src/pages/game/components/dashboard/time/Time.state.ts';
-// import { Time } from '@/src/pages/game/components/dashboard/time/Time.type.ts';
+import { timeState } from '@/src/pages/profile/components/time/Time.state.ts';
 
-export const TimeContext = createContext<number>(0);
-// export const TimeContext = createContext<Time>(timeState);
+export const TimeContext = createContext<{
+  years: number;
+  months: number;
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}>(timeState);

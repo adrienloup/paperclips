@@ -1,10 +1,10 @@
 import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { useExchange } from '@/src/pages/game/components/dashboard/investments/exchange/useExchange.ts';
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
-import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
+import { DialComponent } from '@/src/generic/common/components/dials/dial/Dial.component.tsx';
 import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicker.component.tsx';
 import { TokenSymbol } from '@/src/pages/game/components/dashboard/investments/token/Token.type.ts';
-import styles from '@/src/generic/common/components/card/Card.module.scss';
+import styles from '@/src/generic/common/components/cards/card/Card.module.scss';
 
 export const WalletComponent = () => {
   const game = useGame();

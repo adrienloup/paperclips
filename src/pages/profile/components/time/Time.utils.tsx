@@ -5,7 +5,7 @@ const MS_IN_DAY = MS_IN_HOUR * 24;
 const MS_IN_MONTH = MS_IN_DAY * 30.44;
 const MS_IN_YEAR = MS_IN_DAY * 365.25;
 
-export function formatDuration(duration: number) {
+export function format(duration: number) {
   const years = Math.floor(duration / MS_IN_YEAR);
   duration -= years * MS_IN_YEAR;
 

@@ -3,8 +3,8 @@ import { useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
 import { NumberComponent } from '@/src/generic/common/components/number/Number.component.tsx';
-import { Project } from '@/src/pages/game/components/dashboard/project/Project.type.ts';
-import styles from '@/src/pages/game/components/dashboard/project/Project.module.scss';
+import { Project } from '@/src/pages/game/components/dashboard/projects/project/Project.type.ts';
+import styles from '@/src/pages/game/components/dashboard/projects/project/Project.module.scss';
 
 export const ProjectComponent = ({ project }: { project: Project }) => {
   const { t } = useTranslation();
@@ -20,24 +20,18 @@ export const ProjectComponent = ({ project }: { project: Project }) => {
       tabIndex={!project.unlocked ? -1 : 0}
       onClick={() => onClick(project.id, parseInt(t(`game.project.${project.id}.cost`)))}
     >
-      {t(`game.project.${project.id}.name`)}{' '}
       <Trans
-        i18nKey={`game.project.${project.id}.cost`}
+        i18nKey={`game.project.${project.id}.text`}
         components={{
-          valueCost: (
+          effect: (
             <NumberComponent
-              value={parseInt(t(`game.project.${project.id}.valueCost`))}
+              value={parseInt(t(`game.project.${project.id}.effect`))}
               notation="compact"
             />
           ),
-        }}
-      />{' '}
-      <Trans
-        i18nKey={`game.project.${project.id}.effect`}
-        components={{
-          valueEffect: (
+          cost: (
             <NumberComponent
-              value={parseInt(t(`game.project.${project.id}.valueEffect`))}
+              value={parseInt(t(`game.project.${project.id}.cost`))}
               notation="compact"
             />
           ),

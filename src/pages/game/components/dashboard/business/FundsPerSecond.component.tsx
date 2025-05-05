@@ -2,7 +2,7 @@ import { useCallback, useEffect } from 'react';
 import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAlerts.ts';
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
-import { DialComponent } from '@/src/generic/common/components/dial/Dial.component.tsx';
+import { DialComponent } from '@/src/generic/common/components/dials/dial/Dial.component.tsx';
 
 export const FundsPerSecondComponent = () => {
   const game = useGame();

@@ -1,19 +1,25 @@
 .alert {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto 1fr;
   overflow: hidden;
-  max-width: 20rem;
+  width: 20rem;
   color: var(--color-theme-1);
   pointer-events: initial;
 
   &.in {
-    animation: Appear 400ms var(--ease-expo);
+    animation: Appear 340ms var(--ease-expo);
     //will-change: opacity, transform;
   }
 
   &.out {
-    transition: opacity 200ms var(--ease-expo);
+    //transition-property: opacity, transform;
+    //transition-duration: 400ms;
+    //transition-timing-function: var(--ease-expo);
+    //transform: translateX(100%);
+    transition-property: width, transform, opacity;
+    transition-duration: 340ms, 340ms, 140ms;
+    transition-delay: 0ms, 0ms, 200ms;
+    transition-timing-function: var(--ease-expo);
+    width: 10rem;
+    transform: translateX(-4rem);
     opacity: 0;
     //will-change: opacity;
   }
@@ -35,13 +41,24 @@
   }
 }
 
+.inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  width: 20rem;
+
+  .out & {
+    transition: transform 340ms var(--ease-expo);
+    transform: translateX(-4rem);
+  }
+}
+
 .text {
   grid-column: 1;
   grid-row: 1;
   display: flex;
   align-items: center;
   padding: var(--spacing-xs);
-  line-height: 1.2;
   font-size: var(--font-size-xs);
   color: var(--color-1);
 
@@ -63,10 +80,10 @@
 
   &:active {
     box-shadow:
-      inset 0 0.4rem var(--color-10),
-      inset 0 -0.4rem var(--color-10),
-      inset 0.4rem 0 var(--color-10),
-      inset -0.4rem 0 var(--color-10) !important;
+      inset 0 0.4rem var(--color-11),
+      inset 0 -0.4rem var(--color-11),
+      inset 0.4rem 0 var(--color-11),
+      inset -0.4rem 0 var(--color-11);
   }
 
   .info & {

@@ -11,7 +11,7 @@ export const DebugComponent = () => {
   const location = useLocation();
   const setAlerts = useAlertsDispatch();
   // const setNotices = useNoticesDispatch();
-  const [alertsText, setAlertsText] = useState('Alert1');
+  const [alertsText, setAlertsText] = useState('Rev Tracker automatically calculates average');
   // const [noticesId, setNoticesId] = useState('game');
   const [paperclip, setPaperclip] = useState('0');
   const [funds, setFunds] = useState('0');

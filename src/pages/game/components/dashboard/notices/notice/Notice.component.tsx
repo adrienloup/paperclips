@@ -3,8 +3,8 @@ import { useNoticesDispatch } from '@/src/pages/game/components/dashboard/notice
 import { classNames } from '@/src/generic/utils/classNames.ts';
 import { ButtonComponent } from '@/src/generic/common/components/button/Button.component.tsx';
 // import { IconComponent } from '@/src/generic/common/components/icon/Icon.component.tsx';
-import { Notice } from '@/src/pages/game/components/dashboard/notice/Notice.type.ts';
-import styles from '@/src/pages/game/components/dashboard/notice/Notice.module.scss';
+import { Notice } from '@/src/pages/game/components/dashboard/notices/notice/Notice.type.ts';
+import styles from '@/src/pages/game/components/dashboard/notices/notice/Notice.module.scss';
 
 export const NoticeComponent = ({ notice, ...props }: { notice: Notice }) => {
   const { t } = useTranslation();

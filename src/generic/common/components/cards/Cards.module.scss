@@ -8,19 +8,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto auto auto;
+    gap: var(--spacing-m);
+    padding: 0 var(--spacing-m);
   }
 
   @include tablet-landscape {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto;
-    gap: var(--spacing-s);
-    padding: 0 var(--spacing-s);
   }
 
   @include desktop {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto auto auto;
-    gap: var(--spacing-m);
-    padding: 0 var(--spacing-m);
   }
 }

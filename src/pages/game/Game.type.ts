@@ -6,24 +6,24 @@ export type Action =
   | { type: 'BUY_MACHINE'; cost: number }
   | { type: 'BUY_MEGAMACHINE'; cost: number }
   | { type: 'BUY_FACTORY'; cost: number }
+  | { type: 'BUY_MARKETING' }
   | { type: 'UPDATE_FEATURE'; feature: string; value: boolean }
   | { type: 'UPDATE_WIRE_COST'; cost: number }
   | { type: 'ENABLE_PROJECT'; id: string }
   | { type: 'UNLOCK_PROJECT'; id: string }
   | { type: 'DISABLE_PROJECT'; id: string; cost: number }
-  | { type: 'SELL_UNSOLD_INVENTORY' }
-  | { type: 'BUY_MARKETING' }
-  | { type: 'INCREASE_PAPERCLIP_COST' }
-  | { type: 'DECREASE_PAPERCLIP_COST' }
+  | { type: 'INCREASE_PAPERCLIP_PRICE' }
+  | { type: 'DECREASE_PAPERCLIP_PRICE' }
   | { type: 'INCREASE_CASH' }
   | { type: 'DECREASE_CASH' }
   | { type: 'INCREASE_WALLET'; symbol: string; price: number }
   | { type: 'DECREASE_WALLET'; symbol: string; price: number }
   | { type: 'INCREASE_MEMORY' }
   | { type: 'INCREASE_PROCESSOR' }
+  | { type: 'SELL_UNSOLD_INVENTORY' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_PAPERCLIP' }
-  | { type: 'UPDATE_THINKING'; value: number }
+  | { type: 'UPDATE_THINKING'; think: number; work: number }
   | { type: 'UPDATE_TRUST'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; value: number }
   | { type: 'UPDATE_MACHINE_BONUS'; value: number }
@@ -69,8 +69,8 @@ export interface State {
   processor: number;
   projects: Projects;
   publicDemand: number;
-  gifts: number;
-  thinking: number;
+  swarmGifts: number;
+  think: number;
   trust: number;
   unsoldInventory: number;
   unsoldInventoryBonus: number;
@@ -80,4 +80,5 @@ export interface State {
   wireCost: number;
   wireDrone: number;
   wireDroneCost: number;
+  work: number;
 }

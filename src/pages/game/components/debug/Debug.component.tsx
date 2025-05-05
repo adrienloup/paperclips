@@ -18,6 +18,7 @@ export const DebugComponent = () => {
   const [wire, setWire] = useState('0');
   const [trust, setTrust] = useState('0');
   const [operation, setOperation] = useState('0');
+  const [machine, setMachine] = useState('0');
   // const [creativity, setCreativity] = useState('0');
 
   const display = useMemo(() => {
@@ -105,7 +106,7 @@ export const DebugComponent = () => {
       },
     });
   };
-  //
+
   // const creativityChange = (e: ChangeEvent<HTMLInputElement>) => setCreativity(e.target.value);
   // const creativitySubmit = (e: ChangeEvent<HTMLFormElement>) => {
   //   e.preventDefault();
@@ -117,6 +118,18 @@ export const DebugComponent = () => {
   //     },
   //   });
   // };
+
+  const machineChange = (e: ChangeEvent<HTMLInputElement>) => setMachine(e.target.value);
+  const machineSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE',
+      state: {
+        ...game,
+        machine: parseInt(machine),
+      },
+    });
+  };
 
   const updateWire = (value: number) => setGame({ type: 'UPDATE_WIRE_BONUS', value });
 
@@ -209,6 +222,14 @@ export const DebugComponent = () => {
         <input
           value={operation}
           onChange={operationChange}
+        />
+        <button type="submit">Add</button>
+      </form>
+      <form onSubmit={machineSubmit}>
+        <label>machines</label>
+        <input
+          value={machine}
+          onChange={machineChange}
         />
         <button type="submit">Add</button>
       </form>

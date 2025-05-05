@@ -22,7 +22,7 @@ export const ProcessorComponent = () => {
         value={1}
         prefix="+"
         suffix="processor"
-        disabled={game.trust <= 0 || (game.trust >= 100 && game.gifts <= 0) || game.processor >= 100}
+        disabled={game.trust <= 0 || game.processor >= 100}
         onClick={() => setGame({ type: 'INCREASE_PROCESSOR' })}
       >
         +

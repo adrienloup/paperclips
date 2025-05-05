@@ -19,7 +19,7 @@
       -0.1rem 0.1rem var(--color-theme-4);
   }
 
-  @include desktop {
+  @include mobile-landscape {
     padding: 0 var(--spacing-m);
   }
 }

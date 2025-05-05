@@ -19,7 +19,7 @@
     transition-delay: 0ms, 0ms, 200ms;
     transition-timing-function: var(--ease-expo);
     width: 10rem;
-    transform: translateX(-4rem);
+    transform: translateX(-5rem);
     opacity: 0;
     //will-change: opacity;
   }
@@ -49,7 +49,7 @@
 
   .out & {
     transition: transform 340ms var(--ease-expo);
-    transform: translateX(-4rem);
+    transform: translateX(-5rem);
   }
 }
 

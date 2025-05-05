@@ -5,13 +5,13 @@ import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAle
 import { CardComponent } from '@/src/generic/common/components/cards/card/Card.component.tsx';
 import { TitleComponent } from '@/src/generic/common/components/title/Title.component.tsx';
 import { TrustComponent } from '@/src/pages/game/components/dashboard/resources/Trust.component.tsx';
-import { GiftsComponent } from '@/src/pages/game/components/dashboard/resources/GiftsComponent.tsx';
+import { SwarmGiftsComponent } from '@/src/pages/game/components/dashboard/resources/SwarmGifts.component.tsx';
 import { MemoryComponent } from '@/src/pages/game/components/dashboard/resources/Memory.component.tsx';
 import { ProcessorComponent } from '@/src/pages/game/components/dashboard/resources/Processor.component.tsx';
 import { OperationComponent } from '@/src/pages/game/components/dashboard/resources/Operation.component.tsx';
 import { CreativityComponent } from '@/src/pages/game/components/dashboard/resources/Creativity.component.tsx';
-import { ThinkingComponent } from '@/src/pages/game/components/dashboard/resources/thinking/Thinking.component.tsx';
 import { EmptyComponent } from '@/src/generic/common/components/empty/Empty.component.tsx';
+import { SwarmComputingComponent } from '@/src/pages/game/components/dashboard/resources/SwarmComputing.component.tsx';
 import styles from '@/src/generic/common/components/cards/card/Card.module.scss';
 
 export const ResourcesComponent = () => {
@@ -43,12 +43,12 @@ export const ResourcesComponent = () => {
       {game.feature.resources ? (
         <>
           <TrustComponent />
-          <GiftsComponent />
+          <SwarmGiftsComponent />
           <MemoryComponent />
           <ProcessorComponent />
           <OperationComponent />
           <CreativityComponent />
-          <ThinkingComponent />
+          <SwarmComputingComponent />
         </>
       ) : (
         <EmptyComponent empty="game.empty.resources" />

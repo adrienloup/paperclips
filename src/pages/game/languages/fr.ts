@@ -37,30 +37,30 @@ export const fr: Translation = {
     paperclipPrice: 'Prix de vente',
     project: {
       revTracker: {
-        text: 'Rev Tracker Automatically calculates average funds per second (<cost />\u00a0ops)',
+        text: 'Rev Tracker Automatically calculates average funds per second (<cost />\u00a0crea)',
         cost: 500,
       },
       begForMoreWire: {
-        text: 'Beg for More Wire Increase the purchase of wire by <effect /> (<cost />\u00a0ops)',
+        text: 'Beg for More Wire Increase the purchase of wire by <effect /> (<cost />\u00a0crea)',
         effect: 1000,
         cost: 250,
       },
       improvedWireExtrusion: {
-        text: 'Improved Wire Extrusion Increase the purchase of wire by <effect /> (<cost />\u00a0ops)',
+        text: 'Improved Wire Extrusion Increase the purchase of wire by <effect /> (<cost />\u00a0crea)',
         effect: 10000,
         cost: 1700,
       },
       optimizedWireframe: {
-        text: 'Optimized Wireframe Increase the purchase of wire by <effect /> (<cost />\u00a0ops)',
+        text: 'Optimized Wireframe Increase the purchase of wire by <effect /> (<cost />\u00a0crea)',
         effect: 100000,
         cost: 3500,
       },
       wireBuyer: {
-        text: 'Wire Buyer Automatically purchases wire (<cost />\u00a0ops)',
+        text: 'Wire Buyer Automatically purchases wire (<cost />\u00a0crea)',
         cost: 7000,
       },
       algorithmicTrading: {
-        text: 'Algorithmic Trading Develop an investment engine (<cost />\u00a0ops)',
+        text: 'Algorithmic Trading Develop an investment engine (<cost />\u00a0crea)',
         cost: 10000,
       },
       newSlogan: {
@@ -72,24 +72,24 @@ export const fr: Translation = {
         cost: 45,
       },
       hypnoHarmonics: {
-        text: 'Hypno Harmonics Inventory x4 to influence consumer and +1 Trust (<cost />\u00a0ops)',
+        text: 'Hypno Harmonics Inventory x4 to influence consumer and +1 Trust (<cost />\u00a0crea)',
         cost: 7500,
       },
       hostileTakeover: {
-        text: 'Hostile Takeover Increases inventory x5 and +1 Trust (<cost />\u00a0money)',
+        text: 'Hostile Takeover Increases inventory x5 and +1 Trust (<cost />\u00a0crea)',
         cost: 1000000,
       },
       fullMonopoly: {
-        text: 'Full Monopoly Increases inventory x6 and +2 Trust (<cost />\u00a0money)',
+        text: 'Full Monopoly Increases inventory x6 and +2 Trust (<cost />\u00a0crea)',
         cost: 10000000,
       },
       machinesImprovement: {
-        text: 'Machines Improvement Increases machine performance x2 and +2 Trust (<cost />\u00a0ops)',
+        text: 'Machines Improvement Increases machine performance x2 and +2 Trust (<cost />\u00a0crea)',
         cost: 750,
       },
       evenBetterMachines: {
-        text: 'Even Better Machines Increases machine performance x3 and +2 Trust (<cost />\u00a0ops)',
-        valueCost: 2500,
+        text: 'Even Better Machines Increases machine performance x3 and +2 Trust (<cost />\u00a0crea)',
+        cost: 2500,
       },
     },
     publicDemand: 'Demande du public',

@@ -45,12 +45,12 @@ export const WireComponent = () => {
         style="currency"
         notation="compact"
         label={t('game.wireCost')}
+        bonus={<BonusComponent value={game.wireBonus} />}
       />
       <DialComponent
         value={game.wire}
         notation="compact"
         label={t('game.wire')}
-        bonus={<BonusComponent value={game.wireBonus} />}
       />
       <ClickerComponent
         className={styles.button}

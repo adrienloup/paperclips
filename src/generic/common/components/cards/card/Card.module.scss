@@ -156,3 +156,12 @@
     margin-top: var(--spacing-xs);
   }
 }
+
+.range {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-xs);
+  text-transform: uppercase;
+  font-size: var(--font-size-s);
+}

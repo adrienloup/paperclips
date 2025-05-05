@@ -35,7 +35,7 @@ export const PaperclipPriceComponent = () => {
           prefix="-"
           suffix="price"
           disabled={game.paperclipPriceRef === 0.1}
-          onClick={() => setGame({ type: 'DECREASE_PAPERCLIP_COST' })}
+          onClick={() => setGame({ type: 'DECREASE_PAPERCLIP_PRICE' })}
         >
           -
         </ClickerComponent>
@@ -46,7 +46,7 @@ export const PaperclipPriceComponent = () => {
           prefix="+"
           suffix="price"
           disabled={game.paperclipPriceRef === 1}
-          onClick={() => setGame({ type: 'INCREASE_PAPERCLIP_COST' })}
+          onClick={() => setGame({ type: 'INCREASE_PAPERCLIP_PRICE' })}
         >
           +
         </ClickerComponent>

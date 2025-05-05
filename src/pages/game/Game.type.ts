@@ -23,7 +23,7 @@ export type Action =
   | { type: 'SELL_UNSOLD_INVENTORY' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_PAPERCLIP' }
-  | { type: 'UPDATE_SWARM_STATUS'; think: number; work: number }
+  | { type: 'UPDATE_SWARM_STATUS'; status: number }
   | { type: 'UPDATE_TRUST'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; value: number }
   | { type: 'UPDATE_MACHINE_BONUS'; value: number }
@@ -70,7 +70,7 @@ export interface State {
   projects: Projects;
   publicDemand: number;
   swarmGifts: number;
-  think: number;
+  swarmStatus: number;
   trust: number;
   unsoldInventory: number;
   unsoldInventoryBonus: number;
@@ -80,5 +80,4 @@ export interface State {
   wireCost: number;
   wireDrone: number;
   wireDroneCost: number;
-  work: number;
 }

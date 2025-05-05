@@ -106,7 +106,7 @@ export const gameState: State = {
   ],
   publicDemand: 0.5,
   swarmGifts: 0,
-  think: 5,
+  swarmStatus: 5,
   trust: 2,
   unsoldInventory: 0,
   unsoldInventoryBonus: 1,
@@ -120,5 +120,4 @@ export const gameState: State = {
   wireCost: 20,
   wireDrone: 0,
   wireDroneCost: 1e4,
-  work: 5,
 };

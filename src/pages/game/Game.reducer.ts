@@ -175,8 +175,7 @@ export const gameReducer = (state: State, action: Action): State => {
     case 'UPDATE_SWARM_STATUS':
       return {
         ...state,
-        think: action.think,
-        work: action.work,
+        swarmStatus: action.status,
       };
     case 'UPDATE_TRUST':
       if (state.trust > 100) return state;

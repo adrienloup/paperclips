@@ -1,22 +1,21 @@
 import { ChangeEvent, useState } from 'react';
-import { useGameDispatch } from '@/src/pages/game/useGame.ts';
+import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
 import styles from '@/src/generic/common/components/cards/card/Card.module.scss';
 
 export const SwarmComputingComponent = () => {
+  const game = useGame();
   const setGame = useGameDispatch();
-  const [value, setValue] = useState<number>(5);
+  const [value, setValue] = useState<number>(game.swarmStatus);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const think = Number(e.target.value);
-    const work = 10 - think;
-    setGame({ type: 'UPDATE_SWARM_STATUS', think, work });
-    setValue(think);
+    const status = Number(e.target.value);
+    setGame({ type: 'UPDATE_SWARM_STATUS', status });
+    setValue(status);
   };
 
   return (
     <DialsComponent>
-      <div className={styles.subtitle}>Swarm Computing</div>
       <div className={styles.range}>
         <span>Work</span>
         <input

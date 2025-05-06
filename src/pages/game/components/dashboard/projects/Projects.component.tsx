@@ -81,20 +81,24 @@ export const ProjectsComponent = () => {
   }, [game.projects, game.operations]);
 
   const enableHypnoticDrones = useCallback(() => {
+    const hypnoticHarmonics = game.projects.find((project) => project.id === 'hypnoticHarmonics');
     const hypnoticDrones = game.projects.find((project) => project.id === 'hypnoticDrones');
-    if (hypnoticDrones?.unlocked && !hypnoticDrones?.enabled && !hypnoticDrones?.enabled) {
+    if (hypnoticHarmonics?.unlocked && !hypnoticHarmonics?.enabled && !hypnoticDrones?.enabled) {
+      setGame({ type: 'UPDATE_MARKETING_BONUS', value: 5 });
+      setGame({ type: 'ENABLE_PROJECT', id: 'hypnoticDrones' });
       setGame({ type: 'UPDATE_FEATURE', feature: 'hypnoticHarmonics', value: false });
-      setGame({ type: 'UPDATE_FEATURE', feature: 'hypnoticDrones', value: true });
       setAlerts({ type: 'ADD_ALERT', alert: { id: 'hypnoticDrones', text: 'hypnoticDrones alert' } });
     }
-  }, [game.projects, game.feature.investments]);
+  }, [game.projects]);
 
-  const unlockHypnoticDrones = useCallback(() => {
+  const enableSwarmGifts = useCallback(() => {
     const hypnoticDrones = game.projects.find((project) => project.id === 'hypnoticDrones');
-    if (game.operations >= 7500 && !hypnoticDrones?.unlocked && hypnoticDrones?.enabled) {
-      setGame({ type: 'UNLOCK_PROJECT', id: 'hypnoticDrones' });
+    if (hypnoticDrones?.unlocked && !hypnoticDrones?.enabled && !game.feature.swarmGifts && game.feature.trust) {
+      setGame({ type: 'UPDATE_FEATURE', feature: 'trust', value: false });
+      setGame({ type: 'UPDATE_FEATURE', feature: 'swarmGifts', value: true });
+      setAlerts({ type: 'ADD_ALERT', alert: { id: 'swarmGifts', text: 'swarmGifts alert' } });
     }
-  }, [game.projects, game.operations]);
+  }, [game.projects, game.feature.swarmGifts, game.feature.trust]);
 
   useEffect(() => {
     enableRevTracker();
@@ -129,12 +133,16 @@ export const ProjectsComponent = () => {
   }, [unlockHypnoticHarmonics]);
 
   useEffect(() => {
+    unlockHypnoticHarmonics();
+  }, [unlockHypnoticHarmonics]);
+
+  useEffect(() => {
     enableHypnoticDrones();
   }, [enableHypnoticDrones]);
 
   useEffect(() => {
-    unlockHypnoticDrones();
-  }, [unlockHypnoticDrones]);
+    enableSwarmGifts();
+  }, [enableSwarmGifts]);
 
   return (
     <CardComponent className={styles.projects}>

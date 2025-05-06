@@ -23,7 +23,7 @@ export const ProductionComponent = () => {
           <WireDroneComponent />
         </>
       ) : (
-        <EmptyComponent empty="game.empty.production" />
+        <EmptyComponent empty="game.empty" />
       )}
     </CardComponent>
   );

@@ -49,7 +49,8 @@ body {
 }
 
 input[type='range'] {
-  flex: 1;
+  width: 100%;
+  margin-top: var(--spacing-xs);
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
@@ -69,7 +70,7 @@ input[type='range']::-webkit-slider-runnable-track {
 input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  margin-top: -0.73rem;
+  margin-top: -0.75rem;
   background-color: var(--color-theme-3);
   height: 2rem;
   width: 1rem;

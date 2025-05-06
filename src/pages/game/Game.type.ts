@@ -19,14 +19,15 @@ export type Action =
   | { type: 'INCREASE_WALLET'; symbol: string; price: number }
   | { type: 'DECREASE_WALLET'; symbol: string; price: number }
   | { type: 'INCREASE_MEMORY' }
-  | { type: 'INCREASE_PROCESSOR' }
+  | { type: 'INCREASE_PROCESSORS' }
   | { type: 'SELL_UNSOLD_INVENTORY' }
   | { type: 'UPDATE_PER_SECOND' }
   | { type: 'UPDATE_PAPERCLIP' }
-  | { type: 'UPDATE_SWARM_STATUS'; status: number }
+  | { type: 'UPDATE_SWARM_STRATEGY'; value: number }
   | { type: 'UPDATE_TRUST'; value: number }
   | { type: 'UPDATE_WIRE_BONUS'; value: number }
   | { type: 'UPDATE_MACHINE_BONUS'; value: number }
+  | { type: 'UPDATE_MARKETING_BONUS'; value: number }
   | { type: 'UPDATE_UNSOLD_INVENTORY_BONUS'; value: number }
   | { type: 'INITIALIZE'; state: State };
 
@@ -44,6 +45,8 @@ export interface State {
     megaMachine: boolean;
     production: boolean;
     resources: boolean;
+    swarmGifts: boolean;
+    swarmStrategy: boolean;
     trust: boolean;
     wire: boolean;
   };
@@ -56,21 +59,22 @@ export interface State {
   machineCost: number;
   machineRef: number;
   marketing: number;
+  marketingBonus: number;
   marketingCost: number;
   megaMachine: number;
   megaMachineCost: number;
   memory: number;
-  operation: number;
-  operationMax: number;
+  operations: number;
+  operationsMax: number;
   paperclip: number;
   paperclipPrice: number;
   paperclipPriceRef: number;
   paperclipPerSecond: number;
-  processor: number;
+  processors: number;
   projects: Projects;
   publicDemand: number;
   swarmGifts: number;
-  swarmStatus: number;
+  swarmStrategy: number;
   trust: number;
   unsoldInventory: number;
   unsoldInventoryBonus: number;

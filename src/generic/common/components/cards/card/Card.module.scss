@@ -113,7 +113,7 @@
   padding-bottom: 0.25rem;
   text-transform: uppercase;
   font-size: var(--font-size-s);
-  box-shadow: 0 0.2rem var(--color-theme-2);
+  box-shadow: 0 0.3rem var(--color-theme-2);
 
   :global(._clubbed-to-death_3mma_0) & {
     box-shadow:
@@ -145,12 +145,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 var(--spacing-xs);
-  //width: 2rem;
-  //height: 2rem;
-  //margin-left: var(--spacing-xs);
+  width: 2.5rem;
+  height: 2.5rem;
   background-color: var(--color-theme-2);
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-l);
   color: var(--color-theme-6);
 
   &.label {
@@ -162,21 +160,4 @@
   &:focus-visible {
     outline-offset: -0.05rem;
   }
-}
-
-.progressbar {
-  margin-left: var(--spacing-xs);
-
-  & + .button {
-    margin-top: var(--spacing-xs);
-  }
-}
-
-.range {
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-  gap: var(--spacing-xs);
-  text-transform: uppercase;
-  font-size: var(--font-size-s);
 }

@@ -10,13 +10,9 @@
   }
 
   &.out {
-    //transition-property: opacity, transform;
-    //transition-duration: 400ms;
-    //transition-timing-function: var(--ease-expo);
-    //transform: translateX(100%);
     transition-property: width, transform, opacity;
-    transition-duration: 340ms, 340ms, 140ms;
-    transition-delay: 0ms, 0ms, 200ms;
+    transition-duration: 300ms, 300ms, 200ms;
+    transition-delay: 0ms, 0ms, 100ms;
     transition-timing-function: var(--ease-expo);
     width: 10rem;
     transform: translateX(-5rem);
@@ -46,9 +42,10 @@
   grid-template-columns: 1fr auto;
   grid-template-rows: auto 1fr;
   width: 20rem;
+  white-space: collapse;
 
   .out & {
-    transition: transform 340ms var(--ease-expo);
+    transition: transform 300ms var(--ease-expo);
     transform: translateX(-5rem);
   }
 }

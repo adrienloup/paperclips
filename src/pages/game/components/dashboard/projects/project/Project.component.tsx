@@ -18,7 +18,8 @@ export const ProjectComponent = ({ project }: { project: Project }) => {
     <ButtonComponent
       className={classNames([styles.project, !project.unlocked ? styles.locked : ''])}
       tabIndex={!project.unlocked ? -1 : 0}
-      onClick={() => onClick(project.id, parseInt(t(`game.project.${project.id}.cost`)))}
+      onClick={() => onClick(project.id, project.cost)}
+      // onClick={() => onClick(project.id, parseInt(t(`game.project.${project.id}.cost`)))}
     >
       <Trans
         i18nKey={`game.project.${project.id}.text`}
@@ -31,7 +32,8 @@ export const ProjectComponent = ({ project }: { project: Project }) => {
           ),
           cost: (
             <NumberComponent
-              value={parseInt(t(`game.project.${project.id}.cost`))}
+              value={project.cost}
+              // value={parseInt(t(`game.project.${project.id}.cost`))}
               notation="compact"
             />
           ),

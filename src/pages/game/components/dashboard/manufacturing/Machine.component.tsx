@@ -1,7 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
-import { useNoticesDispatch } from '@/src/pages/game/components/dashboard/notices/useNotices.ts';
 import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAlerts.ts';
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
 import { DialComponent } from '@/src/generic/common/components/dials/dial/Dial.component.tsx';
@@ -13,7 +12,6 @@ export const MachineComponent = () => {
   const { t } = useTranslation();
   const game = useGame();
   const setGame = useGameDispatch();
-  const setNotices = useNoticesDispatch();
   const setAlerts = useAlertsDispatch();
 
   const buyMachine = () => {
@@ -21,17 +19,16 @@ export const MachineComponent = () => {
     setGame({ type: 'BUY_MACHINE', cost });
   };
 
-  const update = useCallback(() => {
-    if (game.funds >= 5 && !game.feature.machine) {
+  const enableMachine = useCallback(() => {
+    if (game.funds >= 5 && !game.feature.factory && !game.feature.machine) {
       setGame({ type: 'UPDATE_FEATURE', feature: 'machine', value: true });
-      setNotices({ type: 'ENABLE_NOTICE', id: 'machine' });
       setAlerts({ type: 'ADD_ALERT', alert: { id: 'machine', text: 'machine alert' } });
     }
-  }, [game.funds, game.feature.machine]);
+  }, [game.funds, game.feature.machine, game.feature.megaMachine]);
 
   useEffect(() => {
-    update();
-  }, [update]);
+    enableMachine();
+  }, [enableMachine]);
 
   if (!game.feature.machine) return null;
 

@@ -12,7 +12,7 @@ export const PowerComponent = () => {
       >
         Power
       </TitleComponent>
-      <EmptyComponent empty="game.empty.power" />
+      <EmptyComponent empty="game.empty" />
     </CardComponent>
   );
 };

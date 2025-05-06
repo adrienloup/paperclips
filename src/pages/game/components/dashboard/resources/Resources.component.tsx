@@ -7,10 +7,11 @@ import { TitleComponent } from '@/src/generic/common/components/title/Title.comp
 import { TrustComponent } from '@/src/pages/game/components/dashboard/resources/Trust.component.tsx';
 import { SwarmGiftsComponent } from '@/src/pages/game/components/dashboard/resources/SwarmGifts.component.tsx';
 import { MemoryComponent } from '@/src/pages/game/components/dashboard/resources/Memory.component.tsx';
-import { ProcessorComponent } from '@/src/pages/game/components/dashboard/resources/Processor.component.tsx';
-import { OperationComponent } from '@/src/pages/game/components/dashboard/resources/Operation.component.tsx';
+import { ProcessorsComponent } from '@/src/pages/game/components/dashboard/resources/Processors.component.tsx';
+import { OperationsComponent } from '@/src/pages/game/components/dashboard/resources/Operations.component.tsx';
 import { CreativityComponent } from '@/src/pages/game/components/dashboard/resources/Creativity.component.tsx';
 import { EmptyComponent } from '@/src/generic/common/components/empty/Empty.component.tsx';
+import { SwarmStrategyComponent } from '@/src/pages/game/components/dashboard/resources/SwarmStrategy.component.tsx';
 import styles from '@/src/generic/common/components/cards/card/Card.module.scss';
 
 export const ResourcesComponent = () => {
@@ -44,12 +45,13 @@ export const ResourcesComponent = () => {
           <TrustComponent />
           <SwarmGiftsComponent />
           <MemoryComponent />
-          <ProcessorComponent />
-          <OperationComponent />
+          <ProcessorsComponent />
+          <OperationsComponent />
           <CreativityComponent />
+          <SwarmStrategyComponent />
         </>
       ) : (
-        <EmptyComponent empty="game.empty.resources" />
+        <EmptyComponent empty="game.empty" />
       )}
     </CardComponent>
   );

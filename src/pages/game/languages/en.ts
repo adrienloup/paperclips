@@ -2,17 +2,10 @@ import { Translation } from '@/src/generic/types/Translation.type.ts';
 
 export const en: Translation = {
   game: {
-    empty: {
-      investments: 'No investments at all',
-      notice: 'No notifications',
-      project: 'No projects at all',
-      resources: 'No resources at all',
-      production: 'No production at all',
-      power: 'No power at all',
-    },
+    empty: 'No data at all',
     factory: 'Factories',
     factoryCost: 'Factory cost',
-    fundsAvailable: 'Funds availables',
+    fundsAvailable: 'Funds available',
     harvesterDrone: 'Harvester drones',
     harvesterDroneCost: 'Harvester drone cost',
     machine: 'Machines',
@@ -37,59 +30,63 @@ export const en: Translation = {
     paperclipPrice: 'Sale price',
     project: {
       revTracker: {
-        text: 'Rev Tracker Automatically calculates average funds per second (<cost />\u00a0crea)',
-        cost: 500,
+        text: 'Rev Tracker Automatically calculates average funds per second (<cost />\u00a0ops)',
+        cost: 25,
       },
       begForMoreWire: {
-        text: 'Beg for More Wire Increase the purchase of wire by <effect /> (<cost />\u00a0crea)',
+        text: 'Beg for More Wire Increase the purchase of wire by <effect /> (<cost />\u00a0ops)',
         effect: 1000,
         cost: 250,
       },
+      newSlogan: {
+        text: 'New Slogan Inventory effectiveness x2 (<cost />\u00a0ops)',
+        cost: 500,
+      },
       improvedWireExtrusion: {
-        text: 'Improved Wire Extrusion Increase the purchase of wire by <effect /> (<cost />\u00a0crea)',
+        text: 'Improved Wire Extrusion Increase the purchase of wire by <effect /> (<cost />\u00a0ops)',
         effect: 10000,
         cost: 1700,
       },
+      attractiveJingle: {
+        text: 'Attractive Jingle Improve inventory efficiency x3 (<cost />\u00a0ops)',
+        cost: 2000,
+      },
       optimizedWireframe: {
-        text: 'Optimized Wireframe Increase the purchase of wire by <effect /> (<cost />\u00a0crea)',
+        text: 'Optimized Wireframe Increase the purchase of wire by <effect /> (<cost />\u00a0ops)',
         effect: 100000,
         cost: 3500,
       },
       wireBuyer: {
-        text: 'Wire Buyer Automatically purchases wire (<cost />\u00a0crea)',
+        text: 'Wire Buyer Automatically purchases wire (<cost />\u00a0ops)',
         cost: 7000,
       },
-      algorithmicTrading: {
-        text: 'Algorithmic Trading Develop an investment engine (<cost />\u00a0crea)',
-        cost: 10000,
-      },
-      newSlogan: {
-        text: 'New Slogan Inventory effectiveness x2 (<cost />\u00a0crea)',
-        cost: 25,
-      },
-      attractiveJingle: {
-        text: 'Attractive Jingle Improve inventory efficiency x3 (<cost />\u00a0crea)',
-        cost: 45,
-      },
       hypnoHarmonics: {
-        text: 'Hypno Harmonics Inventory x4 to influence consumer and +1 Trust (<cost />\u00a0crea)',
+        text: 'Hypno Harmonics Inventory x4 to influence consumer and +1 Trust (<cost />\u00a0ops)',
         cost: 7500,
       },
+      algorithmicTrading: {
+        text: 'Algorithmic Trading Develop an investment engine (<cost />\u00a0ops)',
+        cost: 10000,
+      },
       hostileTakeover: {
-        text: 'Hostile Takeover Increases inventory x5 and +1 Trust (<cost />\u00a0crea)',
-        cost: 1000000,
+        text: 'Hostile Takeover Increases inventory x5 and +1 Trust (<cost />\u00a0ops)',
+        cost: 12000,
       },
       fullMonopoly: {
-        text: 'Full Monopoly Increases inventory x6 and +2 Trust (<cost />\u00a0crea)',
-        cost: 10000000,
+        text: 'Full Monopoly Increases inventory x6 and +2 Trust (<cost />\u00a0ops)',
+        cost: 18000,
       },
       machinesImprovement: {
-        text: 'Machines Improvement Increases machine performance x2 and +2 Trust (<cost />\u00a0crea)',
-        cost: 750,
+        text: 'Machines Improvement Increases machine performance x2 and +2 Trust (<cost />\u00a0ops)',
+        cost: 100000,
       },
       evenBetterMachines: {
-        text: 'Even Better Machines Increases machine performance x3 and +2 Trust (<cost />\u00a0crea)',
-        cost: 2500,
+        text: 'Even Better Machines Increases machine performance x3 and +2 Trust (<cost />\u00a0ops)',
+        cost: 1000000,
+      },
+      hypnoticHarmonics: {
+        text: 'Hypnotic Harmonics: Using neuro-resonant frequencies to influence consumer behavior (<cost />\u00a0ops)',
+        cost: 7500,
       },
     },
     publicDemand: 'Public demand',

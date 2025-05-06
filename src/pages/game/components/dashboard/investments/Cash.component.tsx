@@ -5,8 +5,8 @@ import { ClickerComponent } from '@/src/generic/common/components/clicker/Clicke
 import styles from '@/src/generic/common/components/cards/card/Card.module.scss';
 
 export const CashComponent = () => {
-  const setGame = useGameDispatch();
   const game = useGame();
+  const setGame = useGameDispatch();
 
   return (
     <DialsComponent>

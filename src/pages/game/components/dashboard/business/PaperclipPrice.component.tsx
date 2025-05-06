@@ -8,8 +8,8 @@ import styles from '@/src/generic/common/components/cards/card/Card.module.scss'
 
 export const PaperclipPriceComponent = () => {
   const { t } = useTranslation();
-  const setGame = useGameDispatch();
   const game = useGame();
+  const setGame = useGameDispatch();
 
   return (
     <DialsComponent>
@@ -19,9 +19,9 @@ export const PaperclipPriceComponent = () => {
         style="currency"
         label={t('game.paperclipPrice')}
         bonus={
-          game.marketing > 1 ? (
+          game.marketingBonus > 1 ? (
             <BonusComponent
-              value={game.marketing}
+              value={game.marketingBonus}
               prefix="x"
             />
           ) : null
@@ -31,7 +31,7 @@ export const PaperclipPriceComponent = () => {
         <ClickerComponent
           className={styles.button}
           aria-label="Decrease paperclip price"
-          value={0.01 * game.marketing}
+          value={0.01 * game.marketingBonus}
           prefix="-"
           suffix="price"
           disabled={game.paperclipPriceRef === 0.1}
@@ -42,7 +42,7 @@ export const PaperclipPriceComponent = () => {
         <ClickerComponent
           className={styles.button}
           aria-label="Increase paperclip price"
-          value={0.01 * game.marketing}
+          value={0.01 * game.marketingBonus}
           prefix="+"
           suffix="price"
           disabled={game.paperclipPriceRef === 1}

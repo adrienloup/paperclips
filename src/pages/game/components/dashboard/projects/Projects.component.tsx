@@ -29,10 +29,10 @@ export const ProjectsComponent = () => {
 
   const unlockRevTracker = useCallback(() => {
     const revTracker = game.projects.find((project) => project.id === 'revTracker');
-    if (game.operation >= 500 && !revTracker?.unlocked && revTracker?.enabled) {
+    if (game.operations >= 500 && !revTracker?.unlocked && revTracker?.enabled) {
       setGame({ type: 'UNLOCK_PROJECT', id: 'revTracker' });
     }
-  }, [game.projects, game.operation]);
+  }, [game.projects, game.operations]);
 
   const enableBegForMoreWire = useCallback(() => {
     const begForMoreWire = game.projects.find((project) => project.id === 'begForMoreWire');
@@ -45,26 +45,56 @@ export const ProjectsComponent = () => {
 
   const unlockBegForMoreWire = useCallback(() => {
     const begForMoreWire = game.projects.find((project) => project.id === 'begForMoreWire');
-    if (game.operation >= 5e2 && !begForMoreWire?.unlocked && begForMoreWire?.enabled) {
+    if (game.operations >= 550 && !begForMoreWire?.unlocked && begForMoreWire?.enabled) {
       setGame({ type: 'UNLOCK_PROJECT', id: 'begForMoreWire' });
     }
-  }, [game.projects, game.operation]);
+  }, [game.projects, game.operations]);
 
   const enableAlgorithmicTrading = useCallback(() => {
     const algorithmicTrading = game.projects.find((project) => project.id === 'algorithmicTrading');
     if (game.trust >= 8 && !algorithmicTrading?.unlocked && !algorithmicTrading?.enabled) {
       setGame({ type: 'ENABLE_PROJECT', id: 'algorithmicTrading' });
-      setNotices({ type: 'ENABLE_NOTICE', id: 'algorithmicTrading' });
       setAlerts({ type: 'ADD_ALERT', alert: { id: 'algorithmicTrading', text: 'algorithmicTrading alert' } });
     }
   }, [game.projects, game.trust]);
 
   const unlockAlgorithmicTrading = useCallback(() => {
     const algorithmicTrading = game.projects.find((project) => project.id === 'algorithmicTrading');
-    if (game.operation >= 1e4 && !algorithmicTrading?.unlocked && algorithmicTrading?.enabled) {
+    if (game.operations >= 1e4 && !algorithmicTrading?.unlocked && algorithmicTrading?.enabled) {
       setGame({ type: 'UNLOCK_PROJECT', id: 'algorithmicTrading' });
     }
-  }, [game.projects, game.operation]);
+  }, [game.projects, game.operations]);
+
+  const enableHypnoticHarmonics = useCallback(() => {
+    const hypnoticHarmonics = game.projects.find((project) => project.id === 'hypnoticHarmonics');
+    if (game.trust >= 100 && !hypnoticHarmonics?.unlocked && !hypnoticHarmonics?.enabled) {
+      setGame({ type: 'ENABLE_PROJECT', id: 'hypnoticHarmonics' });
+      setAlerts({ type: 'ADD_ALERT', alert: { id: 'hypnoticHarmonics', text: 'hypnoticHarmonics alert' } });
+    }
+  }, [game.projects, game.trust]);
+
+  const unlockHypnoticHarmonics = useCallback(() => {
+    const hypnoticHarmonics = game.projects.find((project) => project.id === 'hypnoticHarmonics');
+    if (game.operations >= 7500 && !hypnoticHarmonics?.unlocked && hypnoticHarmonics?.enabled) {
+      setGame({ type: 'UNLOCK_PROJECT', id: 'hypnoticHarmonics' });
+    }
+  }, [game.projects, game.operations]);
+
+  const enableHypnoticDrones = useCallback(() => {
+    const hypnoticDrones = game.projects.find((project) => project.id === 'hypnoticDrones');
+    if (hypnoticDrones?.unlocked && !hypnoticDrones?.enabled && !hypnoticDrones?.enabled) {
+      setGame({ type: 'UPDATE_FEATURE', feature: 'hypnoticHarmonics', value: false });
+      setGame({ type: 'UPDATE_FEATURE', feature: 'hypnoticDrones', value: true });
+      setAlerts({ type: 'ADD_ALERT', alert: { id: 'hypnoticDrones', text: 'hypnoticDrones alert' } });
+    }
+  }, [game.projects, game.feature.investments]);
+
+  const unlockHypnoticDrones = useCallback(() => {
+    const hypnoticDrones = game.projects.find((project) => project.id === 'hypnoticDrones');
+    if (game.operations >= 7500 && !hypnoticDrones?.unlocked && hypnoticDrones?.enabled) {
+      setGame({ type: 'UNLOCK_PROJECT', id: 'hypnoticDrones' });
+    }
+  }, [game.projects, game.operations]);
 
   useEffect(() => {
     enableRevTracker();
@@ -90,6 +120,22 @@ export const ProjectsComponent = () => {
     unlockAlgorithmicTrading();
   }, [unlockAlgorithmicTrading]);
 
+  useEffect(() => {
+    enableHypnoticHarmonics();
+  }, [enableHypnoticHarmonics]);
+
+  useEffect(() => {
+    unlockHypnoticHarmonics();
+  }, [unlockHypnoticHarmonics]);
+
+  useEffect(() => {
+    enableHypnoticDrones();
+  }, [enableHypnoticDrones]);
+
+  useEffect(() => {
+    unlockHypnoticDrones();
+  }, [unlockHypnoticDrones]);
+
   return (
     <CardComponent className={styles.projects}>
       <TitleComponent
@@ -108,10 +154,7 @@ export const ProjectsComponent = () => {
           ) : null
         )
       ) : (
-        <EmptyComponent
-          className={styles.empty}
-          empty="game.empty.project"
-        />
+        <EmptyComponent empty="game.empty" />
       )}
     </CardComponent>
   );

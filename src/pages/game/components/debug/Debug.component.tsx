@@ -16,10 +16,12 @@ export const DebugComponent = () => {
   const [paperclip, setPaperclip] = useState('0');
   const [funds, setFunds] = useState('0');
   const [wire, setWire] = useState('0');
-  const [trust, setTrust] = useState('0');
-  const [operation, setOperation] = useState('0');
   const [machine, setMachine] = useState('0');
-  // const [creativity, setCreativity] = useState('0');
+  const [trust, setTrust] = useState('0');
+  const [memory, setMemory] = useState('0');
+  const [processors, setProcessors] = useState('0');
+  const [operations, setOperations] = useState('0');
+  const [creativity, setCreativity] = useState('0');
 
   const display = useMemo(() => {
     const isDebug = location.search == '?debug';
@@ -91,33 +93,54 @@ export const DebugComponent = () => {
     });
   };
 
-  // const memoryClick = () => setGame({ type: 'INCREASE_MEMORY' });
-  //
-  // const processorClick = () => setGame({ type: 'INCREASE_PROCESSOR' });
-  //
-  const operationChange = (e: ChangeEvent<HTMLInputElement>) => setOperation(e.target.value);
-  const operationSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+  const processorsChange = (e: ChangeEvent<HTMLInputElement>) => setProcessors(e.target.value);
+  const processorsSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setGame({
       type: 'INITIALIZE',
       state: {
         ...game,
-        operation: parseInt(operation),
+        processors: Math.min(Number(processors), 100),
       },
     });
   };
 
-  // const creativityChange = (e: ChangeEvent<HTMLInputElement>) => setCreativity(e.target.value);
-  // const creativitySubmit = (e: ChangeEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setGame({
-  //     type: 'INITIALIZE',
-  //     state: {
-  //       ...game,
-  //       creativity: parseInt(creativity),
-  //     },
-  //   });
-  // };
+  const memoryChange = (e: ChangeEvent<HTMLInputElement>) => setMemory(e.target.value);
+  const memorySubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE',
+      state: {
+        ...game,
+        memory: Math.min(Number(memory), 100),
+      },
+    });
+    setGame({ type: 'INCREASE_MEMORY' });
+  };
+
+  const operationsChange = (e: ChangeEvent<HTMLInputElement>) => setOperations(e.target.value);
+  const operationsSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE',
+      state: {
+        ...game,
+        operations: Math.min(Number(operations), game.operationsMax),
+      },
+    });
+  };
+
+  const creativityChange = (e: ChangeEvent<HTMLInputElement>) => setCreativity(e.target.value);
+  const creativitySubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setGame({
+      type: 'INITIALIZE',
+      state: {
+        ...game,
+        creativity: Math.min(Number(creativity), 100),
+      },
+    });
+  };
 
   const machineChange = (e: ChangeEvent<HTMLInputElement>) => setMachine(e.target.value);
   const machineSubmit = (e: ChangeEvent<HTMLFormElement>) => {
@@ -132,9 +155,8 @@ export const DebugComponent = () => {
   };
 
   const updateWire = (value: number) => setGame({ type: 'UPDATE_WIRE_BONUS', value });
-
   const updateMachineBonus = (value: number) => setGame({ type: 'UPDATE_MACHINE_BONUS', value });
-
+  const updateMarketingBonus = (value: number) => setGame({ type: 'UPDATE_MARKETING_BONUS', value });
   const updateUnsoldInventory = (value: number) => setGame({ type: 'UPDATE_UNSOLD_INVENTORY_BONUS', value });
 
   return display ? (
@@ -191,6 +213,14 @@ export const DebugComponent = () => {
       {/*    +1*/}
       {/*  </button>*/}
       {/*</form>*/}
+      <form onSubmit={machineSubmit}>
+        <label>machine</label>
+        <input
+          value={machine}
+          onChange={machineChange}
+        />
+        <button type="submit">Add</button>
+      </form>
       <form onSubmit={trustSubmit}>
         <label>trust</label>
         <input
@@ -199,48 +229,38 @@ export const DebugComponent = () => {
         />
         <button type="submit">Add</button>
       </form>
-      {/*<form>*/}
-      {/*  <label>memory</label>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={memoryClick}*/}
-      {/*  >*/}
-      {/*    +1*/}
-      {/*  </button>*/}
-      {/*</form>*/}
-      {/*<form>*/}
-      {/*  <label>processor</label>*/}
-      {/*  <button*/}
-      {/*    type="button"*/}
-      {/*    onClick={processorClick}*/}
-      {/*  >*/}
-      {/*    +1*/}
-      {/*  </button>*/}
-      {/*</form>*/}
-      <form onSubmit={operationSubmit}>
+      <form onSubmit={memorySubmit}>
+        <label>memory</label>
+        <input
+          value={memory}
+          onChange={memoryChange}
+        />
+        <button type="submit">Add</button>
+      </form>
+      <form onSubmit={processorsSubmit}>
+        <label>processors</label>
+        <input
+          value={processors}
+          onChange={processorsChange}
+        />
+        <button type="submit">Add</button>
+      </form>
+      <form onSubmit={operationsSubmit}>
         <label>operations</label>
         <input
-          value={operation}
-          onChange={operationChange}
+          value={operations}
+          onChange={operationsChange}
         />
         <button type="submit">Add</button>
       </form>
-      <form onSubmit={machineSubmit}>
-        <label>machines</label>
+      <form onSubmit={creativitySubmit}>
+        <label>creativity</label>
         <input
-          value={machine}
-          onChange={machineChange}
+          value={creativity}
+          onChange={creativityChange}
         />
         <button type="submit">Add</button>
       </form>
-      {/*<form onSubmit={creativitySubmit}>*/}
-      {/*  <label>creativity</label>*/}
-      {/*  <input*/}
-      {/*    value={creativity}*/}
-      {/*    onChange={creativityChange}*/}
-      {/*  />*/}
-      {/*  <button type="submit">Add</button>*/}
-      {/*</form>*/}
       <form>
         <label>wirebonus</label>
         <button
@@ -327,6 +347,27 @@ export const DebugComponent = () => {
         <button
           type="button"
           onClick={() => updateMachineBonus(10)}
+        >
+          10
+        </button>
+      </form>
+      <form>
+        <label>marketingBonus</label>
+        <button
+          type="button"
+          onClick={() => updateMarketingBonus(1)}
+        >
+          1
+        </button>
+        <button
+          type="button"
+          onClick={() => updateMarketingBonus(5)}
+        >
+          5
+        </button>
+        <button
+          type="button"
+          onClick={() => updateMarketingBonus(10)}
         >
           10
         </button>

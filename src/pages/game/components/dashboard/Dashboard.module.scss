@@ -15,7 +15,7 @@
 
     @for $i from 1 through 4 {
       &:nth-child(#{$i}) {
-        animation-duration: #{500ms + $i * 50ms};
+        animation-duration: #{400ms + $i * 50ms};
       }
     }
   }

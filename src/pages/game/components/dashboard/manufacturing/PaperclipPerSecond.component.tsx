@@ -13,7 +13,7 @@ export const PaperclipPerSecondComponent = () => {
       <DialComponent
         value={game.paperclipPerSecond}
         notation="compact"
-        label="Paperclips per second"
+        label="Production per second"
       />
       <ClickerComponent
         className={styles.button}

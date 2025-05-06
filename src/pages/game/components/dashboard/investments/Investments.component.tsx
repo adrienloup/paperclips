@@ -44,7 +44,7 @@ export const InvestmentsComponent = () => {
           <CashComponent />
         </>
       ) : (
-        <EmptyComponent empty="game.empty.investments" />
+        <EmptyComponent empty="game.empty" />
       )}
     </CardComponent>
   );

@@ -25,7 +25,7 @@ export const NoticesComponent = () => {
       ) : (
         <EmptyComponent
           className={styles.empty}
-          empty="game.empty.notice"
+          empty="game.empty"
         />
       )}
     </div>

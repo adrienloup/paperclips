@@ -22,7 +22,7 @@ export const AlertComponent = ({ text, status = 'warning', timeout = 5e3, close 
       }, timeout) as unknown as number;
       removeTimer.current = setTimeout(() => {
         remove?.();
-      }, timeout + 340) as unknown as number; // On retire le composant après l’animation de sortie
+      }, timeout + 300) as unknown as number; // On retire le composant après l’animation de sortie
     }
     return () => {
       clearTimeout(outTimer.current);

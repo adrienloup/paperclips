@@ -2,17 +2,16 @@ import { useGame } from '@/src/pages/game/useGame.ts';
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
 import { DialComponent } from '@/src/generic/common/components/dials/dial/Dial.component.tsx';
 
-export const SwarmGiftsComponent = () => {
+export const OperationsComponent = () => {
   const game = useGame();
-
-  if (!game.feature.swarmGifts) return null;
 
   return (
     <DialsComponent>
       <DialComponent
-        value={game.swarmGifts}
-        valueMax={100}
-        label="Swarm Gifts"
+        value={game.operations}
+        valueMax={game.operationsMax}
+        label="Operations"
+        notation="compact"
       />
     </DialsComponent>
   );

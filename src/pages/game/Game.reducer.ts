@@ -8,7 +8,7 @@ export const gameReducer = (state: State, action: Action): State => {
         ...state,
         wire: state.wire + state.wireBonus,
         wireCost: action.cost,
-        funds: state.funds - state.wireCost,
+        funds: state.funds - action.cost,
       };
     case 'BUY_MACHINE':
       if (state.funds < state.machineCost) return state;
@@ -17,7 +17,7 @@ export const gameReducer = (state: State, action: Action): State => {
         machine: state.machine + state.machineBonus,
         machineRef: state.machineRef + 1,
         machineCost: action.cost,
-        funds: Math.max(0, state.funds - state.machineCost),
+        funds: Math.max(0, state.funds - action.cost),
       };
     case 'BUY_MEGAMACHINE':
       if (state.funds < state.megaMachineCost) return state;
@@ -25,7 +25,7 @@ export const gameReducer = (state: State, action: Action): State => {
         ...state,
         megaMachine: state.megaMachine + 1,
         megaMachineCost: action.cost,
-        funds: Math.max(0, state.funds - state.megaMachineCost),
+        funds: Math.max(0, state.funds - action.cost),
       };
     case 'BUY_FACTORY':
       if (state.paperclip < state.factoryCost) return state;
@@ -37,13 +37,11 @@ export const gameReducer = (state: State, action: Action): State => {
       };
     case 'BUY_MARKETING':
       if (state.funds < state.marketingCost) return state;
-      const updateMarketing = Math.max(1, Math.min(state.marketing + 1, 10));
       return {
         ...state,
-        marketing: updateMarketing,
+        marketing: Math.max(1, Math.min(state.marketing + 1, 10)),
         marketingCost: Math.max(100, Math.min(state.marketingCost * 2.5, 25600)),
         funds: Math.max(0, state.funds - state.marketingCost),
-        paperclipPrice: state.paperclipPriceRef * updateMarketing,
       };
     case 'UPDATE_FEATURE':
       return {
@@ -75,23 +73,23 @@ export const gameReducer = (state: State, action: Action): State => {
         projects: state.projects.map((project) =>
           project.id === action.id ? { ...project, enabled: false } : project
         ),
-        creativity: Math.max(0, state.creativity - action.cost),
+        operations: Math.max(0, state.operations - action.cost),
       };
     case 'INCREASE_PAPERCLIP_PRICE':
-      const increasePaperclipPriceRef = Math.min(state.paperclipPriceRef + 0.01, 1);
+      const increasePP = Math.min(state.paperclipPriceRef + 0.01, 1);
       return {
         ...state,
-        paperclipPriceRef: increasePaperclipPriceRef,
-        paperclipPrice: increasePaperclipPriceRef * state.marketing,
-        publicDemand: 0.1 / increasePaperclipPriceRef,
+        paperclipPriceRef: increasePP,
+        paperclipPrice: increasePP * state.marketingBonus,
+        publicDemand: 0.1 / increasePP,
       };
     case 'DECREASE_PAPERCLIP_PRICE':
-      const decreasePaperclipPrice = Math.max(state.paperclipPriceRef - 0.01, 0.1);
+      const decreasePP = Math.max(state.paperclipPriceRef - 0.01, 0.1);
       return {
         ...state,
-        paperclipPriceRef: decreasePaperclipPrice,
-        paperclipPrice: decreasePaperclipPrice * state.marketing,
-        publicDemand: 0.1 / decreasePaperclipPrice,
+        paperclipPriceRef: decreasePP,
+        paperclipPrice: decreasePP * state.marketingBonus,
+        publicDemand: 0.1 / decreasePP,
       };
     case 'INCREASE_CASH':
       return state.funds >= 1 ? { ...state, cash: state.cash + 1, funds: state.funds - 1 } : state;
@@ -114,16 +112,18 @@ export const gameReducer = (state: State, action: Action): State => {
         cash: state.cash + action.price,
       };
     case 'INCREASE_MEMORY':
+      if (state.memory > 100) return state;
       return {
         ...state,
         memory: Math.min(state.memory + 1, 100),
         trust: Math.max(0, state.trust - 1),
-        operationMax: (state.memory * 1e6) / 100,
+        operationsMax: state.memory * 700,
       };
-    case 'INCREASE_PROCESSOR':
+    case 'INCREASE_PROCESSORS':
+      if (state.processors > 100) return state;
       return {
         ...state,
-        processor: Math.min(state.processor + 1, 100),
+        processors: Math.min(state.processors + 1, 100),
         trust: Math.max(0, state.trust - 1),
       };
     case 'SELL_UNSOLD_INVENTORY':
@@ -149,11 +149,11 @@ export const gameReducer = (state: State, action: Action): State => {
                 : 0;
       const paperclipPS = productionPS * state.unsoldInventoryBonus;
       const fundsPS = paperclipPS * state.paperclipPrice;
-      const operationPS = Math.min(state.operationMax, state.operation + 10 * state.processor);
-      const creativityPS = Math.min(100, operationPS === state.operationMax ? state.memory : state.creativity);
+      const operationsPS = Math.min(state.operationsMax, state.operations + 10 * state.processors);
+      const creativityPS = Math.min(100, operationsPS === state.operationsMax ? state.memory : state.creativity);
       return {
         ...state,
-        operation: operationPS,
+        operations: operationsPS,
         creativity: creativityPS,
         paperclipPerSecond: paperclipPS,
         fundsPerSecond: fundsPS,
@@ -172,10 +172,10 @@ export const gameReducer = (state: State, action: Action): State => {
         paperclipPerSecond: state.paperclipPerSecond + state.unsoldInventoryBonus,
         fundsPerSecond: state.fundsPerSecond + state.unsoldInventoryBonus * state.paperclipPrice,
       };
-    case 'UPDATE_SWARM_STATUS':
+    case 'UPDATE_SWARM_STRATEGY':
       return {
         ...state,
-        swarmStatus: action.status,
+        swarmStrategy: action.value,
       };
     case 'UPDATE_TRUST':
       if (state.trust > 100) return state;
@@ -193,6 +193,12 @@ export const gameReducer = (state: State, action: Action): State => {
         ...state,
         machineBonus: action.value,
         machine: state.machineRef * action.value,
+      };
+    case 'UPDATE_MARKETING_BONUS':
+      return {
+        ...state,
+        marketingBonus: action.value,
+        paperclipPrice: state.paperclipPriceRef * action.value,
       };
     case 'UPDATE_UNSOLD_INVENTORY_BONUS':
       return {

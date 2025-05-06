@@ -1,7 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame, useGameDispatch } from '@/src/pages/game/useGame.ts';
-import { useNoticesDispatch } from '@/src/pages/game/components/dashboard/notices/useNotices.ts';
 import { useAlertsDispatch } from '@/src/generic/common/components/alerts/useAlerts.ts';
 import { DialsComponent } from '@/src/generic/common/components/dials/Dials.component.tsx';
 import { DialComponent } from '@/src/generic/common/components/dials/dial/Dial.component.tsx';
@@ -12,7 +11,6 @@ export const MegaMachineComponent = () => {
   const { t } = useTranslation();
   const game = useGame();
   const setGame = useGameDispatch();
-  const setNotices = useNoticesDispatch();
   const setAlerts = useAlertsDispatch();
 
   const buyMegaMachine = () => {
@@ -21,12 +19,11 @@ export const MegaMachineComponent = () => {
   };
 
   const enableMegaMachine = useCallback(() => {
-    if (game.machine >= 75 && !game.feature.megaMachine) {
+    if (game.machine >= 75 && !game.feature.factory && !game.feature.megaMachine) {
       setGame({ type: 'UPDATE_FEATURE', feature: 'megaMachine', value: true });
-      setNotices({ type: 'ENABLE_NOTICE', id: 'megaMachine' });
       setAlerts({ type: 'ADD_ALERT', alert: { id: 'megaMachine', text: 'megaMachine alert' } });
     }
-  }, [game.machine, game.feature.megaMachine]);
+  }, [game.machine, game.feature.factory, game.feature.megaMachine]);
 
   useEffect(() => {
     enableMegaMachine();

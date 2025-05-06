@@ -12,7 +12,7 @@
   --color-6: #fff;
   --color-7: #00ff15;
   --color-8: #009dff;
-  --color-9: #007eff;
+  --color-9: #5500ff;
   --color-10: #ff00ae;
   --color-11: #fbf702;
   --color-12: #220081;
@@ -24,10 +24,10 @@
 
 @mixin size {
   --font-size-xl: 6rem;
-  --font-size-l: 2.5rem;
-  --font-size-m: 2.15rem;
-  --font-size-s: 1.5rem;
-  --font-size-xs: 1.15rem;
+  --font-size-l: 3rem;
+  --font-size-m: 2.5rem;
+  --font-size-s: 1.75rem;
+  --font-size-xs: 1rem;
 }
 
 @mixin spacing {
